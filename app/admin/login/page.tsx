@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
-import { SectionReveal } from "@/components/motion/animated-section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -47,7 +46,7 @@ export default function AdminLoginPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
-      <SectionReveal className="w-full max-w-md">
+      <div className="w-full max-w-md">
         <Card className="border-slate-200 dark:border-slate-800">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
@@ -100,7 +99,7 @@ export default function AdminLoginPage() {
             </p>
           </CardContent>
         </Card>
-      </SectionReveal>
+      </div>
     </main>
   );
 }
