@@ -33,11 +33,11 @@ export async function sendEmailToAdmin(data: {
 }) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = process.env.RESEND_FROM_EMAIL;
-    const toEmail = process.env.RESEND_TO_EMAIL;
+    const fromEmail = "onboarding@resend.dev";
+    const toEmail = process.env.TO_EMAIL || process.env.RESEND_TO_EMAIL;
 
-    if (!apiKey || !fromEmail || !toEmail) {
-      throw new Error("Missing Resend environment variables");
+    if (!apiKey || !toEmail) {
+      throw new Error("Missing Resend config");
     }
 
     const resend = new Resend(apiKey);
