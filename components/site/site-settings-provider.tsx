@@ -59,6 +59,8 @@ export function SiteSettingsProvider({
           parsed.socialLinks = social;
           setSettings(parsed);
         }
+      } catch (error) {
+        console.error("Failed to fetch site settings:", error);
       } finally {
         if (mounted) setLoading(false);
       }
