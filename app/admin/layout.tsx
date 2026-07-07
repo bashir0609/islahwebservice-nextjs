@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { redirect } from "next/navigation";
 import AdminSidebar from "@/components/admin/admin-sidebar";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Check for admin auth cookie or localStorage
@@ -17,13 +19,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       return cookie || localAuth;
     };
 
+    // Don't redirect if already on login page
+    if (pathname === '/admin/login') {
+      setLoading(false);
+      return;
+    }
+
     if (!checkAuth()) {
       redirect('/admin/login');
     }
 
     setIsAuthenticated(true);
     setLoading(false);
-  }, []);
+  }, [pathname]);
 
   if (loading) {
     return (
