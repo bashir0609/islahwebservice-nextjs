@@ -27,9 +27,6 @@ export default function SiteFooter() {
                           height={36}
                           className="h-9 w-9"
                         />
-                        <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
-                          Islah Web Service
-                        </span>
                       </Link>
             <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               Professional B2B services: Verified Contact Lists, Lead Generation
