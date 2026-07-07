@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -23,16 +24,20 @@ export default function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-sky-600 text-white">
-            <span className="text-sm font-bold">IWS</span>
-          </div>
-          <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
-            Islah Web Service
-          </span>
-        </Link>
+      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/Islah-logo.png"
+              alt="Islah Web Service"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
+            <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+              Islah Web Service
+            </span>
+          </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
           {nav.map(({ href, label }) => (

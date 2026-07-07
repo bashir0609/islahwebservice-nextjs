@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   title: "Islah Web Service — B2B Solutions Agency",
   description:
     "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon-150x150.png",
+    apple: "/favicon-150x150.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@radix-ui/react-separator";
 import { Twitter, Linkedin, Instagram, Facebook, Github } from "lucide-react";
 
@@ -18,14 +19,18 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-sky-600 text-white">
-                <span className="text-sm font-bold">IWS</span>
-              </div>
-              <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
-                Islah Web Service
-              </span>
-            </Link>
+                      <Link href="/" className="flex items-center gap-2">
+                        <Image
+                          src="/Islah-logo.png"
+                          alt="Islah Web Service"
+                          width={36}
+                          height={36}
+                          className="h-9 w-9"
+                        />
+                        <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+                          Islah Web Service
+                        </span>
+                      </Link>
             <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               Professional B2B services: Verified Contact Lists, Lead Generation
               Analysis, and Business Process Automation.
