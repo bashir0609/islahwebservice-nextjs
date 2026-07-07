@@ -13,14 +13,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     // Check for admin auth cookie or localStorage
     const checkAuth = () => {
-      // Check cookie or localStorage for admin session
       const cookie = document.cookie.split('; ').find(row => row.startsWith('admin_auth='));
       const localAuth = localStorage.getItem('admin_auth');
       return cookie || localAuth;
     };
 
-    // Don't redirect if already on login page
+    // On login page, skip auth check and show children immediately
     if (pathname === '/admin/login') {
+      setIsAuthenticated(false);
       setLoading(false);
       return;
     }
@@ -32,6 +32,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     setIsAuthenticated(true);
     setLoading(false);
   }, [pathname]);
+
+  // Don't show loading spinner on login page - render children immediately
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
 
   if (loading) {
     return (
