@@ -33,12 +33,18 @@ export async function sendEmailToAdmin(data: {
 }) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = "onboarding@resend.dev";
-    const toEmail = process.env.TO_EMAIL || process.env.RESEND_TO_EMAIL;
+    const fromEmail = process.env.FROM_EMAIL;
+    const toEmail = process.env.TO_EMAIL;
 
     if (!apiKey || !toEmail) {
       throw new Error("Missing Resend config");
     }
+
+    // Use Resend's test address for unverified domains
+    // Extract email from "Name <email@domain.com>" format
+    const emailMatch = fromEmail?.match(/<([^>]+)>/);
+    const extractedEmail = emailMatch ? emailMatch[1] : fromEmail;
+    const testFromEmail = extractedEmail && !extractedEmail.includes('updates.islahwebservice.com') ? extractedEmail : "onboarding@resend.dev";
 
     const resend = new Resend(apiKey);
 
@@ -86,7 +92,7 @@ export async function sendEmailToAdmin(data: {
     `;
 
     const { data: emailData, error } = await resend.emails.send({
-      from: fromEmail,
+      from: testFromEmail,
       to: [toEmail],
       subject: subject,
       html: htmlContent,

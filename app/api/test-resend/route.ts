@@ -4,8 +4,8 @@ import { Resend } from "resend";
 export async function GET() {
   try {
     const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = "onboarding@resend.dev";
-    const toEmail = process.env.TO_EMAIL || process.env.RESEND_TO_EMAIL;
+    const fromEmail = process.env.FROM_EMAIL;
+    const toEmail = process.env.TO_EMAIL;
 
     console.log("Testing Resend configuration...");
     console.log("RESEND_API_KEY:", apiKey ? `${apiKey.substring(0, 10)}...` : "NOT SET");
@@ -24,10 +24,16 @@ export async function GET() {
       });
     }
 
+    // Use Resend's test address for testing (domain may not be verified)
+    // Extract email from "Name <email@domain.com>" format or use onboarding@resend.dev
+    const emailMatch = fromEmail?.match(/<([^>]+)>/);
+    const extractedEmail = emailMatch ? emailMatch[1] : fromEmail;
+    const testFromEmail = extractedEmail && !extractedEmail.includes('updates.islahwebservice.com') ? extractedEmail : "onboarding@resend.dev";
+
     const resend = new Resend(apiKey);
 
     const { data, error } = await resend.emails.send({
-      from: fromEmail,
+      from: testFromEmail,
       to: [toEmail],
       subject: "Test Email from Islah Web Service",
       html: `
@@ -35,6 +41,7 @@ export async function GET() {
           <h1 style="color: #0ea5e9;">Test Email</h1>
           <p>This is a test email from Islah Web Service to verify Resend integration.</p>
           <p>Sent at: ${new Date().toLocaleString()}</p>
+          <p><small>Note: Using test sender address for unverified domains</small></p>
         </div>
       `,
     });
