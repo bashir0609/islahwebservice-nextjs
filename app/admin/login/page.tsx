@@ -29,7 +29,6 @@ export default function AdminLoginPage() {
       const data = await res.json();
 
       if (res.ok) {
-        // Set cookie and localStorage
         document.cookie = "admin_auth=true; path=/; max-age=86400; SameSite=Lax";
         localStorage.setItem("admin_auth", "true");
         router.push("/admin");
@@ -45,60 +44,130 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
-      <div className="w-full max-w-md">
-        <Card className="border-slate-200 dark:border-slate-800">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
-            <CardDescription>Enter password to access admin dashboard</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+    <main style={{
+      display: 'flex',
+      minHeight: '100vh',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '1rem',
+      backgroundColor: '#f8fafc',
+      color: '#0f172a'
+    }}>
+      <div style={{ width: '100%', maxWidth: '360px' }}>
+        <div style={{
+          border: '1px solid #e2e8f0',
+          borderRadius: '0.75rem',
+          backgroundColor: 'white',
+          boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)',
+          overflow: 'hidden'
+        }}>
+          <div style={{ padding: '1.5rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+              Admin Login
+            </h2>
+            <p style={{ color: '#64748b', fontSize: '0.875rem' }}>
+              Enter password to access admin dashboard
+            </p>
+          </div>
+          <div style={{ padding: '1.5rem', paddingTop: 0 }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {error && (
-                <div className="p-3 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                <div style={{
+                  padding: '0.75rem',
+                  fontSize: '0.875rem',
+                  color: '#dc2626',
+                  backgroundColor: '#fef2f2',
+                  border: '1px solid #fecaca',
+                  borderRadius: '0.5rem'
+                }}>
                   {error}
                 </div>
               )}
-              <div className="space-y-2">
-                <label htmlFor="password" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <label htmlFor="password" style={{
+                  display: 'block',
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: '#334155'
+                }}>
                   Password
                 </label>
-                <div className="relative">
-                  <Input
+                <div style={{ position: 'relative' }}>
+                  <input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter admin password"
                     disabled={loading}
-                    className="pr-12"
+                    style={{
+                      width: '100%',
+                      height: '2.5rem',
+                      padding: '0 3rem 0 0.75rem',
+                      fontSize: '0.875rem',
+                      borderRadius: '0.375rem',
+                      border: '1px solid #e2e8f0',
+                      backgroundColor: 'white',
+                      color: '#0f172a',
+                      outline: 'none',
+                      transition: 'border-color 0.2s, box-shadow 0.2s'
+                    }}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                    style={{
+                      position: 'absolute',
+                      right: '0.75rem',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      color: '#94a3b8',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer'
+                    }}
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                    {showPassword ? "🙈" : "👁️"}
                   </button>
                 </div>
               </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Signing in...
-                  </>
-                ) : (
-                  "Sign In"
-                )}
-              </Button>
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  width: '100%',
+                  height: '2.5rem',
+                  borderRadius: '0.375rem',
+                  fontWeight: '500',
+                  fontSize: '0.875rem',
+                  background: 'linear-gradient(to right, #0ea5e9, #0284c7)',
+                  color: 'white',
+                  border: 'none',
+                  cursor: loading ? 'not-allowed' : 'pointer',
+                  opacity: loading ? 0.5 : 1,
+                  transition: 'all 0.2s'
+                }}
+              >
+                {loading ? 'Signing in...' : 'Sign In'}
+              </button>
             </form>
-            <p className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
-              Default password: <code className="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded font-mono">admin123</code>
+            <p style={{
+              marginTop: '1.5rem',
+              textAlign: 'center',
+              fontSize: '0.75rem',
+              color: '#64748b'
+            }}>
+              Default password: <code style={{
+                padding: '0.125rem 0.375rem',
+                backgroundColor: '#f1f5f9',
+                borderRadius: '0.25rem',
+                fontFamily: 'monospace',
+                fontSize: '0.75rem'
+              }}>admin123</code>
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </main>
   );
