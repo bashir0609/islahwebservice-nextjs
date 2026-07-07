@@ -1,52 +1,52 @@
-import { sqliteTable, text, integer, int, real } from "drizzle-orm/sqlite-core";
+import { pgTable, text, integer, timestamp, jsonb } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
-export const siteSettings = sqliteTable("site_settings", {
+export const siteSettings = pgTable("site_settings", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),
-  updatedAt: int("updated_at", { mode: "timestamp" }).default(new Date()),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-export const portfolioItems = sqliteTable("portfolio_items", {
-  id: text("id").primaryKey(),
+export const portfolioItems = pgTable("portfolio_items", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   title: text("title").notNull(),
   description: text("description").notNull(),
   image: text("image"),
-  tags: text("tags").notNull().default("[]"),
+  tags: jsonb("tags").notNull().default("[]").$type<string[]>(),
   featured: integer("featured").notNull().default(0),
-  createdAt: int("created_at", { mode: "timestamp" }).default(new Date()),
-  updatedAt: int("updated_at", { mode: "timestamp" }).default(new Date()),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-export const blogPosts = sqliteTable("blog_posts", {
-  id: text("id").primaryKey(),
+export const blogPosts = pgTable("blog_posts", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   title: text("title").notNull(),
   slug: text("slug").notNull().unique(),
   excerpt: text("excerpt").notNull(),
   content: text("content").notNull(),
   coverImage: text("cover_image"),
   published: integer("published").notNull().default(0),
-  tags: text("tags").notNull().default("[]"),
+  tags: jsonb("tags").notNull().default("[]").$type<string[]>(),
   author: text("author"),
   readTime: integer("read_time"),
-  createdAt: int("created_at", { mode: "timestamp" }).default(new Date()),
-  updatedAt: int("updated_at", { mode: "timestamp" }).default(new Date()),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-export const blogKeywords = sqliteTable("blog_keywords", {
-  id: text("id").primaryKey(),
-  keywords: text("keywords").notNull().default("[]"),
+export const blogKeywords = pgTable("blog_keywords", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  keywords: jsonb("keywords").notNull().default("[]").$type<string[]>(),
   category: text("category").notNull(),
-  generatedAt: int("generated_at", { mode: "timestamp" }).default(new Date()),
+  generatedAt: timestamp("generated_at").defaultNow(),
 });
 
-export const aiSettings = sqliteTable("ai_settings", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const aiSettings = pgTable("ai_settings", {
+  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
   provider: text("provider").notNull().default("groq"),
   apiKey: text("api_key"),
   model: text("model").notNull(),
   temperature: integer("temperature"),
-  updatedAt: int("updated_at", { mode: "timestamp" }).default(new Date()),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 // Define relations

@@ -22,13 +22,13 @@ export default function BlogPage() {
   }, []);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const data = await listBlogPosts();
-      const publishedPosts = data.filter((post) => post.published);
-      setPosts(publishedPosts);
-    };
-    fetchPosts();
-  }, []);
+      const fetchPosts = async () => {
+        const data = await listBlogPosts();
+        const publishedPosts = data.filter((post: BlogPost) => post.published);
+        setPosts(publishedPosts);
+      };
+      fetchPosts();
+    }, []);
 
   useEffect(() => {
     const allTags = [

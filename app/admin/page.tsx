@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Building2, FileText, TrendingUp, Plus, Edit, Trash2, Star } from "lucide-react";
 import { listPortfolioItems } from "@/lib/actions/portfolio";
 import { listBlogPosts } from "@/lib/actions/blog";
+import type { BlogPost } from "@/lib/db/schema";
 
 export default function AdminDashboard() {
   const [mounted, setMounted] = useState(false);
@@ -35,7 +36,7 @@ export default function AdminDashboard() {
         listBlogPosts(),
       ]);
 
-      const publishedCount = blogData.filter(post => post.published).length;
+      const publishedCount = blogData.filter((post: BlogPost) => post.published).length;
 
       setStats({
         portfolioItems: portfolioData.length,
