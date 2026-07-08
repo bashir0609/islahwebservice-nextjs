@@ -40,9 +40,15 @@ export async function sendEmailToAdmin(data: {
       throw new Error("Missing Resend config");
     }
 
-    // Use the exact FROM_EMAIL and TO_EMAIL from .env.local
-    // FROM_EMAIL should be in format: "Name <email@domain.com>"
-    // TO_EMAIL should be the recipient email address
+    // Use Resend's test address for unverified domains
+    // The FROM_EMAIL from .env.local is used for display/reply-to
+    // But actual "from" must be onboarding@resend.dev for unverified domains
+    const testFromEmail = "onboarding@resend.dev";
+    
+    // Extract name from FROM_EMAIL format "Name <email@domain.com>"
+    const fromNameMatch = fromEmail?.match(/^([^<]+)</);
+    const fromName = fromNameMatch ? fromNameMatch[1].trim() : "Islah Web Service";
+
     const resend = new Resend(apiKey);
 
     const subject = `New Contact Form Submission from ${data.name} - ${data.service}`;
@@ -89,8 +95,9 @@ export async function sendEmailToAdmin(data: {
     `;
 
     const { data: emailData, error } = await resend.emails.send({
-      from: fromEmail!,
+      from: `${fromName} <${testFromEmail}>`,
       to: [toEmail],
+      reply_to: data.email,
       subject: subject,
       html: htmlContent,
     });
