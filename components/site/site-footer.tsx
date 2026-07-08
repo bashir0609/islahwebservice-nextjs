@@ -15,28 +15,28 @@ const SOCIAL: Record<string, React.ReactNode> = {
 
 export default function SiteFooter() {
   return (
-    <footer className="mt-20 border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="mt-16 sm:mt-20 border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-                      <Link href="/" className="flex items-center gap-2">
-                        <Image
-                          src="/Islah-logo.png"
-                          alt="Islah Web Service"
-                          width={36}
-                          height={36}
-                          className="h-9 w-9"
-                        />
-                      </Link>
-            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/Islah-logo.png"
+                alt="Islah Web Service"
+                width={32}
+                height={32}
+                className="h-8 w-8 sm:h-9 sm:w-9"
+              />
+            </Link>
+            <p className="mt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               Professional B2B services: Verified Contact Lists, Lead Generation
               Analysis, and Business Process Automation.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Services</h4>
-            <ul className="mt-3 space-y-2 text-sm text-slate-500 dark:text-slate-400">
+            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Services</h4>
+            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               <li><Link href="/services" className="hover:text-cyan-600">Verified B2B Contact Lists</Link></li>
               <li><Link href="/services" className="hover:text-cyan-600">Lead Generation Analysis</Link></li>
               <li><Link href="/services" className="hover:text-cyan-600">Business Process Automation</Link></li>
@@ -44,8 +44,8 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Company</h4>
-            <ul className="mt-3 space-y-2 text-sm text-slate-500 dark:text-slate-400">
+            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Company</h4>
+            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               <li><Link href="/about" className="hover:text-cyan-600">About</Link></li>
               <li><Link href="/portfolio" className="hover:text-cyan-600">Portfolio</Link></li>
               <li><Link href="/blog" className="hover:text-cyan-600">Blog</Link></li>
@@ -54,21 +54,21 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Contact</h4>
-            <ul className="mt-3 space-y-2 text-sm text-slate-500 dark:text-slate-400">
+            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Contact</h4>
+            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               <li><Link href="mailto:hello@islahwebservice.com" className="hover:text-cyan-600">hello@islahwebservice.com</Link></li>
               <li><span>123 Business Ave, Suite 100</span></li>
             </ul>
           </div>
         </div>
 
-        <Separator className="my-8 bg-slate-200 dark:bg-slate-800" />
+        <Separator className="my-6 sm:my-8 bg-slate-200 dark:bg-slate-800" />
 
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+        <div className="flex flex-col items-center justify-between gap-3 sm:gap-4 sm:flex-row">
+          <p className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-left">
             © {new Date().getFullYear()} Islah Web Service. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Link href="#" className="text-slate-400 hover:text-cyan-600">
               {SOCIAL.linkedin}
             </Link>

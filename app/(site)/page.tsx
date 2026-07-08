@@ -20,57 +20,57 @@ export default function HomePage() {
     <main className="flex flex-col">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
-                </span>
-                Trusted B2B Solutions Partner
+              <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="text-center">
+                  <SectionReveal delay={0.2} className="mb-4 sm:mb-6">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
+                      <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
+                      </span>
+                      Trusted B2B Solutions Partner
+                    </div>
+                  </SectionReveal>
+
+                  <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+                      Transform Business
+                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                        Through Data
+                      </span>
+                    </h1>
+                  </SectionReveal>
+
+                  <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
+                    <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
+                      Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation for enterprise growth.
+                    </p>
+                  </SectionReveal>
+
+                  <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white w-full sm:w-auto">
+                      <Link href="/services">
+                        Explore Services
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
+                      <Link href="/contact">Get in Touch</Link>
+                    </Button>
+                  </SectionReveal>
+                </div>
               </div>
-            </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
-                Transform Business
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                  Through Data
-                </span>
-              </h1>
-            </SectionReveal>
-
-            <SectionReveal delay={0.6} className="mb-12 max-w-3xl mx-auto">
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation for enterprise growth.
-              </p>
-            </SectionReveal>
-
-            <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
-                <Link href="/services">
-                  Explore Services
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900">
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
-            </SectionReveal>
-          </div>
-        </div>
-
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl" />
-        </div>
-      </section>
+              {/* Floating Elements - hidden on mobile for performance */}
+              <div className="hidden md:block absolute inset-0 pointer-events-none">
+                <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl" />
+              </div>
+            </section>
 
       {/* Services Overview */}
       <section className="py-24 bg-white dark:bg-slate-950">
