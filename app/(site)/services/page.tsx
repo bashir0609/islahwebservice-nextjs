@@ -24,6 +24,48 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 
 export default function ServicesPage() {
+  const services = [
+    {
+      slug: "verified-b2b-contact-lists",
+      title: "Verified B2B Contact Lists",
+      icon: Building2,
+      gradient: "from-blue-500 to-cyan-600",
+      description: "Access to comprehensive, verified databases of business contacts across industries and regions with accurate company hierarchies, ensuring you connect with the right decision-makers every time.",
+      features: [
+        "Global coverage across 50+ countries",
+        "99% email deliverability rate",
+        "Real-time verification & enrichment",
+        "Multi-level contact hierarchy data"
+      ]
+    },
+    {
+      slug: "lead-generation-analysis",
+      title: "Lead Generation Analysis",
+      icon: TrendingUp,
+      gradient: "from-purple-500 to-pink-600",
+      description: "Advanced analytics and AI-driven insights to identify, qualify, and track high-value leads with conversion optimization. Transform raw data into qualified opportunities with precision targeting.",
+      features: [
+        "AI-powered lead scoring & ranking",
+        "Behavioral pattern recognition",
+        "Real-time pipeline analytics",
+        "CRM integration support"
+      ]
+    },
+    {
+      slug: "business-process-automation",
+      title: "Business Process Automation",
+      icon: Wrench,
+      gradient: "from-orange-500 to-red-600",
+      description: "End-to-end automation of recurring business processes, reducing manual effort by up to 80% and improving overall accuracy and team productivity across your organization.",
+      features: [
+        "Custom workflow automation",
+        "Reduces manual effort by 80%",
+        "Eliminates human error",
+        "Continual improvement analysis"
+      ]
+    }
+  ];
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -42,7 +84,7 @@ export default function ServicesPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
             <SectionReveal delay={0.2} className="mb-4 sm:mb-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-40-400">
                 <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
@@ -89,30 +131,26 @@ export default function ServicesPage() {
           </SectionReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Service 1: Verified B2B Contact Lists */}
-            <SectionReveal delay={0.2} className="h-full">
-              <Link href="/services/verified-b2b-contact-lists">
+            {services.map((service, index) => (
+              <SectionReveal delay={index * 0.2} className="h-full" key={service.slug}>
                 <Card className="group relative overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                   <CardHeader className="p-8 flex-grow">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <Building2 className="h-8 w-8 text-white" />
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className="h-8 w-8 text-white" />
                     </div>
-                    <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                      Verified B2B Contact Lists
-                    </CardTitle>
+                    <Link href={`/services/${service.slug}`} className="group" passHref legacyBehavior>
+                      <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors hover:underline">
+                        {service.title}
+                      </CardTitle>
+                    </Link>
                   </CardHeader>
                   <CardContent className="p-8 pt-0 flex-grow flex flex-col">
                     <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
-                      Access to comprehensive, verified databases of business contacts across industries and regions with accurate company hierarchies, ensuring you connect with the right decision-makers every time.
+                      {service.description}
                     </CardDescription>
                     <div className="space-y-3 mt-auto">
-                      {[
-                        "Global coverage across 50+ countries",
-                        "99% email deliverability rate",
-                        "Real-time verification & enrichment",
-                        "Multi-level contact hierarchy data"
-                      ].map((feature, index) => (
-                        <div key={index} className="flex items-start gap-3">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-start gap-3">
                           <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
                           <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                             {feature}
@@ -120,82 +158,17 @@ export default function ServicesPage() {
                         </div>
                       ))}
                     </div>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all mt-6"
+                    >
+                      Learn more
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </Link>
                   </CardContent>
                 </Card>
-              </Link>
-            </SectionReveal>
-
-            {/* Service 2: Lead Generation Analysis */}
-            <SectionReveal delay={0.4} className="h-full">
-              <Link href="/services/lead-generation-analysis">
-                <Card className="group relative overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                  <CardHeader className="p-8 flex-grow">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <TrendingUp className="h-8 w-8 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                      Lead Generation Analysis
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-8 pt-0 flex-grow flex flex-col">
-                    <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
-                      Advanced analytics and AI-driven insights to identify, qualify, and track high-value leads with conversion optimization. Transform raw data into qualified opportunities with precision targeting.
-                    </CardDescription>
-                    <div className="space-y-3 mt-auto">
-                      {[
-                        "AI-powered lead scoring & ranking",
-                        "Behavioral pattern recognition",
-                        "Real-time pipeline analytics",
-                        "CRM integration support"
-                      ].map((feature, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </SectionReveal>
-
-            {/* Service 3: Business Process Automation */}
-            <SectionReveal delay={0.6} className="h-full">
-              <Link href="/services/business-process-automation">
-                <Card className="group relative overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                  <CardHeader className="p-8 flex-grow">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <Wrench className="h-8 w-8 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                      Business Process Automation
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-8 pt-0 flex-grow flex flex-col">
-                    <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
-                      End-to-end automation of recurring business processes, reducing manual effort by up to 80% and improving overall accuracy and team productivity across your organization.
-                    </CardDescription>
-                    <div className="space-y-3 mt-auto">
-                      {[
-                        "Custom workflow automation",
-                        "Reduces manual effort by 80%",
-                        "Eliminates human error",
-                        "Continual improvement analysis"
-                      ].map((feature, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </SectionReveal>
+              </SectionReveal>
+            ))}
           </div>
         </div>
       </section>
