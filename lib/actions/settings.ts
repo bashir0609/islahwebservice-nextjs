@@ -40,14 +40,12 @@ export async function sendEmailToAdmin(data: {
       throw new Error("Missing Resend config");
     }
 
-    // Use Resend's test address for unverified domains
-    // The FROM_EMAIL from .env.local is used for display/reply-to
-    // But actual "from" must be onboarding@resend.dev for unverified domains
-    const testFromEmail = "onboarding@resend.dev";
-    
-    // Extract name from FROM_EMAIL format "Name <email@domain.com>"
-    const fromNameMatch = fromEmail?.match(/^([^<]+)</);
-    const fromName = fromNameMatch ? fromNameMatch[1].trim() : "Islah Web Service";
+    // Extract local part from FROM_EMAIL (e.g., "noreply" from "Islah Web Service <noreply@updates.islahwebservice.com>")
+    // Use main verified domain islahwebservice.com instead of unverified subdomain
+    const emailMatch = fromEmail?.match(/<([^@]+)@[^>]+>/);
+    const localPart = emailMatch ? emailMatch[1] : "noreply";
+    const verifiedFromEmail = `${localPart}@islahwebservice.com`;
+    const fromDisplay = fromEmail?.replace(/<[^>]+>/, `<${verifiedFromEmail}>`) || `Islah Web Service <${verifiedFromEmail}>`;
 
     const resend = new Resend(apiKey);
 
@@ -95,7 +93,7 @@ export async function sendEmailToAdmin(data: {
     `;
 
     const { data: emailData, error } = await resend.emails.send({
-      from: `${fromName} <${testFromEmail}>`,
+      from: fromDisplay,
       to: [toEmail],
       reply_to: data.email,
       subject: subject,
