@@ -17,7 +17,7 @@ const defaultSettings: SiteSettings = {
     "Professional B2B Services Agency — Verified Contact Lists, Lead Generation & Automation",
   contactEmail: "hello@islahwebservice.com",
   contactPhone: "+1 (555) 123-4567",
-  contactAddress: "123 Business Ave, Suite 100, New York, NY 10001",
+  contactAddress: "Sylhet, Bangladesh",
   socialLinks: {},
   headerLinks: [
     { label: "Services", href: "/services" },

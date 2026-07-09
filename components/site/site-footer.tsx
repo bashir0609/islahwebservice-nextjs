@@ -57,7 +57,7 @@ export default function SiteFooter() {
             <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Contact</h4>
             <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               <li><Link href="mailto:hello@islahwebservice.com" className="hover:text-cyan-600">hello@islahwebservice.com</Link></li>
-              <li><span>123 Business Ave, Suite 100</span></li>
+              <li><span>Sylhet, Bangladesh</span></li>
             </ul>
           </div>
         </div>
