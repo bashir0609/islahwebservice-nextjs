@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://islahwebservice.com",
+    url: "https://www.islahwebservice.com",
     siteName: "Islah Web Service",
     title: "Islah Web Service — B2B Solutions Agency",
     description:

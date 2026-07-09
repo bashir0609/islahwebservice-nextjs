@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://islahwebservice.com"),
+  metadataBase: new URL("https://www.islahwebservice.com"),
   title: {
     default: "Islah Web Service — B2B Solutions Agency",
     template: "%s | Islah Web Service",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://islahwebservice.com",
+    url: "https://www.islahwebservice.com",
     siteName: "Islah Web Service",
     title: "Islah Web Service — B2B Solutions Agency",
     description:
