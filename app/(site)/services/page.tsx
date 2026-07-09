@@ -30,12 +30,12 @@ export default function ServicesPage() {
       title: "Verified B2B Contact Lists",
       icon: Building2,
       gradient: "from-blue-500 to-cyan-600",
-      description: "Access to comprehensive, verified databases of business contacts across industries and regions with accurate company hierarchies, ensuring you connect with the right decision-makers every time.",
+      description: "Custom-built contact lists from Google Maps and company websites. We research your target audience, map ICP fit, and enrich contacts from each business's own web presence.",
       features: [
-        "Global coverage across 50+ countries",
-        "99% email deliverability rate",
-        "Real-time verification & enrichment",
-        "Multi-level contact hierarchy data"
+        "Target-based list building, not generic databases",
+        "Google Maps lead extraction",
+        "ICP research and qualification",
+        "Contact enrichment from business websites"
       ]
     },
     {

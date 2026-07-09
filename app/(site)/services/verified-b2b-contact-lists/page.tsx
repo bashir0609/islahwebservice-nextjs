@@ -15,6 +15,7 @@ import {
   Shield,
   Zap,
   BarChart3,
+  Target,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -30,19 +31,19 @@ export default function VerifiedB2BContactListsPage() {
   if (!mounted) return null;
 
   const features = [
-    { icon: Globe, title: "Global Coverage", description: "Access verified contacts across 50+ countries with comprehensive regional databases." },
-    { icon: Mail, title: "99% Deliverability", description: "Industry-leading email verification ensures your outreach reaches the right inboxes." },
-    { icon: Database, title: "Real-time Enrichment", description: "Continuous data updates with company hierarchies, tech stacks, and buying signals." },
-    { icon: Shield, title: "GDPR & CCPA Compliant", description: "All data sourced and maintained with full regulatory compliance." },
-    { icon: Zap, title: "Instant Access", description: "API and dashboard access for immediate integration into your workflow." },
-    { icon: BarChart3, title: "Advanced Filtering", description: "Filter by industry, company size, revenue, technology, location, and more." },
+    { icon: Target, title: "Target-Based List Building", description: "We build lists from your specific audience criteria instead of selling access to pre-built databases." },
+    { icon: MapPin, title: "Google Maps Extraction", description: "Business discovery and lead extraction from Google Maps for the exact locations and categories you need." },
+    { icon: Users, title: "ICP Research & Qualification", description: "We research each business against your ideal customer profile to ensure fit before enrichment." },
+    { icon: Globe, title: "Website Enrichment", description: "Contact details are enriched from each business's own website for more accurate, first-party data." },
+    { icon: Shield, title: "Fresh, Non-Recycled Data", description: "Every list is freshly researched and built for your campaign, not reused from old databases." },
+    { icon: Zap, title: "Ready for Outreach", description: "Delivered in a usable format with relevant contacts so your team can start outreach quickly." },
   ];
 
   const useCases = [
-    { title: "Sales Prospecting", description: "Build targeted prospect lists with verified decision-maker contacts." },
-    { title: "Market Expansion", description: "Identify and validate new market opportunities with accurate company data." },
-    { title: "Account-Based Marketing", description: "Enrich target accounts with complete organizational hierarchies." },
-    { title: "Recruiting", description: "Find and verify top talent across industries and geographies." },
+    { title: "Client Prospecting", description: "Build lists for your own outbound based on your exact target market, location, and company profile." },
+    { title: "Market Mapping", description: "Map competitors, partners, or prospects in a specific geography or industry segment." },
+    { title: "Lead Preparation", description: "Get structured contact sets ahead of campaigns so sales or outreach teams can focus on converting." },
+    { title: "Business Research", description: "Research companies by website, category, or territory with enriched contact details." },
   ];
 
   return (
@@ -75,7 +76,7 @@ export default function VerifiedB2BContactListsPage() {
 
             <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Access 50M+ verified business contacts across 50+ countries. Real-time enrichment, 99% deliverability, and complete organizational hierarchies.
+                We build contact lists from your target criteria using Google Maps extraction, ICP research, and website-based enrichment—no generic databases, no recycled lists.
               </p>
             </SectionReveal>
 
