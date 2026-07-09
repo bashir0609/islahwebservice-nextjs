@@ -105,34 +105,34 @@ export default function VerifiedB2BContactListsPage() {
           <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
             <StaggerItem className="text-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Globe className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+                <Target className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">50M+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Business Contacts</div>
-            </StaggerItem>
-
-            <StaggerItem className="text-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Mail className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
-              </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">99%</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Email Deliverability</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Target-Based</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Lists Built From Your Criteria</div>
             </StaggerItem>
 
             <StaggerItem className="text-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
                 <MapPin className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">50+</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Countries Covered</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Google Maps</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Lead Extraction Source</div>
             </StaggerItem>
 
             <StaggerItem className="text-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Shield className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+                <Users className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">100%</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">GDPR Compliant</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">ICP Research</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Qualified Against Your Profile</div>
+            </StaggerItem>
+
+            <StaggerItem className="text-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
+                <Globe className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+              </div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Website</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Enriched From Business Sites</div>
             </StaggerItem>
           </StaggerContainer>
         </div>
