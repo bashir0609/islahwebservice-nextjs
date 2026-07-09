@@ -96,14 +96,14 @@ export default function HomePage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 pt-0">
-                                  <CardDescription className="text-base leading-relaxed mb-6">
-                                    Access to comprehensive, verified databases of business contacts across industries and regions with accurate company hierarchies.
-                                  </CardDescription>
-                                  <Link href="/services/verified-b2b-contact-lists" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
-                                    Learn more
-                                    <ChevronRight className="h-4 w-4 ml-1" />
-                                  </Link>
-                                </CardContent>
+                  <CardDescription className="text-base leading-relaxed mb-6">
+                    We build contact lists from your target criteria using Google Maps extraction, ICP research, and website-based enrichment—no generic databases, no recycled lists.
+                  </CardDescription>
+                  <Link href="/services/verified-b2b-contact-lists" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
+                    Learn more
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Link>
+                </CardContent>
               </Card>
             </SectionReveal>
 
