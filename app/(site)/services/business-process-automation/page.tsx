@@ -15,20 +15,14 @@ import {
   Shield,
   BarChart3,
   Cpu,
+  Building2,
+  TrendingUp,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function BusinessProcessAutomationPage() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   const features = [
     { icon: Cpu, title: "Custom Workflow Automation", description: "Design and deploy complex multi-step workflows tailored to your unique business processes." },
     { icon: Zap, title: "80% Manual Effort Reduction", description: "Automate repetitive tasks across departments, freeing teams for high-value work." },
@@ -156,6 +150,62 @@ export default function BusinessProcessAutomationPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Related Services
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Combine our services for a complete B2B growth stack.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+            <SectionReveal delay={0}>
+              <Link href="/services/verified-b2b-contact-lists" className="group block">
+                <Card className="h-full p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                      <Building2 className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        Verified B2B Contact Lists
+                      </CardTitle>
+                      <CardDescription className="text-base leading-relaxed">
+                        Custom-built contact lists from Google Maps and company websites with ICP research and enrichment.
+                      </CardDescription>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </SectionReveal>
+
+            <SectionReveal delay={0.2}>
+              <Link href="/services/lead-generation-analysis" className="group block">
+                <Card className="h-full p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        Lead Generation Analysis
+                      </CardTitle>
+                      <CardDescription className="text-base leading-relaxed">
+                        AI-driven insights, predictive scoring, and real-time pipeline analytics to convert data into qualified opportunities.
+                      </CardDescription>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 

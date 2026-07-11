@@ -28,15 +28,10 @@ import { listPortfolioItems } from "@/lib/actions/portfolio";
 import type { PortfolioItem } from "@/lib/db/schema";
 
 export default function PortfolioPage() {
-  const [mounted, setMounted] = useState(false);
   const [projects, setProjects] = useState<PortfolioItem[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<PortfolioItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("All");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -92,8 +87,6 @@ export default function PortfolioPage() {
 
     setFilteredProjects(filtered);
   }, [searchTerm, selectedTag, projects]);
-
-  if (!mounted) return null;
 
   const allTags = [
     "All",

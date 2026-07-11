@@ -30,14 +30,6 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <main className="flex flex-col">
       {/* Hero Section */}

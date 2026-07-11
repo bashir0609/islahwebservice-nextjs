@@ -16,22 +16,15 @@ import {
   Zap,
   BarChart3,
   Target,
+  TrendingUp,
+  Wrench,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function VerifiedB2BContactListsPage() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   const features = [
-    { icon: Target, title: "Target-Based List Building", description: "We build lists from your specific audience criteria instead of selling access to pre-built databases." },
     { icon: MapPin, title: "Google Maps Extraction", description: "Business discovery and lead extraction from Google Maps for the exact locations and categories you need." },
     { icon: Users, title: "ICP Research & Qualification", description: "We research each business against your ideal customer profile to ensure fit before enrichment." },
     { icon: Globe, title: "Website Enrichment", description: "Contact details are enriched from each business's own website for more accurate, first-party data." },
@@ -192,6 +185,62 @@ export default function VerifiedB2BContactListsPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Related Services
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Combine our services for a complete B2B growth stack.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+            <SectionReveal delay={0}>
+              <Link href="/services/lead-generation-analysis" className="group block">
+                <Card className="h-full p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        Lead Generation Analysis
+                      </CardTitle>
+                      <CardDescription className="text-base leading-relaxed">
+                        AI-driven insights, predictive scoring, and real-time pipeline analytics to convert data into qualified opportunities.
+                      </CardDescription>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </SectionReveal>
+
+            <SectionReveal delay={0.2}>
+              <Link href="/services/business-process-automation" className="group block">
+                <Card className="h-full p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
+                      <Wrench className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        Business Process Automation
+                      </CardTitle>
+                      <CardDescription className="text-base leading-relaxed">
+                        End-to-end automation of recurring processes, reducing manual effort by up to 80% and improving accuracy.
+                      </CardDescription>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 

@@ -40,7 +40,6 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function ContactPage() {
-  const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -61,10 +60,6 @@ export default function ContactPage() {
       service: "",
     },
   });
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const selectedService = watch("service");
 
@@ -94,8 +89,6 @@ export default function ContactPage() {
       setIsSubmitting(false);
     }
   };
-
-  if (!mounted) return null;
 
   const services = [
     "Verified B2B Contact Lists",
@@ -398,10 +391,10 @@ export default function ContactPage() {
                     <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
                       <span className="font-medium">Phone:</span>
                       <a
-                        href="tel:+1-800-123-4567"
+                        href="tel:+1-442-222-8258"
                         className="text-cyan-600 dark:text-cyan-400 hover:underline"
                       >
-                        +1 (800) 123-4567
+                        +1 (442) 222-8258
                       </a>
                     </div>
                   </div>

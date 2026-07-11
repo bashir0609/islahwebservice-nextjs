@@ -37,9 +37,9 @@ export default function SiteFooter() {
           <div>
             <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Services</h4>
             <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              <li><Link href="/services" className="hover:text-cyan-600">Verified B2B Contact Lists</Link></li>
-              <li><Link href="/services" className="hover:text-cyan-600">Lead Generation Analysis</Link></li>
-              <li><Link href="/services" className="hover:text-cyan-600">Business Process Automation</Link></li>
+              <li><Link href="/services/verified-b2b-contact-lists" className="hover:text-cyan-600">Verified B2B Contact Lists</Link></li>
+              <li><Link href="/services/lead-generation-analysis" className="hover:text-cyan-600">Lead Generation Analysis</Link></li>
+              <li><Link href="/services/business-process-automation" className="hover:text-cyan-600">Business Process Automation</Link></li>
             </ul>
           </div>
 
