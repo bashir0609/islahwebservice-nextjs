@@ -7,7 +7,7 @@ import { Clock, User, Calendar, Tag, Search } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { formatDate } from "@/lib/utils";
+import { formatDate, parseTags } from "@/lib/utils";
 import { listBlogPosts } from "@/lib/actions/blog";
 import type { BlogPost } from "@/lib/db/schema";
 
@@ -16,6 +16,7 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("All");
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -23,9 +24,15 @@ export default function BlogPage() {
 
   useEffect(() => {
       const fetchPosts = async () => {
-        const data = await listBlogPosts();
-        const publishedPosts = data.filter((post: BlogPost) => post.published);
-        setPosts(publishedPosts);
+        try {
+          const data = await listBlogPosts();
+          const publishedPosts = data.filter((post: BlogPost) => post.published);
+          setPosts(publishedPosts);
+          setLoadError(null);
+        } catch (error) {
+          console.error("Failed to load blog posts:", error);
+          setLoadError("We couldn't load the blog posts. Please try again later.");
+        }
       };
       fetchPosts();
     }, []);
@@ -34,11 +41,7 @@ export default function BlogPage() {
     const allTags = [
       "All",
       ...Array.from(
-        new Set(
-          posts.flatMap((post) =>
-            (post.tags as unknown as string[]).filter(Boolean)
-          )
-        )
+        new Set(posts.flatMap((post) => parseTags(post.tags)))
       ).sort(),
     ];
     setSelectedTag((prev) => (allTags.includes(prev) ? prev : "All"));
@@ -64,11 +67,7 @@ export default function BlogPage() {
   const allTags = [
       "All",
       ...Array.from(
-        new Set(
-          posts.flatMap((post) =>
-            (typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags).filter(Boolean)
-          )
-        )
+        new Set(posts.flatMap((post) => parseTags(post.tags)))
       ).sort(),
     ];
 
@@ -78,8 +77,7 @@ export default function BlogPage() {
 
       if (selectedTag === "All") return matchesSearch;
 
-      const postTags = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
-      return matchesSearch && postTags.includes(selectedTag);
+      return matchesSearch && parseTags(post.tags).includes(selectedTag);
     });
 
   return (
@@ -167,10 +165,16 @@ export default function BlogPage() {
           </SectionReveal>
 
           {/* Blog Posts Grid */}
-          {filteredPosts.length > 0 ? (
+          {loadError ? (
+            <SectionReveal className="text-center py-12">
+              <p className="text-xl text-red-600 dark:text-red-400">
+                {loadError}
+              </p>
+            </SectionReveal>
+          ) : filteredPosts.length > 0 ? (
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => {
-                              const tags: string[] = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
+                              const tags: string[] = parseTags(post.tags);
                               return (
                   <StaggerItem key={post.id} className="group">
                     <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full flex flex-col">

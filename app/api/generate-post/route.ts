@@ -30,7 +30,17 @@ Use markdown inside the content field.`;
 
     const raw = await callGroq({ apiKey, model, systemPrompt: system, userPrompt: prompt, maxTokens: 9000 });
     const cleaned = raw.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(cleaned);
+
+    let parsed;
+    try {
+      parsed = JSON.parse(cleaned);
+    } catch (parseError) {
+      console.error("Failed to parse post from model response:", parseError, "\nRaw response:", raw);
+      return NextResponse.json(
+        { error: "The model returned an unexpected response. Please try again." },
+        { status: 502 },
+      );
+    }
 
     return NextResponse.json({ post: parsed });
   } catch (e: unknown) {

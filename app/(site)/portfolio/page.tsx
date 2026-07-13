@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { listPortfolioItems } from "@/lib/actions/portfolio";
+import { parseTags } from "@/lib/utils";
 import type { PortfolioItem } from "@/lib/db/schema";
 
 export default function PortfolioPage() {
@@ -32,30 +33,26 @@ export default function PortfolioPage() {
   const [filteredProjects, setFilteredProjects] = useState<PortfolioItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("All");
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const data = await listPortfolioItems();
-      setProjects(data);
-      setFilteredProjects(data);
+      try {
+        const data = await listPortfolioItems();
+        setProjects(data);
+        setFilteredProjects(data);
+        setLoadError(null);
+      } catch (error) {
+        console.error("Failed to load portfolio items:", error);
+        setLoadError("We couldn't load the portfolio. Please try again later.");
+      }
     };
     fetchProjects();
   }, []);
 
   useEffect(() => {
     const tags = Array.from(
-      new Set(
-        projects
-          .flatMap((p) => {
-            try {
-              const parsed = typeof p.tags === 'string' ? JSON.parse(p.tags) : p.tags;
-              return Array.isArray(parsed) ? parsed : [];
-            } catch {
-              return [];
-            }
-          })
-          .filter((tag): tag is string => typeof tag === "string" && Boolean(tag)),
-      ),
+      new Set(projects.flatMap((p) => parseTags(p.tags))),
     ).sort();
     const allTags = ["All", ...tags];
     setSelectedTag((prev) => (allTags.includes(prev) ? prev : "All"));
@@ -74,15 +71,9 @@ export default function PortfolioPage() {
     }
 
     if (selectedTag !== "All") {
-      filtered = filtered.filter((project) => {
-        let projectTags: string[] = [];
-        try {
-          projectTags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
-        } catch {
-          projectTags = [];
-        }
-        return projectTags.includes(selectedTag);
-      });
+      filtered = filtered.filter((project) =>
+        parseTags(project.tags).includes(selectedTag),
+      );
     }
 
     setFilteredProjects(filtered);
@@ -91,18 +82,7 @@ export default function PortfolioPage() {
   const allTags = [
     "All",
     ...Array.from(
-      new Set(
-        projects
-          .flatMap((p) => {
-            try {
-              const parsed = typeof p.tags === 'string' ? JSON.parse(p.tags) : p.tags;
-              return Array.isArray(parsed) ? parsed : [];
-            } catch {
-              return [];
-            }
-          })
-          .filter((tag): tag is string => typeof tag === "string" && Boolean(tag)),
-      ),
+      new Set(projects.flatMap((p) => parseTags(p.tags))),
     ).sort(),
   ];
 
@@ -193,15 +173,16 @@ export default function PortfolioPage() {
           </SectionReveal>
 
           {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
+          {loadError ? (
+            <SectionReveal className="text-center py-20">
+              <p className="text-xl text-red-600 dark:text-red-400">
+                {loadError}
+              </p>
+            </SectionReveal>
+          ) : filteredProjects.length > 0 ? (
             <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {filteredProjects.map((project) => {
-                let tags: string[] = [];
-                try {
-                  tags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
-                } catch {
-                  tags = [];
-                }
+                const tags: string[] = parseTags(project.tags);
                 return (
                   <StaggerItem key={project.id} className="group">
                     <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full flex flex-col">

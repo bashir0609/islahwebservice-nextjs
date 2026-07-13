@@ -36,7 +36,8 @@ export default function AdminLoginPage() {
       } else {
         setError(data.error || "Invalid password");
       }
-    } catch {
+    } catch (error) {
+      console.error("Admin authentication request failed:", error);
       setError("Authentication failed. Please try again.");
     } finally {
       setLoading(false);

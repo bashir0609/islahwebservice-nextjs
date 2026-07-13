@@ -20,7 +20,18 @@ Return only a JSON array of strings, no explanation. Example: ["keyword 1", "key
 
     const raw = await callGroq({ apiKey, model, systemPrompt: system, userPrompt: user });
     const cleaned = raw.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(cleaned) as string[];
+
+    let parsed: string[];
+    try {
+      parsed = JSON.parse(cleaned) as string[];
+    } catch (parseError) {
+      console.error("Failed to parse keywords from model response:", parseError, "\nRaw response:", raw);
+      return NextResponse.json(
+        { error: "The model returned an unexpected response. Please try again." },
+        { status: 502 },
+      );
+    }
+
     return NextResponse.json({ keywords: parsed });
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : "Unknown error";

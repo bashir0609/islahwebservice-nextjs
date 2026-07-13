@@ -8,7 +8,7 @@ import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getBlogPostBySlug } from "@/lib/actions/blog";
-import { formatDate } from "@/lib/utils";
+import { formatDate, parseTags } from "@/lib/utils";
 import { notFound } from "next/navigation";
 
 interface BlogPost {
@@ -29,6 +29,7 @@ interface BlogPost {
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const [post, setPost] = useState<BlogPost | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -41,22 +42,21 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   }, [mounted, params.slug]);
 
   const loadPost = async () => {
+    let foundPost: Awaited<ReturnType<typeof getBlogPostBySlug>>;
     try {
-      const foundPost = await getBlogPostBySlug(params.slug);
-      if (!foundPost) {
-        notFound();
-        return;
-      }
-      // Parse tags if it's a JSON string
-      const parsedPost = {
-        ...foundPost,
-        tags: typeof foundPost.tags === 'string' ? JSON.parse(foundPost.tags) : foundPost.tags
-      };
-      setPost(parsedPost);
+      foundPost = await getBlogPostBySlug(params.slug);
     } catch (error) {
       console.error("Failed to load blog post:", error);
-      notFound();
+      setLoadError("We couldn't load this blog post. Please try again later.");
+      return;
     }
+
+    if (!foundPost) {
+      notFound();
+      return;
+    }
+
+    setPost({ ...foundPost, tags: parseTags(foundPost.tags) });
   };
 
   const calculateReadTime = (content: string): number => {
@@ -88,6 +88,16 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   };
 
   if (!mounted) return null;
+  if (loadError) {
+    return (
+      <main className="flex min-h-[50vh] flex-col items-center justify-center px-4 text-center">
+        <p className="text-xl text-red-600 dark:text-red-400">{loadError}</p>
+        <Link href="/blog" className="mt-6 text-cyan-600 hover:underline dark:text-cyan-400">
+          Back to Blog
+        </Link>
+      </main>
+    );
+  }
   if (!post) return null;
 
   const readTime = post.readTime || calculateReadTime(post.content);

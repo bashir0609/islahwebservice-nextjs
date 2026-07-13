@@ -12,7 +12,7 @@ export async function getAllSettings() {
     const rows = await db.select().from(siteSettings);
     return Object.fromEntries(rows.map((r) => [r.key, r.value]));
   } catch (pgError) {
-    console.log("PostgreSQL unavailable, trying SQLite (local dev)...");
+    console.warn("PostgreSQL unavailable, trying SQLite (local dev)...", pgError);
     try {
       // Fall back to SQLite (local development)
       const rows = await sqlDb.select().from(sqliteSiteSettings);
