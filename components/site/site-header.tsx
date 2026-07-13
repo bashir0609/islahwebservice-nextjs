@@ -25,18 +25,19 @@ export default function SiteHeader() {
 
   return (
       <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70">
-        <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/Islah-logo.png"
               alt="Islah Web Service"
-              width={28}
-              height={28}
-              className="h-7 w-7 sm:h-8 sm:w-8"
+              width={200}
+              height={50}
+              className="h-auto w-32 sm:w-40 md:w-48"
+              priority
             />
           </Link>
 
-          <nav className="hidden sm:flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
+          <nav className="hidden md:flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
             {nav.map(({ href, label }) => (
               <Link
                 key={href}
@@ -57,14 +58,14 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden sm:flex items-center gap-2 sm:gap-3">
+          <div className="hidden md:flex items-center gap-2 sm:gap-3">
             <Button asChild size="sm">
               <Link href="/contact">Get in Touch</Link>
             </Button>
           </div>
 
           <button
-            className="sm:hidden flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="md:hidden flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
@@ -75,7 +76,7 @@ export default function SiteHeader() {
         <AnimatePresence>
           {open && (
             <motion.div
-              className="fixed inset-0 z-50 sm:hidden"
+              className="fixed inset-0 z-50 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

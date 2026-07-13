@@ -23,9 +23,9 @@ export default function SiteFooter() {
               <Image
                 src="/Islah-logo.png"
                 alt="Islah Web Service"
-                width={32}
-                height={32}
-                className="h-8 w-8 sm:h-9 sm:w-9"
+                width={200}
+                height={50}
+                className="h-auto w-32 sm:w-40 md:w-48"
               />
             </Link>
             <p className="mt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
