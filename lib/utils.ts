@@ -14,6 +14,13 @@ export function formatDate(date: Date | string): string {
   });
 }
 
+export function getErrorMessage(
+  error: unknown,
+  fallback = "Unknown error",
+): string {
+  return error instanceof Error ? error.message : fallback;
+}
+
 export function generateSlug(text: string): string {
   return text
     .toLowerCase()

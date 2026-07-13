@@ -25,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import { cn, getErrorMessage } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
@@ -78,11 +78,9 @@ export default function ContactPage() {
         reset();
       }
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Failed to send message";
       toast({
         title: "Failed to Send Message",
-        description: message,
+        description: getErrorMessage(error, "Failed to send message"),
         variant: "error",
       });
     } finally {

@@ -1,11 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import { NextResponse } from "next/server";
+import { getResendConfig, sendEmail } from "@/lib/email";
+import { getErrorMessage } from "@/lib/utils";
 
 export async function GET() {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = process.env.FROM_EMAIL;
-    const toEmail = process.env.TO_EMAIL;
+    const { apiKey, fromEmail, toEmail } = getResendConfig();
 
     console.log("Testing Resend configuration...");
     console.log("RESEND_API_KEY:", apiKey ? `${apiKey.substring(0, 10)}...` : "NOT SET");
@@ -30,11 +29,10 @@ export async function GET() {
     const extractedEmail = emailMatch ? emailMatch[1] : fromEmail;
     const testFromEmail = extractedEmail && !extractedEmail.includes('updates.islahwebservice.com') ? extractedEmail : "onboarding@resend.dev";
 
-    const resend = new Resend(apiKey);
-
-    const { data, error } = await resend.emails.send({
+    const data = await sendEmail({
+      apiKey,
       from: testFromEmail,
-      to: [toEmail],
+      to: toEmail,
       subject: "Test Email from Islah Web Service",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -46,13 +44,6 @@ export async function GET() {
       `,
     });
 
-    if (error) {
-      return NextResponse.json({
-        success: false,
-        error: error.message,
-      });
-    }
-
     return NextResponse.json({
       success: true,
       message: "Test email sent successfully",
@@ -61,7 +52,7 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json({
       success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
+      error: getErrorMessage(error),
     });
   }
 }

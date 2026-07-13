@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendEmailToAdmin } from "@/lib/actions/settings";
+import { getErrorMessage } from "@/lib/utils";
 
 export async function POST(req: Request) {
   try {
@@ -13,7 +14,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, message: "Message sent successfully!" });
   } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({ error: getErrorMessage(e) }, { status: 500 });
   }
 }

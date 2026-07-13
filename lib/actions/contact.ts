@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { sendEmailToAdmin } from "./settings";
+import { getErrorMessage } from "@/lib/utils";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -16,13 +17,12 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 export async function submitContactForm(data: ContactFormData) {
   try {
     const validatedData = contactFormSchema.parse(data);
-    const result = await sendEmailToAdmin(validatedData);
+    await sendEmailToAdmin(validatedData);
     return { success: true, message: "Message sent successfully!" };
   } catch (error) {
     if (error instanceof z.ZodError) {
       throw new Error(error.errors.map(err => err.message).join(", "));
     }
-    const message = error instanceof Error ? error.message : "Failed to process your request";
-    throw new Error(message);
+    throw new Error(getErrorMessage(error, "Failed to process your request"));
   }
 }

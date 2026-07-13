@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { callGroq } from "@/lib/groq";
+import { callGroq, parseGroqJson } from "@/lib/groq";
+import { getErrorMessage } from "@/lib/utils";
 
 export async function POST(req: Request) {
   try {
@@ -29,12 +30,10 @@ Format as JSON with the following structure:
 Use markdown inside the content field.`;
 
     const raw = await callGroq({ apiKey, model, systemPrompt: system, userPrompt: prompt, maxTokens: 9000 });
-    const cleaned = raw.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(cleaned);
+    const parsed = parseGroqJson(raw);
 
     return NextResponse.json({ post: parsed });
   } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({ error: getErrorMessage(e) }, { status: 500 });
   }
 }

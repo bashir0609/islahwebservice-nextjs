@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { callGroq } from "@/lib/groq";
+import { callGroq, parseGroqJson } from "@/lib/groq";
+import { getErrorMessage } from "@/lib/utils";
 
 export async function POST(req: Request) {
   try {
@@ -19,11 +20,9 @@ Generate ${count} unique, specific keyword phrases directly related to this B2B 
 Return only a JSON array of strings, no explanation. Example: ["keyword 1", "keyword 2"]`;
 
     const raw = await callGroq({ apiKey, model, systemPrompt: system, userPrompt: user });
-    const cleaned = raw.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(cleaned) as string[];
+    const parsed = parseGroqJson<string[]>(raw);
     return NextResponse.json({ keywords: parsed });
   } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({ error: getErrorMessage(e) }, { status: 500 });
   }
 }

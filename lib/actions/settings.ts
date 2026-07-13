@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { siteSettings } from "@/lib/db/schema";
 import { db } from "@/lib/db";
-import { eq, sql } from "drizzle-orm";
-import { Resend } from "resend";
+import { getResendConfig, sendEmail } from "@/lib/email";
+import { getErrorMessage } from "@/lib/utils";
 
 export async function getAdminSettings() {
   const rows = await db.select().from(siteSettings);
@@ -32,9 +32,7 @@ export async function sendEmailToAdmin(data: {
   message: string;
 }) {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = process.env.FROM_EMAIL;
-    const toEmail = process.env.TO_EMAIL;
+    const { apiKey, fromEmail, toEmail } = getResendConfig();
 
     if (!apiKey || !toEmail) {
       throw new Error("Missing Resend config");
@@ -46,8 +44,6 @@ export async function sendEmailToAdmin(data: {
     const localPart = emailMatch ? emailMatch[1] : "noreply";
     const verifiedFromEmail = `${localPart}@islahwebservice.com`;
     const fromDisplay = fromEmail?.replace(/<[^>]+>/, `<${verifiedFromEmail}>`) || `Islah Web Service <${verifiedFromEmail}>`;
-
-    const resend = new Resend(apiKey);
 
     const subject = `New Contact Form Submission from ${data.name} - ${data.service}`;
 
@@ -92,21 +88,17 @@ export async function sendEmailToAdmin(data: {
       </div>
     `;
 
-    const { data: emailData, error } = await resend.emails.send({
+    const emailData = await sendEmail({
+      apiKey,
       from: fromDisplay,
-      to: [toEmail],
-      reply_to: data.email,
-      subject: subject,
+      to: toEmail,
+      replyTo: data.email,
+      subject,
       html: htmlContent,
     });
 
-    if (error) {
-      throw new Error(`Failed to send email: ${error.message}`);
-    }
-
     return { success: true, emailId: emailData?.id };
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error";
-    throw new Error(`Email service error: ${message}`);
+    throw new Error(`Email service error: ${getErrorMessage(error)}`);
   }
 }

@@ -41,6 +41,11 @@ export async function callGroq({
   return data.choices?.[0]?.message?.content ?? "";
 }
 
+export function parseGroqJson<T>(raw: string): T {
+  const cleaned = raw.replace(/```json|```/g, "").trim();
+  return JSON.parse(cleaned) as T;
+}
+
 export const DEFAULT_MODELS = [
   { value: "llama-3.3-70b-versatile", label: "Llama 3.3 70B Versatile" },
   { value: "llama-3.3-8b-versatile", label: "Llama 3.3 8B Versatile" },
