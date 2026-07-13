@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 import { blogPosts, type NewBlogPost } from "@/lib/db/schema";
 import { generateSlug } from "@/lib/utils";
+import { requireAdmin } from "@/lib/auth";
 import { eq, sql } from "drizzle-orm";
 
 export async function listBlogPosts() {
@@ -16,6 +17,7 @@ export async function getBlogPostBySlug(slug: string) {
 }
 
 export async function createBlogPost(data: Omit<NewBlogPost, "id" | "slug">) {
+  await requireAdmin();
   const id = crypto.randomUUID();
   const slug = generateSlug(data.title);
   const [existing] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug));
@@ -28,6 +30,7 @@ export async function createBlogPost(data: Omit<NewBlogPost, "id" | "slug">) {
 }
 
 export async function updateBlogPost(id: string, data: Partial<NewBlogPost>) {
+  await requireAdmin();
   await db
     .update(blogPosts)
     .set({ ...data, updatedAt: sql`(unixepoch())` })
@@ -37,12 +40,14 @@ export async function updateBlogPost(id: string, data: Partial<NewBlogPost>) {
 }
 
 export async function deleteBlogPost(id: string) {
+  await requireAdmin();
   await db.delete(blogPosts).where(eq(blogPosts.id, id));
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
 }
 
 export async function toggleBlogPostPublished(id: string) {
+  await requireAdmin();
   const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, id));
   if (!post) return;
   await db

@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
 import { callGroq } from "@/lib/groq";
+import { isAdminAuthenticated } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
+    if (!(await isAdminAuthenticated())) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { apiKey, model, topic, count = 8 } = await req.json();
     if (!apiKey || !model || !topic) {
       return NextResponse.json({ error: "Missing apiKey, model or topic" }, { status: 400 });
