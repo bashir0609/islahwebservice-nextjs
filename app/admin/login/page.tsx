@@ -29,8 +29,7 @@ export default function AdminLoginPage() {
       const data = await res.json();
 
       if (res.ok) {
-        document.cookie = "admin_auth=true; path=/; max-age=86400; SameSite=Lax";
-        localStorage.setItem("admin_auth", "true");
+        // The session cookie is set httpOnly by the server response.
         router.push("/admin");
         router.refresh();
       } else {
@@ -152,20 +151,6 @@ export default function AdminLoginPage() {
                 {loading ? 'Signing in...' : 'Sign In'}
               </button>
             </form>
-            <p style={{
-              marginTop: '1.5rem',
-              textAlign: 'center',
-              fontSize: '0.75rem',
-              color: '#64748b'
-            }}>
-              Default password: <code style={{
-                padding: '0.125rem 0.375rem',
-                backgroundColor: '#f1f5f9',
-                borderRadius: '0.25rem',
-                fontFamily: 'monospace',
-                fontSize: '0.75rem'
-              }}>admin123</code>
-            </p>
           </div>
         </div>
       </div>
