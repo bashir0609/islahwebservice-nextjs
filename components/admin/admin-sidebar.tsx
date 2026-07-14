@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, FolderOpen, FileText, Settings, Sparkles, Menu } from "lucide-react";
+import { LayoutDashboard, FolderOpen, FileText, Settings, Sparkles, ImageOff, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,6 +14,7 @@ const adminNav = [
   { href: "/admin/blog", label: "Blog", icon: FileText },
   { href: "/admin/settings", label: "Settings", icon: Settings },
   { href: "/admin/blog-generator", label: "AI Blog Generator", icon: Sparkles },
+  { href: "/admin/media", label: "Media Library", icon: ImageOff },
 ];
 
 export default function AdminSidebar() {

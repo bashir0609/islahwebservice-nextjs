@@ -7,7 +7,7 @@ import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, Building2, FileText, TrendingUp, Plus, Edit, Trash2, Star } from "lucide-react";
+import { Users, Building2, FileText, TrendingUp, Plus, Edit, Trash2, Star, ImageOff } from "lucide-react";
 import { listPortfolioItems } from "@/lib/actions/portfolio";
 import { listBlogPosts } from "@/lib/actions/blog";
 import type { BlogPost } from "@/lib/db/schema";
@@ -187,6 +187,13 @@ export default function AdminDashboard() {
             description: "Update header, footer, and general settings",
             icon: Edit,
             color: "bg-orange-50 text-orange-600 dark:bg-orange-950 dark:text-orange-400",
+          },
+          {
+            href: "/admin/media",
+            label: "Media Library",
+            description: "Upload and manage Cloudinary images",
+            icon: ImageOff,
+            color: "bg-pink-50 text-pink-600 dark:bg-pink-950 dark:text-pink-400",
           },
         ].map((action, index) => {
           const Icon = action.icon;
