@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, Calendar, FileText } from "lucide-react";
@@ -9,90 +7,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getBlogPostBySlug } from "@/lib/actions/blog";
 import { formatDate } from "@/lib/utils";
-import { notFound } from "next/navigation";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  content: string;
-  createdAt: string | Date | null;
-  updatedAt: string | Date | null;
-  published: number | null;
-  excerpt?: string | null;
-  readTime?: number | null;
-  tags?: string[] | null;
-  coverImage?: string | null;
-  author?: string | null;
+interface BlogPostPageProps {
+  params: { slug: string };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [mounted, setMounted] = useState(false);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getBlogPostBySlug(params.slug);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  if (!post) {
+    notFound();
+  }
 
-  useEffect(() => {
-    if (mounted) {
-      loadPost();
-    }
-  }, [mounted, params.slug]);
-
-  const loadPost = async () => {
-    try {
-      const foundPost = await getBlogPostBySlug(params.slug);
-      if (!foundPost) {
-        notFound();
-        return;
-      }
-      // Parse tags if it's a JSON string
-      const parsedPost = {
-        ...foundPost,
-        tags: typeof foundPost.tags === 'string' ? JSON.parse(foundPost.tags) : foundPost.tags
-      };
-      setPost(parsedPost);
-    } catch (error) {
-      console.error("Failed to load blog post:", error);
-      notFound();
-    }
-  };
-
-  const calculateReadTime = (content: string): number => {
-    const text = content
-      .replace(/<[^>]*>/g, "")
-      .replace(/&nbsp;/g, " ")
-      .trim();
-    const wordCount = text.split(/\s+/).filter(Boolean).length;
-    return Math.max(1, Math.ceil(wordCount / 200));
-  };
-
-  const formatContent = (html: string): string => {
-    return html
-      .replace(
-        /<h2>/g,
-        '<h2 class="text-3xl font-bold mt-12 mb-4 text-slate-900 dark:text-white">',
-      )
-      .replace(
-        /<h3>/g,
-        '<h3 class="text-2xl font-semibold mt-8 mb-3 text-slate-900 dark:text-white">',
-      )
-      .replace(
-        /<p>/g,
-        '<p class="text-lg leading-relaxed mb-6 text-slate-700 dark:text-slate-300">',
-      )
-      .replace(/<[^>]*>/g, "")
-      .replace(/&nbsp;/g, " ")
-      .trim();
-  };
-
-  if (!mounted) return null;
-  if (!post) return null;
-
-  const readTime = post.readTime || calculateReadTime(post.content);
+  const tags: string[] = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
+  const readTime = post.readTime || Math.max(1, Math.ceil(post.content.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim().split(/\s+/).filter(Boolean).length / 200));
   const date = post.createdAt ? formatDate(new Date(post.createdAt)) : "";
-  const gradient = `from-cyan-500/20 to-teal-500/20`;
+  const gradient = "from-cyan-500/20 to-teal-500/20";
 
   return (
     <main className="flex flex-col">
@@ -159,7 +89,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   Ready to Apply These Insights?
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  Let&apos;s discuss how we can help you implement these
+                  Let's discuss how we can help you implement these
                   strategies for your business.
                 </p>
                 <Button

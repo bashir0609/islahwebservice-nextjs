@@ -12,75 +12,39 @@ import { listBlogPosts } from "@/lib/actions/blog";
 import type { BlogPost } from "@/lib/db/schema";
 
 export default function BlogPage() {
-  const [mounted, setMounted] = useState(false);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("All");
 
   useEffect(() => {
-    setMounted(true);
+    const fetchPosts = async () => {
+      const data = await listBlogPosts();
+      const publishedPosts = data.filter((post: BlogPost) => post.published);
+      setPosts(publishedPosts);
+    };
+    fetchPosts();
   }, []);
 
-  useEffect(() => {
-      const fetchPosts = async () => {
-        const data = await listBlogPosts();
-        const publishedPosts = data.filter((post: BlogPost) => post.published);
-        setPosts(publishedPosts);
-      };
-      fetchPosts();
-    }, []);
-
-  useEffect(() => {
-    const allTags = [
-      "All",
-      ...Array.from(
-        new Set(
-          posts.flatMap((post) =>
-            (post.tags as unknown as string[]).filter(Boolean)
-          )
-        )
-      ).sort(),
-    ];
-    setSelectedTag((prev) => (allTags.includes(prev) ? prev : "All"));
-  }, [posts]);
-
-  if (!mounted) {
-    return (
-      <main className="flex flex-col">
-        <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
-            <div className="animate-pulse space-y-4">
-              <div className="h-8 w-48 mx-auto bg-slate-700/50 rounded" />
-              <div className="h-12 w-96 mx-auto bg-slate-700/50 rounded" />
-            </div>
-          </div>
-        </section>
-      </main>
-    );
-  }
-
   const allTags = [
-      "All",
-      ...Array.from(
-        new Set(
-          posts.flatMap((post) =>
-            (typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags).filter(Boolean)
-          )
+    "All",
+    ...Array.from(
+      new Set(
+        posts.flatMap((post) =>
+          (typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags).filter(Boolean)
         )
-      ).sort(),
-    ];
+      )
+    ).sort(),
+  ];
 
-    const filteredPosts = posts.filter((post) => {
-      const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (post.excerpt || "").toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (post.excerpt || "").toLowerCase().includes(searchTerm.toLowerCase());
 
-      if (selectedTag === "All") return matchesSearch;
+    if (selectedTag === "All") return matchesSearch;
 
-      const postTags = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
-      return matchesSearch && postTags.includes(selectedTag);
-    });
+    const postTags = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
+    return matchesSearch && postTags.includes(selectedTag);
+  });
 
   return (
     <main className="flex flex-col">
@@ -170,8 +134,8 @@ export default function BlogPage() {
           {filteredPosts.length > 0 ? (
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => {
-                              const tags: string[] = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
-                              return (
+                const tags: string[] = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
+                return (
                   <StaggerItem key={post.id} className="group">
                     <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                       <div className="relative h-48 overflow-hidden">
