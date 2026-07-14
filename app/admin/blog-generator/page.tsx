@@ -116,7 +116,7 @@ export default function AdminBlogGeneratorPage() {
                 type="password"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-                placeholder="gsk_..."
+                placeholder="Leave blank to use GROQ_API_KEY from .env.local"
               />
             </div>
             <div className="space-y-2 md:col-span-2">

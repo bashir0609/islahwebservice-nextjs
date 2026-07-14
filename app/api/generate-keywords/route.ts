@@ -9,7 +9,8 @@ export async function POST(req: Request) {
     }
 
     const { apiKey, model, topic, count = 8 } = await req.json();
-    if (!apiKey || !model || !topic) {
+    const resolvedApiKey = apiKey || process.env.GROQ_API_KEY;
+    if (!resolvedApiKey || !model || !topic) {
       return NextResponse.json({ error: "Missing apiKey, model or topic" }, { status: 400 });
     }
 
@@ -23,7 +24,7 @@ Generate unique, high-intent keyword phrases relevant to these services.`;
 Generate ${count} unique, specific keyword phrases directly related to this B2B topic and our services.
 Return only a JSON array of strings, no explanation. Example: ["keyword 1", "keyword 2"]`;
 
-    const raw = await callGroq({ apiKey, model, systemPrompt: system, userPrompt: user });
+    const raw = await callGroq({ apiKey: resolvedApiKey, model, systemPrompt: system, userPrompt: user });
     const cleaned = raw.replace(/```json|```/g, "").trim();
     const parsed = JSON.parse(cleaned) as string[];
     return NextResponse.json({ keywords: parsed });

@@ -9,7 +9,8 @@ export async function POST(req: Request) {
     }
 
     const { apiKey, model, keywords, tone = "professional", wordCount = 1200 } = await req.json();
-    if (!apiKey || !model || !keywords?.length) {
+    const resolvedApiKey = apiKey || process.env.GROQ_API_KEY;
+    if (!resolvedApiKey || !model || !keywords?.length) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
@@ -33,7 +34,7 @@ Format as JSON with the following structure:
 }
 Use markdown inside the content field.`;
 
-    const raw = await callGroq({ apiKey, model, systemPrompt: system, userPrompt: prompt, maxTokens: 9000 });
+    const raw = await callGroq({ apiKey: resolvedApiKey, model, systemPrompt: system, userPrompt: prompt, maxTokens: 9000 });
     const cleaned = raw.replace(/```json|```/g, "").trim();
     const parsed = JSON.parse(cleaned);
 
