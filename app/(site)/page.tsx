@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Building2, TrendingUp, Wrench, Users, ArrowRight, ChevronRight } from "lucide-react";
+import { Building2, TrendingUp, Wrench, Users, ArrowRight } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -93,7 +92,7 @@ export default function HomePage() {
                   </CardDescription>
                   <Link href="/services/verified-b2b-contact-lists" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
                     Learn more
-                    <ChevronRight className="h-4 w-4 ml-1" />
+                    <ArrowRight className="h-4 w-4 ml-1" />
                   </Link>
                 </CardContent>
               </Card>
@@ -115,7 +114,7 @@ export default function HomePage() {
                                   </CardDescription>
                                   <Link href="/services/lead-generation-analysis" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
                                     Learn more
-                                    <ChevronRight className="h-4 w-4 ml-1" />
+                                    <ArrowRight className="h-4 w-4 ml-1" />
                                   </Link>
                                 </CardContent>
               </Card>
@@ -137,73 +136,9 @@ export default function HomePage() {
                                   </CardDescription>
                                   <Link href="/services/business-process-automation" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
                                     Learn more
-                                    <ChevronRight className="h-4 w-4 ml-1" />
+                                    <ArrowRight className="h-4 w-4 ml-1" />
                                   </Link>
                                 </CardContent>
-              </Card>
-            </SectionReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Explore Our Services */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-              Explore Each Service
-            </h2>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Dive deeper into our specialized B2B solutions and discover how they can transform your business.
-            </p>
-          </SectionReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <SectionReveal delay={0}>
-              <Card className="group h-full flex flex-col p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Building2 className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                </div>
-                <CardTitle className="text-xl sm:text-2xl mb-3">Verified B2B Contact Lists</CardTitle>
-                <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
-                  Custom-built contact lists from Google Maps and company websites with ICP research and enrichment.
-                </CardDescription>
-                <Link href="/services/verified-b2b-contact-lists" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all mt-auto">
-                  Learn more
-                  <ArrowRight className="h-4 w-4 ml-1" />
-                </Link>
-              </Card>
-            </SectionReveal>
-
-            <SectionReveal delay={0.2}>
-              <Card className="group h-full flex flex-col p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                </div>
-                <CardTitle className="text-xl sm:text-2xl mb-3">Lead Generation Analysis</CardTitle>
-                <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
-                  AI-driven insights, predictive scoring, and real-time pipeline analytics to convert data into qualified opportunities.
-                </CardDescription>
-                <Link href="/services/lead-generation-analysis" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all mt-auto">
-                  Learn more
-                  <ArrowRight className="h-4 w-4 ml-1" />
-                </Link>
-              </Card>
-            </SectionReveal>
-
-            <SectionReveal delay={0.4}>
-              <Card className="group h-full flex flex-col p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Wrench className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                </div>
-                <CardTitle className="text-xl sm:text-2xl mb-3">Business Process Automation</CardTitle>
-                <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
-                  End-to-end automation of recurring processes, reducing manual effort by up to 80% and improving accuracy.
-                </CardDescription>
-                <Link href="/services/business-process-automation" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all mt-auto">
-                  Learn more
-                  <ArrowRight className="h-4 w-4 ml-1" />
-                </Link>
               </Card>
             </SectionReveal>
           </div>
