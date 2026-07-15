@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Clock, Calendar, FileText } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, FileText, Share2, Linkedin, Twitter } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getBlogPostBySlug } from "@/lib/actions/blog";
 import { formatDate } from "@/lib/utils";
+import BlogShare from "@/components/blog-share";
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -102,6 +103,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </Button>
               </CardContent>
             </Card>
+          </SectionReveal>
+
+          <SectionReveal delay={0.4} className="mt-8">
+            <div className="flex justify-center">
+              <BlogShare title={post.title} />
+            </div>
           </SectionReveal>
         </div>
       </section>

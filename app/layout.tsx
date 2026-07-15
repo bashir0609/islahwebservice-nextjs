@@ -52,12 +52,27 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Islah Web Service",
+  url: "https://www.islahwebservice.com",
+  email: "mailto:hello@islahwebservice.com",
+  description:
+    "Professional B2B services: verified contact lists, lead generation analysis, and business process automation.",
+  sameAs: [],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.variable, "min-h-screen bg-white text-slate-900 antialiased")}>
         {children}
         <Toaster />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </body>
     </html>
   );
