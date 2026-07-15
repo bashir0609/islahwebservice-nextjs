@@ -9,19 +9,26 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.islahwebservice.com"),
   title: {
-    default: "Islah Web Service — B2B Solutions Agency",
+    default: "Islah Web Service | B2B Lead Generation Agency Bangladesh",
     template: "%s | Islah Web Service",
   },
   description:
-    "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+    "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for enterprise growth in Bangladesh. Contact us today.",
+  keywords: [
+    "B2B lead generation",
+    "verified contact lists",
+    "business automation",
+    "B2B services Bangladesh",
+    "lead generation company Bangladesh",
+  ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.islahwebservice.com",
     siteName: "Islah Web Service",
-    title: "Islah Web Service — B2B Solutions Agency",
+    title: "Islah Web Service | B2B Lead Generation Agency Bangladesh",
     description:
-      "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for enterprise growth in Bangladesh. Contact us today.",
     images: [
       {
         url: "/og-image.png",
@@ -33,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Islah Web Service — B2B Solutions Agency",
+    title: "Islah Web Service | B2B Lead Generation Agency Bangladesh",
     description:
-      "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for enterprise growth in Bangladesh. Contact us today.",
     images: ["/og-image.png"],
   },
   icons: {
