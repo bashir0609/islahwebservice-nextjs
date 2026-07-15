@@ -89,15 +89,6 @@ export default function BlogPage() {
       {/* Blog Section */}
       <section className="py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-              Latest Insights
-            </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Stay ahead with our latest analysis and thought leadership on B2B contact strategies and business automation.
-            </p>
-          </SectionReveal>
-
           {/* Search and Tags */}
           <SectionReveal delay={0.2} className="mb-12">
             <div className="flex flex-col md:flex-row gap-6 justify-between items-center mb-8">
