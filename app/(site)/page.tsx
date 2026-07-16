@@ -38,7 +38,7 @@ export default function HomePage() {
 
                   <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
                     <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                      Islah Web Service helps growth teams build verified B2B contact lists, improve lead generation analysis, and automate business workflows across Bangladesh and global markets.
+                      Islah Web Service helps growth teams in the USA, UK, and Australia build verified B2B contact lists, improve lead generation analysis, and automate business workflows.
                     </p>
                   </SectionReveal>
 
@@ -167,13 +167,13 @@ export default function HomePage() {
               },
               {
                 icon: Globe2,
-                title: "Global Coverage",
-                description: "From Bangladesh to international markets, we support B2B lead generation campaigns across regions and industries.",
+                title: "USA, UK & Australia Focus",
+                description: "We specialize in B2B lead generation for American, British, and Australian markets, with campaigns tuned to each region's industries.",
               },
               {
                 icon: MapPin,
-                title: "Local Expertise",
-                description: "Deep knowledge of Bangladesh business directories, chambers, and market-specific data sources for better targeting.",
+                title: "Market Expertise",
+                description: "Deep knowledge of US, UK, and Australian business directories, registries, and market-specific data sources for better targeting.",
               },
               {
                 icon: TrendingUp,
@@ -326,7 +326,7 @@ export default function HomePage() {
             <SectionReveal delay={0}>
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle>Manufacturing Client, Dhaka</CardTitle>
+                  <CardTitle>Manufacturing Client, USA</CardTitle>
                   <CardDescription>Verified B2B Contact Lists</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -348,7 +348,7 @@ export default function HomePage() {
             <SectionReveal delay={0.2}>
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle>SaaS Startup, Remote</CardTitle>
+                  <CardTitle>SaaS Startup, UK</CardTitle>
                   <CardDescription>Lead Generation Analysis</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -370,7 +370,7 @@ export default function HomePage() {
             <SectionReveal delay={0.4}>
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle>Logistics Firm, Chittagong</CardTitle>
+                  <CardTitle>Logistics Firm, Australia</CardTitle>
                   <CardDescription>Business Process Automation</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -415,8 +415,8 @@ export default function HomePage() {
                 a: "We verify contacts through multi-step checks including email validation, phone verification, role confirmation, and source tracing. This reduces bounce rates and improves campaign deliverability.",
               },
               {
-                q: "Do you serve clients in Bangladesh?",
-                a: "Yes. We support B2B services in Bangladesh with local business directories, regional market knowledge, and outreach strategies suited for Dhaka, Chittagong, and international targets.",
+                q: "Which countries do you serve?",
+                a: "We mainly serve businesses in the USA, UK, and Australia. Our research, data sources, and outreach strategies are tailored to these markets, though we can support campaigns targeting other English-speaking regions as well.",
               },
               {
                 q: "Can you automate my existing outreach workflow?",

@@ -5,19 +5,19 @@ import { SiteSettingsProvider } from "@/components/site/site-settings-provider";
 
 export const metadata: Metadata = {
   title: {
-    default: "Islah Web Service — B2B Solutions Agency",
+    default: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
     template: "%s | Islah Web Service",
   },
   description:
-    "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+    "Verified B2B contact lists, lead generation analysis, and business process automation for companies in the USA, UK, and Australia.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.islahwebservice.com",
     siteName: "Islah Web Service",
-    title: "Islah Web Service — B2B Solutions Agency",
+    title: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
     description:
-      "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+      "Verified B2B contact lists, lead generation analysis, and business process automation for companies in the USA, UK, and Australia.",
     images: [
       {
         url: "/og-image.png",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Islah Web Service — B2B Solutions Agency",
+    title: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
     description:
-      "Professional B2B services: Verified Contact Lists, Lead Generation Analysis, and Business Process Automation.",
+      "Verified B2B contact lists, lead generation analysis, and business process automation for companies in the USA, UK, and Australia.",
     images: ["/og-image.png"],
   },
   icons: {

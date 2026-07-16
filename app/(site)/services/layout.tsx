@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Verified B2B Contact Lists | Islah Web Service",
+  title: "B2B Services for USA, UK & Australia | Islah Web Service",
   description:
-    "Custom-built contact lists sourced from Google Maps and business websites, with ICP research and first-party enrichment for your exact target market.",
+    "Verified B2B contact lists, lead generation analysis, and business process automation services for companies in the USA, UK, and Australia.",
 };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {

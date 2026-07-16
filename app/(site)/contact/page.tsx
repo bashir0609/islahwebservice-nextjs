@@ -334,8 +334,8 @@ export default function ContactPage() {
                   {[
                     {
                       icon: MapPin,
-                      label: "Global Network",
-                      description: "Access to 50+ countries",
+                      label: "Market Coverage",
+                      description: "USA, UK & Australia",
                     },
                     {
                       icon: Users,

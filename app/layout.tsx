@@ -9,26 +9,27 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.islahwebservice.com"),
   title: {
-    default: "Islah Web Service | B2B Lead Generation Agency Bangladesh",
+    default: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
     template: "%s | Islah Web Service",
   },
   description:
-    "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for enterprise growth in Bangladesh. Contact us today.",
+    "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for growing companies in the USA, UK, and Australia. Contact us today.",
   keywords: [
     "B2B lead generation",
     "verified contact lists",
     "business automation",
-    "B2B services Bangladesh",
-    "lead generation company Bangladesh",
+    "B2B lead generation USA",
+    "B2B lead generation UK",
+    "B2B lead generation Australia",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.islahwebservice.com",
     siteName: "Islah Web Service",
-    title: "Islah Web Service | B2B Lead Generation Agency Bangladesh",
+    title: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
     description:
-      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for enterprise growth in Bangladesh. Contact us today.",
+      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for growing companies in the USA, UK, and Australia. Contact us today.",
     images: [
       {
         url: "/og-image.png",
@@ -40,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Islah Web Service | B2B Lead Generation Agency Bangladesh",
+    title: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
     description:
-      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for enterprise growth in Bangladesh. Contact us today.",
+      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for growing companies in the USA, UK, and Australia. Contact us today.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -59,7 +60,8 @@ const organizationJsonLd = {
   url: "https://www.islahwebservice.com",
   email: "mailto:hello@islahwebservice.com",
   description:
-    "Professional B2B services: verified contact lists, lead generation analysis, and business process automation.",
+    "Professional B2B services for companies in the USA, UK, and Australia: verified contact lists, lead generation analysis, and business process automation.",
+  areaServed: ["US", "GB", "AU"],
   sameAs: [],
 };
 

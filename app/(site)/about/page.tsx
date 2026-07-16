@@ -89,10 +89,10 @@ export default function AboutPage() {
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
                 What started as a modest database of 500 verified contacts has
-                grown into a comprehensive B2B solutions platform serving over
-                1,000 businesses across 50+ countries. Today, we pride ourselves
-                on being the trusted partner that bridges the gap between
-                opportunity and achievement.
+                grown into a comprehensive B2B solutions platform serving
+                businesses across the USA, UK, and Australia. Today, we pride
+                ourselves on being the trusted partner that bridges the gap
+                between opportunity and achievement.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button

@@ -134,7 +134,7 @@ export default function PortfolioPage() {
             <SectionReveal delay={0.6} className="mb-8 max-w-2xl mx-auto">
               <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
                 Explore how our B2B solutions drive real transformation for
-                businesses across industries and regions.
+                businesses across the USA, UK, and Australia.
               </p>
             </SectionReveal>
           </div>
