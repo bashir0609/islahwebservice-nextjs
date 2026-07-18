@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function SiteHeader() {
@@ -24,7 +24,21 @@ export default function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70">
+      <div className="flex flex-col">
+        <div className="bg-slate-900 text-white text-xs sm:text-sm">
+          <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 sm:py-2.5 text-center">
+            <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-red-500" />
+            </span>
+            <span className="font-semibold tracking-wide">ACCEPTING NEW CLIENTS</span>
+            <span className="hidden sm:inline text-slate-300">— AI Lead Generation System for Local Businesses & B2B Companies</span>
+            <Link href="/contact" className="ml-2 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium">
+              Get started <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+            </Link>
+          </div>
+        </div>
+        <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -133,5 +147,6 @@ export default function SiteHeader() {
           )}
         </AnimatePresence>
       </header>
-    );
+    </div>
+  );
 }

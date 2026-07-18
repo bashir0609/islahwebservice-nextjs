@@ -9,7 +9,7 @@ import {
   MapPin,
   CheckCircle2,
   ArrowRight,
-  Globe,
+  Globe2,
   Mail,
   Database,
   Shield,
@@ -27,7 +27,7 @@ export default function VerifiedB2BContactListsPage() {
   const features = [
     { icon: MapPin, title: "Google Maps Extraction", description: "Business discovery and lead extraction from Google Maps for the exact locations and categories you need." },
     { icon: Users, title: "ICP Research & Qualification", description: "We research each business against your ideal customer profile to ensure fit before enrichment." },
-    { icon: Globe, title: "Website Enrichment", description: "Contact details are enriched from each business's own website for more accurate, first-party data." },
+    { icon: Globe2, title: "Website Enrichment", description: "Contact details are enriched from each business's own website for more accurate, first-party data." },
     { icon: Shield, title: "Fresh, Non-Recycled Data", description: "Every list is freshly researched and built for your campaign, not reused from old databases." },
     { icon: Zap, title: "Ready for Outreach", description: "Delivered in a usable format with relevant contacts so your team can start outreach quickly." },
   ];
@@ -54,31 +54,31 @@ export default function VerifiedB2BContactListsPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-blue-500" />
                 </span>
-                Verified B2B Contact Lists
+                Step 1 of AI Lead Generation System
               </div>
             </SectionReveal>
 
             <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                Verified B2B
+                Google Maps +
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                  Contact Lists
+                  Website Extraction
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                We build contact lists from your target criteria using Google Maps extraction, ICP research, and website-based enrichment—no generic databases, no recycled lists.
+                We scrape Google Maps and company websites to discover real businesses in your target market—not generic databases or recycled lists. This is the foundation of our AI lead generation system.
               </p>
             </SectionReveal>
 
             <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
-                <Link href="/contact">Start Free Trial</Link>
+                <Link href="/contact">Claim Your Free AI Audit</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
-                <Link href="/portfolio">View Case Studies</Link>
+                <Link href="#how-it-works">See The Full System</Link>
               </Button>
             </SectionReveal>
           </div>
@@ -122,7 +122,7 @@ export default function VerifiedB2BContactListsPage() {
 
             <StaggerItem className="text-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Globe className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+                <Globe2 className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
               </div>
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Website</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Enriched From Business Sites</div>

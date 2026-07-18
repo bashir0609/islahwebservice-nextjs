@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Building2,
+  Globe2,
   Users,
   MapPin,
-  TrendingUp,
+  Brain,
   Target,
   BarChart3,
-  Wrench,
+  Mail,
   Settings,
   RotateCcw,
   ArrowRight,
@@ -27,23 +27,23 @@ export default function ServicesPage() {
   const services = [
     {
       slug: "verified-b2b-contact-lists",
-      title: "Verified B2B Contact Lists",
-      icon: Building2,
+      title: "Google Maps + Website Extraction",
+      icon: Globe2,
       gradient: "from-blue-500 to-cyan-600",
-      description: "Custom-built contact lists from Google Maps and company websites. We research your target audience, map ICP fit, and enrich contacts from each business's own web presence.",
+      description: "We scrape Google Maps and company websites to discover real businesses in your target market—not generic databases or recycled lists. This is the foundation of our AI lead generation system.",
       features: [
-        "Target-based list building, not generic databases",
-        "Google Maps lead extraction",
-        "ICP research and qualification",
-        "Contact enrichment from business websites"
+        "Google Maps lead extraction by location and category",
+        "Website data extraction for accurate contact details",
+        "ICP research and qualification against your ideal customer profile",
+        "Fresh, non-recycled data built specifically for your campaign"
       ]
     },
     {
       slug: "lead-generation-analysis",
-      title: "Lead Generation Analysis",
-      icon: TrendingUp,
+      title: "AI Analysis + ICP Filtering",
+      icon: Brain,
       gradient: "from-purple-500 to-pink-600",
-      description: "Advanced analytics and AI-driven insights to identify, qualify, and track high-value leads with conversion optimization. Transform raw data into qualified opportunities with precision targeting.",
+      description: "Our AI analyzes each prospect, filters by your ideal customer profile, and ranks leads by conversion potential—so you only reach out to the best fits. This transforms raw data into qualified opportunities.",
       features: [
         "AI-powered lead scoring & ranking",
         "Behavioral pattern recognition",
@@ -53,15 +53,15 @@ export default function ServicesPage() {
     },
     {
       slug: "business-process-automation",
-      title: "Business Process Automation",
-      icon: Wrench,
+      title: "Automated Outreach + Follow-Up",
+      icon: Mail,
       gradient: "from-orange-500 to-red-600",
-      description: "End-to-end automation of recurring business processes, reducing manual effort by up to 80% and improving overall accuracy and team productivity across your organization.",
+      description: "Personalized cold email sequences, automated follow-ups, and CRM-ready workflows that turn leads into booked meetings on autopilot. This completes the system from discovery to conversion.",
       features: [
-        "Custom workflow automation",
-        "Reduces manual effort by 80%",
-        "Eliminates human error",
-        "Continual improvement analysis"
+        "Personalized cold email generation",
+        "Automated follow-up sequences",
+        "CRM-ready workflow automation",
+        "Reduces manual effort by up to 80%"
       ]
     }
   ];

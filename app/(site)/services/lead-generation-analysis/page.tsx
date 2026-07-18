@@ -55,31 +55,31 @@ export default function LeadGenerationAnalysisPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-purple-500" />
                 </span>
-                Lead Generation Analysis
+                Step 2 of AI Lead Generation System
               </div>
             </SectionReveal>
 
             <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                Lead Generation
+                AI Analysis +
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                  Analysis
+                  ICP Filtering
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Transform raw data into qualified opportunities with AI-driven insights, predictive scoring, and real-time pipeline analytics.
+                Our AI analyzes each prospect, filters by your ideal customer profile, and ranks leads by conversion potential—so you only reach out to the best fits. This transforms raw data into qualified opportunities.
               </p>
             </SectionReveal>
 
             <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700 text-white w-full sm:w-auto">
-                <Link href="/contact">Get Started Free</Link>
+                <Link href="/contact">Claim Your Free AI Audit</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
-                <Link href="/portfolio">See Results</Link>
+                <Link href="#how-it-works">See The Full System</Link>
               </Button>
             </SectionReveal>
           </div>

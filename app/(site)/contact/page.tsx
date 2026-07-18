@@ -91,9 +91,10 @@ export default function ContactPage() {
   };
 
   const services = [
-    "Verified B2B Contact Lists",
-    "Lead Generation Analysis",
-    "Business Process Automation",
+    "AI Lead Generation System",
+    "Google Maps + Website Extraction",
+    "AI Analysis + ICP Filtering",
+    "Automated Outreach + Follow-Up",
   ];
 
   return (

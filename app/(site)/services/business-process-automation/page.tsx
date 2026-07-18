@@ -17,6 +17,7 @@ import {
   Cpu,
   Building2,
   TrendingUp,
+  Mail,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -66,31 +67,31 @@ export default function BusinessProcessAutomationPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-orange-500" />
                 </span>
-                Business Process Automation
+                Step 3 of AI Lead Generation System
               </div>
             </SectionReveal>
 
             <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight-tight text-white leading-tight">
-                Business Process
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+                Automated Outreach +
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-                  Automation
+                  Follow-Up
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                End-to-end workflow automation reducing manual effort by 80%. Custom workflows, seamless integrations, and continuous optimization.
+                Personalized cold email sequences, automated follow-ups, and CRM-ready workflows that turn leads into booked meetings on autopilot. This completes the system from discovery to conversion.
               </p>
             </SectionReveal>
 
             <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-700 text-white w-full sm:w-auto">
-                <Link href="/contact">Automate Now</Link>
+                <Link href="/contact">Claim Your Free AI Audit</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-orange-600 w-full sm:w-auto">
-                <Link href="/portfolio">View Case Studies</Link>
+                <Link href="#how-it-works">See The Full System</Link>
               </Button>
             </SectionReveal>
           </div>

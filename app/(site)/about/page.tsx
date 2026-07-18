@@ -50,15 +50,14 @@ export default function AboutPage() {
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
                 Your Trusted
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                  B2B Solutions
+                  AI Lead Generation Partner
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal delay={0.6} className="mb-12 max-w-2xl mx-auto">
               <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Pioneering the future of business growth through verified
-                contact intelligence and strategic automation.
+                We build AI-powered systems that automatically discover, verify, enrich, and qualify prospects—so your sales team spends time closing deals, not searching for contacts.
               </p>
             </SectionReveal>
           </div>
