@@ -49,7 +49,7 @@ export default function HomePage() {
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
+                    <Button asChild size="lg" className="bg-transparent border border-white text-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
                       <Link href="#how-it-works">See How It Works</Link>
                     </Button>
                   </SectionReveal>
