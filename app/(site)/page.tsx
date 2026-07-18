@@ -29,29 +29,44 @@ export default function HomePage() {
 
                   <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                      More Sales Appointments.
+                      AI-Powered Lead Generation Systems That Deliver
                       <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                        More Qualified Leads. More Revenue.
+                        Qualified B2B Prospects Every Week
                       </span>
                     </h1>
                   </SectionReveal>
 
                   <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
                     <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                      We build AI-powered lead generation systems that automatically discover, verify, enrich, and prepare qualified prospects for cold outreach—so your sales team spends time closing deals, not searching for prospects.
+                      We build automated systems that find, verify, enrich, and prepare sales-ready leads—so your sales team spends time closing deals, not searching for prospects.
                     </p>
                   </SectionReveal>
 
-                  <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8">
                     <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white w-full sm:w-auto">
                       <Link href="/contact">
-                        Claim Your Free AI Audit
+                        Book a Free Strategy Call
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                     <Button asChild size="lg" className="bg-transparent border border-white text-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
-                      <Link href="#how-it-works">See How It Works</Link>
+                      <Link href="#process">See Our Process</Link>
                     </Button>
+                  </SectionReveal>
+
+                  <SectionReveal delay={1} className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                      <span>190+ Completed Projects</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Award className="h-4 w-4 text-cyan-400" />
+                      <span>100% Job Success Score</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                      <span>USA, UK & AU Markets</span>
+                    </div>
                   </SectionReveal>
                 </div>
               </div>
@@ -100,83 +115,63 @@ export default function HomePage() {
       </section>
 
       {/* Services Overview */}
+
       <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-              One System. Complete Lead Generation.
+              One Complete Lead Generation System
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Stop buying contact lists. We build an AI-powered system that continuously finds, verifies, enriches, and qualifies prospects for your outreach campaigns.
+              Stop buying disconnected lists. Our end-to-end system finds the right companies, enriches contacts, qualifies prospects, and prepares outreach-ready leads for your sales team.
             </p>
           </SectionReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <SectionReveal delay={0}>
-              <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <CardHeader className="p-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Globe2 className="h-7 w-7 text-white" />
+              <Card className="h-full">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+                    <Globe2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   </div>
-                  <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                    Google Maps + Website Extraction
-                  </CardTitle>
+                  <CardTitle>Find & Extract</CardTitle>
+                  <CardDescription>Discover real businesses from Google Maps and company websites—not generic databases.</CardDescription>
                 </CardHeader>
-                <CardContent className="p-8 pt-0">
-                  <CardDescription className="text-base leading-relaxed mb-6">
-                    We scrape Google Maps and company websites to discover real businesses in your target market—not generic databases or recycled lists.
-                  </CardDescription>
-                  <Link href="/services/verified-b2b-contact-lists" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
-                    Learn more
-                    <ArrowRight className="h-4 w-4 ml-1" />
-                  </Link>
-                </CardContent>
+              </Card>
+            </SectionReveal>
+
+            <SectionReveal delay={0.1}>
+              <Card className="h-full">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
+                    <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <CardTitle>AI Qualification</CardTitle>
+                  <CardDescription>Analyze prospects, filter by your ICP, and rank leads by conversion potential.</CardDescription>
+                </CardHeader>
               </Card>
             </SectionReveal>
 
             <SectionReveal delay={0.2}>
-              <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <CardHeader className="p-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <TrendingUp className="h-7 w-7 text-white" />
+              <Card className="h-full">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-4">
+                    <Wrench className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                   </div>
-                  <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                    AI Analysis + ICP Filtering
-                  </CardTitle>
+                  <CardTitle>Outreach & Automation</CardTitle>
+                  <CardDescription>Deploy personalized email sequences, follow-ups, and CRM-ready workflows.</CardDescription>
                 </CardHeader>
-                <CardContent className="p-8 pt-0">
-                                  <CardDescription className="text-base leading-relaxed mb-6">
-                                     Our AI analyzes each prospect, filters by your ideal customer profile, and ranks leads by conversion potential—so you only reach out to the best fits.
-                                  </CardDescription>
-                                  <Link href="/services/lead-generation-analysis" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
-                                    Learn more
-                                    <ArrowRight className="h-4 w-4 ml-1" />
-                                  </Link>
-                                </CardContent>
               </Card>
             </SectionReveal>
+          </div>
 
-            <SectionReveal delay={0.4}>
-              <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <CardHeader className="p-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Wrench className="h-7 w-7 text-white" />
-                  </div>
-                  <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                    Automated Outreach + Follow-Up
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-8 pt-0">
-                                  <CardDescription className="text-base leading-relaxed mb-6">
-                                     Personalized cold email sequences, automated follow-ups, and CRM-ready workflows that turn leads into booked meetings on autopilot.
-                                  </CardDescription>
-                                  <Link href="/services/business-process-automation" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all">
-                                    Learn more
-                                    <ArrowRight className="h-4 w-4 ml-1" />
-                                  </Link>
-                                </CardContent>
-              </Card>
-            </SectionReveal>
+          <div className="mt-12 text-center">
+            <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
+              <Link href="/services">
+                See Full System
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -293,8 +288,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="py-24 bg-white dark:bg-slate-950">
+      {/* Visual Process */}
+      <section className="py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -305,92 +300,102 @@ export default function HomePage() {
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Discovery & Audit",
-                description: "We analyze your market, competitors, and current outreach to build a custom lead generation strategy for your business.",
-              },
-              {
-                step: "02",
-                title: "Build Your Lead System",
-                description: "We extract, enrich, and validate contact data from Google Maps, company websites, and B2B datasets—tailored to your ICP.",
-              },
-              {
-                step: "03",
-                title: "Automate & Scale Outreach",
-                description: "Deploy personalized email sequences, follow-up workflows, and CRM automation that turns contacts into booked meetings.",
-              },
-            ].map((item, index) => (
-              <SectionReveal key={item.step} delay={index * 0.15}>
-                <Card className="h-full border-2 border-dashed border-slate-200 dark:border-slate-800">
-                  <CardHeader>
-                    <div className="text-cyan-600 dark:text-cyan-400 text-sm font-semibold mb-2">STEP {item.step}</div>
-                    <CardTitle className="text-2xl">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </SectionReveal>
-            ))}
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-7 gap-4 md:gap-2">
+              {[
+                { step: "01", title: "Target Market", desc: "Define your ideal customer profile and target industries." },
+                { step: "02", title: "Google Maps", desc: "Discover real businesses in your target locations." },
+                { step: "03", title: "Website Analysis", desc: "Extract contact data from company websites." },
+                { step: "04", title: "AI Qualification", desc: "Filter leads by conversion potential and fit." },
+                { step: "05", title: "Contact Enrichment", desc: "Validate emails, phone numbers, and decision-makers." },
+                { step: "06", title: "Personalized Outreach", desc: "Create custom cold email sequences per prospect." },
+                { step: "07", title: "CRM Delivery", desc: "Sync everything into your CRM and outreach stack." },
+              ].map((item, index) => (
+                <SectionReveal key={item.step} delay={index * 0.08}>
+                  <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-4 md:p-6 text-center h-full">
+                    <div className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold mb-2">STEP {item.step}</div>
+                    <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{item.title}</div>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                  </div>
+                </SectionReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
+
+      {/* Case Studies */}
+      <section className="py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-cyan-100 dark:bg-cyan-900/30 rounded-2xl flex items-center justify-center">
-                <Users className="h-8 w-8 text-cyan-600 dark:text-cyan-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                50K+
-              </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">
-                Business Contacts
-              </div>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-cyan-100 dark:bg-cyan-900/30 rounded-2xl flex items-center justify-center">
-                <TrendingUp className="h-8 w-8 text-cyan-600 dark:text-cyan-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                95%
-              </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">
-                Lead Accuracy
-              </div>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-cyan-100 dark:bg-cyan-900/30 rounded-2xl flex items-center justify-center">
-                <Wrench className="h-8 w-8 text-cyan-600 dark:text-cyan-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                80%
-              </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">
-                Automation Efficiency
-              </div>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-cyan-100 dark:bg-cyan-900/30 rounded-2xl flex items-center justify-center">
-                <Building2 className="h-8 w-8 text-cyan-600 dark:text-cyan-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                24/7
-              </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">
-                Data Refresh
-              </div>
-            </div>
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Measurable Client Results
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Real outcomes from recent lead generation and outreach projects.
+            </p>
           </SectionReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <SectionReveal delay={0}>
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Local Marketing Agency, USA</CardTitle>
+                  <CardDescription>Verified Prospect List Delivery</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 text-slate-700 dark:text-slate-300">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Needed: 5,000 verified prospects</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Delivered: 5,600 verified contacts</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Bounce rate: under 2%</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Campaign launched in 3 days</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+
+            <SectionReveal delay={0.2}>
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>SaaS Startup, UK</CardTitle>
+                  <CardDescription>Automated Lead Sourcing</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 text-slate-700 dark:text-slate-300">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Built automated lead sourcing workflow</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Reduced manual research by 80%</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Saved 20+ hours per week</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span>Scaled outreach without adding headcount</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 
@@ -539,13 +544,13 @@ export default function HomePage() {
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               Ready to 2x Your Qualified Leads?
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-              Claim your free AI lead generation audit today. We'll show you exactly how to build a system that delivers consistent, qualified prospects to your sales team.
+            <p className="text-xl text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto">
+              Book a free lead generation strategy call. We'll show you exactly how to build a system that delivers consistent, qualified prospects to your sales team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
                 <Link href="/contact">
-                  Claim Your Free Audit
+                  Book a Free Strategy Call
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -556,6 +561,7 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
+            <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">Free consultation · No obligation · Sample data available</p>
           </SectionReveal>
         </div>
       </section>
