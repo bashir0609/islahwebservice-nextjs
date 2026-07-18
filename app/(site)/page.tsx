@@ -67,7 +67,7 @@ export default function HomePage() {
       {/* Proof Bar */}
       <section className="py-12 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <SectionReveal className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 text-amber-500 mb-2">
                 <Star className="h-5 w-5 fill-current" />
@@ -78,18 +78,6 @@ export default function HomePage() {
               </div>
               <div className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">190+</div>
               <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Projects Completed</div>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-amber-500 mb-2">
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">$90K+</div>
-              <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Earned on Upwork</div>
             </div>
 
             <div className="text-center">
