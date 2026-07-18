@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lead Generation Analysis | Islah Web Service",
+  title: "Lead Generation Analysis",
   description:
     "AI-driven lead generation analysis to identify high-value prospects, increase conversions, and shorten sales cycles with intent signals.",
 };

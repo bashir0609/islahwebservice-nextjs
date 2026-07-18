@@ -5,7 +5,7 @@ import { SiteSettingsProvider } from "@/components/site/site-settings-provider";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Lead Generation System | Islah Web Service",
+    default: "AI Lead Generation System",
     template: "%s | Islah Web Service",
   },
   description:

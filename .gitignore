@@ -54,3 +54,6 @@ logs
 
 # Turbo
 .turbo
+
+# Hermes
+.hermes

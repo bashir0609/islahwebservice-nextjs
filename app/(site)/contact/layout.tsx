@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Islah Web Service",
+  title: "Contact Us",
   description:
     "Get in touch with Islah Web Service for verified B2B contact lists, lead generation analysis, and business process automation.",
 };
