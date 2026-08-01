@@ -5,10 +5,10 @@ import { db } from "@/lib/db";
 import { blogPosts, type NewBlogPost } from "@/lib/db/schema";
 import { generateSlug } from "@/lib/utils";
 import { requireAdmin } from "@/lib/auth";
-import { eq, sql } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export async function listBlogPosts() {
-  return db.select().from(blogPosts).orderBy(blogPosts.createdAt);
+  return db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
 }
 
 export async function getBlogPostBySlug(slug: string) {
@@ -33,7 +33,7 @@ export async function updateBlogPost(id: string, data: Partial<NewBlogPost>) {
   await requireAdmin();
   await db
     .update(blogPosts)
-    .set({ ...data, updatedAt: sql`(unixepoch())` })
+    .set({ ...data, updatedAt: new Date() })
     .where(eq(blogPosts.id, id));
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
@@ -52,7 +52,7 @@ export async function toggleBlogPostPublished(id: string) {
   if (!post) return;
   await db
     .update(blogPosts)
-    .set({ published: post.published ? 0 : 1, updatedAt: sql`(unixepoch())` })
+    .set({ published: post.published ? 0 : 1, updatedAt: new Date() })
     .where(eq(blogPosts.id, id));
   revalidatePath("/admin/blog");
   revalidatePath("/blog");

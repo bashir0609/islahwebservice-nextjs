@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Clock, Calendar, FileText, Share2, Linkedin, Twitter } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -21,10 +22,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const tags: string[] = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
   const readTime = post.readTime || Math.max(1, Math.ceil(post.content.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim().split(/\s+/).filter(Boolean).length / 200));
   const date = post.createdAt ? formatDate(new Date(post.createdAt)) : "";
-  const gradient = "from-cyan-500/20 to-teal-500/20";
 
   return (
     <main className="flex flex-col">
@@ -45,12 +44,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </Link>
             </SectionReveal>
             <SectionReveal delay={0.3} className="mb-8">
-              <div
-                className={`relative h-64 md:h-96 w-full bg-gradient-to-br ${gradient} rounded-3xl overflow-hidden mb-8 max-w-4xl mx-auto`}
-              >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FileText className="h-16 w-16 text-cyan-600 dark:text-cyan-400" />
-                </div>
+              <div className="relative h-64 md:h-96 w-full rounded-3xl overflow-hidden mb-8 max-w-4xl mx-auto">
+                {post.coverImage ? (
+                  <Image
+                    src={post.coverImage}
+                    alt={post.title}
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-teal-500/20">
+                    <span className="text-cyan-600 dark:text-cyan-400 text-sm font-semibold">
+                      {post.title}
+                    </span>
+                  </div>
+                )}
               </div>
             </SectionReveal>
             <SectionReveal delay={0.4}>
@@ -75,13 +84,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       {/* Blog Content */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="prose prose-lg max-w-none">
-            <div
-              className="article-content text-slate-700 dark:text-slate-300 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+          <SectionReveal className="prose prose-lg prose-slate dark:prose-invert max-w-none">
+            <ReactMarkdown
+              components={{
+                a: ({ href, children }) => (
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    {children}
+                  </a>
+                ),
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </SectionReveal>
 
           <SectionReveal delay={0.3} className="mt-12">

@@ -5,10 +5,10 @@ import { db } from "@/lib/db";
 import { portfolioItems, type NewPortfolioItem } from "@/lib/db/schema";
 import { generateSlug } from "@/lib/utils";
 import { requireAdmin } from "@/lib/auth";
-import { eq, sql } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export async function listPortfolioItems() {
-  return db.select().from(portfolioItems).orderBy(portfolioItems.createdAt);
+  return db.select().from(portfolioItems).orderBy(desc(portfolioItems.createdAt));
 }
 
 export async function getPortfolioItem(id: string) {
@@ -27,7 +27,7 @@ export async function createPortfolioItem(data: Omit<NewPortfolioItem, "id">) {
 
 export async function updatePortfolioItem(id: string, data: Partial<NewPortfolioItem>) {
   await requireAdmin();
-  await db.update(portfolioItems).set({ ...data, updatedAt: sql`(unixepoch())` }).where(eq(portfolioItems.id, id));
+  await db.update(portfolioItems).set({ ...data, updatedAt: new Date() }).where(eq(portfolioItems.id, id));
   revalidatePath("/admin/portfolio");
   revalidatePath("/portfolio");
 }

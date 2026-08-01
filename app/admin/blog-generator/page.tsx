@@ -62,7 +62,7 @@ export default function AdminBlogGeneratorPage() {
       const res = await fetch("/api/generate-post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ apiKey, model, topic: keyword }),
+        body: JSON.stringify({ apiKey, model, keywords: [keyword] }),
       });
       const data = await res.json();
       if (!res.ok) {

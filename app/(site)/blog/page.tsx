@@ -25,15 +25,18 @@ export default function BlogPage() {
     fetchPosts();
   }, []);
 
+  const parseTags = (tags: unknown): string[] => {
+    try {
+      const parsed = typeof tags === "string" ? JSON.parse(tags) : tags;
+      return Array.isArray(parsed) ? parsed.filter((t): t is string => typeof t === "string") : [];
+    } catch {
+      return [];
+    }
+  };
+
   const allTags = [
     "All",
-    ...Array.from(
-      new Set(
-        posts.flatMap((post) =>
-          (typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags).filter(Boolean)
-        )
-      )
-    ).sort(),
+    ...Array.from(new Set(posts.flatMap((post) => parseTags(post.tags)))).sort(),
   ];
 
   const filteredPosts = posts.filter((post) => {
@@ -42,52 +45,46 @@ export default function BlogPage() {
 
     if (selectedTag === "All") return matchesSearch;
 
-    const postTags = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
-    return matchesSearch && postTags.includes(selectedTag);
+    return matchesSearch && parseTags(post.tags).includes(selectedTag);
   });
 
   return (
     <main className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      {/* Hero Section — light editorial hero */}
+      <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.08),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(251,191,36,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_75%)]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 mx-auto flex min-h-[45vh] max-w-4xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-600 dark:text-amber-400">
                 <Tag className="h-4 w-4" />
-                Expert Insights
+                The Islah Journal
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-                Latest
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                  Blog
+            <SectionReveal delay={0.4} className="mb-6">
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 leading-[1.05] sm:text-5xl md:text-6xl dark:text-white">
+                Fresh insights for
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 dark:from-amber-400 dark:via-orange-400 dark:to-rose-400">
+                  B2B growth teams
                 </span>
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-8 max-w-2xl mx-auto">
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
+            <SectionReveal delay={0.6} className="mx-auto max-w-2xl">
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed dark:text-slate-300">
                 Discover expert insights, industry trends, and strategic guidance from our B2B intelligence team.
               </p>
             </SectionReveal>
           </div>
         </div>
-
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
-        </div>
       </section>
 
       {/* Blog Section */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search and Tags */}
           <SectionReveal delay={0.2} className="mb-12">
@@ -125,7 +122,7 @@ export default function BlogPage() {
           {filteredPosts.length > 0 ? (
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => {
-                const tags: string[] = typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags;
+                const tags: string[] = parseTags(post.tags);
                 return (
                   <StaggerItem key={post.id} className="group">
                     <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full flex flex-col">

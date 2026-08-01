@@ -132,7 +132,7 @@ export default function VerifiedB2BContactListsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
+      <section id="how-it-works" className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
