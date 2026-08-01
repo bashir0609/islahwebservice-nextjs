@@ -91,9 +91,9 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
       </section>
 
       {/* Case Study Content */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-slate-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden border-white/10 bg-white/5">
             <div className="relative h-64 md:h-96 w-full">
               {item.image ? (
                 <Image
@@ -104,17 +104,17 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-teal-500/20">
-                  <Building2 className="h-16 w-16 text-cyan-600 dark:text-cyan-400" />
+                  <Building2 className="h-16 w-16 text-cyan-400" />
                 </div>
               )}
             </div>
           </Card>
 
           <div className="mt-12">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               Project Overview
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">
+            <p className="text-lg text-slate-400 leading-relaxed whitespace-pre-line">
               {item.description}
             </p>
           </div>
@@ -122,18 +122,18 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           {item.featured && (
             <div className="mt-8 inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full border border-cyan-500/30">
               <div className="w-2 h-2 bg-cyan-500 rounded-full" />
-              <span className="text-sm font-medium text-cyan-600 dark:text-cyan-400">
+              <span className="text-sm font-medium text-cyan-400">
                 Featured Project
               </span>
             </div>
           )}
 
-          <Card className="mt-16 bg-gradient-to-r from-cyan-600/10 to-teal-600/10 border-cyan-200 dark:border-cyan-800">
+          <Card className="mt-16 border-white/10 bg-white/5 backdrop-blur-sm">
             <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 Want Results Like This?
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">
+              <p className="text-slate-400 mb-6">
                 Let's discuss how we can build a lead generation system for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -143,7 +143,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
                   <Link href="/services">Explore Services</Link>
                 </Button>
               </div>

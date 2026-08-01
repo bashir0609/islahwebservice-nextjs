@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitContactForm } from "@/lib/actions/contact";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -156,21 +156,22 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contact-form" className="scroll-mt-20 py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact-form" className="relative overflow-hidden scroll-mt-20 py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(16,185,129,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
             {/* Form Side */}
             <SectionReveal delay={0.2} className="lg:col-span-3">
-              <Card className="p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl">
+              <Card className="p-8 md:p-12 rounded-2xl border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name Field */}
                     <div className="space-y-2">
                       <label
                         htmlFor="name"
-                        className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                        className="block text-sm font-medium text-slate-300"
                       >
-                        Full Name <span className="text-red-500">*</span>
+                        Full Name <span className="text-red-400">*</span>
                       </label>
                       <Input
                         id="name"
@@ -179,12 +180,12 @@ export default function ContactPage() {
                           "w-full px-4 py-3 rounded-lg border transition-colors",
                           errors.name
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                            : "border-slate-300 dark:border-slate-700 focus:border-cyan-500 focus:ring-cyan-500/20",
+                            : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
                         )}
                         placeholder="John Doe"
                       />
                       {errors.name && (
-                        <p className="text-sm text-red-600 dark:text-red-400">
+                        <p className="text-sm text-red-400">
                           {errors.name.message}
                         </p>
                       )}
@@ -194,9 +195,9 @@ export default function ContactPage() {
                     <div className="space-y-2">
                       <label
                         htmlFor="email"
-                        className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                        className="block text-sm font-medium text-slate-300"
                       >
-                        Business Email <span className="text-red-500">*</span>
+                        Business Email <span className="text-red-400">*</span>
                       </label>
                       <Input
                         id="email"
@@ -205,13 +206,13 @@ export default function ContactPage() {
                           "w-full px-4 py-3 rounded-lg border transition-colors",
                           errors.email
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                            : "border-slate-300 dark:border-slate-700 focus:border-cyan-500 focus:ring-cyan-500/20",
+                            : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
                         )}
                         placeholder="john@company.com"
                         type="email"
                       />
                       {errors.email && (
-                        <p className="text-sm text-red-600 dark:text-red-400">
+                        <p className="text-sm text-red-400">
                           {errors.email.message}
                         </p>
                       )}
@@ -222,9 +223,9 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <label
                       htmlFor="company"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                      className="block text-sm font-medium text-slate-300"
                     >
-                      Company Name <span className="text-red-500">*</span>
+                      Company Name <span className="text-red-400">*</span>
                     </label>
                     <Input
                       id="company"
@@ -233,12 +234,12 @@ export default function ContactPage() {
                         "w-full px-4 py-3 rounded-lg border transition-colors",
                         errors.company
                           ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                          : "border-slate-300 dark:border-slate-700 focus:border-cyan-500 focus:ring-cyan-500/20",
+                          : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
                       )}
                       placeholder="Your Company LLC"
                     />
                     {errors.company && (
-                      <p className="text-sm text-red-600 dark:text-red-400">
+                      <p className="text-sm text-red-400">
                         {errors.company.message}
                       </p>
                     )}
@@ -248,9 +249,9 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <label
                       htmlFor="service"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                      className="block text-sm font-medium text-slate-300"
                     >
-                      Service Interest <span className="text-red-500">*</span>
+                      Service Interest <span className="text-red-400">*</span>
                     </label>
                     <Select
                       value={selectedService}
@@ -258,24 +259,28 @@ export default function ContactPage() {
                     >
                       <SelectTrigger
                         className={cn(
-                          "w-full px-4 py-3 rounded-lg border transition-colors",
+                          "w-full px-4 py-3 rounded-lg border transition-colors text-white [&>span]:text-white",
                           errors.service
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                            : "border-slate-300 dark:border-slate-700 focus:border-cyan-500 focus:ring-cyan-500/20",
+                            : "border-white/10 bg-white/5 focus:border-cyan-500 focus:ring-cyan-500/20",
                         )}
                       >
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="border-white/10 bg-slate-900 text-white">
                         {services.map((service) => (
-                          <SelectItem key={service} value={service}>
+                          <SelectItem
+                            key={service}
+                            value={service}
+                            className="focus:bg-cyan-500/20 focus:text-white text-slate-200"
+                          >
                             {service}
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                     {errors.service && (
-                      <p className="text-sm text-red-600 dark:text-red-400">
+                      <p className="text-sm text-red-400">
                         {errors.service.message}
                       </p>
                     )}
@@ -285,9 +290,9 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                      className="block text-sm font-medium text-slate-300"
                     >
-                      Project Details <span className="text-red-500">*</span>
+                      Project Details <span className="text-red-400">*</span>
                     </label>
                     <Textarea
                       id="message"
@@ -296,12 +301,12 @@ export default function ContactPage() {
                         "w-full px-4 py-3 rounded-lg border min-h-[120px] transition-colors",
                         errors.message
                           ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                          : "border-slate-300 dark:border-slate-700 focus:border-cyan-500 focus:ring-cyan-500/20",
+                          : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
                       )}
                       placeholder="Tell us about your business needs and goals..."
                     />
                     {errors.message && (
-                      <p className="text-sm text-red-600 dark:text-red-400">
+                      <p className="text-sm text-red-400">
                         {errors.message.message}
                       </p>
                     )}
@@ -311,7 +316,7 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     disabled={!isValid || isSubmitting}
-                    className="w-full py-4 rounded-lg font-semibold transition-all duration-200 bg-cyan-600 hover:bg-cyan-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
@@ -333,10 +338,10 @@ export default function ContactPage() {
             <SectionReveal delay={0.4} className="lg:col-span-2">
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                  <h3 className="text-2xl font-bold text-white mb-4">
                     Why Choose Us?
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                  <p className="text-slate-400 leading-relaxed mb-6">
                     We&apos;re not just another B2B data provider. We&apos;re
                     your strategic partner in growth, equipped with verified
                     contacts, intelligent analytics, and automation that scales
@@ -359,23 +364,23 @@ export default function ContactPage() {
                     {
                       icon: TrendingUp,
                       label: "Proven ROI",
-                      description: "8x average return on investment",
+                      description: "8× average return on investment",
                     },
                   ].map((feature, index) => {
                     const Icon = feature.icon;
                     return (
                       <div
                         key={index}
-                        className="flex items-start gap-4 p-4 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-cyan-200 dark:hover:border-cyan-800 transition-colors"
+                        className="flex items-start gap-4 p-4 rounded-lg border border-white/10 bg-white/5 hover:border-cyan-500/40 transition-colors"
                       >
-                        <div className="w-12 h-12 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center flex-shrink-0">
-                          <Icon className="h-6 w-6 text-cyan-600 dark:text-cyan-400" />
+                        <div className="w-12 h-12 rounded-lg bg-cyan-500/15 flex items-center justify-center flex-shrink-0">
+                          <Icon className="h-6 w-6 text-cyan-400" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-slate-900 dark:text-white mb-1">
+                          <h4 className="font-semibold text-white mb-1">
                             {feature.label}
                           </h4>
-                          <p className="text-sm text-slate-600 dark:text-slate-400">
+                          <p className="text-sm text-slate-400">
                             {feature.description}
                           </p>
                         </div>
@@ -384,29 +389,29 @@ export default function ContactPage() {
                   })}
                 </div>
 
-                <Card className="p-8 rounded-xl bg-gradient-to-br from-cyan-600/10 to-teal-600/10 border-cyan-200 dark:border-cyan-800">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+                <Card className="p-8 rounded-xl border-white/10 bg-white/5 backdrop-blur-sm">
+                  <h3 className="text-xl font-bold text-white mb-4">
                     Need Immediate Help?
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  <p className="text-slate-400 mb-6">
                     Contact our B2B solutions team directly for urgent inquiries
                     or technical support.
                   </p>
                   <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-slate-400">
                       <span className="font-medium">Email:</span>
                       <a
                         href="mailto:hello@islahwebservice.com"
-                        className="text-cyan-600 dark:text-cyan-400 hover:underline"
+                        className="text-cyan-400 hover:underline"
                       >
                         hello@islahwebservice.com
                       </a>
                     </div>
-                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                    <div className="flex items-center gap-2 text-slate-400">
                       <span className="font-medium">Phone:</span>
                       <a
                         href="tel:+1-442-222-8258"
-                        className="text-cyan-600 dark:text-cyan-400 hover:underline"
+                        className="text-cyan-400 hover:underline"
                       >
                         +1 (442) 222-8258
                       </a>

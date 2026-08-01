@@ -1,18 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Globe2,
-  Users,
-  MapPin,
   Brain,
-  Target,
-  BarChart3,
   Mail,
   Settings,
-  RotateCcw,
   ArrowRight,
   CheckCircle2,
   PencilRuler,
@@ -30,7 +23,7 @@ export default function ServicesPage() {
       slug: "verified-b2b-contact-lists",
       title: "Google Maps + Website Extraction",
       icon: Globe2,
-      gradient: "from-blue-500 to-cyan-600",
+      tint: "bg-blue-500/15 text-blue-400",
       description: "We scrape Google Maps and company websites to discover real businesses in your target market—not generic databases or recycled lists. This is the foundation of our AI lead generation system.",
       features: [
         "Google Maps lead extraction by location and category",
@@ -43,7 +36,7 @@ export default function ServicesPage() {
       slug: "lead-generation-analysis",
       title: "AI Analysis + ICP Filtering",
       icon: Brain,
-      gradient: "from-purple-500 to-pink-600",
+      tint: "bg-purple-500/15 text-purple-400",
       description: "Our AI analyzes each prospect, filters by your ideal customer profile, and ranks leads by conversion potential—so you only reach out to the best fits. This transforms raw data into qualified opportunities.",
       features: [
         "AI-powered lead scoring & ranking",
@@ -56,7 +49,7 @@ export default function ServicesPage() {
       slug: "business-process-automation",
       title: "Automated Outreach + Follow-Up",
       icon: Mail,
-      gradient: "from-orange-500 to-red-600",
+      tint: "bg-orange-500/15 text-orange-400",
       description: "Personalized cold email sequences, automated follow-ups, and CRM-ready workflows that turn leads into booked meetings on autopilot. This completes the system from discovery to conversion.",
       features: [
         "Personalized cold email generation",
@@ -149,13 +142,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Detail */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.07),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               What We Offer
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
               Specialized services designed to address the unique challenges of modern B2B enterprises.
             </p>
           </SectionReveal>
@@ -163,29 +157,29 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <SectionReveal delay={index * 0.2} className="h-full" key={service.slug}>
-                <Card className="group relative overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <Card className="group relative overflow-hidden h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <CardHeader className="p-8 flex-grow">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <service.icon className="h-8 w-8 text-white" />
+                    <div className={`w-16 h-16 rounded-2xl ${service.tint} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className="h-8 w-8" />
                     </div>
-                    <CardTitle className="text-2xl mb-4">
+                    <CardTitle className="text-2xl mb-4 text-white">
                       <Link
                         href={`/services/${service.slug}`}
-                        className="group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors hover:underline"
+                        className="group-hover:text-cyan-400 transition-colors hover:underline"
                       >
                         {service.title}
                       </Link>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-8 pt-0 flex-grow flex flex-col">
-                    <CardDescription className="text-base leading-relaxed mb-6 flex-grow">
+                    <CardDescription className="text-base leading-relaxed mb-6 flex-grow text-slate-400">
                       {service.description}
                     </CardDescription>
                     <div className="space-y-3 mt-auto">
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-3">
-                          <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                          <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-300 text-sm leading-relaxed">
                             {feature}
                           </span>
                         </div>
@@ -193,7 +187,7 @@ export default function ServicesPage() {
                     </div>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:gap-2 transition-all mt-6"
+                      className="inline-flex items-center text-cyan-400 font-medium hover:gap-2 transition-all mt-6"
                     >
                       Learn more
                       <ArrowRight className="h-4 w-4 ml-1" />
@@ -207,13 +201,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Steps */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Our Process
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
               How we implement your custom solutions
             </p>
           </SectionReveal>
@@ -228,19 +223,19 @@ export default function ServicesPage() {
               const Icon = item.icon;
               return (
                 <StaggerItem key={index} className="relative">
-                  <Card className="h-full flex flex-col items-center text-center p-6 sm:p-8 hover:shadow-lg transition-shadow">
+                  <Card className="h-full flex flex-col items-center text-center p-6 sm:p-8 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
                     <div className="relative mb-6">
                       <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center mx-auto">
                         <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
                       </div>
-                      <div className="absolute -top-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center text-xs sm:text-sm font-bold text-cyan-600 dark:text-cyan-400 shadow">
+                      <div className="absolute -top-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950 border border-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-cyan-400 shadow">
                         {item.step}
                       </div>
                     </div>
-                    <CardTitle className="text-lg sm:text-xl mb-3">
+                    <CardTitle className="text-lg sm:text-xl mb-3 text-white">
                       {item.title}
                     </CardTitle>
-                    <CardDescription className="flex-grow">
+                    <CardDescription className="flex-grow text-slate-400">
                       {item.description}
                     </CardDescription>
                   </Card>
@@ -257,20 +252,25 @@ export default function ServicesPage() {
       </section>
 
       {/* Recommendation CTA */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-cyan-600 via-blue-600 to-teal-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.15),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.10),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl animate-pulse" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
               Ready to Accelerate Your B2B Growth?
             </h2>
-            <p className="text-lg sm:text-xl text-cyan-50 mb-6 sm:mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
               Get started with our expert team today. We'll provide a free consultation to identify the perfect solution for your business needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-              <Button asChild size="lg" className="bg-white text-cyan-600 hover:bg-slate-100 w-full sm:w-auto">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href="/contact">Contact Us Today</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-cyan-600 w-full sm:w-auto">
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white w-full sm:w-auto">
                 <Link href="/portfolio">View Success Stories</Link>
               </Button>
             </div>

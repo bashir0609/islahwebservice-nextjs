@@ -2,17 +2,11 @@
 
 import Link from "next/link";
 import {
-  Building2,
   Users,
   MapPin,
-  CheckCircle2,
-  ArrowRight,
   Globe2,
-  Mail,
-  Database,
   Shield,
   Zap,
-  BarChart3,
   Target,
   TrendingUp,
   Wrench,
@@ -94,10 +88,10 @@ export default function VerifiedB2BContactListsPage() {
             </SectionReveal>
 
             <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href="/contact">Claim Your Free AI Audit</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white w-full sm:w-auto">
                 <Link href="#how-it-works">See The Full System</Link>
               </Button>
             </SectionReveal>
@@ -113,52 +107,54 @@ export default function VerifiedB2BContactListsPage() {
       </section>
 
       {/* Key Stats */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.07),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
             <StaggerItem className="text-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Target className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-500/15 rounded-2xl flex items-center justify-center">
+                <Target className="h-7 w-7 sm:h-8 sm:w-8 text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Target-Based</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Lists Built From Your Criteria</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Target-Based</div>
+              <div className="text-sm text-slate-400">Lists Built From Your Criteria</div>
             </StaggerItem>
 
             <StaggerItem className="text-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <MapPin className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-500/15 rounded-2xl flex items-center justify-center">
+                <MapPin className="h-7 w-7 sm:h-8 sm:w-8 text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Google Maps</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Lead Extraction Source</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Google Maps</div>
+              <div className="text-sm text-slate-400">Lead Extraction Source</div>
             </StaggerItem>
 
             <StaggerItem className="text-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Users className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-500/15 rounded-2xl flex items-center justify-center">
+                <Users className="h-7 w-7 sm:h-8 sm:w-8 text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">ICP Research</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Qualified Against Your Profile</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">ICP Research</div>
+              <div className="text-sm text-slate-400">Qualified Against Your Profile</div>
             </StaggerItem>
 
             <StaggerItem className="text-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                <Globe2 className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-blue-500/15 rounded-2xl flex items-center justify-center">
+                <Globe2 className="h-7 w-7 sm:h-8 sm:w-8 text-blue-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">Website</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Enriched From Business Sites</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">Website</div>
+              <div className="text-sm text-slate-400">Enriched From Business Sites</div>
             </StaggerItem>
           </StaggerContainer>
         </div>
       </section>
 
       {/* Features */}
-      <section id="how-it-works" className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="how-it-works" className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(34,211,238,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Why Choose Our Contact Lists
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
               Every contact is verified, enriched, and organized for immediate outreach.
             </p>
           </SectionReveal>
@@ -166,15 +162,15 @@ export default function VerifiedB2BContactListsPage() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <StaggerItem key={index}>
-                <Card className="h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <Card className="h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
                   <CardHeader className="p-6 sm:p-8">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-6">
-                      <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mb-6">
+                      <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 text-blue-400" />
                     </div>
-                    <CardTitle className="text-xl sm:text-2xl mb-3">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl sm:text-2xl mb-3 text-white">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 sm:p-8 pt-0 flex-grow">
-                    <CardDescription className="text-base leading-relaxed">{feature.description}</CardDescription>
+                    <CardDescription className="text-base leading-relaxed text-slate-400">{feature.description}</CardDescription>
                   </CardContent>
                 </Card>
               </StaggerItem>
@@ -184,13 +180,14 @@ export default function VerifiedB2BContactListsPage() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Perfect For
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
               Our contact lists power growth across multiple business functions.
             </p>
           </SectionReveal>
@@ -198,9 +195,9 @@ export default function VerifiedB2BContactListsPage() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {useCases.map((useCase, index) => (
               <StaggerItem key={index}>
-                <Card className="h-full p-6 sm:p-8 hover:shadow-lg transition-shadow">
-                  <CardTitle className="text-lg sm:text-xl mb-3">{useCase.title}</CardTitle>
-                  <CardDescription className="flex-grow">{useCase.description}</CardDescription>
+                <Card className="h-full p-6 sm:p-8 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
+                  <CardTitle className="text-lg sm:text-xl mb-3 text-white">{useCase.title}</CardTitle>
+                  <CardDescription className="flex-grow text-slate-400">{useCase.description}</CardDescription>
                 </Card>
               </StaggerItem>
             ))}
@@ -209,13 +206,14 @@ export default function VerifiedB2BContactListsPage() {
       </section>
 
       {/* Related Services */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Related Services
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
               Combine our services for a complete B2B growth stack.
             </p>
           </SectionReveal>
@@ -223,16 +221,16 @@ export default function VerifiedB2BContactListsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             <SectionReveal delay={0}>
               <Link href="/services/lead-generation-analysis" className="group block">
-                <Card className="h-full p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <Card className="h-full p-6 sm:p-8 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
-                      <TrendingUp className="h-6 w-6 text-white" />
+                    <div className="w-12 h-12 rounded-2xl bg-purple-500/15 flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="h-6 w-6 text-purple-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      <CardTitle className="text-xl mb-2 text-white group-hover:text-cyan-400 transition-colors">
                         Lead Generation Analysis
                       </CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
+                      <CardDescription className="text-base leading-relaxed text-slate-400">
                         AI-driven insights, predictive scoring, and real-time pipeline analytics to convert data into qualified opportunities.
                       </CardDescription>
                     </div>
@@ -243,16 +241,16 @@ export default function VerifiedB2BContactListsPage() {
 
             <SectionReveal delay={0.2}>
               <Link href="/services/business-process-automation" className="group block">
-                <Card className="h-full p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <Card className="h-full p-6 sm:p-8 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                      <Wrench className="h-6 w-6 text-white" />
+                    <div className="w-12 h-12 rounded-2xl bg-orange-500/15 flex items-center justify-center flex-shrink-0">
+                      <Wrench className="h-6 w-6 text-orange-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      <CardTitle className="text-xl mb-2 text-white group-hover:text-cyan-400 transition-colors">
                         Business Process Automation
                       </CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
+                      <CardDescription className="text-base leading-relaxed text-slate-400">
                         End-to-end automation of recurring processes, reducing manual effort by up to 80% and improving accuracy.
                       </CardDescription>
                     </div>
@@ -265,20 +263,25 @@ export default function VerifiedB2BContactListsPage() {
       </section>
 
       {/* Data Quality Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.15),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(34,211,238,0.10),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl animate-pulse" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
               Data You Can Trust
             </h2>
-            <p className="text-lg sm:text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Multi-source verification, continuous enrichment, and compliance-first approach.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-              <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-slate-100 w-full sm:w-auto">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href="/contact">Request Sample Data</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-blue-600 w-full sm:w-auto">
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white w-full sm:w-auto">
                 <Link href="/portfolio">See Results</Link>
               </Button>
             </div>

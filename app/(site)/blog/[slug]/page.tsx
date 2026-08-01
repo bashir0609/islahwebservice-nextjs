@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </Link>
             </SectionReveal>
             <SectionReveal delay={0.3} className="mb-8">
-              <div className="relative h-64 md:h-96 w-full rounded-3xl overflow-hidden mb-8 max-w-4xl mx-auto">
+              <div className="relative h-64 md:h-96 w-full rounded-3xl overflow-hidden mb-8 max-w-4xl mx-auto border border-white/10">
                 {post.coverImage ? (
                   <Image
                     src={post.coverImage}
@@ -117,7 +117,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-teal-500/20">
-                    <span className="text-cyan-600 dark:text-cyan-400 text-sm font-semibold">
+                    <span className="text-cyan-400 text-sm font-semibold">
                       {post.title}
                     </span>
                   </div>
@@ -146,9 +146,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       {/* Blog Content */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="prose prose-lg prose-slate dark:prose-invert max-w-none">
+          <SectionReveal className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-a:text-cyan-400 prose-strong:text-white prose-blockquote:border-cyan-500/40 prose-blockquote:text-slate-300 prose-code:text-cyan-300">
             <ReactMarkdown
               components={{
                 a: ({ href, children }) => (
@@ -163,12 +163,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </SectionReveal>
 
           <SectionReveal delay={0.3} className="mt-12">
-            <Card className="bg-gradient-to-r from-cyan-600/10 to-teal-600/10 border-cyan-200 dark:border-cyan-800">
+            <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
               <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   Ready to Apply These Insights?
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
+                <p className="text-slate-400 mb-6">
                   Let's discuss how we can help you implement these
                   strategies for your business.
                 </p>

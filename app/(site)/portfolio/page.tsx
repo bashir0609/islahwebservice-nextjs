@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Search,
-  Filter,
   MapPin,
   Building2,
   Users,
@@ -148,13 +147,13 @@ export default function PortfolioPage() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Featured Projects
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Discover how our B2B solutions deliver measurable results and
               competitive advantages.
             </p>
@@ -164,13 +163,13 @@ export default function PortfolioPage() {
           <SectionReveal delay={0.2} className="mb-12">
             <div className="flex flex-col md:flex-row gap-6 justify-between items-center mb-8">
               <div className="relative w-full md:w-96">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-500" />
                 <input
                   type="text"
                   placeholder="Search projects..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all backdrop-blur-sm"
                 />
               </div>
 
@@ -179,10 +178,10 @@ export default function PortfolioPage() {
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
                       selectedTag === tag
-                        ? "bg-cyan-600 text-white shadow-lg"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                        ? "bg-cyan-600 text-white shadow-lg border-cyan-600"
+                        : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:border-white/20"
                     }`}
                   >
                     {tag}
@@ -204,7 +203,7 @@ export default function PortfolioPage() {
                 }
                 return (
                   <StaggerItem key={project.id} className="group">
-                    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                    <Card className="overflow-hidden h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-500">
                       <div className="relative h-64 overflow-hidden">
                         <Image
                           src={project.image || "/placeholder.svg"}
@@ -231,11 +230,11 @@ export default function PortfolioPage() {
                       </div>
 
                       <CardContent className="p-8 flex-grow">
-                        <CardDescription className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        <CardDescription className="text-slate-400 leading-relaxed mb-6">
                           {project.description}
                         </CardDescription>
 
-                        <div className="flex items-center justify-between mb-6 text-sm text-slate-500 dark:text-slate-400">
+                        <div className="flex items-center justify-between mb-6 text-sm text-slate-400">
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-1">
                               <Building2 className="h-4 w-4" />
@@ -251,7 +250,7 @@ export default function PortfolioPage() {
                         {project.featured && (
                           <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full border border-cyan-500/30">
                             <div className="w-2 h-2 bg-cyan-500 rounded-full" />
-                            <span className="text-sm font-medium text-cyan-600 dark:text-cyan-400">
+                            <span className="text-sm font-medium text-cyan-400">
                               Featured Project
                             </span>
                           </div>
@@ -262,7 +261,7 @@ export default function PortfolioPage() {
                         <Button
                           asChild
                           variant="outline"
-                          className="w-full group-hover:bg-cyan-50 dark:group-hover:bg-slate-800 group-hover:border-cyan-200 transition-all"
+                          className="w-full border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-cyan-500/40 transition-all"
                         >
                           <Link
                             href={`/portfolio/${project.id}`}
@@ -281,13 +280,13 @@ export default function PortfolioPage() {
           ) : (
             <SectionReveal className="text-center py-20">
               <div className="max-w-md mx-auto">
-                <div className="w-24 h-24 mx-auto mb-6 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 mx-auto mb-6 bg-white/5 border border-white/10 rounded-full flex items-center justify-center">
                   <Search className="h-8 w-8 text-slate-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   No Projects Found
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-slate-400">
                   {projects.length === 0
                     ? "Our portfolio is growing. Check back soon for new projects."
                     : "No projects match your current filters. Try adjusting your search criteria."}
