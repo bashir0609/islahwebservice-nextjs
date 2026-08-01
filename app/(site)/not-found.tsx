@@ -71,7 +71,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-600 to-teal-600 text-white rounded-lg font-medium hover:from-cyan-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
           >
             <ArrowLeft className="h-5 w-5" />
             Back to Home

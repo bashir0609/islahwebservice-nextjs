@@ -186,7 +186,7 @@ export default function AdminMediaPage() {
                 <Input ref={fileInputRef} type="file" accept="image/*" />
               </div>
             </div>
-            <Button type="submit" disabled={uploading} className="bg-cyan-600 hover:bg-cyan-700">
+            <Button type="submit" disabled={uploading}>
               {uploading ? "Uploading..." : "Upload"}
             </Button>
           </form>
@@ -335,7 +335,7 @@ export default function AdminMediaPage() {
               >
                 Cancel
               </Button>
-              <Button className="bg-cyan-600 hover:bg-cyan-700" onClick={handleMove}>
+              <Button onClick={handleMove}>
                 Save
               </Button>
             </div>

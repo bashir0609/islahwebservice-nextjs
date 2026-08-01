@@ -175,7 +175,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white"
                 >
                   <Link href="/contact">Get in Touch</Link>
                 </Button>

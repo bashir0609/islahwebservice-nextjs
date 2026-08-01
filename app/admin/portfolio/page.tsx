@@ -152,7 +152,7 @@ export default function AdminPortfolioPage() {
           <DialogTrigger asChild>
             <Button
               onClick={resetForm}
-              className="bg-cyan-600 hover:bg-cyan-700 text-white"
+             
             >
               <Plus className="h-4 w-4 mr-2" />
               New Item
@@ -232,7 +232,7 @@ export default function AdminPortfolioPage() {
                 >
                   Cancel
                 </Button>
-                <Button type="submit" className="bg-cyan-600 hover:bg-cyan-700">
+                <Button type="submit">
                   {editingItem ? "Update" : "Create"} Item
                 </Button>
               </div>

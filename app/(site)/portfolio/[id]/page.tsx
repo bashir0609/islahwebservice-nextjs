@@ -137,7 +137,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                 Let's discuss how we can build a lead generation system for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
+                <Button asChild size="lg">
                   <Link href="/contact">
                     Start a Project
                     <ArrowRight className="ml-2 h-4 w-4" />

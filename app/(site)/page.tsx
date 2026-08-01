@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award } from "lucide-react";
+import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -97,7 +97,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-amber-500 mb-2">
+              <div className="flex items-center justify-center gap-1 text-amber-400 mb-2">
                 <Star className="h-5 w-5 fill-current" />
                 <Star className="h-5 w-5 fill-current" />
                 <Star className="h-5 w-5 fill-current" />
@@ -179,7 +179,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
+            <Button asChild size="lg">
               <Link href="/services">
                 See Full System
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -215,7 +215,7 @@ export default function HomePage() {
                   {[
                     "Complete audit of your current lead sources",
                     "AI-powered analysis of your ideal customer profile",
-                    "Custom roadmap to 2x qualified leads in 30 days",
+                    "Custom roadmap to 2× qualified leads in 30 days",
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
@@ -224,7 +224,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <div className="mt-8 text-center">
-                  <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white w-full sm:w-auto">
+                  <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href="/contact">
                       Claim Your Free Audit
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -314,7 +314,9 @@ export default function HomePage() {
           </SectionReveal>
 
           <div className="relative">
-            <div className="grid grid-cols-1 md:grid-cols-7 gap-4 md:gap-2">
+            {/* Connector line behind steps on desktop */}
+            <div className="absolute left-0 right-0 top-1/2 hidden -translate-y-1/2 border-t-2 border-dashed border-cyan-500/30 lg:block" />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-7 lg:gap-4">
               {[
                 { step: "01", title: "Target Market", desc: "Define your ideal customer profile and target industries." },
                 { step: "02", title: "Google Maps", desc: "Discover real businesses in your target locations." },
@@ -324,11 +326,14 @@ export default function HomePage() {
                 { step: "06", title: "Personalized Outreach", desc: "Create custom cold email sequences per prospect." },
                 { step: "07", title: "CRM Delivery", desc: "Sync everything into your CRM and outreach stack." },
               ].map((item, index) => (
-                <SectionReveal key={item.step} delay={index * 0.08}>
+                <SectionReveal key={item.step} delay={index * 0.08} className="md:last:col-start-2 lg:col-start-auto">
                   <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-4 md:p-6 text-center h-full">
                     <div className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold mb-2">STEP {item.step}</div>
                     <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{item.title}</div>
                     <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                    {item.step !== "07" && (
+                      <ChevronRight className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-cyan-600 text-white shadow-md lg:block" aria-hidden="true" />
+                    )}
                   </div>
                 </SectionReveal>
               ))}
@@ -339,7 +344,7 @@ export default function HomePage() {
 
 
       {/* Case Studies */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -429,7 +434,7 @@ export default function HomePage() {
               <Card className="h-full">
                 <CardHeader>
                   <CardTitle>B2B Lead Generation</CardTitle>
-                  <CardDescription>Upwork Client, USA</CardDescription>
+                  <CardDescription>Long-term Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -447,7 +452,7 @@ export default function HomePage() {
               <Card className="h-full">
                 <CardHeader>
                   <CardTitle>Prospect Lists</CardTitle>
-                  <CardDescription>Upwork Client, USA</CardDescription>
+                  <CardDescription>5-Star Rated Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -465,7 +470,7 @@ export default function HomePage() {
               <Card className="h-full">
                 <CardHeader>
                   <CardTitle>Lead Generation & Virtual Assistant</CardTitle>
-                  <CardDescription>Upwork Client, USA</CardDescription>
+                  <CardDescription>Returning Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -483,7 +488,7 @@ export default function HomePage() {
               <Card className="h-full">
                 <CardHeader>
                   <CardTitle>Email & Lead Outreach</CardTitle>
-                  <CardDescription>Upwork Client, USA</CardDescription>
+                  <CardDescription>Repeat Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -608,13 +613,13 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Ready to 2x Your Qualified Leads?
+              Ready to 2× Your Qualified Leads?
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto">
               Book a free lead generation strategy call. We'll show you exactly how to build a system that delivers consistent, qualified prospects to your sales team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
+              <Button asChild size="lg">
                 <Link href="/contact">
                   Book a Free Strategy Call
                   <ArrowRight className="ml-2 h-4 w-4" />

@@ -311,7 +311,7 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     disabled={!isValid || isSubmitting}
-                    className="w-full py-4 rounded-lg font-semibold transition-all duration-200 bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 rounded-lg font-semibold transition-all duration-200 bg-cyan-600 hover:bg-cyan-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">

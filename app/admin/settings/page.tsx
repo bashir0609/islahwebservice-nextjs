@@ -206,7 +206,7 @@ export default function AdminSettingsPage() {
         </div>
 
         <div className="flex justify-end">
-          <Button type="submit" disabled={saving} className="bg-cyan-600 hover:bg-cyan-700">
+          <Button type="submit" disabled={saving}>
             <Save className="h-4 w-4 mr-2" />
             {saving ? "Saving..." : "Save Settings"}
           </Button>

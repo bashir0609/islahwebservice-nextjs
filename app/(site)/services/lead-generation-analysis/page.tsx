@@ -120,7 +120,7 @@ export default function LeadGenerationAnalysisPage() {
               <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
                 <TrendingUp className="h-7 w-7 sm:h-8 sm:w-8 text-purple-600 dark:text-purple-400" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">3.5x</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2">3.5×</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Conversion Increase</div>
             </StaggerItem>
 

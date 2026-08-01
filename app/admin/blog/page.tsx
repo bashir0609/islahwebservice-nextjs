@@ -183,7 +183,7 @@ export default function AdminBlogPage() {
           <DialogTrigger asChild>
             <Button
               onClick={resetForm}
-              className="bg-cyan-600 hover:bg-cyan-700 text-white"
+             
             >
               <Plus className="h-4 w-4 mr-2" />
               New Post
@@ -285,7 +285,7 @@ export default function AdminBlogPage() {
                 >
                   Cancel
                 </Button>
-                <Button type="submit" className="bg-cyan-600 hover:bg-cyan-700">
+                <Button type="submit">
                   {editingPost ? "Update" : "Create"} Post
                 </Button>
               </div>

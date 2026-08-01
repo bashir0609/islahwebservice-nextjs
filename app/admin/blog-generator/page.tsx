@@ -159,7 +159,7 @@ export default function AdminBlogGeneratorPage() {
             <Button
               type="submit"
               disabled={generatingKeywords || !apiKey || !topic}
-              className="bg-cyan-600 hover:bg-cyan-700"
+             
             >
               {generatingKeywords ? (
                 <>

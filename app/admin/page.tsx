@@ -85,7 +85,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="mt-4 sm:mt-0 flex gap-3">
-          <Button asChild className="bg-cyan-600 hover:bg-cyan-700 text-white">
+          <Button asChild>
             <Link href="/admin/blog-generator">
               <Plus className="h-4 w-4 mr-2" />
               Generate Blog

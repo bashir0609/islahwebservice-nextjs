@@ -67,7 +67,7 @@ export default function AboutPage() {
             <SectionReveal delay={0.8} className="flex flex-wrap items-center justify-center gap-4">
               {[
                 { icon: Award, value: "190+", label: "Projects delivered" },
-                { icon: TrendingUp, value: "3.5x", label: "Avg. conversion lift" },
+                { icon: TrendingUp, value: "3.5×", label: "Avg. conversion lift" },
                 { icon: MapPin, value: "US · UK · AU", label: "Markets served" },
               ].map((stat) => (
                 <div
@@ -110,7 +110,6 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   asChild
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white"
                 >
                   <Link href="/contact">Get Started</Link>
                 </Button>
@@ -272,7 +271,6 @@ export default function AboutPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-cyan-600 hover:bg-cyan-700 text-white"
               >
                 <Link href="/contact">
                   Start Your Transformation

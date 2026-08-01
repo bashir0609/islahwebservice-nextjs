@@ -176,7 +176,7 @@ export default function HeroVisual() {
             <TrendingUp className="h-4 w-4 text-cyan-400" />
           </div>
           <div>
-            <div className="text-xs font-bold text-white">3.5x</div>
+            <div className="text-xs font-bold text-white">3.5×</div>
             <div className="text-[10px] text-slate-400">Conversion lift</div>
           </div>
         </div>
