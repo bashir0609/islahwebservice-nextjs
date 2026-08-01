@@ -1,0 +1,21 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+// Template re-mounts on every client-side navigation, giving each page a
+// subtle fade-and-rise transition that ties the whole site together.
+export default function SiteTemplate({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}

@@ -3,87 +3,129 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@radix-ui/react-separator";
-import { Twitter, Linkedin, Instagram, Facebook, Github } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Facebook, Github, ArrowUp } from "lucide-react";
+import { useSiteSettings } from "@/components/site/site-settings-provider";
+import { cn } from "@/lib/utils";
 
-const SOCIAL: Record<string, React.ReactNode> = {
-  linkedin: <Linkedin className="h-4 w-4" />,
-  twitter: <Twitter className="h-4 w-4" />,
-  github: <Github className="h-4 w-4" />,
-  facebook: <Facebook className="h-4 w-4" />,
-  instagram: <Instagram className="h-4 w-4" />,
-};
+const SOCIAL_META: { key: string; label: string; icon: React.ReactNode }[] = [
+  { key: "linkedin", label: "LinkedIn", icon: <Linkedin className="h-4 w-4" /> },
+  { key: "twitter", label: "Twitter / X", icon: <Twitter className="h-4 w-4" /> },
+  { key: "facebook", label: "Facebook", icon: <Facebook className="h-4 w-4" /> },
+  { key: "instagram", label: "Instagram", icon: <Instagram className="h-4 w-4" /> },
+  { key: "github", label: "GitHub", icon: <Github className="h-4 w-4" /> },
+];
 
 export default function SiteFooter() {
+  const { settings } = useSiteSettings();
+
+  // Only render social icons that have a real URL configured in the admin.
+  const socials = SOCIAL_META.filter(
+    (s) => settings.socialLinks && settings.socialLinks[s.key],
+  );
+
   return (
-    <footer className="mt-16 sm:mt-20 border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8">
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="inline-flex items-center gap-2">
               <Image
                 src="/Islah-logo.png"
                 alt="Islah Web Service"
                 width={200}
                 height={50}
-                className="h-auto w-32 sm:w-40 md:w-48"
+                className="h-auto w-32 sm:w-40 md:w-44"
               />
             </Link>
-            <p className="mt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="mt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
               Professional B2B services: Verified Contact Lists, Lead Generation
               Analysis, and Business Process Automation.
             </p>
           </div>
 
           <div>
-            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Services</h4>
-            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              <li><Link href="/services/verified-b2b-contact-lists" className="hover:text-cyan-600">Verified B2B Contact Lists</Link></li>
-              <li><Link href="/services/lead-generation-analysis" className="hover:text-cyan-600">Lead Generation Analysis</Link></li>
-              <li><Link href="/services/business-process-automation" className="hover:text-cyan-600">Business Process Automation</Link></li>
+            <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">
+              Services
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <li><Link href="/services/verified-b2b-contact-lists" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">Verified B2B Contact Lists</Link></li>
+              <li><Link href="/services/lead-generation-analysis" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">Lead Generation Analysis</Link></li>
+              <li><Link href="/services/business-process-automation" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">Business Process Automation</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Company</h4>
-            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              <li><Link href="/about" className="hover:text-cyan-600">About</Link></li>
-              <li><Link href="/portfolio" className="hover:text-cyan-600">Portfolio</Link></li>
-              <li><Link href="/blog" className="hover:text-cyan-600">Blog</Link></li>
-              <li><Link href="/contact" className="hover:text-cyan-600">Contact</Link></li>
+            <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">
+              Company
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <li><Link href="/about" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">About</Link></li>
+              <li><Link href="/portfolio" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">Portfolio</Link></li>
+              <li><Link href="/blog" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">Blog</Link></li>
+              <li><Link href="/contact" className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400">Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Contact</h4>
-            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              <li><Link href="mailto:hello@islahwebservice.com" className="hover:text-cyan-600">hello@islahwebservice.com</Link></li>
-              <li><span>Sylhet, Bangladesh</span></li>
+            <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">
+              Contact
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <li>
+                <a
+                  href={settings.contactEmail ? `mailto:${settings.contactEmail}` : undefined}
+                  className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400"
+                >
+                  {settings.contactEmail}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={settings.contactPhone ? `tel:${settings.contactPhone.replace(/[^+\d]/g, "")}` : undefined}
+                  className="transition-colors hover:text-cyan-600 dark:hover:text-cyan-400"
+                >
+                  {settings.contactPhone}
+                </a>
+              </li>
+              <li><span>{settings.contactAddress}</span></li>
             </ul>
           </div>
         </div>
 
-        <Separator className="my-6 sm:my-8 bg-slate-200 dark:bg-slate-800" />
+        <Separator className="my-8 bg-slate-200 dark:bg-slate-800" />
 
-        <div className="flex flex-col items-center justify-between gap-3 sm:gap-4 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-left">
             © {new Date().getFullYear()} Islah Web Service. All rights reserved.
           </p>
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Link href="#" className="text-slate-400 hover:text-cyan-600">
-              {SOCIAL.linkedin}
-            </Link>
-            <Link href="#" className="text-slate-400 hover:text-cyan-600">
-              {SOCIAL.twitter}
-            </Link>
-            <Link href="#" className="text-slate-400 hover:text-cyan-600">
-              {SOCIAL.github}
-            </Link>
-            <Link href="#" className="text-slate-400 hover:text-cyan-600">
-              {SOCIAL.facebook}
-            </Link>
-            <Link href="#" className="text-slate-400 hover:text-cyan-600">
-              {SOCIAL.instagram}
-            </Link>
+
+          <div className="flex items-center gap-5">
+            {socials.map(({ key, label, icon }) => (
+              <a
+                key={key}
+                href={settings.socialLinks[key]}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className={cn(
+                  "flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-all duration-200",
+                  "hover:-translate-y-0.5 hover:bg-cyan-50 hover:text-cyan-600 dark:hover:bg-slate-800 dark:hover:text-cyan-400",
+                )}
+              >
+                {icon}
+              </a>
+            ))}
+
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              aria-label="Back to top"
+              className={cn(
+                "flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-400 transition-all duration-200 dark:border-slate-700",
+                "hover:-translate-y-0.5 hover:border-cyan-300 hover:text-cyan-600 dark:hover:text-cyan-400",
+              )}
+            >
+              <ArrowUp className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>

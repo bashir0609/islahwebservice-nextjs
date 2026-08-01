@@ -22,6 +22,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import HeroVisual from "@/components/site/hero-visual";
 
 export default function ServicesPage() {
   const services = [
@@ -68,45 +69,82 @@ export default function ServicesPage() {
 
   return (
     <main className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      {/* Hero Section — two-column with product mockup */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl animate-pulse" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-4 sm:mb-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
-                <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
+        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Copy */}
+            <div className="text-center lg:text-left">
+              <SectionReveal delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-blue-400">
+                  <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-blue-500" />
+                  </span>
+                  Professional B2B Services
+                </div>
+              </SectionReveal>
+
+              <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+                <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
+                  One system.
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400">
+                    Three services.
+                  </span>
+                  <span className="block text-white">Real results.</span>
+                </h1>
+              </SectionReveal>
+
+              <SectionReveal delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
+                <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                  From verified contact lists to intelligent process automation, we deliver tailored solutions that transform your B2B operations.
+                </p>
+              </SectionReveal>
+
+              <SectionReveal delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
+                <Button asChild size="lg">
+                  <Link href="/contact">
+                    Get a Free Audit
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
+                >
+                  <Link href="/portfolio">See Results</Link>
+                </Button>
+              </SectionReveal>
+
+              <SectionReveal delay={1} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400 lg:justify-start">
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  Verified data
                 </span>
-                Professional B2B Services
-              </div>
-            </SectionReveal>
-
-            <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                Services That Drive
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                  Real Results
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  USA · UK · AU
                 </span>
-              </h1>
-            </SectionReveal>
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  Automation ready
+                </span>
+              </SectionReveal>
+            </div>
 
-            <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                From verified contact lists to intelligent process automation, we deliver tailored solutions that transform your B2B operations.
-              </p>
+            {/* Product mockup visual */}
+            <SectionReveal delay={0.3}>
+              <HeroVisual />
             </SectionReveal>
           </div>
-        </div>
-
-        {/* Floating Elements - hidden on mobile for performance */}
-        <div className="hidden md:block absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl" />
         </div>
       </section>
 
@@ -130,11 +168,14 @@ export default function ServicesPage() {
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       <service.icon className="h-8 w-8 text-white" />
                     </div>
-                    <Link href={`/services/${service.slug}`} className="group" passHref legacyBehavior>
-                      <CardTitle className="text-2xl mb-4 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors hover:underline">
+                    <CardTitle className="text-2xl mb-4">
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors hover:underline"
+                      >
                         {service.title}
-                      </CardTitle>
-                    </Link>
+                      </Link>
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="p-8 pt-0 flex-grow flex flex-col">
                     <CardDescription className="text-base leading-relaxed mb-6 flex-grow">

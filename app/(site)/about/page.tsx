@@ -32,46 +32,60 @@ import { Button } from "@/components/ui/button";
 export default function AboutPage() {
   return (
     <main className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      {/* Hero Section — warm story hero */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(251,146,60,0.16),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(244,63,94,0.10),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-amber-500/15 blur-3xl animate-pulse" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-400">
                 <Building2 className="h-4 w-4" />
-                About Islah Web Service
+                Since 2020 · B2B Growth Partner
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-                Your Trusted
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                  AI Lead Generation Partner
+            <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
+                The partner behind
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">
+                  190+ growth projects
                 </span>
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-12 max-w-2xl mx-auto">
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
+            <SectionReveal delay={0.6} className="mb-10 mx-auto max-w-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 We build AI-powered systems that automatically discover, verify, enrich, and qualify prospects—so your sales team spends time closing deals, not searching for contacts.
               </p>
             </SectionReveal>
-          </div>
-        </div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
+            <SectionReveal delay={0.8} className="flex flex-wrap items-center justify-center gap-4">
+              {[
+                { icon: Award, value: "190+", label: "Projects delivered" },
+                { icon: TrendingUp, value: "3.5x", label: "Avg. conversion lift" },
+                { icon: MapPin, value: "US · UK · AU", label: "Markets served" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur-sm"
+                >
+                  <stat.icon className="h-4 w-4 text-amber-400" />
+                  <span className="text-sm font-semibold text-white">{stat.value}</span>
+                  <span className="text-xs text-slate-400">{stat.label}</span>
+                </div>
+              ))}
+            </SectionReveal>
+          </div>
         </div>
       </section>
 
       {/* Company Story */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <SectionReveal delay={0.2} className="order-2 lg:order-1">
@@ -129,7 +143,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -196,7 +210,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-gradient-to-r from-cyan-600/10 via-blue-600/10 to-teal-600/10">
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-cyan-600/10 via-blue-600/10 to-teal-600/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -244,7 +258,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">

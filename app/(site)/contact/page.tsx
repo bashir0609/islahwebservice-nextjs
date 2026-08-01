@@ -8,6 +8,7 @@ import * as z from "zod";
 import Link from "next/link";
 import {
   ArrowLeft,
+  ArrowRight,
   Send,
   MapPin,
   Users,
@@ -99,51 +100,63 @@ export default function ContactPage() {
 
   return (
     <main className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      {/* Hero Section — compact emerald hero */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(16,185,129,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl animate-pulse" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-4xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6">
+            <SectionReveal delay={0.2} className="mb-8 flex justify-center">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
+                className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back to Home
               </Link>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
+            <SectionReveal delay={0.4} className="mb-6">
+              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Start Your B2B
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
                   Transformation
                 </span>
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-12 max-w-3xl mx-auto">
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
+            <SectionReveal delay={0.6} className="mb-10 mx-auto max-w-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 Ready to accelerate your business? Get in touch with our B2B
                 solutions experts today.
               </p>
             </SectionReveal>
-          </div>
-        </div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl" />
+            <SectionReveal delay={0.8} className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <Button asChild size="lg">
+                <Link href="#contact-form">
+                  Start the Conversation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <div className="flex items-center gap-2 text-sm text-slate-400">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                Replies within 24 hours
+              </div>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section id="contact-form" className="scroll-mt-20 py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
             {/* Form Side */}

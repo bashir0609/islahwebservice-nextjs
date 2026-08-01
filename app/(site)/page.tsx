@@ -2,82 +2,95 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Phone, Star, Award } from "lucide-react";
+import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import HeroVisual from "@/components/site/hero-visual";
 
 export default function HomePage() {
   return (
     <main className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-              <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-              <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      <section className="relative overflow-hidden bg-slate-950">
+        {/* Differentiated background treatment */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-10 h-80 w-80 rounded-full bg-teal-500/15 blur-3xl animate-pulse" />
 
-              <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="text-center">
-                  <SectionReveal delay={0.2} className="mb-4 sm:mb-6">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
-                      <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
-                      </span>
-                      ACCEPTING NEW CLIENTS — Limited Availability
-                    </div>
-                  </SectionReveal>
-
-                  <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-                      AI-Powered Lead Generation Systems That Deliver
-                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                        Qualified B2B Prospects Every Week
-                      </span>
-                    </h1>
-                  </SectionReveal>
-
-                  <SectionReveal delay={0.6} className="mb-8 sm:mb-12 max-w-3xl mx-auto">
-                    <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                      We build automated systems that find, verify, enrich, and prepare sales-ready leads—so your sales team spends time closing deals, not searching for prospects.
-                    </p>
-                  </SectionReveal>
-
-                  <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8">
-                    <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white w-full sm:w-auto">
-                      <Link href="/contact">
-                        Book a Free Strategy Call
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button asChild size="lg" className="bg-transparent border border-white text-white hover:bg-white hover:text-slate-900 w-full sm:w-auto">
-                      <Link href="#process">See Our Process</Link>
-                    </Button>
-                  </SectionReveal>
-
-                  <SectionReveal delay={1} className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
-                    <div className="flex items-center gap-2">
-                      <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                      <span>190+ Completed Projects</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Award className="h-4 w-4 text-cyan-400" />
-                      <span>100% Job Success Score</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                      <span>USA, UK & AU Markets</span>
-                    </div>
-                  </SectionReveal>
+        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Copy */}
+            <div className="text-center lg:text-left">
+              <SectionReveal delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
+                  <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
+                  </span>
+                  ACCEPTING NEW CLIENTS — Limited Availability
                 </div>
-              </div>
+              </SectionReveal>
 
-              {/* Floating Elements - hidden on mobile for performance */}
-              <div className="hidden md:block absolute inset-0 pointer-events-none">
-                <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-20 right-10 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl" />
-              </div>
-            </section>
+              <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+                <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
+                  Qualified B2B Leads,
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
+                    Delivered Every Week.
+                  </span>
+                </h1>
+              </SectionReveal>
+
+              <SectionReveal delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
+                <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                  We build automated systems that find, verify, enrich, and prepare sales-ready leads—so your sales team spends time closing deals, not searching for prospects.
+                </p>
+              </SectionReveal>
+
+              <SectionReveal delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
+                <Button asChild size="lg">
+                  <Link href="/contact">
+                    Book a Free Strategy Call
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
+                >
+                  <Link href="#process">See Our Process</Link>
+                </Button>
+              </SectionReveal>
+
+              <SectionReveal delay={1} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400 lg:justify-start">
+                <div className="flex items-center gap-2">
+                  <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  <span>190+ Completed Projects</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Award className="h-4 w-4 text-cyan-400" />
+                  <span>100% Job Success Score</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  <span>USA, UK & AU Markets</span>
+                </div>
+              </SectionReveal>
+            </div>
+
+            {/* Product mockup visual */}
+            <SectionReveal delay={0.3}>
+              <HeroVisual />
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
 
       {/* Proof Bar */}
       <section className="py-12 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
@@ -116,7 +129,7 @@ export default function HomePage() {
 
       {/* Services Overview */}
 
-      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -177,7 +190,7 @@ export default function HomePage() {
       </section>
 
       {/* Irresistible Offer */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-600 dark:text-emerald-400 mb-6">
@@ -226,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -289,7 +302,7 @@ export default function HomePage() {
       </section>
 
       {/* Visual Process */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section id="process" className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -326,7 +339,7 @@ export default function HomePage() {
 
 
       {/* Case Studies */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -400,7 +413,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials / Case Studies */}
-      <section className="py-24 bg-white dark:bg-slate-950">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -488,7 +501,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -538,7 +551,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20 bg-gradient-to-r from-cyan-600/10 via-blue-600/10 to-teal-600/10">
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-cyan-600/10 via-blue-600/10 to-teal-600/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">

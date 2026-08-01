@@ -1,16 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // Elevate the sticky header with a shadow once the page is scrolled.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Lock body scroll and close on Escape while the mobile menu is open.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   const nav = [
     { href: "/services", label: "Services" },
@@ -38,8 +63,16 @@ export default function SiteHeader() {
             </Link>
           </div>
         </div>
-        <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/70">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <header className={cn(
+          "sticky top-0 z-50 backdrop-blur-md transition-all duration-300",
+          scrolled
+            ? "border-b border-slate-200/80 bg-white/85 shadow-[0_4px_24px_-8px_rgba(15,23,42,0.12)] dark:border-slate-800 dark:bg-slate-900/85"
+            : "border-b border-transparent bg-white/60 dark:bg-slate-900/60"
+        )}>
+        <div className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300",
+          scrolled ? "h-14" : "h-16"
+        )}>
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/Islah-logo.png"
