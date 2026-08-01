@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,10 +6,27 @@ import { ArrowLeft, Building2, Calendar, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getPortfolioItem } from "@/lib/actions/portfolio";
+import { pageMetadata } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
 interface PortfolioDetailPageProps {
   params: { id: string };
+}
+
+export async function generateMetadata({
+  params,
+}: PortfolioDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const item = await getPortfolioItem(id);
+  if (!item) return {};
+
+  return pageMetadata({
+    title: item.title,
+    description: item.description || undefined,
+    path: `/portfolio/${item.id}`,
+    image: item.image || undefined,
+    ogType: "article",
+  });
 }
 
 export default async function PortfolioDetailPage({ params }: PortfolioDetailPageProps) {

@@ -500,6 +500,59 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is an AI lead generation system?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "An AI lead generation system automatically discovers, verifies, enriches, and qualifies prospects using data from Google Maps, company websites, and B2B datasets—so you get outreach-ready leads instead of generic contact lists.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How do you verify B2B contact lists?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We verify contacts through multi-step checks including email validation, phone verification, role confirmation, and source tracing. This reduces bounce rates and improves campaign deliverability.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which countries do you serve?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We mainly serve businesses in the USA, UK, and Australia. Our research, data sources, and outreach strategies are tailored to these markets, though we can support campaigns targeting other English-speaking regions as well.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can you automate my existing outreach workflow?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. We integrate CRM automation, email sequencing, and follow-up workflows to reduce manual effort and keep your sales team focused on high-value conversations.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How long does it take to build a verified lead list?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Most projects deliver initial verified contact lists within 5–10 business days, depending on target industry, geography, and list size.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* FAQ */}
       <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

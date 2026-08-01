@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   TrendingUp,
   Users,
@@ -42,6 +40,28 @@ export default function LeadGenerationAnalysisPage() {
 
   return (
     <main className="flex flex-col">
+      {/* Service structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Lead Generation Analysis",
+            serviceType: "AI Lead Scoring & Qualification",
+            description:
+              "AI-driven lead generation analysis to identify high-value prospects, increase conversions, and shorten sales cycles with intent signals.",
+            provider: {
+              "@type": "Organization",
+              name: "Islah Web Service",
+              url: "https://www.islahwebservice.com",
+            },
+            areaServed: ["US", "GB", "AU"],
+            url: "https://www.islahwebservice.com/services/lead-generation-analysis",
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-500/20 via-transparent to-transparent" />

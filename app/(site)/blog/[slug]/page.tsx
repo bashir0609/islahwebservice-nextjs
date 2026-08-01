@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,11 +8,37 @@ import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getBlogPostBySlug } from "@/lib/actions/blog";
+import { pageMetadata } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 import BlogShare from "@/components/blog-share";
 
 interface BlogPostPageProps {
   params: { slug: string };
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
+  if (!post) return {};
+
+  return pageMetadata({
+    title: post.title,
+    description: post.excerpt || undefined,
+    path: `/blog/${post.slug}`,
+    image: post.coverImage || undefined,
+    ogType: "article",
+    article: {
+      publishedTime: post.createdAt
+        ? new Date(post.createdAt).toISOString()
+        : undefined,
+      modifiedTime: post.updatedAt
+        ? new Date(post.updatedAt).toISOString()
+        : undefined,
+      authors: post.author ? [post.author] : undefined,
+    },
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -27,6 +54,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main className="flex flex-col">
+      {/* Article structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.excerpt || undefined,
+            image: post.coverImage
+              ? [post.coverImage]
+              : ["https://www.islahwebservice.com/og-image.png"],
+            datePublished: post.createdAt
+              ? new Date(post.createdAt).toISOString()
+              : undefined,
+            dateModified: post.updatedAt
+              ? new Date(post.updatedAt).toISOString()
+              : undefined,
+            author: {
+              "@type": "Person",
+              name: post.author || "Islah Web Service",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Islah Web Service",
+              url: "https://www.islahwebservice.com",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://www.islahwebservice.com/blog/${post.slug}`,
+            },
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />

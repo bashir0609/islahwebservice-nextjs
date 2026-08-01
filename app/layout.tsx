@@ -3,18 +3,18 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import Script from "next/script";
+import { HOME_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.islahwebservice.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
-    template: "%s | Islah Web Service",
+    default: HOME_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for growing companies in the USA, UK, and Australia. Contact us today.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "B2B lead generation",
     "verified contact lists",
@@ -26,25 +26,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.islahwebservice.com",
-    siteName: "Islah Web Service",
-    title: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
-    description:
-      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for growing companies in the USA, UK, and Australia. Contact us today.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: HOME_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Islah Web Service",
+        alt: SITE_NAME,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Islah Web Service | B2B Lead Generation for USA, UK & Australia",
-    description:
-      "Islah Web Service provides verified B2B contact lists, lead generation analysis, and business automation for growing companies in the USA, UK, and Australia. Contact us today.",
+    title: HOME_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["/og-image.png"],
   },
   icons: {
@@ -57,8 +55,8 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Islah Web Service",
-  url: "https://www.islahwebservice.com",
+  name: SITE_NAME,
+  url: SITE_URL,
   email: "mailto:hello@islahwebservice.com",
   description:
     "Professional B2B services for companies in the USA, UK, and Australia: verified contact lists, lead generation analysis, and business process automation.",

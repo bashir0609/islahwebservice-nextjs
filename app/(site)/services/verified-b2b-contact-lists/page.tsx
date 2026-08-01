@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Building2,
   Users,
@@ -41,6 +39,28 @@ export default function VerifiedB2BContactListsPage() {
 
   return (
     <main className="flex flex-col">
+      {/* Service structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Verified B2B Contact Lists",
+            serviceType: "B2B Lead Generation",
+            description:
+              "Custom-built contact lists sourced from Google Maps and business websites, with ICP research and first-party enrichment for your exact target market.",
+            provider: {
+              "@type": "Organization",
+              name: "Islah Web Service",
+              url: "https://www.islahwebservice.com",
+            },
+            areaServed: ["US", "GB", "AU"],
+            url: "https://www.islahwebservice.com/services/verified-b2b-contact-lists",
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 via-transparent to-transparent" />
