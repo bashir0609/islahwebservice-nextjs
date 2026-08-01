@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -93,86 +92,88 @@ export default function HomePage() {
       </section>
 
       {/* Proof Bar */}
-      <section className="py-12 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-amber-400 mb-2">
+      <section className="relative overflow-hidden bg-slate-950 border-b border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.07),transparent_60%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <SectionReveal className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-1 text-amber-400 mb-3">
                 <Star className="h-5 w-5 fill-current" />
                 <Star className="h-5 w-5 fill-current" />
                 <Star className="h-5 w-5 fill-current" />
                 <Star className="h-5 w-5 fill-current" />
                 <Star className="h-5 w-5 fill-current" />
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">190+</div>
-              <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Projects Completed</div>
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">190+</div>
+              <div className="text-xs sm:text-sm text-slate-400">Projects Completed</div>
             </div>
 
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-cyan-600 dark:text-cyan-400 mb-2">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-1 text-cyan-400 mb-3">
                 <Award className="h-5 w-5" />
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">100%</div>
-              <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Job Success Score</div>
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">100%</div>
+              <div className="text-xs sm:text-sm text-slate-400">Job Success Score</div>
             </div>
 
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-emerald-600 dark:text-emerald-400 mb-2">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-1 text-emerald-400 mb-3">
                 <CheckCircle2 className="h-5 w-5" />
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">USA, UK & AU</div>
-              <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Markets Served</div>
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">USA, UK & AU</div>
+              <div className="text-xs sm:text-sm text-slate-400">Markets Served</div>
             </div>
           </SectionReveal>
         </div>
       </section>
 
       {/* Services Overview */}
-
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.10),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.06),transparent_50%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               One Complete Lead Generation System
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Stop buying disconnected lists. Our end-to-end system finds the right companies, enriches contacts, qualifies prospects, and prepares outreach-ready leads for your sales team.
             </p>
           </SectionReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <SectionReveal delay={0}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                    <Globe2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4">
+                    <Globe2 className="h-6 w-6 text-blue-400" />
                   </div>
-                  <CardTitle>Find & Extract</CardTitle>
-                  <CardDescription>Discover real businesses from Google Maps and company websites—not generic databases.</CardDescription>
+                  <CardTitle className="text-white">Find & Extract</CardTitle>
+                  <CardDescription className="text-slate-400">Discover real businesses from Google Maps and company websites—not generic databases.</CardDescription>
                 </CardHeader>
               </Card>
             </SectionReveal>
 
             <SectionReveal delay={0.1}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] transition-all duration-300">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
-                    <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4">
+                    <TrendingUp className="h-6 w-6 text-purple-400" />
                   </div>
-                  <CardTitle>AI Qualification</CardTitle>
-                  <CardDescription>Analyze prospects, filter by your ICP, and rank leads by conversion potential.</CardDescription>
+                  <CardTitle className="text-white">AI Qualification</CardTitle>
+                  <CardDescription className="text-slate-400">Analyze prospects, filter by your ICP, and rank leads by conversion potential.</CardDescription>
                 </CardHeader>
               </Card>
             </SectionReveal>
 
             <SectionReveal delay={0.2}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-orange-500/40 hover:bg-white/[0.08] transition-all duration-300">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-4">
-                    <Wrench className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                  <div className="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4">
+                    <Wrench className="h-6 w-6 text-orange-400" />
                   </div>
-                  <CardTitle>Outreach & Automation</CardTitle>
-                  <CardDescription>Deploy personalized email sequences, follow-ups, and CRM-ready workflows.</CardDescription>
+                  <CardTitle className="text-white">Outreach & Automation</CardTitle>
+                  <CardDescription className="text-slate-400">Deploy personalized email sequences, follow-ups, and CRM-ready workflows.</CardDescription>
                 </CardHeader>
               </Card>
             </SectionReveal>
@@ -190,25 +191,27 @@ export default function HomePage() {
       </section>
 
       {/* Irresistible Offer */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.06),transparent_50%)]" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-600 dark:text-emerald-400 mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400 mb-6">
               <CheckCircle2 className="h-4 w-4" />
               Limited-Time Offer
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               Free AI Lead Generation Audit
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Get a personalized audit of your current lead generation process. We'll show you exactly where you're losing prospects and build a custom AI system to fix it—100% free.
             </p>
           </SectionReveal>
 
           <SectionReveal>
-            <Card className="border-2 border-cyan-200 dark:border-cyan-800 bg-cyan-50/50 dark:bg-cyan-950/20">
+            <Card className="border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
               <CardHeader>
-                <CardTitle className="text-2xl text-center">What You'll Get</CardTitle>
+                <CardTitle className="text-2xl text-center text-white">What You'll Get</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -218,8 +221,8 @@ export default function HomePage() {
                     "Custom roadmap to 2× qualified leads in 30 days",
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{item}</span>
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -230,7 +233,7 @@ export default function HomePage() {
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">No credit card required. 15-minute strategy session.</p>
+                  <p className="mt-3 text-xs text-slate-400">No credit card required. 15-minute strategy session.</p>
                 </div>
               </CardContent>
             </Card>
@@ -239,13 +242,15 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(45,212,191,0.08),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.06),transparent_50%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               Why Choose Islah Web Service
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               We combine B2B lead generation expertise, automation, and verified data quality so your team can focus on closing deals.
             </p>
           </SectionReveal>
@@ -284,15 +289,15 @@ export default function HomePage() {
               },
             ].map((item, index) => (
               <SectionReveal key={item.title} delay={index * 0.1}>
-                <Card className="h-full">
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
                   <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center mb-4">
-                      <item.icon className="h-6 w-6 text-cyan-600 dark:text-cyan-400" />
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4">
+                      <item.icon className="h-6 w-6 text-cyan-400" />
                     </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
+                    <CardTitle className="text-xl text-white">{item.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
+                    <p className="text-slate-400 leading-relaxed">{item.description}</p>
                   </CardContent>
                 </Card>
               </SectionReveal>
@@ -302,13 +307,14 @@ export default function HomePage() {
       </section>
 
       {/* Visual Process */}
-      <section id="process" className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="process" className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.07),transparent_60%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               How It Works
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               A simple workflow to go from business goals to qualified B2B contacts and automated follow-up processes.
             </p>
           </SectionReveal>
@@ -327,10 +333,10 @@ export default function HomePage() {
                 { step: "07", title: "CRM Delivery", desc: "Sync everything into your CRM and outreach stack." },
               ].map((item, index) => (
                 <SectionReveal key={item.step} delay={index * 0.08} className="md:last:col-start-2 lg:col-start-auto">
-                  <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-4 md:p-6 text-center h-full">
-                    <div className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold mb-2">STEP {item.step}</div>
-                    <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{item.title}</div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                  <div className="relative rounded-2xl border border-white/10 bg-slate-900/80 p-4 md:p-6 text-center h-full backdrop-blur-sm">
+                    <div className="text-cyan-400 text-xs font-semibold mb-2">STEP {item.step}</div>
+                    <div className="text-sm font-semibold text-white mb-1">{item.title}</div>
+                    <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
                     {item.step !== "07" && (
                       <ChevronRight className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-cyan-600 text-white shadow-md lg:block" aria-hidden="true" />
                     )}
@@ -342,42 +348,42 @@ export default function HomePage() {
         </div>
       </section>
 
-
       {/* Case Studies */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,212,191,0.08),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               Measurable Client Results
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Real outcomes from recent lead generation and outreach projects.
             </p>
           </SectionReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <SectionReveal delay={0}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>Local Marketing Agency, USA</CardTitle>
-                  <CardDescription>Verified Prospect List Delivery</CardDescription>
+                  <CardTitle className="text-white">Local Marketing Agency, USA</CardTitle>
+                  <CardDescription className="text-cyan-400/80">Verified Prospect List Delivery</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3 text-slate-700 dark:text-slate-300">
+                  <div className="space-y-3 text-slate-300">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Needed: 5,000 verified prospects</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Delivered: 5,600 verified contacts</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Bounce rate: under 2%</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Campaign launched in 3 days</span>
                     </div>
                   </div>
@@ -386,27 +392,27 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.2}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>SaaS Startup, UK</CardTitle>
-                  <CardDescription>Automated Lead Sourcing</CardDescription>
+                  <CardTitle className="text-white">SaaS Startup, UK</CardTitle>
+                  <CardDescription className="text-cyan-400/80">Automated Lead Sourcing</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3 text-slate-700 dark:text-slate-300">
+                  <div className="space-y-3 text-slate-300">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Built automated lead sourcing workflow</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Reduced manual research by 80%</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Saved 20+ hours per week</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                       <span>Scaled outreach without adding headcount</span>
                     </div>
                   </div>
@@ -418,29 +424,30 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials / Case Studies */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(34,211,238,0.08),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               Client Success Stories
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Real feedback from clients who trusted Islah Web Service with lead generation, research, and outreach-ready data.
             </p>
           </SectionReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <SectionReveal delay={0}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>B2B Lead Generation</CardTitle>
-                  <CardDescription>Long-term Client, USA</CardDescription>
+                  <CardTitle className="text-white">B2B Lead Generation</CardTitle>
+                  <CardDescription className="text-cyan-400/80">Long-term Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  <p className="text-slate-400 leading-relaxed mb-4">
                     "Bashir has been an instrumental part in our lead-generation efforts. He brings a wealth of knowledge around SEO and Email Marketing infrastructure and strategies. His team is professional and gets tasks done in a timeline manner."
                   </p>
-                  <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
+                  <div className="flex items-center gap-2 text-cyan-400">
                     <CheckCircle2 className="h-4 w-4" />
                     <span className="text-sm font-medium">3+ years of ongoing collaboration</span>
                   </div>
@@ -449,16 +456,16 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.1}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>Prospect Lists</CardTitle>
-                  <CardDescription>5-Star Rated Client, USA</CardDescription>
+                  <CardTitle className="text-white">Prospect Lists</CardTitle>
+                  <CardDescription className="text-cyan-400/80">5-Star Rated Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  <p className="text-slate-400 leading-relaxed mb-4">
                     "Bashir is an excellent worker and I will hire him again."
                   </p>
-                  <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
+                  <div className="flex items-center gap-2 text-cyan-400">
                     <CheckCircle2 className="h-4 w-4" />
                     <span className="text-sm font-medium">5.0 rating</span>
                   </div>
@@ -467,16 +474,16 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.2}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>Lead Generation & Virtual Assistant</CardTitle>
-                  <CardDescription>Returning Client, USA</CardDescription>
+                  <CardTitle className="text-white">Lead Generation & Virtual Assistant</CardTitle>
+                  <CardDescription className="text-cyan-400/80">Returning Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  <p className="text-slate-400 leading-relaxed mb-4">
                     "It has been a pleasure working with Bashir. The only reason we're stopping this contract is that we are moving to a new larger contract. Looking forward to working with him again."
                   </p>
-                  <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
+                  <div className="flex items-center gap-2 text-cyan-400">
                     <CheckCircle2 className="h-4 w-4" />
                     <span className="text-sm font-medium">Upgraded to a larger contract</span>
                   </div>
@@ -485,16 +492,16 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.3}>
-              <Card className="h-full">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>Email & Lead Outreach</CardTitle>
-                  <CardDescription>Repeat Client, USA</CardDescription>
+                  <CardTitle className="text-white">Email & Lead Outreach</CardTitle>
+                  <CardDescription className="text-cyan-400/80">Repeat Client, USA</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  <p className="text-slate-400 leading-relaxed mb-4">
                     "Bashir worked on a lead generation project for me for several months. I plan to hire him again in the future if I need additional leads."
                   </p>
-                  <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
+                  <div className="flex items-center gap-2 text-cyan-400">
                     <CheckCircle2 className="h-4 w-4" />
                     <span className="text-sm font-medium">Long-term repeat engagement</span>
                   </div>
@@ -559,13 +566,14 @@ export default function HomePage() {
       />
 
       {/* FAQ */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.06),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Common questions about AI lead generation systems, data enrichment, and automation with Islah Web Service.
             </p>
           </SectionReveal>
@@ -594,12 +602,12 @@ export default function HomePage() {
               },
             ].map((item, index) => (
               <SectionReveal key={item.q} delay={index * 0.05}>
-                <Card className="h-full">
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                   <CardHeader>
-                    <CardTitle className="text-lg">{item.q}</CardTitle>
+                    <CardTitle className="text-lg text-white">{item.q}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.a}</p>
+                    <p className="text-slate-400 leading-relaxed">{item.a}</p>
                   </CardContent>
                 </Card>
               </SectionReveal>
@@ -609,13 +617,20 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-cyan-600/10 via-blue-600/10 to-teal-600/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.15),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.10),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-10 h-80 w-80 rounded-full bg-teal-500/10 blur-3xl animate-pulse" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
               Ready to 2× Your Qualified Leads?
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 mb-4 max-w-2xl mx-auto">
               Book a free lead generation strategy call. We'll show you exactly how to build a system that delivers consistent, qualified prospects to your sales team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -625,14 +640,19 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-slate-900 dark:text-white border-slate-300 dark:border-slate-700">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
+              >
                 <Link href="mailto:hello@islahwebservice.com">
                   <Mail className="mr-2 h-4 w-4" />
                   Email Us
                 </Link>
               </Button>
             </div>
-            <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">Free consultation · No obligation · Sample data available</p>
+            <p className="mt-4 text-sm text-slate-400">Free consultation · No obligation · Sample data available</p>
           </SectionReveal>
         </div>
       </section>
