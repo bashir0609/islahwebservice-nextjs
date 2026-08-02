@@ -15,6 +15,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 export default function SaasIndustryPage() {
   const challenges = [
@@ -362,6 +363,29 @@ export default function SaasIndustryPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="950"
+        accent={{ chip: "bg-purple-500/15 text-purple-400", border: "hover:border-purple-500/40", text: "group-hover:text-purple-400" }}
+        guides={[
+          {
+            href: "/blog/how-to-build-b2b-prospect-lists",
+            title: "How to Build B2B Prospect Lists That Convert",
+            description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
+          },
+          {
+            href: "/blog/complete-guide-to-b2b-lead-generation",
+            title: "The Complete Guide to B2B Lead Generation",
+            description: "The full workflow — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+          },
+          {
+            href: "/blog/sales-prospecting-playbook",
+            title: "The B2B Sales Prospecting Playbook",
+            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+          },
+        ]}
+      />
     </main>
   );
 }

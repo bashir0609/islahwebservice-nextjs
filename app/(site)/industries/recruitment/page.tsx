@@ -14,6 +14,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 export default function RecruitmentIndustryPage() {
   const challenges = [
@@ -361,6 +362,29 @@ export default function RecruitmentIndustryPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="950"
+        accent={{ chip: "bg-orange-500/15 text-orange-400", border: "hover:border-orange-500/40", text: "group-hover:text-orange-400" }}
+        guides={[
+          {
+            href: "/blog/cold-email-for-b2b-lead-generation",
+            title: "Cold Email for B2B Lead Generation",
+            description: "From first send to first reply — subject lines, sequences, and follow-ups that earn meetings.",
+          },
+          {
+            href: "/blog/contact-enrichment-guide",
+            title: "Contact Enrichment: Complete and Verify B2B Data",
+            description: "Which data fields matter most, and how verification separates valid, risky, and invalid addresses.",
+          },
+          {
+            href: "/blog/how-to-build-a-clean-b2b-lead-list-for-cold-email",
+            title: "How to Build a Clean B2B Lead List for Cold Email",
+            description: "Verified emails, deduplicated records, and the right decision makers — built for deliverability and replies.",
+          },
+        ]}
+      />
     </main>
   );
 }

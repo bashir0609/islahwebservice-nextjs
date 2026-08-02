@@ -14,6 +14,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 export default function ProfessionalServicesIndustryPage() {
   const challenges = [
@@ -361,6 +362,29 @@ export default function ProfessionalServicesIndustryPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="950"
+        accent={{ chip: "bg-emerald-500/15 text-emerald-400", border: "hover:border-emerald-500/40", text: "group-hover:text-emerald-400" }}
+        guides={[
+          {
+            href: "/blog/linkedin-outreach-for-b2b-sales",
+            title: "LinkedIn Outreach for B2B Sales",
+            description: "Reaching partners and founders the right way — personalized at scale, without the spam.",
+          },
+          {
+            href: "/blog/sales-prospecting-playbook",
+            title: "The B2B Sales Prospecting Playbook",
+            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+          },
+          {
+            href: "/blog/how-to-build-b2b-prospect-lists",
+            title: "How to Build B2B Prospect Lists That Convert",
+            description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
+          },
+        ]}
+      />
     </main>
   );
 }

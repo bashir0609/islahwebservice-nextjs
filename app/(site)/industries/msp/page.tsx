@@ -14,6 +14,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 export default function MspIndustryPage() {
   const challenges = [
@@ -361,6 +362,28 @@ export default function MspIndustryPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="950"
+        guides={[
+          {
+            href: "/blog/msp-lead-generation-guide",
+            title: "MSP Lead Generation: Finding Businesses That Need IT",
+            description: "Spotting companies that need managed IT services and building verified prospect lists that book meetings.",
+          },
+          {
+            href: "/blog/complete-guide-to-b2b-lead-generation",
+            title: "The Complete Guide to B2B Lead Generation",
+            description: "The full workflow — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+          },
+          {
+            href: "/blog/how-to-extract-verified-leads-from-google-maps-ethically",
+            title: "How to Extract Verified Leads from Google Maps",
+            description: "Turn local business discovery into verified, CRM-ready leads for outreach — ethically and at scale.",
+          },
+        ]}
+      />
     </main>
   );
 }

@@ -5,6 +5,7 @@ import { ShieldCheck, TrendingUp, Users, Briefcase, ArrowRight, CheckCircle2 } f
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 const industries = [
   {
@@ -144,6 +145,28 @@ export default function IndustriesPage() {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="950"
+        guides={[
+          {
+            href: "/blog/complete-guide-to-b2b-lead-generation",
+            title: "The Complete Guide to B2B Lead Generation",
+            description: "The pillar guide — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+          },
+          {
+            href: "/blog/sales-prospecting-playbook",
+            title: "The B2B Sales Prospecting Playbook",
+            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+          },
+          {
+            href: "/blog/how-to-build-b2b-prospect-lists",
+            title: "How to Build B2B Prospect Lists That Convert",
+            description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">

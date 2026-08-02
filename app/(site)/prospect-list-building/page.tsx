@@ -17,6 +17,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 const faqs = [
   {
@@ -316,6 +317,29 @@ export default function ProspectListBuildingPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="900"
+        accent={{ chip: "bg-blue-500/15 text-blue-400", border: "hover:border-blue-500/40", text: "group-hover:text-blue-400" }}
+        guides={[
+          {
+            href: "/blog/how-to-build-b2b-prospect-lists",
+            title: "How to Build B2B Prospect Lists That Convert",
+            description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
+          },
+          {
+            href: "/blog/sales-prospecting-playbook",
+            title: "The B2B Sales Prospecting Playbook",
+            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+          },
+          {
+            href: "/blog/how-to-build-a-clean-b2b-lead-list-for-cold-email",
+            title: "How to Build a Clean B2B Lead List for Cold Email",
+            description: "Verified emails, deduplicated records, and the right decision makers — built for deliverability and replies.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">

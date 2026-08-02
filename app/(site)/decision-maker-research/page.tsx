@@ -17,6 +17,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 const faqs = [
   {
@@ -355,6 +356,29 @@ export default function DecisionMakerResearchPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="900"
+        accent={{ chip: "bg-orange-500/15 text-orange-400", border: "hover:border-orange-500/40", text: "group-hover:text-orange-400" }}
+        guides={[
+          {
+            href: "/blog/linkedin-outreach-for-b2b-sales",
+            title: "LinkedIn Outreach for B2B Sales",
+            description: "Finding the right decision makers, personalizing at scale, and getting replies instead of ignored requests.",
+          },
+          {
+            href: "/blog/sales-prospecting-playbook",
+            title: "The B2B Sales Prospecting Playbook",
+            description: "How to map the buying committee and identify the right person by name, title, and role.",
+          },
+          {
+            href: "/blog/complete-guide-to-b2b-lead-generation",
+            title: "The Complete Guide to B2B Lead Generation",
+            description: "The full workflow — from ICP definition to verified decision makers ready for outreach.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">

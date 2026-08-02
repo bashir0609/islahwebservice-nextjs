@@ -18,6 +18,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 const faqs = [
   {
@@ -352,6 +353,29 @@ export default function ContactEnrichmentPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="900"
+        accent={{ chip: "bg-purple-500/15 text-purple-400", border: "hover:border-purple-500/40", text: "group-hover:text-purple-400" }}
+        guides={[
+          {
+            href: "/blog/contact-enrichment-guide",
+            title: "Contact Enrichment: Complete and Verify B2B Data",
+            description: "Which data fields matter most, and how verification separates valid, risky, and invalid addresses.",
+          },
+          {
+            href: "/blog/what-is-b2b-data-enrichment-complete-guide-for-sales-teams",
+            title: "What Is B2B Data Enrichment? Complete Guide",
+            description: "How enrichment turns incomplete prospect lists into accurate, verified, CRM-ready data for outreach.",
+          },
+          {
+            href: "/blog/email-verification-guide",
+            title: "Email Verification: Cut Bounce Rates Before You Send",
+            description: "Why verification is non-negotiable for cold outreach and how clean lists protect your domain reputation.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">

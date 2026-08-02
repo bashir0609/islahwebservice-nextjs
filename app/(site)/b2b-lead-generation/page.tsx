@@ -17,6 +17,7 @@ import {
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RelatedGuides } from "@/components/site/related-guides";
 
 const faqs = [
   {
@@ -400,6 +401,28 @@ export default function B2BLeadGenerationPage() {
           </div>
         </div>
       </section>
+
+      {/* Related guides */}
+      <RelatedGuides
+        tone="900"
+        guides={[
+          {
+            href: "/blog/complete-guide-to-b2b-lead-generation",
+            title: "The Complete Guide to B2B Lead Generation",
+            description: "The pillar guide — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+          },
+          {
+            href: "/blog/sales-prospecting-playbook",
+            title: "The B2B Sales Prospecting Playbook",
+            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+          },
+          {
+            href: "/blog/what-is-b2b-lead-generation-a-2026-guide-for-growth-teams",
+            title: "What Is B2B Lead Generation? A 2026 Guide",
+            description: "The strategies, tools, and best practices growth teams use to generate qualified business leads in 2026.",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
