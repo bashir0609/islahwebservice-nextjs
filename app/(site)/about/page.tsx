@@ -40,14 +40,14 @@ export default function AboutPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+            <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-400">
                 <Building2 className="h-4 w-4" />
                 Since 2016 · B2B Growth Partner
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+            <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 The partner behind
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">
@@ -56,13 +56,13 @@ export default function AboutPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-10 mx-auto max-w-2xl">
+            <SectionReveal immediate delay={0.6} className="mb-10 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 We build AI-powered systems that automatically discover, verify, enrich, and qualify prospects—so your sales team spends time closing deals, not searching for contacts.
               </p>
             </SectionReveal>
 
-            <SectionReveal delay={0.8} className="flex flex-wrap items-center justify-center gap-4">
+            <SectionReveal immediate delay={0.8} className="flex flex-wrap items-center justify-center gap-4">
               {[
                 { icon: Award, value: "190+", label: "Projects delivered" },
                 { icon: TrendingUp, value: "3.5×", label: "Avg. conversion lift" },

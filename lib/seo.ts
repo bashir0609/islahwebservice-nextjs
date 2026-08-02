@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 export const SITE_NAME = "Islah Web Service";
 export const SITE_URL = "https://www.islahwebservice.com";
 export const SITE_DESCRIPTION =
-  "Build targeted B2B prospect lists with verified decision-maker contacts. We help sales teams generate qualified leads through research, enrichment, and AI-powered automation.";
-export const HOME_TITLE = "B2B Lead Generation Agency | Islah Web Service";
+  "Build targeted B2B prospect lists with verified decision-maker contacts. We help sales teams generate qualified leads through research and AI automation.";
+export const HOME_TITLE = "AI-Powered B2B Lead Generation Agency | Islah Web Service";
 
 /** Append the brand suffix to a page title. */
 export function withSiteName(title: string): string {

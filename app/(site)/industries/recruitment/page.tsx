@@ -134,14 +134,14 @@ export default function RecruitmentIndustryPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+            <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-sm text-orange-400">
                 <Users className="h-4 w-4" />
                 For Recruitment Firms
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
+            <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Recruitment Lead Generation
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-cyan-400">
@@ -150,15 +150,15 @@ export default function RecruitmentIndustryPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-8 mx-auto max-w-2xl">
+            <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 We deliver verified company and hiring-decision-maker data so recruiters spend more time placing talent and less time researching targets.
               </p>
             </SectionReveal>
 
-            <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+            <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/contact">
+                <Link href="/free-consultation">
                   Book a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -271,7 +271,7 @@ export default function RecruitmentIndustryPage() {
           <SectionReveal delay={0.2} className="mt-12">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="/contact">
+                <Link href="/free-consultation">
                   Get a Free Sample List
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

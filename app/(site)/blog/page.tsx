@@ -59,14 +59,14 @@ export default function BlogPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[45vh] max-w-4xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+            <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-400">
                 <Tag className="h-4 w-4" />
                 The Islah Journal
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-6">
+            <SectionReveal immediate delay={0.4} className="mb-6">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl">
                 Fresh insights for
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">
@@ -75,7 +75,7 @@ export default function BlogPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mx-auto max-w-2xl">
+            <SectionReveal immediate delay={0.6} className="mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
                 Discover expert insights, industry trends, and strategic guidance from our B2B intelligence team.
               </p>

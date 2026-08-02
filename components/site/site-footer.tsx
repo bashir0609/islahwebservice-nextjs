@@ -78,6 +78,7 @@ export default function SiteFooter() {
               <li><Link href="/about" className="transition-colors hover:text-cyan-400">About</Link></li>
               <li><Link href="/portfolio" className="transition-colors hover:text-cyan-400">Portfolio</Link></li>
               <li><Link href="/blog" className="transition-colors hover:text-cyan-400">Blog</Link></li>
+              <li><Link href="/free-consultation" className="transition-colors hover:text-cyan-400">Free Consultation</Link></li>
               <li><Link href="/contact" className="transition-colors hover:text-cyan-400">Contact</Link></li>
             </ul>
           </div>

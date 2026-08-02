@@ -88,6 +88,11 @@ const organizationJsonLd = {
       description:
         "AI-powered B2B lead generation agency for companies in the USA, UK, and Australia: prospect list building, contact enrichment, decision-maker research, and CRM-ready prospect databases for outbound sales campaigns.",
       areaServed: ["US", "GB", "AU"],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Sylhet",
+        addressCountry: "BD",
+      },
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "sales",

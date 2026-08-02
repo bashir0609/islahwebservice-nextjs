@@ -88,7 +88,7 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Copy */}
             <div className="text-center lg:text-left">
-              <SectionReveal delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
+              <SectionReveal immediate delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
                 <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-blue-400">
                   <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
@@ -98,7 +98,7 @@ export default function ServicesPage() {
                 </div>
               </SectionReveal>
 
-              <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+              <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
                   B2B Lead Generation
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400">
@@ -108,15 +108,15 @@ export default function ServicesPage() {
                 </h1>
               </SectionReveal>
 
-              <SectionReveal delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
+              <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
                   One system. Four services. Real results. From prospect discovery to verified, CRM-ready data—every service is built around one outcome: qualified opportunities for your sales team.
                 </p>
               </SectionReveal>
 
-              <SectionReveal delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
+              <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
-                  <Link href="/contact">
+                  <Link href="/free-consultation">
                     Get a Free Audit
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -131,7 +131,7 @@ export default function ServicesPage() {
                 </Button>
               </SectionReveal>
 
-              <SectionReveal delay={1} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400 lg:justify-start">
+              <SectionReveal immediate delay={1} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400 lg:justify-start">
                 <span className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                   Verified data
@@ -148,7 +148,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Product mockup visual */}
-            <SectionReveal delay={0.3}>
+            <SectionReveal immediate delay={0.3}>
               <HeroVisual />
             </SectionReveal>
           </div>

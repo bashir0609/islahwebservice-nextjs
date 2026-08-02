@@ -12,13 +12,25 @@ export function SectionReveal({
   children,
   delay = 0,
   className,
+  immediate = false,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
+  // Render fully visible from the first paint (no opacity:0 hidden state).
+  // Use for above-the-fold hero content: an opacity:0 start delays the LCP
+  // element until JS downloads + hydration + the reveal delay on slow
+  // connections, which is the classic FCP-fast / LCP-slow mismatch.
+  immediate?: boolean;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, margin: IN_VIEW_MARGIN });
+
+  // Hooks stay unconditional above; the plain wrapper keeps SSR/CSR identical
+  // and costs zero client work for content that must be visible instantly.
+  if (immediate) {
+    return <div className={className}>{children}</div>;
+  }
 
   // Reduced-motion users are handled globally by <MotionConfig reducedMotion="user">
   // in the site layout, so the initial state stays consistent server/client-side.

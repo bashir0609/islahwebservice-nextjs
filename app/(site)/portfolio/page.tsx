@@ -114,14 +114,14 @@ export default function PortfolioPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6">
+            <SectionReveal immediate delay={0.2} className="mb-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <MapPin className="h-4 w-4" />
                 Client Success Stories
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
+            <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
                 Our
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
@@ -130,7 +130,7 @@ export default function PortfolioPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-8 max-w-2xl mx-auto">
+            <SectionReveal immediate delay={0.6} className="mb-8 max-w-2xl mx-auto">
               <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
                 Explore how our B2B solutions drive real transformation for
                 businesses across the USA, UK, and Australia.

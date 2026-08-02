@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
-            <SectionReveal delay={0.2}>
+            <SectionReveal immediate delay={0.2}>
               <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Back to Blog
               </Link>
             </SectionReveal>
-            <SectionReveal delay={0.3} className="mb-8">
+            <SectionReveal immediate delay={0.3} className="mb-8">
               <div className="relative h-64 md:h-96 w-full rounded-3xl overflow-hidden mb-8 max-w-4xl mx-auto border border-white/10">
                 {post.coverImage ? (
                   <Image
@@ -161,12 +161,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 )}
               </div>
             </SectionReveal>
-            <SectionReveal delay={0.4}>
+            <SectionReveal immediate delay={0.4}>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
                 {post.title}
               </h1>
             </SectionReveal>
-            <SectionReveal delay={0.5}>
+            <SectionReveal immediate delay={0.5}>
               <div className="flex items-center justify-center gap-6 text-slate-400 mb-8">
                 <span className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />

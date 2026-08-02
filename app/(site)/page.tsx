@@ -25,7 +25,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Copy */}
             <div className="text-center lg:text-left">
-              <SectionReveal delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
+              <SectionReveal immediate delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
                 <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
                   <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
@@ -35,7 +35,7 @@ export default function HomePage() {
                 </div>
               </SectionReveal>
 
-              <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
+              <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
                   AI-Powered B2B
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
@@ -45,15 +45,15 @@ export default function HomePage() {
                 </h1>
               </SectionReveal>
 
-              <SectionReveal delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
+              <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
                   We help B2B companies identify their ideal customers, find verified decision-makers, enrich contact data, and build CRM-ready prospect lists that support successful outbound sales campaigns.
                 </p>
               </SectionReveal>
 
-              <SectionReveal delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
+              <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
-                  <Link href="/contact">
+                  <Link href="/free-consultation">
                     Book a Consultation
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -68,7 +68,7 @@ export default function HomePage() {
                 </Button>
               </SectionReveal>
 
-              <SectionReveal delay={1} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400 lg:justify-start">
+              <SectionReveal immediate delay={1} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400 lg:justify-start">
                 <div className="flex items-center gap-2">
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                   <span>190+ Completed Projects</span>
@@ -85,7 +85,7 @@ export default function HomePage() {
             </div>
 
             {/* Product mockup visual */}
-            <SectionReveal delay={0.3}>
+            <SectionReveal immediate delay={0.3}>
               <HeroVisual />
             </SectionReveal>
           </div>
@@ -313,7 +313,7 @@ export default function HomePage() {
                 </div>
                 <div className="mt-8 text-center">
                   <Button asChild size="lg" className="w-full sm:w-auto">
-                    <Link href="/contact">
+                    <Link href="/free-consultation">
                       Claim Your Free Audit
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
@@ -802,7 +802,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="/contact">
+                <Link href="/free-consultation">
                   Book a Free Strategy Call
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

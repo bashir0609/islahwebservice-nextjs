@@ -99,10 +99,11 @@ export default function ContactPage() {
   };
 
   const services = [
-    "AI Lead Generation System",
-    "Google Maps + Website Extraction",
-    "AI Analysis + ICP Filtering",
-    "Automated Outreach + Follow-Up",
+    "B2B Lead Generation",
+    "Prospect List Building",
+    "Contact Enrichment",
+    "Decision Maker Research & Contact Discovery",
+    "Not sure yet — recommend a solution",
   ];
 
   return (
@@ -117,7 +118,7 @@ export default function ContactPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-4xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-8 flex justify-center">
+            <SectionReveal immediate delay={0.2} className="mb-8 flex justify-center">
               <Link
                 href="/"
                 className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
@@ -127,7 +128,7 @@ export default function ContactPage() {
               </Link>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-6">
+            <SectionReveal immediate delay={0.4} className="mb-6">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Start Your B2B
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
@@ -136,14 +137,14 @@ export default function ContactPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-10 mx-auto max-w-2xl">
+            <SectionReveal immediate delay={0.6} className="mb-10 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 Ready to accelerate your business? Get in touch with our B2B
                 solutions experts today.
               </p>
             </SectionReveal>
 
-            <SectionReveal delay={0.8} className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+            <SectionReveal immediate delay={0.8} className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Button asChild size="lg">
                 <Link href="#contact-form">
                   Start the Conversation

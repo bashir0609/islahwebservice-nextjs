@@ -58,14 +58,14 @@ export default function IndustriesPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+            <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <Briefcase className="h-4 w-4" />
                 B2B Lead Generation by Industry
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
+            <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Prospect Lists Built
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-purple-400">
@@ -74,13 +74,13 @@ export default function IndustriesPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-8 mx-auto max-w-2xl">
+            <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 Every industry has its own decision-makers, buying signals, and data sources. We build verified prospect lists tuned to yours.
               </p>
             </SectionReveal>
 
-            <SectionReveal delay={0.8} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400">
+            <SectionReveal immediate delay={0.8} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400">
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                 Verified decision-maker contacts
@@ -159,7 +159,7 @@ export default function IndustriesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/contact">
+                <Link href="/free-consultation">
                   Book a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

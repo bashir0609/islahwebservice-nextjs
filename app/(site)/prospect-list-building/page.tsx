@@ -100,14 +100,14 @@ export default function ProspectListBuildingPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
-            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+            <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-400">
                 <Database className="h-4 w-4" />
                 Prospect List Building Service
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4} className="mb-8">
+            <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Targeted
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-purple-400">
@@ -117,15 +117,15 @@ export default function ProspectListBuildingPage() {
               </h1>
             </SectionReveal>
 
-            <SectionReveal delay={0.6} className="mb-8 mx-auto max-w-2xl">
+            <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
                 We research, filter, and qualify companies against your ideal customer profile—so you receive a database built for conversion, not just volume.
               </p>
             </SectionReveal>
 
-            <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+            <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/contact">
+                <Link href="/free-consultation">
                   Book a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -332,7 +332,7 @@ export default function ProspectListBuildingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/contact">
+                <Link href="/free-consultation">
                   Book a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
