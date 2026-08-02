@@ -128,13 +128,17 @@ export default function BlogPage() {
                   <StaggerItem key={post.id} className="group">
                     <Card className="overflow-hidden h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-500">
                       <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={post.coverImage || "/placeholder.svg"}
-                          alt={post.title}
-                          width={600}
-                          height={400}
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
+                        {post.coverImage ? (
+                          <Image
+                            src={post.coverImage}
+                            alt={post.title}
+                            width={600}
+                            height={400}
+                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/25 via-slate-900 to-teal-500/25 group-hover:scale-110 transition-transform duration-700" />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent" />
                       </div>
 

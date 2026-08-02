@@ -188,11 +188,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <SectionReveal className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-a:text-cyan-400 prose-strong:text-white prose-blockquote:border-cyan-500/40 prose-blockquote:text-slate-300 prose-code:text-cyan-300">
             <ReactMarkdown
               components={{
-                a: ({ href, children }) => (
-                  <a href={href} target="_blank" rel="noopener noreferrer">
-                    {children}
-                  </a>
-                ),
+                a: ({ href, children }) => {
+                  const isExternal =
+                    typeof href === "string" && /^https?:\/\//.test(href);
+                  return isExternal ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      {children}
+                    </a>
+                  ) : (
+                    <a href={href}>{children}</a>
+                  );
+                },
               }}
             >
               {post.content}
