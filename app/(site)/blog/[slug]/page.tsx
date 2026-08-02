@@ -49,7 +49,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const readTime = post.readTime || Math.max(1, Math.ceil(post.content.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim().split(/\s+/).filter(Boolean).length / 200));
+  const plainText = post.content.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim();
+  const wordCount = plainText.split(/\s+/).filter(Boolean).length;
+  const readTime = post.readTime || Math.max(1, Math.ceil(wordCount / 200));
   const date = post.createdAt ? formatDate(new Date(post.createdAt)) : "";
 
   return (
@@ -78,6 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             },
             publisher: {
               "@type": "Organization",
+              "@id": "https://www.islahwebservice.com/#organization",
               name: "Islah Web Service",
               url: "https://www.islahwebservice.com",
             },
@@ -85,6 +88,40 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               "@type": "WebPage",
               "@id": `https://www.islahwebservice.com/blog/${post.slug}`,
             },
+            ...(post.tags && post.tags.length > 0 ? { keywords: post.tags } : {}),
+            wordCount: wordCount || undefined,
+            timeRequired: readTime ? `PT${readTime}M` : undefined,
+          }),
+        }}
+      />
+
+      {/* Breadcrumbs structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.islahwebservice.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: "https://www.islahwebservice.com/blog",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: post.title,
+                item: `https://www.islahwebservice.com/blog/${post.slug}`,
+              },
+            ],
           }),
         }}
       />

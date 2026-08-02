@@ -70,6 +70,37 @@ export default function BusinessProcessAutomationPage() {
         }}
       />
 
+      {/* Breadcrumbs structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.islahwebservice.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://www.islahwebservice.com/services",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Automated Outreach + Follow-Up",
+                item: "https://www.islahwebservice.com/services/business-process-automation",
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-gradient-to-b from-orange-500/20 via-transparent to-transparent" />

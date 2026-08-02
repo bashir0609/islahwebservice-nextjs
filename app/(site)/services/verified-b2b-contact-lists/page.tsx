@@ -55,6 +55,37 @@ export default function VerifiedB2BContactListsPage() {
         }}
       />
 
+      {/* Breadcrumbs structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.islahwebservice.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://www.islahwebservice.com/services",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Google Maps + Website Extraction",
+                item: "https://www.islahwebservice.com/services/verified-b2b-contact-lists",
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 via-transparent to-transparent" />

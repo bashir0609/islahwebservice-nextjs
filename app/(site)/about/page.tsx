@@ -43,7 +43,7 @@ export default function AboutPage() {
             <SectionReveal delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-400">
                 <Building2 className="h-4 w-4" />
-                Since 2020 · B2B Growth Partner
+                Since 2016 · B2B Growth Partner
               </div>
             </SectionReveal>
 
@@ -92,7 +92,7 @@ export default function AboutPage() {
                 Our Story & Mission
               </h2>
               <p className="text-lg text-slate-400 mb-6 leading-relaxed">
-                Founded in 2020, Islah Web Service emerged from a simple
+                Founded in 2016, Islah Web Service emerged from a simple
                 observation: businesses were struggling to find reliable,
                 verified contacts in an increasingly digital world. Our
                 founders, experienced in both B2B sales and technology,
@@ -125,7 +125,7 @@ export default function AboutPage() {
                     <div className="text-center">
                       <Building2 className="h-20 w-20 text-cyan-400 mx-auto mb-4" />
                       <h3 className="text-2xl font-bold text-white mb-2">
-                        2020-2024
+                        2016-2026
                       </h3>
                       <p className="text-slate-400">
                         Years of Growth

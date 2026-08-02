@@ -46,6 +46,65 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
   return (
     <main className="flex flex-col">
+      {/* Case study structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: item.title,
+            description: item.description || undefined,
+            image: item.image || undefined,
+            url: `https://www.islahwebservice.com/portfolio/${item.id}`,
+            datePublished: item.createdAt
+              ? new Date(item.createdAt).toISOString()
+              : undefined,
+            dateModified: item.updatedAt
+              ? new Date(item.updatedAt).toISOString()
+              : undefined,
+            ...(tags.length > 0 ? { keywords: tags } : {}),
+            author: {
+              "@type": "Organization",
+              "@id": "https://www.islahwebservice.com/#organization",
+              name: "Islah Web Service",
+              url: "https://www.islahwebservice.com",
+            },
+          }),
+        }}
+      />
+
+      {/* Breadcrumbs structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.islahwebservice.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Portfolio",
+                item: "https://www.islahwebservice.com/portfolio",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: item.title,
+                item: `https://www.islahwebservice.com/portfolio/${item.id}`,
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />

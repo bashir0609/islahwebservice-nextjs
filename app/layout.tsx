@@ -54,14 +54,45 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  email: "mailto:hello@islahwebservice.com",
-  description:
-    "Professional B2B services for companies in the USA, UK, and Australia: verified contact lists, lead generation analysis, and business process automation.",
-  areaServed: ["US", "GB", "AU"],
-  sameAs: [],
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+      },
+      image: `${SITE_URL}/og-image.png`,
+      email: "mailto:hello@islahwebservice.com",
+      telephone: "+1-442-222-8258",
+      foundingDate: "2016",
+      description:
+        "Professional B2B services for companies in the USA, UK, and Australia: verified contact lists, lead generation analysis, and business process automation.",
+      areaServed: ["US", "GB", "AU"],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        telephone: "+1-442-222-8258",
+        email: "hello@islahwebservice.com",
+        areaServed: ["US", "GB", "AU"],
+        availableLanguage: ["English"],
+      },
+      sameAs: [],
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
