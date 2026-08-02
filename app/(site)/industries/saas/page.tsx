@@ -128,7 +128,7 @@ export default function SaasIndustryPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/services/lead-generation-analysis">See AI Qualification</Link>
+                <Link href="/contact-enrichment">See Contact Enrichment</Link>
               </Button>
             </SectionReveal>
           </div>

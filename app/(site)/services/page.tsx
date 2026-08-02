@@ -5,6 +5,7 @@ import {
   Globe2,
   Brain,
   Mail,
+  Users,
   Settings,
   ArrowRight,
   CheckCircle2,
@@ -20,42 +21,55 @@ import HeroVisual from "@/components/site/hero-visual";
 export default function ServicesPage() {
   const services = [
     {
-      slug: "verified-b2b-contact-lists",
-      title: "Google Maps + Website Extraction",
+      slug: "b2b-lead-generation",
+      title: "B2B Lead Generation",
       icon: Globe2,
       tint: "bg-blue-500/15 text-blue-400",
-      description: "We scrape Google Maps and company websites to discover real businesses in your target market—not generic databases or recycled lists. This is the foundation of our AI lead generation system.",
+      description: "AI-powered lead generation services that build targeted prospect databases with verified decision-makers and CRM-ready contact information for outbound campaigns.",
       features: [
-        "Google Maps lead extraction by location and category",
-        "Website data extraction for accurate contact details",
-        "ICP research and qualification against your ideal customer profile",
-        "Fresh, non-recycled data built specifically for your campaign"
+        "Target companies matched to your ideal customer profile",
+        "Verified decision-maker contacts by name and role",
+        "Multi-step email verification to protect deliverability",
+        "CRM-ready spreadsheet delivery"
       ]
     },
     {
-      slug: "lead-generation-analysis",
-      title: "AI Analysis + ICP Filtering",
+      slug: "prospect-list-building",
+      title: "Prospect List Building",
       icon: Brain,
       tint: "bg-purple-500/15 text-purple-400",
-      description: "Our AI analyzes each prospect, filters by your ideal customer profile, and ranks leads by conversion potential—so you only reach out to the best fits. This transforms raw data into qualified opportunities.",
+      description: "Researched, filtered, and qualified prospect databases built around your ICP—so you receive a list engineered for conversion, not just volume.",
       features: [
-        "AI-powered lead scoring & ranking",
-        "Behavioral pattern recognition",
-        "Real-time pipeline analytics",
-        "CRM integration support"
+        "ICP-first company research and selection",
+        "Multi-criteria filtering by industry, size, and location",
+        "Decision-maker-level contact data",
+        "Database quality: clean, deduplicated, CRM-ready"
       ]
     },
     {
-      slug: "business-process-automation",
-      title: "Automated Outreach + Follow-Up",
+      slug: "contact-enrichment",
+      title: "Contact Enrichment",
       icon: Mail,
       tint: "bg-orange-500/15 text-orange-400",
-      description: "Personalized cold email sequences, automated follow-ups, and CRM-ready workflows that turn leads into booked meetings on autopilot. This completes the system from discovery to conversion.",
+      description: "Complete your prospect records with verified emails, LinkedIn profiles, job titles, and company data—including email verification that protects your domain.",
       features: [
-        "Personalized cold email generation",
-        "Automated follow-up sequences",
-        "CRM-ready workflow automation",
-        "Reduces manual effort by up to 80%"
+        "Verified email addresses and LinkedIn URLs",
+        "Job titles and decision-maker identification",
+        "Company size, industry, and technology data",
+        "Valid / risky / invalid email classification"
+      ]
+    },
+    {
+      slug: "decision-maker-research",
+      title: "Decision Maker Research",
+      icon: Users,
+      tint: "bg-emerald-500/15 text-emerald-400",
+      description: "Identify the operations managers, IT directors, sales directors, owners, and marketing managers who actually buy—by name, role, and verified contact.",
+      features: [
+        "Role mapping against your ideal customer profile",
+        "Named decision-makers at each company",
+        "Verified business emails and LinkedIn profiles",
+        "Identity and role verification across sources"
       ]
     }
   ];
@@ -88,7 +102,7 @@ export default function ServicesPage() {
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
                   One system.
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400">
-                    Three services.
+                    Four services.
                   </span>
                   <span className="block text-white">Real results.</span>
                 </h1>
@@ -154,7 +168,7 @@ export default function ServicesPage() {
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <SectionReveal delay={index * 0.2} className="h-full" key={service.slug}>
                 <Card className="group relative overflow-hidden h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
@@ -164,7 +178,7 @@ export default function ServicesPage() {
                     </div>
                     <CardTitle className="text-2xl mb-4 text-white">
                       <Link
-                        href={`/services/${service.slug}`}
+                        href={`/${service.slug}`}
                         className="group-hover:text-cyan-400 transition-colors hover:underline"
                       >
                         {service.title}
@@ -186,7 +200,7 @@ export default function ServicesPage() {
                       ))}
                     </div>
                     <Link
-                      href={`/services/${service.slug}`}
+                      href={`/${service.slug}`}
                       className="inline-flex items-center text-cyan-400 font-medium hover:gap-2 transition-all mt-6"
                     >
                       Learn more

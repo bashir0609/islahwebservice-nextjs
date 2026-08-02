@@ -25,19 +25,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/services/verified-b2b-contact-lists`,
+      url: `${siteUrl}/b2b-lead-generation`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/services/lead-generation-analysis`,
+      url: `${siteUrl}/prospect-list-building`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/services/business-process-automation`,
+      url: `${siteUrl}/contact-enrichment`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/decision-maker-research`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,

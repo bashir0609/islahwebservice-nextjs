@@ -68,6 +68,22 @@ const nextConfig = {
         destination: "https://www.islahwebservice.com/robots.txt",
         permanent: true,
       },
+      // Volume 2: old service URLs now live at dedicated keyword pages.
+      {
+        source: "/services/verified-b2b-contact-lists",
+        destination: "/prospect-list-building",
+        permanent: true,
+      },
+      {
+        source: "/services/lead-generation-analysis",
+        destination: "/contact-enrichment",
+        permanent: true,
+      },
+      {
+        source: "/services/business-process-automation",
+        destination: "/b2b-lead-generation",
+        permanent: true,
+      },
     ];
   },
 };

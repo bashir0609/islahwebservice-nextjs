@@ -127,7 +127,7 @@ export default function RecruitmentIndustryPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/services/verified-b2b-contact-lists">See How Lists Are Built</Link>
+                <Link href="/prospect-list-building">See How Lists Are Built</Link>
               </Button>
             </SectionReveal>
           </div>

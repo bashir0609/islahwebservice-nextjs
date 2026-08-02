@@ -47,11 +47,10 @@ export default function SiteFooter() {
               Services
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
-              <li><Link href="/services" className="transition-colors hover:text-cyan-400">B2B Lead Generation</Link></li>
-              <li><Link href="/services/verified-b2b-contact-lists" className="transition-colors hover:text-cyan-400">Prospect List Building</Link></li>
-              <li><Link href="/services/lead-generation-analysis" className="transition-colors hover:text-cyan-400">Contact Enrichment</Link></li>
-              <li><Link href="/services/lead-generation-analysis" className="transition-colors hover:text-cyan-400">Decision Maker Research</Link></li>
-              <li><Link href="/services/verified-b2b-contact-lists" className="transition-colors hover:text-cyan-400">Email Verification</Link></li>
+              <li><Link href="/b2b-lead-generation" className="transition-colors hover:text-cyan-400">B2B Lead Generation</Link></li>
+              <li><Link href="/prospect-list-building" className="transition-colors hover:text-cyan-400">Prospect List Building</Link></li>
+              <li><Link href="/contact-enrichment" className="transition-colors hover:text-cyan-400">Contact Enrichment</Link></li>
+              <li><Link href="/decision-maker-research" className="transition-colors hover:text-cyan-400">Decision Maker Research</Link></li>
             </ul>
           </div>
 

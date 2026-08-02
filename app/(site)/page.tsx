@@ -208,7 +208,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <SectionReveal delay={0}>
-              <Link href="/services" className="group block h-full">
+              <Link href="/b2b-lead-generation" className="group block h-full">
                 <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <CardHeader>
                     <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -222,7 +222,7 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.1}>
-              <Link href="/services/verified-b2b-contact-lists" className="group block h-full">
+              <Link href="/prospect-list-building" className="group block h-full">
                 <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <CardHeader>
                     <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -236,7 +236,7 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.2}>
-              <Link href="/services/lead-generation-analysis" className="group block h-full">
+              <Link href="/contact-enrichment" className="group block h-full">
                 <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-orange-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <CardHeader>
                     <div className="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -250,7 +250,7 @@ export default function HomePage() {
             </SectionReveal>
 
             <SectionReveal delay={0.3}>
-              <Link href="/services/verified-b2b-contact-lists" className="group block h-full">
+              <Link href="/contact-enrichment" className="group block h-full">
                 <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <CardHeader>
                     <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
