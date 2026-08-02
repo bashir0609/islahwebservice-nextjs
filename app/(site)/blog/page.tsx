@@ -77,8 +77,31 @@ export default function BlogPage() {
 
             <SectionReveal immediate delay={0.6} className="mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                Discover expert insights, industry trends, and strategic guidance from our B2B intelligence team.
+                Practical, tested guidance on B2B prospecting, verified data, and
+                outbound campaigns — written by the team that builds prospect lists
+                and runs lead generation for sales teams every day.
               </p>
+            </SectionReveal>
+
+            <SectionReveal immediate delay={0.7} className="mt-8">
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  { href: "/b2b-lead-generation", label: "B2B Lead Generation" },
+                  { href: "/prospect-list-building", label: "Prospect Lists" },
+                  { href: "/contact-enrichment", label: "Contact Enrichment" },
+                  { href: "/industries/saas", label: "SaaS" },
+                  { href: "/industries/msp", label: "MSP" },
+                  { href: "/free-consultation", label: "Free Consultation" },
+                ].map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 backdrop-blur-sm transition-all hover:border-cyan-500/40 hover:bg-cyan-500/10 hover:text-cyan-300"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
             </SectionReveal>
           </div>
         </div>

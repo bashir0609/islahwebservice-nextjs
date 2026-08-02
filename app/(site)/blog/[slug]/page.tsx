@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { getBlogPostBySlug } from "@/lib/actions/blog";
 import { pageMetadata } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 import BlogShare from "@/components/blog-share";
+import { RelatedServices } from "@/components/site/related-services";
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -167,7 +168,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </h1>
             </SectionReveal>
             <SectionReveal immediate delay={0.5}>
-              <div className="flex items-center justify-center gap-6 text-slate-400 mb-8">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-slate-400 mb-8">
                 <span className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   {date}
@@ -176,6 +177,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <Clock className="h-4 w-4" />
                   {readTime} min read
                 </span>
+                {post.author && (
+                  <span className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    By {post.author}
+                  </span>
+                )}
               </div>
             </SectionReveal>
           </div>
@@ -212,14 +219,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Ready to Apply These Insights?
                 </h3>
                 <p className="text-slate-400 mb-6">
-                  Let's discuss how we can help you implement these
-                  strategies for your business.
+                  Book a free consultation and we&apos;ll map these strategies
+                  to your exact target accounts.
                 </p>
-                <Button
-                  asChild
-                  size="lg"
-                >
-                  <Link href="/contact">Get in Touch</Link>
+                <Button asChild size="lg">
+                  <Link href="/free-consultation">Get a Free Consultation</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -232,6 +236,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </SectionReveal>
         </div>
       </section>
+
+      {/* Reciprocal links back to the matching service and industry pages */}
+      <RelatedServices slug={post.slug} tone="900" />
     </main>
   );
 }

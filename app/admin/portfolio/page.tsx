@@ -254,6 +254,9 @@ export default function AdminPortfolioPage() {
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-800">
                   <th className="p-4 font-medium text-slate-500 dark:text-slate-400">
+                    Image
+                  </th>
+                  <th className="p-4 font-medium text-slate-500 dark:text-slate-400">
                     Title
                   </th>
                   <th className="p-4 font-medium text-slate-500 dark:text-slate-400">
@@ -270,6 +273,19 @@ export default function AdminPortfolioPage() {
                     key={item.id}
                     className="border-b border-slate-100 dark:border-slate-800 last:border-0"
                   >
+                    <td className="p-4">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="h-12 w-20 rounded-md border border-slate-200 dark:border-slate-700 object-cover"
+                        />
+                      ) : (
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300">
+                          No image
+                        </span>
+                      )}
+                    </td>
                     <td className="p-4">
                       <div>
                         <div className="font-medium text-slate-900 dark:text-white">

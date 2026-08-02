@@ -209,6 +209,7 @@ export default function PortfolioPage() {
                           src={project.image || "/placeholder.svg"}
                           alt={project.title}
                           fill
+                          unoptimized
                           className="object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent" />
@@ -247,7 +248,7 @@ export default function PortfolioPage() {
                           </div>
                         </div>
 
-                        {project.featured && (
+                        {project.featured === 1 && (
                           <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full border border-cyan-500/30">
                             <div className="w-2 h-2 bg-cyan-500 rounded-full" />
                             <span className="text-sm font-medium text-cyan-400">
