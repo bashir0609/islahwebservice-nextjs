@@ -1,9 +1,11 @@
 ---
 title: "CRM-Ready Prospect Database for a Staffing Firm"
+slug: crm-ready-prospect-database-staffing
 image: /portfolio/crm-ready-database.svg
 tags: "Recruitment, Prospect List Building, Decision Maker Research, UK"
 featured: false
 date: 2025-08-19
+results: [{"label":"Organizations researched","value":"1,100"},{"label":"CRM-ready","value":"24 hours"},{"label":"New placements","value":"6"}]
 ---
 
 A staffing firm expanding into engineering and technical placement needed a clean, CRM-ready prospect database they could load and use the same day.

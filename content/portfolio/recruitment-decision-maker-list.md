@@ -1,9 +1,11 @@
 ---
 title: "Decision-Maker List for a Recruitment Staffing Agency"
+slug: recruitment-decision-maker-list
 image: /portfolio/recruitment-decision-makers.svg
 tags: "Recruitment, Decision Maker Research, Prospect List Building, UK"
 featured: false
 date: 2026-03-22
+results: [{"label":"Reply rate","value":"24%"},{"label":"Contacts delivered","value":"3,200"},{"label":"Contract roles placed","value":"8"}]
 ---
 
 A UK recruitment agency expanding into contract IT staffing needed direct access to hiring decision makers at enterprise organizations — not generic HR inboxes.

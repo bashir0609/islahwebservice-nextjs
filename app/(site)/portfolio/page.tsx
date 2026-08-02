@@ -265,7 +265,7 @@ export default function PortfolioPage() {
                           className="w-full border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-cyan-500/40 transition-all"
                         >
                           <Link
-                            href={`/portfolio/${project.id}`}
+                            href={`/portfolio/${project.slug || project.id}`}
                             className="flex items-center justify-center gap-2"
                           >
                             View Case Study

@@ -34,6 +34,15 @@ function loadEnvFile(file) {
 }
 loadEnvFile(path.join(root, ".env.local"));
 
+function slugify(text) {
+  return (text || "")
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function parseFrontMatter(md) {
   const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!m) throw new Error("Missing front matter block");
@@ -43,13 +52,36 @@ function parseFrontMatter(md) {
     const line = fm.split("\n").find((l) => l.startsWith(`${key}:`));
     return line ? line.slice(key.length + 1).trim().replace(/^"|"$/g, "") : undefined;
   };
+  // results is a JSON array in front matter, e.g.
+  // results: [{"label":"Reply rate","value":"32%"},...]
+  const title = field("title");
+  let results = [];
+  const rawResults = field("results");
+  if (rawResults) {
+    try {
+      const parsed = JSON.parse(rawResults);
+      if (Array.isArray(parsed)) {
+        results = parsed.filter(
+          (r) => r && typeof r.label === "string" && typeof r.value === "string"
+        );
+      }
+    } catch {
+      console.warn(`WARN: invalid results JSON in "${title}"`);
+    }
+  }
+
+  const rawSlug = field("slug");
+  const slug = slugify(rawSlug || title || "");
+
   return {
-    title: field("title"),
+    title,
+    slug,
     image: field("image") || null,
     tags: (field("tags") || "")
       .split(",")
       .map((t) => t.trim())
       .filter(Boolean),
+    results,
     featured: field("featured")?.toLowerCase() === "true" ? 1 : 0,
     date: field("date") ? new Date(field("date")) : new Date(),
     description: body,
@@ -70,63 +102,88 @@ async function main() {
     .filter((f) => f.endsWith(".md"))
     .sort();
 
-  // Guard against silent row-merging: portfolio_items has no slug column, so
-  // the title is the upsert key. Duplicate titles across files would collide.
-  const seen = new Set();
+  // Guard against silent row-merging: slugs (and titles) must be unique across files.
+  const seenTitles = new Set();
+  const seenSlugs = new Set();
   for (const file of files) {
-    const title = parseFrontMatter(fs.readFileSync(path.join(contentDir, file), "utf8")).title;
-    if (!title) continue;
-    if (seen.has(title)) {
+    const { title, slug } = parseFrontMatter(
+      fs.readFileSync(path.join(contentDir, file), "utf8")
+    );
+    if (!title || !slug) continue;
+    if (seenTitles.has(title)) {
       console.error(`DUPLICATE TITLE "${title}" in ${file} — aborting`);
       await client.end();
       process.exit(1);
     }
-    seen.add(title);
+    if (seenSlugs.has(slug)) {
+      console.error(`DUPLICATE SLUG "${slug}" in ${file} — aborting`);
+      await client.end();
+      process.exit(1);
+    }
+    seenTitles.add(title);
+    seenSlugs.add(slug);
   }
 
   for (const file of files) {
     const md = fs.readFileSync(path.join(contentDir, file), "utf8");
     const item = parseFrontMatter(md);
-    if (!item.title) {
-      console.error(`SKIP ${file}: missing title in front matter`);
+    if (!item.title || !item.slug) {
+      console.error(`SKIP ${file}: missing title/slug in front matter`);
       continue;
     }
+
+    // Prefer matching by slug; fall back to title for legacy rows created before
+    // slugs existed (their slug column is NULL).
     const existing = await client.query(
-      "SELECT id FROM portfolio_items WHERE title = $1",
-      [item.title]
+      "SELECT id FROM portfolio_items WHERE slug = $1 OR (slug IS NULL AND title = $2)",
+      [item.slug, item.title]
     );
 
     if (existing.rowCount > 0) {
       await client.query(
         `UPDATE portfolio_items
-         SET description=$1, image=$2, tags=$3, featured=$4, updated_at=now()
-         WHERE title=$5`,
+         SET title=$1, slug=$2, description=$3, image=$4, tags=$5, results=$6, featured=$7, updated_at=now()
+         WHERE id=$8`,
         [
+          item.title,
+          item.slug,
           item.description,
           item.image,
           JSON.stringify(item.tags),
+          JSON.stringify(item.results),
           item.featured,
-          item.title,
+          existing.rows[0].id,
         ]
       );
-      console.log(`UPDATED  ${item.title}`);
+      console.log(`UPDATED  ${item.title} → /portfolio/${item.slug}`);
     } else {
       await client.query(
         `INSERT INTO portfolio_items
-         (id, title, description, image, tags, featured, created_at, updated_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7, now())`,
+         (id, title, slug, description, image, tags, results, featured, created_at, updated_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9, now())`,
         [
           crypto.randomUUID(),
           item.title,
+          item.slug,
           item.description,
           item.image,
           JSON.stringify(item.tags),
+          JSON.stringify(item.results),
           item.featured,
           item.date,
         ]
       );
-      console.log(`INSERTED ${item.title}`);
+      console.log(`INSERTED ${item.title} → /portfolio/${item.slug}`);
     }
+  }
+
+  // Clean up any legacy rows that never received a slug (e.g. pre-slug items whose
+  // titles no longer match a content file). Every live case study must have a URL.
+  const cleaned = await client.query(
+    "DELETE FROM portfolio_items WHERE slug IS NULL OR slug = ''"
+  );
+  if (cleaned.rowCount > 0) {
+    console.log(`CLEANED ${cleaned.rowCount} legacy row(s) without a slug`);
   }
 
   await client.end();

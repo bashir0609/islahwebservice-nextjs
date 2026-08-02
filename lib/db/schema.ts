@@ -10,9 +10,13 @@ export const siteSettings = pgTable("site_settings", {
 export const portfolioItems = pgTable("portfolio_items", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
   description: text("description").notNull(),
   image: text("image"),
   tags: jsonb("tags").notNull().default("[]").$type<string[]>(),
+  // Measurable outcomes shown on the case-study page and in structured data,
+  // e.g. [{ label: "Reply rate", value: "32%" }, ...]
+  results: jsonb("results").notNull().default("[]").$type<PortfolioResult[]>(),
   featured: integer("featured").notNull().default(0),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
@@ -60,6 +64,11 @@ export const blogPostsRelations = relations(blogPosts, ({ many }) => ({
 
 export type Setting = typeof siteSettings.$inferSelect;
 export type NewSetting = typeof siteSettings.$inferInsert;
+export type PortfolioResult = {
+  label: string;
+  value: string;
+};
+
 export type PortfolioItem = typeof portfolioItems.$inferSelect;
 export type NewPortfolioItem = typeof portfolioItems.$inferInsert;
 export type BlogPost = typeof blogPosts.$inferSelect;

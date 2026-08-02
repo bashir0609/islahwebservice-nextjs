@@ -16,20 +16,36 @@ export async function getPortfolioItem(id: string) {
   return item ?? null;
 }
 
-export async function createPortfolioItem(data: Omit<NewPortfolioItem, "id">) {
+export async function getPortfolioItemBySlug(slug: string) {
+  const [item] = await db.select().from(portfolioItems).where(eq(portfolioItems.slug, slug));
+  return item ?? null;
+}
+
+export async function createPortfolioItem(data: Omit<NewPortfolioItem, "id" | "slug">) {
   await requireAdmin();
   const id = crypto.randomUUID();
-  await db.insert(portfolioItems).values({ id, ...data });
+  // URL matches the title: always derive the slug from the title.
+  const slug = generateSlug(data.title);
+  await db.insert(portfolioItems).values({ id, slug, ...data });
   revalidatePath("/admin/portfolio");
-  revalidatePath("/portfolio");
+  revalidatePath("/portfolio", "layout");
   return id;
 }
 
-export async function updatePortfolioItem(id: string, data: Partial<NewPortfolioItem>) {
+export async function updatePortfolioItem(
+  id: string,
+  data: Omit<Partial<NewPortfolioItem>, "slug"> & { slug?: string }
+) {
   await requireAdmin();
-  await db.update(portfolioItems).set({ ...data, updatedAt: new Date() }).where(eq(portfolioItems.id, id));
+  // Keep the URL matching the title: regenerate the slug on title changes
+  // unless an explicit slug was provided.
+  const patch = { ...data };
+  if (data.title && !data.slug) {
+    patch.slug = generateSlug(data.title);
+  }
+  await db.update(portfolioItems).set({ ...patch, updatedAt: new Date() }).where(eq(portfolioItems.id, id));
   revalidatePath("/admin/portfolio");
-  revalidatePath("/portfolio");
+  revalidatePath("/portfolio", "layout");
 }
 
 export async function deletePortfolioItem(id: string) {

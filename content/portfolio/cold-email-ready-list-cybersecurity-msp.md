@@ -1,9 +1,11 @@
 ---
 title: "Cold Email-Ready List for a US Cybersecurity MSP"
+slug: cold-email-ready-list-cybersecurity-msp
 image: /portfolio/cold-email-ready-list.svg
 tags: "MSP, Prospect List Building, Cold Email, USA"
 featured: false
 date: 2026-01-30
+results: [{"label":"Deliverability","value":"98.2%"},{"label":"Positive reply rate","value":"4.1%"},{"label":"Discovery calls booked","value":"19"}]
 ---
 
 A US cybersecurity MSP wanted to launch cold email outreach to mid-market manufacturing and healthcare companies — segments with strict compliance needs.

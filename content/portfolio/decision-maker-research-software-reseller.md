@@ -1,9 +1,11 @@
 ---
 title: "Decision Maker Research for an ERP Software Reseller"
+slug: decision-maker-research-software-reseller
 image: /portfolio/decision-maker-research.svg
 tags: "Decision Maker Research, B2B Lead Generation, USA"
 featured: false
 date: 2025-12-05
+results: [{"label":"Accounts mapped","value":"620"},{"label":"Meetings per month","value":"34"},{"label":"Six-figure deals","value":"4"}]
 ---
 
 An ERP reseller targeting mid-market manufacturers needed to bypass gatekeepers and reach the exact executives who control system-buying decisions.

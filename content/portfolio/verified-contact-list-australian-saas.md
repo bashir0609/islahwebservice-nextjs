@@ -1,9 +1,11 @@
 ---
 title: "Verified B2B Contact List for an Australian SaaS Company"
+slug: verified-contact-list-australian-saas
 image: /portfolio/verified-contact-list-au.svg
 tags: "SaaS, Prospect List Building, Australia, Contact Enrichment"
 featured: false
 date: 2025-10-17
+results: [{"label":"Accounts delivered","value":"1,600"},{"label":"Bounce rate","value":"<2%"},{"label":"Reply rate","value":"19%"}]
 ---
 
 An Australian SaaS company expanding into local mid-market accounts had no structured prospect database and was buying unverified lead lists that bounced.

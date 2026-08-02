@@ -1,9 +1,11 @@
 ---
 title: "Contact Enrichment for a Professional Services Consultancy"
+slug: professional-services-contact-enrichment
 image: /portfolio/professional-services-enrichment.svg
 tags: "Professional Services, Contact Enrichment, USA"
 featured: false
 date: 2026-02-14
+results: [{"label":"Records enriched","value":"40,000"},{"label":"Deliverability","value":"96%"},{"label":"Reply lift","value":"3.4×"}]
 ---
 
 A US professional services consultancy had a 40,000-row legacy CRM full of outdated contacts and missing decision-maker data.

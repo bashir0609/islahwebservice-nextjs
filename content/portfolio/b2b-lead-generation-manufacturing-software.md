@@ -1,9 +1,11 @@
 ---
 title: "B2B Lead Generation for a Manufacturing Software Vendor"
+slug: b2b-lead-generation-manufacturing-software
 image: /portfolio/manufacturing-software-leads.svg
 tags: "B2B Lead Generation, Prospect List Building, USA, Contact Enrichment"
 featured: true
 date: 2025-09-25
+results: [{"label":"Contacts delivered","value":"4,300"},{"label":"Logo deals closed","value":"3"},{"label":"Accounts targeted","value":"2,050"}]
 ---
 
 A US manufacturing software vendor needed a repeatable way to identify plants and production facilities that fit their automation product's adoption criteria.

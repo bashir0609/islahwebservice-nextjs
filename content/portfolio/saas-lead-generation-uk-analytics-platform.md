@@ -1,9 +1,11 @@
 ---
 title: "SaaS Lead Generation for a UK Analytics Platform"
+slug: saas-lead-generation-uk-analytics-platform
 image: /portfolio/saas-lead-generation.svg
 tags: "SaaS, B2B Lead Generation, UK, Decision Maker Research"
 featured: true
 date: 2026-04-18
+results: [{"label":"Meeting-show rate","value":"41%"},{"label":"Contacts delivered","value":"4,100"},{"label":"Pipeline opportunities","value":"12"}]
 ---
 
 A UK-based business intelligence SaaS company was struggling to fill the top of their funnel with buyers who fit their product-led growth model.

@@ -1,37 +1,63 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Building2, Calendar, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { getPortfolioItem } from "@/lib/actions/portfolio";
+import {
+  getPortfolioItem,
+  getPortfolioItemBySlug,
+  listPortfolioItems,
+} from "@/lib/actions/portfolio";
 import { pageMetadata } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
 interface PortfolioDetailPageProps {
-  params: { id: string };
+  params: { slug: string };
+}
+
+// Legacy pre-slug URLs were UUID-based (/portfolio/{uuid}). Permanently redirect
+// those to the new slug URL so old links, backlinks, and indexed URLs keep working.
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+async function resolveItem(slugOrId: string) {
+  const item = await getPortfolioItemBySlug(slugOrId);
+  if (item) return item;
+  if (UUID_RE.test(slugOrId)) {
+    const legacy = await getPortfolioItem(slugOrId);
+    if (legacy) {
+      // 308 permanent redirect so old UUID links/backlinks keep working.
+      permanentRedirect(`/portfolio/${legacy.slug}`);
+    }
+  }
+  return null;
+}
+
+export async function generateStaticParams() {
+  const items = await listPortfolioItems();
+  return items.map((item) => ({ slug: item.slug || item.id }));
 }
 
 export async function generateMetadata({
   params,
 }: PortfolioDetailPageProps): Promise<Metadata> {
-  const { id } = await params;
-  const item = await getPortfolioItem(id);
+  const { slug } = await params;
+  const item = await resolveItem(slug);
   if (!item) return {};
 
   return pageMetadata({
     title: item.title,
     description: item.description || undefined,
-    path: `/portfolio/${item.id}`,
+    path: `/portfolio/${item.slug}`,
     image: item.image || undefined,
     ogType: "article",
   });
 }
 
 export default async function PortfolioDetailPage({ params }: PortfolioDetailPageProps) {
-  const { id } = await params;
-  const item = await getPortfolioItem(id);
+  const { slug } = await params;
+  const item = await resolveItem(slug);
 
   if (!item) {
     notFound();
@@ -43,6 +69,20 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   } catch {
     tags = [];
   }
+
+  let results: { label: string; value: string }[] = [];
+  try {
+    const parsed = typeof item.results === "string" ? JSON.parse(item.results) : item.results;
+    results = Array.isArray(parsed)
+      ? parsed.filter(
+          (r) => r && typeof r.label === "string" && typeof r.value === "string"
+        )
+      : [];
+  } catch {
+    results = [];
+  }
+
+  const canonicalUrl = `https://www.islahwebservice.com/portfolio/${item.slug}`;
 
   return (
     <main className="flex flex-col">
@@ -56,7 +96,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
             name: item.title,
             description: item.description || undefined,
             image: item.image || undefined,
-            url: `https://www.islahwebservice.com/portfolio/${item.id}`,
+            url: canonicalUrl,
             datePublished: item.createdAt
               ? new Date(item.createdAt).toISOString()
               : undefined,
@@ -64,6 +104,15 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
               ? new Date(item.updatedAt).toISOString()
               : undefined,
             ...(tags.length > 0 ? { keywords: tags } : {}),
+            ...(results.length > 0
+              ? {
+                  additionalProperty: results.map((r) => ({
+                    "@type": "PropertyValue",
+                    name: r.label,
+                    value: r.value,
+                  })),
+                }
+              : {}),
             author: {
               "@type": "Organization",
               "@id": "https://www.islahwebservice.com/#organization",
@@ -98,7 +147,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                 "@type": "ListItem",
                 position: 3,
                 name: item.title,
-                item: `https://www.islahwebservice.com/portfolio/${item.id}`,
+                item: canonicalUrl,
               },
             ],
           }),
@@ -178,6 +227,29 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
               {item.description}
             </p>
           </div>
+
+          {results.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Results
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {results.map((result) => (
+                  <div
+                    key={result.label}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/40 hover:bg-white/[0.08]"
+                  >
+                    <div className="text-3xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                      {result.value}
+                    </div>
+                    <div className="mt-2 text-sm text-slate-400">
+                      {result.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {item.featured === 1 && (
             <div className="mt-8 inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full border border-cyan-500/30">
