@@ -38,8 +38,7 @@ export default function SiteFooter() {
               />
             </Link>
             <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs">
-              Professional B2B services: Verified Contact Lists, Lead Generation
-              Analysis, and Business Process Automation.
+              Islah Web Service helps B2B companies build targeted prospect lists, enrich contact data, and deliver CRM-ready sales databases for outbound campaigns.
             </p>
           </div>
 
@@ -48,9 +47,23 @@ export default function SiteFooter() {
               Services
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
-              <li><Link href="/services/verified-b2b-contact-lists" className="transition-colors hover:text-cyan-400">Verified B2B Contact Lists</Link></li>
-              <li><Link href="/services/lead-generation-analysis" className="transition-colors hover:text-cyan-400">Lead Generation Analysis</Link></li>
-              <li><Link href="/services/business-process-automation" className="transition-colors hover:text-cyan-400">Business Process Automation</Link></li>
+              <li><Link href="/services" className="transition-colors hover:text-cyan-400">B2B Lead Generation</Link></li>
+              <li><Link href="/services/verified-b2b-contact-lists" className="transition-colors hover:text-cyan-400">Prospect List Building</Link></li>
+              <li><Link href="/services/lead-generation-analysis" className="transition-colors hover:text-cyan-400">Contact Enrichment</Link></li>
+              <li><Link href="/services/lead-generation-analysis" className="transition-colors hover:text-cyan-400">Decision Maker Research</Link></li>
+              <li><Link href="/services/verified-b2b-contact-lists" className="transition-colors hover:text-cyan-400">Email Verification</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-white">
+              Industries
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
+              <li><Link href="/industries/msp" className="transition-colors hover:text-cyan-400">Managed Service Providers</Link></li>
+              <li><Link href="/industries/saas" className="transition-colors hover:text-cyan-400">SaaS Companies</Link></li>
+              <li><Link href="/industries/recruitment" className="transition-colors hover:text-cyan-400">Recruitment Firms</Link></li>
+              <li><Link href="/industries/professional-services" className="transition-colors hover:text-cyan-400">Professional Services</Link></li>
             </ul>
           </div>
 

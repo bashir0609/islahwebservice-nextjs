@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight } from "lucide-react";
+import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight, Target } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -37,23 +37,24 @@ export default function HomePage() {
 
               <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  Qualified B2B Leads,
+                  AI-Powered B2B
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                    Delivered Every Week.
+                    Lead Generation
                   </span>
+                  <span className="block text-white">for Sales Teams</span>
                 </h1>
               </SectionReveal>
 
               <SectionReveal delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  We build automated systems that find, verify, enrich, and prepare sales-ready leads—so your sales team spends time closing deals, not searching for prospects.
+                  We help B2B companies identify their ideal customers, find verified decision-makers, enrich contact data, and build CRM-ready prospect lists that support successful outbound sales campaigns.
                 </p>
               </SectionReveal>
 
               <SectionReveal delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
                   <Link href="/contact">
-                    Book a Free Strategy Call
+                    Book a Consultation
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -63,7 +64,7 @@ export default function HomePage() {
                   variant="outline"
                   className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
                 >
-                  <Link href="#process">See Our Process</Link>
+                  <Link href="#process">View Our Process</Link>
                 </Button>
               </SectionReveal>
 
@@ -127,6 +128,70 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Who We Help */}
+      <section className="relative overflow-hidden bg-slate-950 border-b border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(34,211,238,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Who We Help
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              We build prospect pipelines for B2B teams that sell to other businesses—across the industries where targeted outreach matters most.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {[
+              {
+                href: "/industries/msp",
+                icon: ShieldCheck,
+                title: "Managed Service Providers",
+                desc: "Target businesses that need outsourced IT and managed services.",
+              },
+              {
+                href: "/industries/saas",
+                icon: TrendingUp,
+                title: "SaaS Companies",
+                desc: "Find companies ready for your software, platform, and tools.",
+              },
+              {
+                href: "/industries/recruitment",
+                icon: Users,
+                title: "Recruitment Firms",
+                desc: "Reach hiring decision-makers for staffing and recruitment solutions.",
+              },
+              {
+                href: "/industries/professional-services",
+                icon: Globe2,
+                title: "Professional Services",
+                desc: "Connect with consultancies, agencies, and advisory firms.",
+              },
+              {
+                href: "/services",
+                icon: Target,
+                title: "B2B Sales Teams",
+                desc: "Give your own team a repeatable flow of verified prospects.",
+              },
+            ].map((item, index) => (
+              <SectionReveal key={item.title} delay={index * 0.1} className="h-full">
+                <Link href={item.href} className="group block h-full">
+                  <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                    <CardHeader>
+                      <div className="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <item.icon className="h-6 w-6 text-cyan-400" />
+                      </div>
+                      <CardTitle className="text-lg text-white leading-snug">{item.title}</CardTitle>
+                      <CardDescription className="text-sm text-slate-400 leading-relaxed">{item.desc}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Overview */}
       <section className="relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.10),transparent_55%)]" />
@@ -134,48 +199,68 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              One Complete Lead Generation System
+              B2B Lead Generation Services
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Stop buying disconnected lists. Our end-to-end system finds the right companies, enriches contacts, qualifies prospects, and prepares outreach-ready leads for your sales team.
+              From prospect discovery to verified, CRM-ready data—every service is built around one outcome: qualified opportunities for your sales team.
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <SectionReveal delay={0}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4">
-                    <Globe2 className="h-6 w-6 text-blue-400" />
-                  </div>
-                  <CardTitle className="text-white">Find & Extract</CardTitle>
-                  <CardDescription className="text-slate-400">Discover real businesses from Google Maps and company websites—not generic databases.</CardDescription>
-                </CardHeader>
-              </Card>
+              <Link href="/services" className="group block h-full">
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Globe2 className="h-6 w-6 text-blue-400" />
+                    </div>
+                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">B2B Lead Generation</CardTitle>
+                    <CardDescription className="text-slate-400">Identify companies matching your ideal customer profile.</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
             </SectionReveal>
 
             <SectionReveal delay={0.1}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] transition-all duration-300">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4">
-                    <TrendingUp className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <CardTitle className="text-white">AI Qualification</CardTitle>
-                  <CardDescription className="text-slate-400">Analyze prospects, filter by your ICP, and rank leads by conversion potential.</CardDescription>
-                </CardHeader>
-              </Card>
+              <Link href="/services/verified-b2b-contact-lists" className="group block h-full">
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <TrendingUp className="h-6 w-6 text-purple-400" />
+                    </div>
+                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">Prospect List Building</CardTitle>
+                    <CardDescription className="text-slate-400">Build targeted prospect databases for outbound campaigns.</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
             </SectionReveal>
 
             <SectionReveal delay={0.2}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-orange-500/40 hover:bg-white/[0.08] transition-all duration-300">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4">
-                    <Wrench className="h-6 w-6 text-orange-400" />
-                  </div>
-                  <CardTitle className="text-white">Outreach & Automation</CardTitle>
-                  <CardDescription className="text-slate-400">Deploy personalized email sequences, follow-ups, and CRM-ready workflows.</CardDescription>
-                </CardHeader>
-              </Card>
+              <Link href="/services/lead-generation-analysis" className="group block h-full">
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-orange-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Wrench className="h-6 w-6 text-orange-400" />
+                    </div>
+                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">Contact Enrichment</CardTitle>
+                    <CardDescription className="text-slate-400">Find verified decision-makers and complete company data.</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
+            </SectionReveal>
+
+            <SectionReveal delay={0.3}>
+              <Link href="/services/verified-b2b-contact-lists" className="group block h-full">
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Mail className="h-6 w-6 text-emerald-400" />
+                    </div>
+                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">Email Verification</CardTitle>
+                    <CardDescription className="text-slate-400">Reduce bounce rates with validated business email addresses.</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
             </SectionReveal>
           </div>
 
@@ -322,22 +407,20 @@ export default function HomePage() {
           <div className="relative">
             {/* Connector line behind steps on desktop */}
             <div className="absolute left-0 right-0 top-1/2 hidden -translate-y-1/2 border-t-2 border-dashed border-cyan-500/30 lg:block" />
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-7 lg:gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-4">
               {[
-                { step: "01", title: "Target Market", desc: "Define your ideal customer profile and target industries." },
-                { step: "02", title: "Google Maps", desc: "Discover real businesses in your target locations." },
-                { step: "03", title: "Website Analysis", desc: "Extract contact data from company websites." },
-                { step: "04", title: "AI Qualification", desc: "Filter leads by conversion potential and fit." },
-                { step: "05", title: "Contact Enrichment", desc: "Validate emails, phone numbers, and decision-makers." },
-                { step: "06", title: "Personalized Outreach", desc: "Create custom cold email sequences per prospect." },
-                { step: "07", title: "CRM Delivery", desc: "Sync everything into your CRM and outreach stack." },
+                { step: "01", title: "Define Your ICP", desc: "Lock in your ideal customer profile, target industries, and company size." },
+                { step: "02", title: "Research Target Companies", desc: "Find companies that match your ICP across your target markets." },
+                { step: "03", title: "Identify Decision Makers", desc: "Locate the right people—by name, title, and role." },
+                { step: "04", title: "Verify Contact Data", desc: "Validate emails and phone numbers to keep bounce rates low." },
+                { step: "05", title: "Deliver CRM-Ready Prospect Lists", desc: "Hand off clean, verified lists ready for your CRM and outreach stack." },
               ].map((item, index) => (
                 <SectionReveal key={item.step} delay={index * 0.08} className="md:last:col-start-2 lg:col-start-auto">
                   <div className="relative rounded-2xl border border-white/10 bg-slate-900/80 p-4 md:p-6 text-center h-full backdrop-blur-sm">
                     <div className="text-cyan-400 text-xs font-semibold mb-2">STEP {item.step}</div>
                     <div className="text-sm font-semibold text-white mb-1">{item.title}</div>
                     <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
-                    {item.step !== "07" && (
+                    {item.step !== "05" && (
                       <ChevronRight className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-cyan-600 text-white shadow-md lg:block" aria-hidden="true" />
                     )}
                   </div>
@@ -560,6 +643,30 @@ export default function HomePage() {
                   text: "Most projects deliver initial verified contact lists within 5–10 business days, depending on target industry, geography, and list size.",
                 },
               },
+              {
+                "@type": "Question",
+                name: "What is B2B lead generation?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "B2B lead generation is the process of identifying and qualifying companies and decision-makers that match your ideal customer profile, so your sales team can focus on prospects most likely to buy.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which industries do you specialize in?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We primarily build prospect pipelines for Managed Service Providers (MSPs), SaaS companies, recruitment firms, and B2B professional services—though our process works for any B2B market.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What information is included in a prospect list?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Each prospect list includes company name, website, industry, location, verified business email, and decision-maker contact details—formatted and ready for your CRM or cold email tool.",
+                },
+              },
             ],
           }),
         }}
@@ -599,6 +706,18 @@ export default function HomePage() {
               {
                 q: "How long does it take to build a verified lead list?",
                 a: "Most projects deliver initial verified contact lists within 5–10 business days, depending on target industry, geography, and list size.",
+              },
+              {
+                q: "What is B2B lead generation?",
+                a: "B2B lead generation is the process of identifying and qualifying companies and decision-makers that match your ideal customer profile, so your sales team can focus on prospects most likely to buy.",
+              },
+              {
+                q: "Which industries do you specialize in?",
+                a: "We primarily build prospect pipelines for Managed Service Providers (MSPs), SaaS companies, recruitment firms, and B2B professional services—though our process works for any B2B market.",
+              },
+              {
+                q: "What information is included in a prospect list?",
+                a: "Each prospect list includes company name, website, industry, location, verified business email, and decision-maker contact details—formatted and ready for your CRM or cold email tool.",
               },
             ].map((item, index) => (
               <SectionReveal key={item.q} delay={index * 0.05}>

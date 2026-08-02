@@ -1,0 +1,290 @@
+"use client";
+
+import Link from "next/link";
+import {
+  TrendingUp,
+  Target,
+  Users,
+  Globe2,
+  ArrowRight,
+  CheckCircle2,
+  Zap,
+  ShieldCheck,
+  Briefcase,
+} from "lucide-react";
+import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+export default function SaasIndustryPage() {
+  const challenges = [
+    {
+      title: "Volume without fit",
+      description:
+        "Large data providers hand you thousands of contacts that don't match your ICP. Your sales team wastes time on companies that will never buy.",
+    },
+    {
+      title: "Missing buying signals",
+      description:
+        "The best SaaS leads are companies already using similar tools, growing headcount, or adopting the technology category you serve. Generic lists miss them.",
+    },
+    {
+      title: "Unreachable contacts",
+      description:
+        "Outdated or role-generic emails bounce and hurt your domain reputation. Verified, decision-maker-level data keeps campaigns healthy.",
+    },
+  ];
+
+  const howWeHelp = [
+    {
+      icon: Target,
+      title: "ICP-qualified lists",
+      description:
+        "We build prospect lists around your exact ideal customer profile—industry, size, tech stack, and growth signals.",
+    },
+    {
+      icon: Zap,
+      title: "Category & intent matching",
+      description:
+        "We target companies adopting the tools or services that make them a natural fit for your platform.",
+    },
+    {
+      icon: Users,
+      title: "Decision-maker contacts",
+      description:
+        "We find the founders, VPs, and heads of the departments your product helps—not just a generic company inbox.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Verified, CRM-ready data",
+      description:
+        "Every record is email-validated and enriched, formatted for your CRM and cold email stack.",
+    },
+  ];
+
+  const deliverables = [
+    "Companies matching your ICP and buying signals",
+    "Verified business emails and phone numbers",
+    "Decision-maker names and job titles",
+    "Technographic and firmographic data",
+    "CRM-ready formatting for your outreach stack",
+  ];
+
+  return (
+    <main className="flex flex-col">
+      {/* Breadcrumbs structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
+              { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.islahwebservice.com/industries" },
+              { "@type": "ListItem", position: 3, name: "SaaS Lead Generation", item: "https://www.islahwebservice.com/industries/saas" },
+            ],
+          }),
+        }}
+      />
+
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(168,85,247,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(34,211,238,0.10),transparent_50%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl animate-pulse" />
+
+        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <SectionReveal delay={0.2} className="mb-6 flex justify-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-400">
+                <TrendingUp className="h-4 w-4" />
+                For SaaS Companies
+              </div>
+            </SectionReveal>
+
+            <SectionReveal delay={0.4} className="mb-8">
+              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
+                SaaS Lead Generation
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
+                  That Fills Your Pipeline
+                </span>
+              </h1>
+            </SectionReveal>
+
+            <SectionReveal delay={0.6} className="mb-8 mx-auto max-w-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
+                We build ICP-qualified prospect lists for SaaS teams—companies that fit your profile, with verified decision-makers ready for outreach.
+              </p>
+            </SectionReveal>
+
+            <SectionReveal delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+              <Button asChild size="lg">
+                <Link href="/contact">
+                  Book a Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
+                <Link href="/services/lead-generation-analysis">See AI Qualification</Link>
+              </Button>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Why SaaS outreach fails */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Why SaaS Outreach Underperforms
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Three mistakes that cost SaaS teams pipeline—and how we fix them.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {challenges.map((challenge, index) => (
+              <StaggerItem key={index}>
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mb-4">
+                      <TrendingUp className="h-6 w-6 text-red-400" />
+                    </div>
+                    <CardTitle className="text-xl mb-3 text-white">{challenge.title}</CardTitle>
+                    <CardDescription className="text-base leading-relaxed text-slate-400">
+                      {challenge.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* How we help */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              How We Build Your SaaS Pipeline
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              A prospect database engineered for software sales cycles.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {howWeHelp.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <StaggerItem key={index}>
+                  <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                    <CardHeader>
+                      <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4">
+                        <Icon className="h-6 w-6 text-purple-400" />
+                      </div>
+                      <CardTitle className="text-lg mb-3 text-white">{item.title}</CardTitle>
+                      <CardDescription className="text-sm leading-relaxed text-slate-400">
+                        {item.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Deliverables */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.07),transparent_60%)]" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              What You&apos;ll Receive
+            </h2>
+            <p className="text-xl text-slate-400">
+              Every SaaS prospect list is qualified, verified, and ready to use.
+            </p>
+          </SectionReveal>
+
+          <SectionReveal>
+            <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
+              <CardHeader>
+                <div className="space-y-4">
+                  {deliverables.map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-300 text-base leading-relaxed">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardHeader>
+            </Card>
+          </SectionReveal>
+
+          <SectionReveal delay={0.2} className="mt-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg">
+                <Link href="/contact">
+                  Get a Free Sample List
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
+                <Link href="/portfolio">View Case Studies</Link>
+              </Button>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* Related industries */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Other Industries We Serve
+            </h2>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { href: "/industries/msp", title: "Managed Service Providers", icon: ShieldCheck },
+              { href: "/industries/recruitment", title: "Recruitment Firms", icon: Users },
+              { href: "/industries/professional-services", title: "Professional Services", icon: Briefcase },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <SectionReveal key={item.href} delay={index * 0.1}>
+                  <Link href={item.href} className="group block">
+                    <Card className="h-full p-6 border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center">
+                          <Icon className="h-5 w-5 text-purple-400" />
+                        </div>
+                        <CardTitle className="text-lg text-white group-hover:text-purple-400 transition-colors">
+                          {item.title}
+                        </CardTitle>
+                      </div>
+                    </Card>
+                  </Link>
+                </SectionReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

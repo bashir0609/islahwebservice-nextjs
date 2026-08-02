@@ -39,6 +39,7 @@ export default function SiteHeader() {
 
   const nav = [
     { href: "/services", label: "Services" },
+    { href: "/industries", label: "Industries" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
