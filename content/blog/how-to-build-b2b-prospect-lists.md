@@ -113,4 +113,4 @@ Typically 1–3 weeks depending on the ICP and target market size.
 
 ## Start With Better Data
 
-A great campaign starts with a great list. [Book a consultation](/contact) and we'll show you what a verified, ICP-matched prospect list looks like for your market.
+A great campaign starts with a great list. [Book a free consultation](/free-consultation) and we'll show you what a verified, ICP-matched prospect list looks like for your market.

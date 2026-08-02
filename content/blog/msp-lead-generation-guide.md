@@ -97,4 +97,4 @@ Most MSP lists ship in 1–3 weeks depending on the service area and ICP depth.
 
 ## Build a List That Books MSP Meetings
 
-The right signals turn cold outreach into conversations. [Book a consultation](/contact) and we'll map your MSP ICP and show you live prospects in your service area.
+The right signals turn cold outreach into conversations. [Book a free consultation](/free-consultation) and we'll map your MSP ICP and show you live prospects in your service area.

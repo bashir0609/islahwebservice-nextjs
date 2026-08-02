@@ -60,7 +60,7 @@ Verification is the last line of defense — the first is clean acquisition. Ver
 - Email addresses sourced from multiple quality channels
 - Verification before delivery, always
 
-If you're building lists for the managed services space, our [MSP lead generation guide](/blog/msp-lead-generation-guide) walks through a full ICP-driven workflow with verification baked in.
+If you're building lists for the managed services space, our [MSP lead generation guide](/blog/msp-lead-generation-guide) walks through a full ICP-driven workflow with verification baked in. The same standard applies across our [industry pages](/industries) — whether you target [SaaS companies](/industries/saas) or [professional services firms](/industries/professional-services).
 
 ## Example: Bounce Rate Before and After
 
@@ -91,4 +91,4 @@ In [contact enrichment](/contact-enrichment) we verify the full record — email
 
 ## Protect Your Deliverability
 
-One verification pass protects months of sending reputation. [Book a consultation](/contact) and we'll audit your list — free bounce-rate estimate included.
+One verification pass protects months of sending reputation. [Book a free consultation](/free-consultation) and we'll audit your list — free bounce-rate estimate included.

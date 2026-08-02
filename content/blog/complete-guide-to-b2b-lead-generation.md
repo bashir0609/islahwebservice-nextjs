@@ -127,4 +127,4 @@ As a CRM-ready spreadsheet or CSV, formatted for your stack and ready to import.
 
 ## Ready to Build a Sales-Ready Prospect Database?
 
-Stop losing deals to bad data. [Book a consultation](/contact) and we'll map your ICP and show you exactly what a verified prospect list for your market looks like.
+Stop losing deals to bad data. [Book a free consultation](/free-consultation) and we'll map your ICP and show you exactly what a verified prospect list for your market looks like.

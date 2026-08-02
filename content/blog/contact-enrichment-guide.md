@@ -84,4 +84,4 @@ Done properly, yes — enrichment targets business contact data for legitimate s
 
 ## Complete Your Data Before You Send
 
-Accurate data is the foundation of every successful outbound campaign. [Book a consultation](/contact) to see how we can enrich and verify your contact database.
+Accurate data is the foundation of every successful outbound campaign. [Book a free consultation](/free-consultation) to see how we can enrich and verify your contact database.

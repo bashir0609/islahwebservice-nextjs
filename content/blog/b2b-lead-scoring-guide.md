@@ -91,4 +91,4 @@ Yes — our [prospect list building](/prospect-list-building) and [lead generati
 
 ## Rank Your Pipeline With Confidence
 
-Stop guessing which accounts deserve attention. [Book a consultation](/contact) and we'll show you how verified data plus a simple scoring model can focus your sales team on the accounts most likely to buy.
+Stop guessing which accounts deserve attention. [Book a free consultation](/free-consultation) and we'll show you how verified data plus a simple scoring model can focus your sales team on the accounts most likely to buy.

@@ -102,4 +102,4 @@ Yes — every [prospect list project](/prospect-list-building) starts by agreein
 
 ## Start Prospecting With Better Data
 
-The fastest way to improve your outbound results is to fix the data your reps work from. [Book a consultation](/contact) and we'll map your ICP and show you what a verified, sales-ready prospect list for your market looks like.
+The fastest way to improve your outbound results is to fix the data your reps work from. [Book a free consultation](/free-consultation) and we'll map your ICP and show you what a verified, sales-ready prospect list for your market looks like.

@@ -118,4 +118,4 @@ We provide the verified prospect lists and the data foundation; most clients run
 
 ## Turn Cold Email Into a Repeatable Channel
 
-Cold email works when the data is clean and the message is relevant. [Book a consultation](/contact) and we'll show you a verified prospect list built for your ICP — the foundation every good cold email campaign stands on.
+Cold email works when the data is clean and the message is relevant. [Book a free consultation](/free-consultation) and we'll show you a verified prospect list built for your ICP — the foundation every good cold email campaign stands on.

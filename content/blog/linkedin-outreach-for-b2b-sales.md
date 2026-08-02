@@ -100,4 +100,4 @@ Yes — that's exactly what our [decision maker research service](/decision-make
 
 ## Build a LinkedIn Outreach Motion That Converts
 
-Stop guessing who to connect with. [Book a consultation](/contact) and we'll research the decision makers in your target accounts — so every connection request and follow-up starts from a position of knowledge.
+Stop guessing who to connect with. [Book a free consultation](/free-consultation) and we'll research the decision makers in your target accounts — so every connection request and follow-up starts from a position of knowledge.
