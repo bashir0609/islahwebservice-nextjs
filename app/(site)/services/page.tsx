@@ -61,7 +61,7 @@ export default function ServicesPage() {
     },
     {
       slug: "decision-maker-research",
-      title: "Decision Maker Research",
+      title: "Decision Maker Research & Contact Discovery",
       icon: Users,
       tint: "bg-emerald-500/15 text-emerald-400",
       description: "Identify the operations managers, IT directors, sales directors, owners, and marketing managers who actually buy—by name, role, and verified contact.",
@@ -94,23 +94,23 @@ export default function ServicesPage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-blue-500" />
                   </span>
-                  Professional B2B Services
+                  AI-Powered B2B Lead Generation
                 </div>
               </SectionReveal>
 
               <SectionReveal delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  One system.
+                  B2B Lead Generation
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400">
-                    Four services.
+                    Services
                   </span>
-                  <span className="block text-white">Real results.</span>
+                  <span className="block text-white">for Sales Teams</span>
                 </h1>
               </SectionReveal>
 
               <SectionReveal delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  From verified contact lists to intelligent process automation, we deliver tailored solutions that transform your B2B operations.
+                  One system. Four services. Real results. From prospect discovery to verified, CRM-ready data—every service is built around one outcome: qualified opportunities for your sales team.
                 </p>
               </SectionReveal>
 
@@ -223,16 +223,17 @@ export default function ServicesPage() {
               Our Process
             </h2>
             <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-              How we implement your custom solutions
+              From a defined ICP to verified, CRM-ready prospect lists—a repeatable workflow.
             </p>
           </SectionReveal>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
             {[
-              { step: 1, title: "Discovery", description: "Understanding your unique business requirements and challenges.", icon: PencilRuler },
-              { step: 2, title: "Evaluation", description: "Analyzing data sources and identifying optimization opportunities.", icon: ClipboardCheck },
-              { step: 3, title: "Implementation", description: "Deploying tailored solutions with minimal disruption to workflow.", icon: Rocket },
-              { step: 4, title: "Optimization", description: "Continuous monitoring and refinement for maximum results.", icon: Settings }
+              { step: 1, title: "Define Your ICP", description: "Lock in your ideal customer profile, target industries, and company size.", icon: PencilRuler },
+              { step: 2, title: "Research Companies", description: "Find companies that match your ICP across your target markets.", icon: ClipboardCheck },
+              { step: 3, title: "Identify Decision Makers", description: "Locate the right people—by name, title, and role.", icon: Users },
+              { step: 4, title: "Verify Contact Data", description: "Validate emails and phone numbers to keep bounce rates low.", icon: Settings },
+              { step: 5, title: "Deliver CRM-Ready Lists", description: "Hand off clean, verified lists ready for your CRM and outreach stack.", icon: Rocket }
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -253,7 +254,7 @@ export default function ServicesPage() {
                       {item.description}
                     </CardDescription>
                   </Card>
-                  {index < 3 && (
+                  {index < 4 && (
                     <div className="hidden sm:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
                       <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
                     </div>

@@ -58,7 +58,7 @@ export default function SiteHeader() {
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-red-500" />
             </span>
             <span className="font-semibold tracking-wide">ACCEPTING NEW CLIENTS</span>
-            <span className="hidden sm:inline text-slate-300">— AI Lead Generation System for Local Businesses & B2B Companies</span>
+            <span className="hidden sm:inline text-slate-300">— AI Lead Generation System for B2B Companies</span>
             <Link href="/contact" className="ml-2 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium">
               Get started <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
             </Link>

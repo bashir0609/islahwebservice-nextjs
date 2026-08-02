@@ -131,7 +131,7 @@ const organizationJsonLd = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Decision Maker Research",
+            name: "Decision Maker Research & Contact Discovery",
             url: `${SITE_URL}/decision-maker-research`,
           },
         },

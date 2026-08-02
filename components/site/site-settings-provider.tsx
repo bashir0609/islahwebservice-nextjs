@@ -14,7 +14,7 @@ const SiteSettingsContext = createContext<SiteSettingsContextValue | null>(null)
 const defaultSettings: SiteSettings = {
   siteName: "Islah Web Service",
   siteDescription:
-    "Professional B2B Services Agency — Verified Contact Lists, Lead Generation & Automation",
+    "AI-Powered B2B Lead Generation Agency — Verified Prospect Lists, Contact Enrichment & Automation",
   contactEmail: "hello@islahwebservice.com",
   contactPhone: "+1 (442) 222-8258",
   contactAddress: "Sylhet, Bangladesh",

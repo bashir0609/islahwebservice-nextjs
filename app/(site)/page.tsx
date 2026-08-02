@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight, Target } from "lucide-react";
+import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight, Target, X } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -388,6 +388,54 @@ export default function HomePage() {
               </SectionReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Why We're Different — comparison table */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.07),transparent_55%)]" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <SectionReveal className="text-center mb-14">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Why Our Workflow Is Different
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Most list providers sell volume. We build a pipeline your sales team can actually act on.
+            </p>
+          </SectionReveal>
+
+          <SectionReveal delay={0.2}>
+            <Card className="overflow-hidden border-white/10 bg-white/5 backdrop-blur-sm">
+              <div className="hidden sm:grid grid-cols-2 border-b border-white/10">
+                <div className="px-5 py-4 text-sm font-semibold uppercase tracking-wider text-slate-400">
+                  Traditional List Building
+                </div>
+                <div className="px-5 py-4 text-sm font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10">
+                  Islah Web Service
+                </div>
+              </div>
+              {[
+                { traditional: "Generic databases", islah: "ICP-based research" },
+                { traditional: "Unverified contacts", islah: "Multi-step verification" },
+                { traditional: "Bulk exports", islah: "CRM-ready delivery" },
+                { traditional: "Minimal qualification", islah: "AI + human quality review" },
+              ].map((row, index) => (
+                <div
+                  key={index}
+                  className={`grid grid-cols-1 sm:grid-cols-2 ${index < 3 ? "border-b border-white/10" : ""}`}
+                >
+                  <div className="px-5 py-3 sm:py-4 flex items-start gap-2 text-slate-300">
+                    <X className="h-5 w-5 text-rose-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm sm:text-base">{row.traditional}</span>
+                  </div>
+                  <div className="px-5 py-3 sm:py-4 flex items-start gap-2 text-white bg-cyan-500/10">
+                    <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm sm:text-base">{row.islah}</span>
+                  </div>
+                </div>
+              ))}
+            </Card>
+          </SectionReveal>
         </div>
       </section>
 

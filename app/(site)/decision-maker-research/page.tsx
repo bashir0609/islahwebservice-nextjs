@@ -47,8 +47,8 @@ export default function DecisionMakerResearchPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Decision Maker Research Service",
-            serviceType: "Decision Maker Research",
+            name: "Decision Maker Research & Contact Discovery Service",
+            serviceType: "Decision Maker Research & Contact Discovery",
             description:
               "Identify the operations managers, IT directors, sales directors, owners, and marketing managers who make buying decisions—by name, title, and verified contact.",
             provider: { "@type": "Organization", name: "Islah Web Service", url: "https://www.islahwebservice.com" },
@@ -68,7 +68,7 @@ export default function DecisionMakerResearchPage() {
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Services", item: "https://www.islahwebservice.com/services" },
-              { "@type": "ListItem", position: 3, name: "Decision Maker Research", item: "https://www.islahwebservice.com/decision-maker-research" },
+              { "@type": "ListItem", position: 3, name: "Decision Maker Research & Contact Discovery", item: "https://www.islahwebservice.com/decision-maker-research" },
             ],
           }),
         }}
@@ -103,7 +103,7 @@ export default function DecisionMakerResearchPage() {
             <SectionReveal delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-sm text-orange-400">
                 <Crown className="h-4 w-4" />
-                Decision Maker Research Service
+                Decision Maker Research &amp; Contact Discovery
               </div>
             </SectionReveal>
 
