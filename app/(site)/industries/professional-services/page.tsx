@@ -12,7 +12,7 @@ import {
   LineChart,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function ProfessionalServicesIndustryPage() {
@@ -82,6 +82,43 @@ export default function ProfessionalServicesIndustryPage() {
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.islahwebservice.com/industries" },
               { "@type": "ListItem", position: 3, name: "Professional Services Lead Generation", item: "https://www.islahwebservice.com/industries/professional-services" },
+            ],
+          }),
+        }}
+      />
+
+      {/* FAQ structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What kinds of professional services firms benefit from this?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Consultancies, marketing and creative agencies, advisory firms, and specialized B2B service providers that need a steady pipeline of qualified business development opportunities.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How do you find companies that need our specific services?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We identify companies by industry, size, and growth signals—such as hiring, expansion, or new initiatives—that indicate demand for external expertise.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Who should our firm contact in a prospect company?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We deliver owners, partners, and department heads—the decision-makers who approve consulting and agency engagements—with verified contact details.",
+                },
+              },
             ],
           }),
         }}
@@ -244,6 +281,46 @@ export default function ProfessionalServicesIndustryPage() {
               </Button>
             </div>
           </SectionReveal>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.06),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+          </SectionReveal>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "What kinds of professional services firms benefit from this?",
+                a: "Consultancies, marketing and creative agencies, advisory firms, and specialized B2B service providers that need a steady pipeline of qualified business development opportunities.",
+              },
+              {
+                q: "How do you find companies that need our specific services?",
+                a: "We identify companies by industry, size, and growth signals—such as hiring, expansion, or new initiatives—that indicate demand for external expertise.",
+              },
+              {
+                q: "Who should our firm contact in a prospect company?",
+                a: "We deliver owners, partners, and department heads—the decision-makers who approve consulting and agency engagements—with verified contact details.",
+              },
+            ].map((item, index) => (
+              <SectionReveal key={item.q} delay={index * 0.05}>
+                <Card className="border-white/10 bg-white/5 backdrop-blur-sm hover:border-emerald-500/40 transition-all duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-white">{item.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-400 leading-relaxed">{item.a}</p>
+                  </CardContent>
+                </Card>
+              </SectionReveal>
+            ))}
+          </div>
         </div>
       </section>
 

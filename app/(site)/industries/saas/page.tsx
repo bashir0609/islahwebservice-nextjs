@@ -13,7 +13,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function SaasIndustryPage() {
@@ -83,6 +83,43 @@ export default function SaasIndustryPage() {
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.islahwebservice.com/industries" },
               { "@type": "ListItem", position: 3, name: "SaaS Lead Generation", item: "https://www.islahwebservice.com/industries/saas" },
+            ],
+          }),
+        }}
+      />
+
+      {/* FAQ structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How do you find companies that fit my SaaS ICP?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We build prospect lists around your exact ideal customer profile—industry, company size, tech stack, and growth signals—so every company is a natural fit for your platform.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which decision-makers should a SaaS team contact?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We identify founders, revenue operations leads, sales directors, and marketing directors—the roles that evaluate and buy software—by name, title, and verified contact.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do you support ABM campaigns?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. We can build account-focused prospect lists for your target account list, complete with decision-makers and verified contacts for account-based outreach.",
+                },
+              },
             ],
           }),
         }}
@@ -245,6 +282,46 @@ export default function SaasIndustryPage() {
               </Button>
             </div>
           </SectionReveal>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.06),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+          </SectionReveal>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "How do you find companies that fit my SaaS ICP?",
+                a: "We build prospect lists around your exact ideal customer profile—industry, company size, tech stack, and growth signals—so every company is a natural fit for your platform.",
+              },
+              {
+                q: "Which decision-makers should a SaaS team contact?",
+                a: "We identify founders, revenue operations leads, sales directors, and marketing directors—the roles that evaluate and buy software—by name, title, and verified contact.",
+              },
+              {
+                q: "Do you support ABM campaigns?",
+                a: "Yes. We can build account-focused prospect lists for your target account list, complete with decision-makers and verified contacts for account-based outreach.",
+              },
+            ].map((item, index) => (
+              <SectionReveal key={item.q} delay={index * 0.05}>
+                <Card className="border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-white">{item.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-400 leading-relaxed">{item.a}</p>
+                  </CardContent>
+                </Card>
+              </SectionReveal>
+            ))}
+          </div>
         </div>
       </section>
 

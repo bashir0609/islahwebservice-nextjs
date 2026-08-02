@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Separator } from "@radix-ui/react-separator";
 import { Linkedin, Twitter, Instagram, Facebook, Github, ArrowUp } from "lucide-react";
 import { useSiteSettings } from "@/components/site/site-settings-provider";
+import { pushEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const SOCIAL_META: { key: string; label: string; icon: React.ReactNode }[] = [
@@ -86,6 +87,7 @@ export default function SiteFooter() {
               <li>
                 <a
                   href={settings.contactEmail ? `mailto:${settings.contactEmail}` : undefined}
+                  onClick={() => pushEvent("email_click", { type: "footer" })}
                   className="transition-colors hover:text-cyan-400"
                 >
                   {settings.contactEmail}
@@ -94,6 +96,7 @@ export default function SiteFooter() {
               <li>
                 <a
                   href={settings.contactPhone ? `tel:${settings.contactPhone.replace(/[^+\d]/g, "")}` : undefined}
+                  onClick={() => pushEvent("phone_click", { type: "footer" })}
                   className="transition-colors hover:text-cyan-400"
                 >
                   {settings.contactPhone}

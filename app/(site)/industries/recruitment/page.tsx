@@ -12,7 +12,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function RecruitmentIndustryPage() {
@@ -82,6 +82,43 @@ export default function RecruitmentIndustryPage() {
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.islahwebservice.com/industries" },
               { "@type": "ListItem", position: 3, name: "Recruitment Lead Generation", item: "https://www.islahwebservice.com/industries/recruitment" },
+            ],
+          }),
+        }}
+      />
+
+      {/* FAQ structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How do you identify companies that are hiring?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We target companies with growth signals—open roles, headcount expansion, and hiring patterns—so you pitch businesses where staffing demand already exists.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which contacts do you deliver for recruitment outreach?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We provide HR leads, hiring managers, and founders at each company, with verified business emails and phone numbers so your pitch reaches the person who approves staffing.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can you build lists for specific territories or industries?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. We build lists by city, region, or industry vertical—healthcare, tech, finance, and more—tailored to the roles your agency specializes in.",
+                },
+              },
             ],
           }),
         }}
@@ -244,6 +281,46 @@ export default function RecruitmentIndustryPage() {
               </Button>
             </div>
           </SectionReveal>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.06),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+          </SectionReveal>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "How do you identify companies that are hiring?",
+                a: "We target companies with growth signals—open roles, headcount expansion, and hiring patterns—so you pitch businesses where staffing demand already exists.",
+              },
+              {
+                q: "Which contacts do you deliver for recruitment outreach?",
+                a: "We provide HR leads, hiring managers, and founders at each company, with verified business emails and phone numbers so your pitch reaches the person who approves staffing.",
+              },
+              {
+                q: "Can you build lists for specific territories or industries?",
+                a: "Yes. We build lists by city, region, or industry vertical—healthcare, tech, finance, and more—tailored to the roles your agency specializes in.",
+              },
+            ].map((item, index) => (
+              <SectionReveal key={item.q} delay={index * 0.05}>
+                <Card className="border-white/10 bg-white/5 backdrop-blur-sm hover:border-orange-500/40 transition-all duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-white">{item.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-400 leading-relaxed">{item.a}</p>
+                  </CardContent>
+                </Card>
+              </SectionReveal>
+            ))}
+          </div>
         </div>
       </section>
 

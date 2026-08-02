@@ -27,6 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { pushEvent } from "@/lib/analytics";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
@@ -66,11 +67,16 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
+    pushEvent("contact_form_submit_started", { service: data.service });
 
     try {
       const result = await submitContactForm(data);
 
       if (result.success) {
+        pushEvent("contact_form_submitted", {
+          service: data.service,
+          company: data.company,
+        });
         toast({
           title: "Message Sent Successfully",
           description: result.message,
@@ -81,6 +87,7 @@ export default function ContactPage() {
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Failed to send message";
+      pushEvent("contact_form_error", { error: message });
       toast({
         title: "Failed to Send Message",
         description: message,
@@ -402,6 +409,7 @@ export default function ContactPage() {
                       <span className="font-medium">Email:</span>
                       <a
                         href="mailto:hello@islahwebservice.com"
+                        onClick={() => pushEvent("email_click", { type: "contact_page" })}
                         className="text-cyan-400 hover:underline"
                       >
                         hello@islahwebservice.com
@@ -411,6 +419,7 @@ export default function ContactPage() {
                       <span className="font-medium">Phone:</span>
                       <a
                         href="tel:+1-442-222-8258"
+                        onClick={() => pushEvent("phone_click", { type: "contact_page" })}
                         className="text-cyan-400 hover:underline"
                       >
                         +1 (442) 222-8258

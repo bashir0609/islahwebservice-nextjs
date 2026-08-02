@@ -65,7 +65,7 @@ const organizationJsonLd = {
       inLanguage: "en-US",
     },
     {
-      "@type": "Organization",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: SITE_URL,
@@ -79,8 +79,14 @@ const organizationJsonLd = {
       email: "mailto:hello@islahwebservice.com",
       telephone: "+1-442-222-8258",
       foundingDate: "2016",
+      founder: {
+        "@type": "Person",
+        name: "Bashir Ahmed",
+        jobTitle: "Founder",
+        url: "https://www.linkedin.com/in/bashir0609",
+      },
       description:
-        "Professional B2B services for companies in the USA, UK, and Australia: verified contact lists, lead generation analysis, and business process automation.",
+        "AI-powered B2B lead generation agency for companies in the USA, UK, and Australia: prospect list building, contact enrichment, decision-maker research, and CRM-ready prospect databases for outbound sales campaigns.",
       areaServed: ["US", "GB", "AU"],
       contactPoint: {
         "@type": "ContactPoint",
@@ -90,7 +96,46 @@ const organizationJsonLd = {
         areaServed: ["US", "GB", "AU"],
         availableLanguage: ["English"],
       },
-      sameAs: [],
+      sameAs: [
+        "https://www.linkedin.com/in/bashir0609",
+        "https://github.com/bashir0609",
+        "https://www.upwork.com/freelancers/bashirahmed",
+        "https://youtu.be/sCuJWWqi7S8",
+      ],
+      makesOffer: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "B2B Lead Generation",
+            url: `${SITE_URL}/b2b-lead-generation`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Prospect List Building",
+            url: `${SITE_URL}/prospect-list-building`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Contact Enrichment",
+            url: `${SITE_URL}/contact-enrichment`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Decision Maker Research",
+            url: `${SITE_URL}/decision-maker-research`,
+          },
+        },
+      ],
     },
   ],
 };

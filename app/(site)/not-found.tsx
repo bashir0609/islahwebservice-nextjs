@@ -77,6 +77,49 @@ export default function NotFound() {
             Back to Home
           </Link>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.95 }}
+          className="mt-10"
+        >
+          <p className="text-sm text-slate-500 mb-4">
+            Popular pages that might help:
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-sm font-medium hover:border-cyan-500/40 hover:text-white transition-all duration-300"
+            >
+              Our Services
+            </Link>
+            <Link
+              href="/b2b-lead-generation"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-sm font-medium hover:border-cyan-500/40 hover:text-white transition-all duration-300"
+            >
+              B2B Lead Generation
+            </Link>
+            <Link
+              href="/industries"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-sm font-medium hover:border-cyan-500/40 hover:text-white transition-all duration-300"
+            >
+              Industries
+            </Link>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-sm font-medium hover:border-cyan-500/40 hover:text-white transition-all duration-300"
+            >
+              Case Studies
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-sm font-medium hover:border-cyan-500/40 hover:text-white transition-all duration-300"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
