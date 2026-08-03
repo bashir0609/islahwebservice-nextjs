@@ -130,17 +130,17 @@ export default function ContactPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-6">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Start Your B2B
+                Start Your
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
-                  Transformation
+                  Prospect Research
                 </span>
+                Project
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-10 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Ready to accelerate your business? Get in touch with our B2B
-                solutions experts today.
+                Tell us about your targeting criteria and we'll help scope a B2B prospect research project.
               </p>
             </SectionReveal>
 
@@ -150,8 +150,7 @@ export default function ContactPage() {
                   Start the Conversation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-              </Button>
-              <div className="flex items-center gap-2 text-sm text-slate-400">
+              </Button>                  <div className="flex items-center gap-2 text-sm text-slate-400">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -311,7 +310,7 @@ export default function ContactPage() {
                           ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                           : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
                       )}
-                      placeholder="Tell us about your business needs and goals..."
+                      placeholder="Tell us about your target market, company criteria, decision-maker roles, and required data fields..."
                     />
                     {errors.message && (
                       <p className="text-sm text-red-400">
@@ -347,13 +346,10 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-4">
-                    Why Choose Us?
+                    Need to Scope a Research Project?
                   </h3>
                   <p className="text-slate-400 leading-relaxed mb-6">
-                    We&apos;re not just another B2B data provider. We&apos;re
-                    your strategic partner in growth, equipped with verified
-                    contacts, intelligent analytics, and automation that scales
-                    with your business.
+                    Share your targeting criteria and we'll confirm what can be researched, outline the fields and verification available, and provide a timeline and quote.
                   </p>
                 </div>
 
@@ -367,12 +363,12 @@ export default function ContactPage() {
                     {
                       icon: Users,
                       label: "Verified Contacts",
-                      description: "99% accuracy guaranteed",
+                      description: "Verified against the checks available at delivery",
                     },
                     {
                       icon: TrendingUp,
-                      label: "Proven ROI",
-                      description: "8× average return on investment",
+                      label: "190+ Projects Delivered",
+                      description: "B2B prospect research across US, UK, and AU",
                     },
                   ].map((feature, index) => {
                     const Icon = feature.icon;
@@ -399,11 +395,10 @@ export default function ContactPage() {
 
                 <Card className="p-8 rounded-xl border-white/10 bg-white/5 backdrop-blur-sm">
                   <h3 className="text-xl font-bold text-white mb-4">
-                    Need Immediate Help?
+                    Prefer to Reach Us Directly?
                   </h3>
                   <p className="text-slate-400 mb-6">
-                    Contact our B2B solutions team directly for urgent inquiries
-                    or technical support.
+                    Contact us directly to discuss your research requirements.
                   </p>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2 text-slate-400">

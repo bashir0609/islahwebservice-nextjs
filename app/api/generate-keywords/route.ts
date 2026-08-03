@@ -14,10 +14,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing apiKey, model or topic" }, { status: 400 });
     }
 
-    const system = `You are an SEO keyword researcher for a B2B services agency that specializes in:
-- Verified B2B Contact Lists
-- Lead Generation Analysis
-- Business Process Automation
+    const system = `You are an SEO keyword researcher for a B2B prospect research and data services company that specializes in:
+- B2B Prospect Research
+- Prospect List Building
+- Decision-Maker Research
+- Contact Enrichment and Verification
+- CRM-Ready Prospect Data
 Generate unique, high-intent keyword phrases relevant to these services.`;
 
     const user = `Topic: ${topic}

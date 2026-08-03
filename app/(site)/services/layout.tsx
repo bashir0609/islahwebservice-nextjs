@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "B2B Services for USA, UK & Australia",
   description:
-    "Verified B2B contact lists, lead generation analysis, and business process automation services for companies in the USA, UK, and Australia.",
+    "B2B prospect research, prospect list building, decision-maker research, contact enrichment, and email verification services for companies in the USA, UK, and Australia.",
   path: "/services",
 });
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-A professional B2B services agency website built with Next.js 14, featuring verified contact lists, lead generation analysis, and business process automation services.
+A B2B prospect research and data services website built with Next.js 14, featuring custom B2B prospect research, prospect list building, decision-maker research, contact enrichment, and email verification services.
 
 ## Features
 

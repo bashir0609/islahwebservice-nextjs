@@ -76,12 +76,12 @@ const nextConfig = {
       },
       {
         source: "/services/lead-generation-analysis",
-        destination: "/contact-enrichment",
+        destination: "/b2b-lead-generation",
         permanent: true,
       },
       {
         source: "/services/business-process-automation",
-        destination: "/b2b-lead-generation",
+        destination: "/prospect-list-building",
         permanent: true,
       },
     ];

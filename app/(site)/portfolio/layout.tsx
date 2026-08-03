@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Portfolio",
   description:
-    "Browse Islah Web Service case studies and success stories in B2B contact lists, lead generation, and process automation.",
+    "Browse selected B2B prospect research projects and case studies—custom company research, decision-maker discovery, contact enrichment, and verified CRM-ready data delivery.",
   path: "/portfolio",
 });
 

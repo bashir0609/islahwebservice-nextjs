@@ -24,7 +24,7 @@ const quickLinks = [
     href: "/services",
     icon: Compass,
     title: "Our Services",
-    description: "The full B2B lead generation system — four services, one workflow.",
+    description: "B2B prospect research, list building, decision-maker research, and contact enrichment.",
   },
   {
     href: "/b2b-lead-generation",
@@ -48,7 +48,7 @@ const quickLinks = [
     href: "/free-consultation",
     icon: SearchX,
     title: "Free Consultation",
-    description: "Get a free pipeline audit and a custom lead generation roadmap.",
+    description: "Get a free sample of prospect data for your target criteria.",
   },
   {
     href: "/contact",
@@ -137,7 +137,7 @@ export default function NotFound() {
                     Popular pages that might help
                   </h2>
                   <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-                    Everything you need for B2B lead generation — pick up where you left off.
+                    Everything you need for B2B prospect research — pick up where you left off.
                   </p>
                 </SectionReveal>
 

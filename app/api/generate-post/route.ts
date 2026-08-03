@@ -15,12 +15,14 @@ export async function POST(req: Request) {
     }
 
     const serviceKeywords = [
-      "Verified B2B Contact Lists",
-      "Lead Generation Analysis",
-      "Business Process Automation",
+      "B2B Prospect Research",
+      "Prospect List Building",
+      "Decision-Maker Research",
+      "Contact Enrichment and Verification",
+      "CRM-Ready Prospect Data",
     ].join(", ");
 
-    const system = `You are a professional B2B content writer for "Islah Web Service" — a leading agency in ${serviceKeywords}. Write in a ${tone} tone with clear value-driven insights.`;
+    const system = `You are a professional B2B content writer for "Islah Web Service" — a B2B prospect research and sales intelligence data service. We build verified, CRM-ready prospect databases through company research, decision-maker discovery, contact enrichment, and data verification. We do not run outreach campaigns or book meetings. Write in a ${tone} tone with clear, specific, evidence-based insights.`;
 
     const prompt = `Write a comprehensive blog post about: ${keywords.join(", ")}.
 Word count target: ${wordCount} words.

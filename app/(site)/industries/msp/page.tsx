@@ -58,7 +58,7 @@ export default function MspIndustryPage() {
       icon: Mail,
       title: "Verified contact data",
       description:
-        "Every email is validated and every record enriched before delivery, keeping bounce rates under 2%.",
+        "Every email is validated and every record enriched before delivery, with unverifiable records flagged.",
     },
   ];
 
@@ -370,7 +370,7 @@ export default function MspIndustryPage() {
           {
             href: "/blog/msp-lead-generation-guide",
             title: "MSP Lead Generation: Finding Businesses That Need IT",
-            description: "Spotting companies that need managed IT services and building verified prospect lists that book meetings.",
+            description: "Spotting companies that need managed IT services and building verified prospect lists for targeted outreach.",
           },
           {
             href: "/blog/complete-guide-to-b2b-lead-generation",

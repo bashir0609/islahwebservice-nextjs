@@ -31,11 +31,11 @@ const faqs = [
   },
   {
     q: "How is enriched data verified?",
-    a: "Enriched contacts pass format checks, domain validation, and role confirmation. We mark records by confidence level so you know exactly what's usable.",
+    a: "Enriched contacts pass format checks, domain validation, and role confirmation. We mark records by verification status so you know exactly what's usable. Email status can change after verification, and campaign results also depend on your sending infrastructure and practices.",
   },
   {
     q: "What is the difference between valid, risky, and invalid emails?",
-    a: "Valid emails pass all checks and are safe to send to. Risky emails have formatting or domain signals that may reduce deliverability. Invalid emails fail verification and are excluded from your list.",
+    a: "Valid emails pass all checks available at the time of verification and are generally usable. Risky emails have formatting or domain signals that may reduce deliverability—review before sending. Invalid emails fail verification and are excluded from your list.",
   },
 ];
 
@@ -188,18 +188,18 @@ export default function ContactEnrichmentPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Email Verification That Protects Your Domain
+              Email Verification That Helps Protect Your Domain
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Every email is classified so you know exactly what to send to.
+              Every email is classified by verification status so you know which records to prioritize.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { status: "Valid", color: "text-emerald-400", ring: "border-emerald-500/30 bg-emerald-500/10", description: "Passes all checks—format, domain, and mailbox. Safe to send to." },
-              { status: "Risky", color: "text-amber-400", ring: "border-amber-500/30 bg-amber-500/10", description: "Shows signals that may reduce deliverability. Review before sending." },
-              { status: "Invalid", color: "text-red-400", ring: "border-red-500/30 bg-red-500/10", description: "Fails verification. Excluded from your list to protect your domain." },
+              { status: "Valid", color: "text-emerald-400", ring: "border-emerald-500/30 bg-emerald-500/10", description: "Passes all checks available at verification time—format, domain, and mailbox. Generally usable." },
+              { status: "Risky", color: "text-amber-400", ring: "border-amber-500/30 bg-amber-500/10", description: "Shows signals that may reduce deliverability. Review before sending. Status can change." },
+              { status: "Invalid", color: "text-red-400", ring: "border-red-500/30 bg-red-500/10", description: "Fails verification. Excluded from your list to protect your sender reputation." },
             ].map((item, index) => (
               <StaggerItem key={index}>
                 <Card className={`h-full border ${item.ring} backdrop-blur-sm hover:-translate-y-2 transition-all duration-300`}>
@@ -304,7 +304,7 @@ export default function ContactEnrichmentPage() {
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: ShieldCheck, title: "Deliverability First", description: "Valid-risky-invalid classification keeps bounce rates low and your domain healthy." },
+              { icon: ShieldCheck, title: "Verification Classification", description: "Valid, risky, and invalid classification so you know which records to prioritize." },
               { icon: Search, title: "Right-Person Focus", description: "We find the decision-maker by role—not a generic company inbox." },
               { icon: Database, title: "Accurate Firmographics", description: "Company size, industry, and tech data you can filter and segment by." },
             ].map((item, index) => {

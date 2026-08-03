@@ -15,8 +15,8 @@ export default function AdminSettingsPage() {
   const [saving, setSaving] = useState(false);
   const [settings, setSettings] = useState({
     siteName: "Islah Web Service",
-    siteDescription: "B2B solutions for verified contact lists, lead generation, and business automation.",
-    contactEmail: "info@islahwebservice.com",
+    siteDescription: "B2B prospect research: company research, decision-maker discovery, contact enrichment, and verified CRM-ready prospect databases.",
+    contactEmail: "hello@islahwebservice.com",
     phone: "+1 (442) 222-8258",
     address: "",
     linkedinUrl: "",

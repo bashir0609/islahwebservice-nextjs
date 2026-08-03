@@ -216,14 +216,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-bold text-white mb-4">
-                  Ready to Apply These Insights?
+                  Need Prospect Data for Your Target Market?
                 </h3>
                 <p className="text-slate-400 mb-6">
-                  Book a free consultation and we&apos;ll map these strategies
-                  to your exact target accounts.
+                  Book a free consultation and we&apos;ll discuss how to research companies and decision-makers that match your criteria.
                 </p>
                 <Button asChild size="lg">
-                  <Link href="/free-consultation">Get a Free Consultation</Link>
+                  <Link href="/free-consultation">Request a Free Sample</Link>
                 </Button>
               </CardContent>
             </Card>

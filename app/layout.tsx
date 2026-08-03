@@ -16,12 +16,14 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "B2B lead generation",
-    "verified contact lists",
-    "business automation",
-    "B2B lead generation USA",
-    "B2B lead generation UK",
-    "B2B lead generation Australia",
+    "B2B prospect research",
+    "prospect list building",
+    "decision-maker research",
+    "contact enrichment",
+    "business email verification",
+    "CRM-ready prospect data",
+    "custom B2B database",
+    "company research service",
   ],
   openGraph: {
     type: "website",
@@ -86,7 +88,7 @@ const organizationJsonLd = {
         url: "https://www.linkedin.com/in/bashir0609",
       },
       description:
-        "AI-powered B2B lead generation agency for companies in the USA, UK, and Australia: prospect list building, contact enrichment, decision-maker research, and CRM-ready prospect databases for outbound sales campaigns.",
+        "B2B prospect research for companies in the USA, UK, and Australia: company research, decision-maker discovery, contact enrichment, email verification, and CRM-ready prospect databases.",
       areaServed: ["US", "GB", "AU"],
       address: {
         "@type": "PostalAddress",
@@ -112,8 +114,8 @@ const organizationJsonLd = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "B2B Lead Generation",
-            url: `${SITE_URL}/b2b-lead-generation`,
+            name: "B2B Prospect Research",
+            url: `${SITE_URL}/b2b-prospect-research`,
           },
         },
         {

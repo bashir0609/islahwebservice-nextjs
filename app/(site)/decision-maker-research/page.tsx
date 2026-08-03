@@ -148,15 +148,15 @@ export default function DecisionMakerResearchPage() {
               Why Who You Contact Matters More Than How Many
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Outreach to the wrong title fails before it starts. Research the right person and replies follow.
+              Outreach to the wrong title fails before it starts. Researching the right person improves the chances of a relevant conversation.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Search, title: "Generic Inboxes Don't Convert", description: "Info@ and sales@ emails go unanswered. Real buying decisions are made by named individuals." },
-              { icon: Target, title: "Role-Fit Drives Relevance", description: "A message tailored to an IT director's problems outperforms the same pitch sent to a CEO." },
-              { icon: TrendingUp, title: "Higher Reply Rates", description: "Contacting the right person by name and role is the single biggest lever on reply rate." },
+              { icon: Search, title: "Generic Inboxes Don't Get Replies", description: "Info@ and sales@ emails often go unanswered. Named individuals are more likely to receive and consider your message." },
+              { icon: Target, title: "Role-Fit Drives Relevance", description: "A message tailored to an IT director's priorities is more relevant than the same pitch sent to a CEO." },
+              { icon: TrendingUp, title: "Better Outreach Targeting", description: "Contacting the right person by name and role improves the relevance of your outreach." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -183,10 +183,10 @@ export default function DecisionMakerResearchPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              The Right Role Depends on Your ICP
+              The Right Role Depends on Your Target Criteria
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              We map the buyer journey for your product and target the roles that matter.
+              You specify the titles or functions that matter. We research current people matching those requirements.
             </p>
           </SectionReveal>
 
@@ -226,13 +226,13 @@ export default function DecisionMakerResearchPage() {
               How We Research Decision Makers
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              A structured process that finds and verifies the right people.
+              A structured process that finds and verifies people matching your requested roles.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { step: 1, title: "Map the Buyer Roles", description: "We define who buys your product and which titles matter for your ICP." },
+              { step: 1, title: "Define the Target Roles", description: "We clarify which titles or functions you want to reach and confirm they are researchable." },
               { step: 2, title: "Identify Candidates", description: "We find named individuals at each company matching those roles." },
               { step: 3, title: "Verify Identity & Role", description: "We confirm names, titles, and seniority across multiple sources." },
               { step: 4, title: "Find Contact Details", description: "We add verified emails and LinkedIn URLs for each decision maker." },
@@ -307,9 +307,9 @@ export default function DecisionMakerResearchPage() {
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Crown, title: "Role Expertise", description: "We know which titles actually buy in each industry—and research accordingly." },
-              { icon: ShieldCheck, title: "Verified Identity", description: "Names and roles confirmed across sources so you never contact the wrong person." },
-              { icon: Search, title: "ICP-Led Research", description: "Every decision maker is matched against your ideal customer profile." },
+              { icon: Crown, title: "Role Research", description: "We find people matching the titles and functions you specify, checking current roles across sources." },
+              { icon: ShieldCheck, title: "Verified Identity", description: "Names and roles confirmed across sources so you contact the right person." },
+              { icon: Search, title: "Criteria-Matched Research", description: "Every decision maker is matched against the targeting criteria you provide." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (

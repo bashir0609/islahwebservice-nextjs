@@ -371,7 +371,7 @@ export default function RecruitmentIndustryPage() {
           {
             href: "/blog/cold-email-for-b2b-lead-generation",
             title: "Cold Email for B2B Lead Generation",
-            description: "From first send to first reply — subject lines, sequences, and follow-ups that earn meetings.",
+            description: "Subject lines, sequences, and follow-ups that earn responses — built on verified prospect data.",
           },
           {
             href: "/blog/contact-enrichment-guide",

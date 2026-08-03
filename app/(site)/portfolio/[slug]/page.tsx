@@ -5,12 +5,16 @@ import Image from "next/image";
 import { ArrowLeft, Building2, Calendar, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import BlogShare from "@/components/blog-share";
+import { RelatedServices } from "@/components/site/related-services";
+import { RelatedGuides } from "@/components/site/related-guides";
 import {
   getPortfolioItem,
   getPortfolioItemBySlug,
   listPortfolioItems,
 } from "@/lib/actions/portfolio";
 import { pageMetadata } from "@/lib/seo";
+import { getPortfolioGuides } from "@/lib/related-content";
 import { formatDate } from "@/lib/utils";
 
 interface PortfolioDetailPageProps {
@@ -52,6 +56,15 @@ export async function generateMetadata({
     path: `/portfolio/${item.slug}`,
     image: item.image || undefined,
     ogType: "article",
+    article: {
+      publishedTime: item.createdAt
+        ? new Date(item.createdAt).toISOString()
+        : undefined,
+      modifiedTime: item.updatedAt
+        ? new Date(item.updatedAt).toISOString()
+        : undefined,
+      authors: ["Islah Web Service"],
+    },
   });
 }
 
@@ -92,11 +105,12 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            name: item.title,
+            "@type": "Article",
+            headline: item.title,
             description: item.description || undefined,
-            image: item.image || undefined,
-            url: canonicalUrl,
+            image: item.image
+              ? [item.image]
+              : ["https://www.islahwebservice.com/og-image.png"],
             datePublished: item.createdAt
               ? new Date(item.createdAt).toISOString()
               : undefined,
@@ -118,6 +132,16 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
               "@id": "https://www.islahwebservice.com/#organization",
               name: "Islah Web Service",
               url: "https://www.islahwebservice.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              "@id": "https://www.islahwebservice.com/#organization",
+              name: "Islah Web Service",
+              url: "https://www.islahwebservice.com",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": canonicalUrl,
             },
           }),
         }}
@@ -194,6 +218,18 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                 {item.createdAt ? formatDate(item.createdAt) : "Recent"}
               </span>
             </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg">
+                <Link href="/free-consultation">
+                  Book a Free Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
+                <Link href="/services">Explore Services</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -263,10 +299,10 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           <Card className="mt-16 border-white/10 bg-white/5 backdrop-blur-sm">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold text-white mb-4">
-                Want Results Like This?
+                Want Verified Prospect Data Like This?
               </h3>
               <p className="text-slate-400 mb-6">
-                Let's discuss how we can build a lead generation system for your business.
+                Let's discuss how we can build a customized prospect database for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg">
@@ -281,8 +317,27 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
               </div>
             </CardContent>
           </Card>
+
+          <div className="mt-8 flex justify-center">
+            <BlogShare title={item.title} />
+          </div>
         </div>
       </section>
+
+      {/* Reciprocal links back to the matching service and industry pages */}
+      <RelatedServices
+        slug={item.slug}
+        tone="900"
+        subtitle="See how these services can produce similar results for your business."
+      />
+
+      {/* Curated guides so readers can go deeper on the same topic */}
+      <RelatedGuides
+        tone="950"
+        guides={getPortfolioGuides(item.slug)}
+        heading="Related Guides"
+        subtitle="Go deeper with practical B2B lead generation guides from the Islah Journal."
+      />
     </main>
   );
 }

@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import {
-  Globe2,
-  Brain,
-  Mail,
+  Search,
+  Database,
   Users,
-  Settings,
+  Mail,
+  ShieldCheck,
+  FileSpreadsheet,
   ArrowRight,
   CheckCircle2,
-  PencilRuler,
-  ClipboardCheck,
-  Rocket
+  Target,
+  Building2,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,29 +21,29 @@ import HeroVisual from "@/components/site/hero-visual";
 export default function ServicesPage() {
   const services = [
     {
-      slug: "b2b-lead-generation",
-      title: "B2B Lead Generation",
-      icon: Globe2,
+      slug: "b2b-prospect-research",
+      title: "B2B Prospect Research",
+      icon: Search,
       tint: "bg-blue-500/15 text-blue-400",
-      description: "AI-powered lead generation services that build targeted prospect databases with verified decision-makers and CRM-ready contact information for outbound campaigns.",
+      description: "Company and account research built around your exact criteria—industry, geography, size, technology, funding, and more.",
       features: [
-        "Target companies matched to your ideal customer profile",
-        "Verified decision-maker contacts by name and role",
-        "Multi-step email verification to protect deliverability",
-        "CRM-ready spreadsheet delivery"
+        "Companies researched against your stated requirements",
+        "Multi-criteria filtering by industry, size, location, and tech",
+        "Funding, hiring, and growth signals where requested",
+        "Custom research briefs for unusual requirements"
       ]
     },
     {
       slug: "prospect-list-building",
       title: "Prospect List Building",
-      icon: Brain,
+      icon: Database,
       tint: "bg-purple-500/15 text-purple-400",
-      description: "Researched, filtered, and qualified prospect databases built around your ICP—so you receive a list engineered for conversion, not just volume.",
+      description: "Custom-built prospect databases from fresh, project-specific research—not prepackaged or recycled data.",
       features: [
-        "ICP-first company research and selection",
+        "ICP-matched company research and selection",
         "Multi-criteria filtering by industry, size, and location",
         "Decision-maker-level contact data",
-        "Database quality: clean, deduplicated, CRM-ready"
+        "Clean, deduplicated, CRM-ready delivery"
       ]
     },
     {
@@ -51,7 +51,7 @@ export default function ServicesPage() {
       title: "Contact Enrichment",
       icon: Mail,
       tint: "bg-orange-500/15 text-orange-400",
-      description: "Complete your prospect records with verified emails, LinkedIn profiles, job titles, and company data—including email verification that protects your domain.",
+      description: "Complete your prospect records with verified emails, LinkedIn profiles, job titles, and company data.",
       features: [
         "Verified email addresses and LinkedIn URLs",
         "Job titles and decision-maker identification",
@@ -61,12 +61,12 @@ export default function ServicesPage() {
     },
     {
       slug: "decision-maker-research",
-      title: "Decision Maker Research & Contact Discovery",
+      title: "Decision-Maker Research",
       icon: Users,
       tint: "bg-emerald-500/15 text-emerald-400",
-      description: "Identify the operations managers, IT directors, sales directors, owners, and marketing managers who actually buy—by name, role, and verified contact.",
+      description: "Find current people matching the titles and responsibilities you specify—by name, role, and verified contact.",
       features: [
-        "Role mapping against your ideal customer profile",
+        "Research against the roles and titles you request",
         "Named decision-makers at each company",
         "Verified business emails and LinkedIn profiles",
         "Identity and role verification across sources"
@@ -76,7 +76,7 @@ export default function ServicesPage() {
 
   return (
     <main className="flex flex-col">
-      {/* Hero Section — two-column with product mockup */}
+      {/* Hero Section — two-column with prospect database visual */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.18),transparent_55%)]" />
@@ -94,30 +94,30 @@ export default function ServicesPage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-blue-500" />
                   </span>
-                  AI-Powered B2B Lead Generation
+                  Custom Research · Verified Data · CRM-Ready Delivery
                 </div>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  B2B Lead Generation
+                  B2B Prospect Research
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400">
-                    Services
+                    and Lead Data Services
                   </span>
-                  <span className="block text-white">for Sales Teams</span>
+                  <span className="block text-white">for B2B Sales Teams</span>
                 </h1>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  One system. Four services. Real results. From prospect discovery to verified, CRM-ready data—every service is built around one outcome: qualified opportunities for your sales team.
+                  We research target companies, match them against your criteria, identify the requested decision-makers, enrich and verify contact details, and prepare the data for your sales workflow.
                 </p>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
                   <Link href="/free-consultation">
-                    Get a Free Audit
+                    Request a Free Sample
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -127,7 +127,7 @@ export default function ServicesPage() {
                   variant="outline"
                   className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
                 >
-                  <Link href="/portfolio">See Results</Link>
+                  <Link href="/portfolio">View Research Projects</Link>
                 </Button>
               </SectionReveal>
 
@@ -142,12 +142,12 @@ export default function ServicesPage() {
                 </span>
                 <span className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  Automation ready
+                  Human-reviewed research
                 </span>
               </SectionReveal>
             </div>
 
-            {/* Product mockup visual */}
+            {/* Prospect database visual */}
             <SectionReveal immediate delay={0.3}>
               <HeroVisual />
             </SectionReveal>
@@ -164,7 +164,7 @@ export default function ServicesPage() {
               What We Offer
             </h2>
             <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-              Specialized services designed to address the unique challenges of modern B2B enterprises.
+              Four research services that combine into one customized, verified prospect database.
             </p>
           </SectionReveal>
 
@@ -223,17 +223,17 @@ export default function ServicesPage() {
               Our Process
             </h2>
             <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-              From a defined ICP to verified, CRM-ready prospect lists—a repeatable workflow.
+              From your target criteria to verified, CRM-ready data—a repeatable workflow.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
             {[
-              { step: 1, title: "Define Your ICP", description: "Lock in your ideal customer profile, target industries, and company size.", icon: PencilRuler },
-              { step: 2, title: "Research Companies", description: "Find companies that match your ICP across your target markets.", icon: ClipboardCheck },
-              { step: 3, title: "Identify Decision Makers", description: "Locate the right people—by name, title, and role.", icon: Users },
-              { step: 4, title: "Verify Contact Data", description: "Validate emails and phone numbers to keep bounce rates low.", icon: Settings },
-              { step: 5, title: "Deliver CRM-Ready Lists", description: "Hand off clean, verified lists ready for your CRM and outreach stack.", icon: Rocket }
+              { step: 1, title: "Share Your Criteria", description: "Provide your target accounts, geography, company characteristics, and required fields.", icon: Target },
+              { step: 2, title: "Refine the Brief", description: "We clarify ambiguous criteria and confirm the deliverable.", icon: CheckCircle2 },
+              { step: 3, title: "Research Companies", description: "Find companies matching the approved criteria.", icon: Building2 },
+              { step: 4, title: "Identify Decision Makers", description: "Locate and verify people matching the requested roles.", icon: Users },
+              { step: 5, title: "Enrich, Verify, Deliver", description: "Add fields, validate records, and deliver CRM-ready.", icon: FileSpreadsheet },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -266,27 +266,25 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Recommendation CTA */}
+      {/* Scope + CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.15),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.10),transparent_50%)]" />
         <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-        <div className="absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl animate-pulse" />
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-              Ready to Accelerate Your B2B Growth?
+              We Build the Data. Your Team Controls the Outreach.
             </h2>
             <p className="text-lg sm:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Get started with our expert team today. We'll provide a free consultation to identify the perfect solution for your business needs.
+              Tell us who you want to target—or describe your ideal customer—and we will help refine the research criteria before building a customized, verified prospect database.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/contact">Contact Us Today</Link>
+                <Link href="/free-consultation">Request a Free Sample</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white w-full sm:w-auto">
-                <Link href="/portfolio">View Success Stories</Link>
+                <Link href="/portfolio">View Research Projects</Link>
               </Button>
             </div>
           </SectionReveal>

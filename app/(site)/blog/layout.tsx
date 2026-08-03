@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Blog",
   description:
-    "Read expert insights on B2B contact strategy, lead generation, and business process automation from the Islah Web Service team.",
+    "Practical guides on B2B prospect research, prospect list building, contact enrichment, decision-maker research, and email verification.",
   path: "/blog",
 });
 

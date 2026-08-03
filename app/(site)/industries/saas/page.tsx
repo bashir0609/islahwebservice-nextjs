@@ -147,7 +147,7 @@ export default function SaasIndustryPage() {
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 SaaS Lead Generation
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
-                  That Fills Your Pipeline
+                  That Targets Your ICP
                 </span>
               </h1>
             </SectionReveal>

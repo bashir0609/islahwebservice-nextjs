@@ -108,23 +108,23 @@ export default function FreeConsultationPage() {
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400">
                 <Sparkles className="h-4 w-4" />
-                Free 15-Minute Strategy Session
+                Free 15-Minute Research Scoping Call
               </div>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Free B2B Lead Generation
+                Free Prospect Research
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400">
                   Consultation
                 </span>
-                <span className="block text-white">for Your Sales Team</span>
+                <span className="block text-white">for Your Target Market</span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-10 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                A free, no-obligation strategy call where we audit your current lead generation process, show you exactly where you're losing prospects, and hand you a custom roadmap — even if you never hire us.
+                A free, no-obligation strategy call where we discuss your targeting criteria, review what can be researched, and outline a customized prospect database for your project — even if you never hire us.
               </p>
             </SectionReveal>
 
@@ -159,18 +159,18 @@ export default function FreeConsultationPage() {
             {[
               {
                 icon: Target,
-                title: "Honest Pipeline Audit",
-                desc: "We review your current lead sources, ICP, and outreach setup, and tell you exactly where prospects are slipping through.",
+                title: "Clear Research Scope",
+                desc: "We review your target criteria, confirm what can be researched, and outline the fields, verification, and delivery format available.",
               },
               {
                 icon: ClipboardCheck,
-                title: "Custom Roadmap",
-                desc: "A step-by-step plan to 2× qualified leads — built around your industry, markets, and budget, not a generic pitch.",
+                title: "Sample Data",
+                desc: "Receive a small sample of prospect data for your criteria — see the actual quality before you commit to anything.",
               },
               {
                 icon: TrendingUp,
-                title: "Free Sample Data",
-                desc: "See the actual quality of our verified prospect lists for your ICP before you commit to anything.",
+                title: "Transparent Project Plan",
+                desc: "A clear timeline, deliverable breakdown, and quote — built around your specific requirements, not a generic pitch.",
               },
             ].map((item, index) => (
               <SectionReveal key={item.title} delay={index * 0.1} className="h-full">
@@ -213,7 +213,7 @@ export default function FreeConsultationPage() {
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Book Your Free Consultation</h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Tell us a little about your business and what you're trying to achieve. We'll come prepared with ideas specific to your market.
+              Tell us about your target market and what you're looking for. We'll come prepared with ideas specific to your criteria.
             </p>
           </SectionReveal>
 
@@ -318,7 +318,7 @@ export default function FreeConsultationPage() {
                           ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                           : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
                       )}
-                      placeholder="Tell us about your business, target market, and what a successful lead generation system looks like for you..."
+                      placeholder="Tell us about your target market, company criteria, decision-maker roles, and any other research requirements..."
                     />
                     {errors.message && <p className="text-sm text-red-400">{errors.message.message}</p>}
                   </div>
@@ -353,15 +353,15 @@ export default function FreeConsultationPage() {
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-4">Why Book a Call?</h3>
                   <p className="text-slate-400 leading-relaxed mb-6">
-                    Most lead providers pitch volume. We build pipelines your sales team can actually act on — and we're happy to prove it before you spend a cent.
+                    Most providers sell volume. We build databases around your exact targeting criteria — and we're happy to prove it before you spend a cent.
                   </p>
                 </div>
 
                 <div className="space-y-6">
                   {[
                     { icon: Users, label: "For B2B Sales Teams", description: "MSPs, SaaS, recruitment, and professional services" },
-                    { icon: CheckCircle2, label: "Verified Data Guarantee", description: "Multi-step verification to keep bounce rates low" },
-                    { icon: MapPin, label: "USA, UK & Australia", description: "Campaigns tuned to each region's data sources" },
+                    { icon: CheckCircle2, label: "Multi-Step Verification", description: "Records verified against available checks at the time of delivery" },
+                    { icon: MapPin, label: "USA, UK & Australia", description: "Research across three major markets" },
                   ].map((feature, index) => {
                     const Icon = feature.icon;
                     return (
@@ -428,11 +428,11 @@ export default function FreeConsultationPage() {
             {[
               {
                 q: "Is the consultation really free?",
-                a: "Yes — completely free with no obligation. We give you a genuine audit and a custom roadmap because we're confident the quality of our work will speak for itself.",
+                a: "Yes — completely free with no obligation. We discuss your targeting criteria, confirm what can be researched, and outline a project scope because we're confident the quality of our work will speak for itself.",
               },
               {
                 q: "What happens on the call?",
-                a: "We'll discuss your current lead sources, ICP, and outreach setup, walk you through where prospects are being lost, and outline a system to fix it. You leave with an actionable plan.",
+                a: "We'll discuss your target market, company criteria, and decision-maker requirements, confirm what's researchable, and outline a project plan with timeline and pricing. You leave with a clear understanding of what's possible.",
               },
               {
                 q: "How long does the consultation last?",
@@ -440,11 +440,11 @@ export default function FreeConsultationPage() {
               },
               {
                 q: "Do I have to buy anything after?",
-                a: "No. The roadmap is yours to keep and execute yourself. Many clients do choose to work with us after seeing the plan, but there's zero pressure.",
+                a: "No. The project scope is yours to keep and execute yourself. Many clients do choose to work with us after seeing the plan, but there's zero pressure.",
               },
               {
                 q: "Which markets do you cover?",
-                a: "We specialize in B2B lead generation for the USA, UK, and Australia, with data sources and outreach strategies tuned to each market.",
+                a: "We regularly research the USA, UK, and Australia, and can support research in other English-speaking markets on request.",
               },
             ].map((item, index) => (
               <SectionReveal key={item.q} delay={index * 0.05}>
@@ -469,11 +469,11 @@ export default function FreeConsultationPage() {
         <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-              Ready to See Where You're Losing Leads?
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+              Ready to See the Quality of Our Research?
             </h2>
             <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
-              Book a free consultation and get a personalized lead generation roadmap — even if you never hire us.
+              Book a free consultation and get a sample of prospect data for your target criteria — even if you never hire us.
             </p>
             <Button asChild size="lg">
               <Link href="#consultation-form">

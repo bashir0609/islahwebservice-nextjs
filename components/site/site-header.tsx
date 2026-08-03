@@ -38,6 +38,7 @@ export default function SiteHeader() {
   }, [open]);
 
   const nav = [
+    { href: "/b2b-prospect-research", label: "B2B Prospect Research" },
     { href: "/services", label: "Services" },
     { href: "/industries", label: "Industries" },
     { href: "/portfolio", label: "Portfolio" },
@@ -50,20 +51,20 @@ export default function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-      <div className="flex flex-col">
-        <div className="bg-slate-900 text-white text-xs sm:text-sm">
-          <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 sm:py-2.5 text-center">
-            <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 flex-shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-red-500" />
-            </span>
-            <span className="font-semibold tracking-wide">ACCEPTING NEW CLIENTS</span>
-            <span className="hidden sm:inline text-slate-300">— AI Lead Generation System for B2B Companies</span>
-            <Link href="/contact" className="ml-2 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium">
-              Get started <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
-            </Link>
-          </div>
+    <div className="flex flex-col">
+      <div className="bg-slate-900 text-white text-xs sm:text-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 sm:py-2.5 text-center">
+          <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 flex-shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-red-500" />
+          </span>
+          <span className="font-semibold tracking-wide">ACCEPTING NEW B2B PROSPECT RESEARCH PROJECTS</span>
+          <span className="hidden sm:inline text-slate-300">— Custom Research · Verified Data · CRM-Ready Delivery</span>
+          <Link href="/free-consultation" className="ml-2 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium">
+            Request a sample <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+          </Link>
         </div>
+      </div>
         <header className={cn(
           "sticky top-0 z-50 border-b border-white/10 bg-slate-950 transition-all duration-300",
           scrolled ? "shadow-[0_4px_24px_-8px_rgba(0,0,0,0.6)]" : ""
@@ -83,7 +84,7 @@ export default function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-slate-300">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-medium text-slate-300">
             {nav.map(({ href, label }) => (
               <Link
                 key={href}
@@ -104,14 +105,14 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-2 sm:gap-3">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3">
             <Button asChild size="sm">
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/free-consultation">Request a Sample</Link>
             </Button>
           </div>
 
           <button
-            className="md:hidden flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10"
+            className="lg:hidden flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
@@ -122,7 +123,7 @@ export default function SiteHeader() {
         <AnimatePresence>
           {open && (
             <motion.div
-              className="fixed inset-0 z-50 md:hidden"
+              className="fixed inset-0 z-50 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -167,11 +168,11 @@ export default function SiteHeader() {
                     </Link>
                   ))}
                   <Link
-                    href="/contact"
+                    href="/free-consultation"
                     onClick={() => setOpen(false)}
                     className="mt-2 rounded-lg bg-cyan-600 px-3 py-2.5 text-center text-sm sm:text-base font-medium text-white transition-colors hover:bg-cyan-700"
                   >
-                    Get in Touch
+                    Request a Sample
                   </Link>
                 </nav>
               </motion.div>

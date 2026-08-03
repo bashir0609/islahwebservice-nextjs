@@ -91,4 +91,4 @@ In [contact enrichment](/contact-enrichment) we verify the full record — email
 
 ## Protect Your Deliverability
 
-One verification pass protects months of sending reputation. [Book a free consultation](/free-consultation) and we'll audit your list — free bounce-rate estimate included.
+One verification pass protects months of sending reputation. [Book a free consultation](/free-consultation) and we'll review your list and show you a free verification sample.

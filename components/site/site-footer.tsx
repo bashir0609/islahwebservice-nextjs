@@ -39,10 +39,10 @@ export default function SiteFooter() {
               />
             </Link>
             <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs">
-              Islah Web Service helps B2B companies build targeted prospect lists, enrich contact data, and deliver CRM-ready sales databases for outbound campaigns.
+              Islah Web Service builds customized B2B prospect databases through company research, decision-maker discovery, contact enrichment, verification, and CRM-ready data preparation.
             </p>
             <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs">
-              Helping MSPs, SaaS companies, recruitment firms, and B2B sales teams build qualified prospect pipelines.
+              Serving MSPs, SaaS companies, recruitment firms, and B2B sales teams with criteria-matched prospect data.
             </p>
           </div>
 
@@ -51,6 +51,7 @@ export default function SiteFooter() {
               Services
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
+              <li><Link href="/b2b-prospect-research" className="transition-colors hover:text-cyan-400">B2B Prospect Research</Link></li>
               <li><Link href="/b2b-lead-generation" className="transition-colors hover:text-cyan-400">B2B Lead Generation</Link></li>
               <li><Link href="/prospect-list-building" className="transition-colors hover:text-cyan-400">Prospect List Building</Link></li>
               <li><Link href="/contact-enrichment" className="transition-colors hover:text-cyan-400">Contact Enrichment</Link></li>

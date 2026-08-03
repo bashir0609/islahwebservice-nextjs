@@ -10,9 +10,11 @@ interface RelatedServicesProps {
   slug: string;
   /** "900" (slate-900) or "950" (slate-950) section background — pick the tone that alternates with surrounding sections */
   tone?: "900" | "950";
+  /** Override the section subtitle (e.g. on case-study pages where "guide" reads wrong). */
+  subtitle?: string;
 }
 
-export function RelatedServices({ slug, tone = "900" }: RelatedServicesProps) {
+export function RelatedServices({ slug, tone = "900", subtitle }: RelatedServicesProps) {
   const { services, industries } = getRelatedContent(slug);
   const bg = tone === "950" ? "bg-slate-950" : "bg-slate-900";
 
@@ -31,7 +33,8 @@ export function RelatedServices({ slug, tone = "900" }: RelatedServicesProps) {
             Related Services
           </h2>
           <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-            Turn these insights into pipeline with our B2B lead generation services — built for the exact audience this guide covers.
+            {subtitle ??
+              "Research, enrichment, and verification built for the exact audience this guide covers — delivered as verified, CRM-ready prospect data."}
           </p>
         </SectionReveal>
 
@@ -79,7 +82,7 @@ export function RelatedServices({ slug, tone = "900" }: RelatedServicesProps) {
             href="/free-consultation"
             className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
           >
-            Get a free consultation to plan your pipeline
+            Request a free sample of prospect data for your criteria
             <ArrowRight className="h-4 w-4" />
           </Link>
         </SectionReveal>

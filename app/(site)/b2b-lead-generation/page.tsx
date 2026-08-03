@@ -21,20 +21,20 @@ import { RelatedGuides } from "@/components/site/related-guides";
 
 const faqs = [
   {
-    q: "What do I receive with B2B lead generation services?",
-    a: "You receive a CRM-ready prospect database: target companies, verified decision-makers, business emails, LinkedIn URLs, and company information—delivered as a spreadsheet or synced to your CRM.",
+    q: "What do I receive with B2B prospect research services?",
+    a: "You receive a CRM-ready prospect database: target companies researched against your criteria, verified decision-makers, business emails, LinkedIn URLs, and company information—delivered as a spreadsheet or synced to your CRM.",
   },
   {
-    q: "How are the leads qualified?",
-    a: "Every company is matched against your ideal customer profile (ICP). We filter by industry, company size, location, and growth signals so your sales team only contacts prospects likely to convert.",
+    q: "How are the companies matched?",
+    a: "Every company is matched against the targeting criteria you provide—industry, company size, location, technology, funding, and other researchable requirements—so the database reflects your exact target market.",
   },
   {
-    q: "How fast can you deliver a lead list?",
-    a: "Most projects deliver an initial verified list within 5–10 business days. Larger, multi-segment databases are scoped and delivered in phases.",
+    q: "How fast can you deliver a prospect database?",
+    a: "Most projects deliver an initial verified database within 5–10 business days. Larger, multi-segment databases are scoped and delivered in phases.",
   },
   {
     q: "Which markets do you cover?",
-    a: "We specialize in the USA, UK, and Australia, and can support campaigns in other English-speaking markets on request.",
+    a: "We regularly research the USA, UK, and Australia, and can support research in other English-speaking markets on request.",
   },
 ];
 
@@ -48,10 +48,10 @@ export default function B2BLeadGenerationPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "B2B Lead Generation Services",
-            serviceType: "B2B Lead Generation",
+            name: "B2B Lead Generation Data Services",
+            serviceType: "B2B Prospect Research",
             description:
-              "AI-powered B2B lead generation: targeted prospect databases with verified decision-makers and CRM-ready contact information for outbound sales campaigns.",
+              "B2B lead generation data services: companies researched against your criteria, requested decision-makers identified, contact details enriched and verified, and delivered CRM-ready.",
             provider: { "@type": "Organization", name: "Islah Web Service", url: "https://www.islahwebservice.com" },
             areaServed: ["US", "GB", "AU"],
             url: "https://www.islahwebservice.com/b2b-lead-generation",
@@ -104,29 +104,29 @@ export default function B2BLeadGenerationPage() {
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <TrendingUp className="h-4 w-4" />
-                B2B Lead Generation Services
+                B2B Prospect Research
               </div>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                AI-Powered
+                B2B Lead Generation
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                  B2B Lead Generation Services
+                  and Data Services
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                We help sales teams build targeted prospect databases with verified decision-makers and CRM-ready contact information for outbound campaigns.
+                We research target companies, match them against your criteria, identify the requested decision-makers, enrich and verify contact details, and prepare the data for your sales workflow.
               </p>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
                 <Link href="/free-consultation">
-                  Book a Consultation
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -144,10 +144,10 @@ export default function B2BLeadGenerationPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Why B2B Teams Struggle With Lead Generation
+              Why B2B Teams Buy Generic Prospect Data
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Buying generic lists wastes time, budget, and domain reputation.
+              Prepackaged databases waste time, budget, and domain reputation.
             </p>
           </SectionReveal>
 
@@ -193,19 +193,19 @@ export default function B2BLeadGenerationPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              A Prospect Database Built for Outbound Success
+              A Prospect Database Built Around Your Criteria
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              We combine real research, AI qualification, and multi-step verification to deliver leads your sales team can act on immediately.
+              We combine company research, multi-source validation, and human quality review to deliver data your team can act on immediately.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Target, title: "ICP Targeting", description: "Companies matched to your ideal customer profile from day one." },
-              { icon: Users, title: "Decision-Maker Research", description: "The right people by name, title, and role—not generic inboxes." },
-              { icon: ShieldCheck, title: "Verified Data", description: "Multi-step email validation keeps bounce rates under 2%." },
-              { icon: FileSpreadsheet, title: "CRM-Ready Delivery", description: "Clean spreadsheets formatted for your CRM and outreach stack." },
+              { icon: Target, title: "Criteria-Based Research", description: "Companies matched to the targeting criteria you provide." },
+              { icon: Users, title: "Decision-Maker Research", description: "Current people matching the titles you request—not generic inboxes." },
+              { icon: ShieldCheck, title: "Verified Data", description: "Multi-step validation flags unverifiable or risky records." },
+              { icon: FileSpreadsheet, title: "CRM-Ready Delivery", description: "Clean spreadsheets formatted for your CRM and workflow." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -352,9 +352,9 @@ export default function B2BLeadGenerationPage() {
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: ShieldCheck, title: "Verified Data Quality", description: "Multi-step validation on every record means lower bounce rates and better campaign deliverability." },
-              { icon: Zap, title: "AI-Powered Qualification", description: "We filter and rank prospects by conversion potential using your ICP—not guesswork." },
-              { icon: TrendingUp, title: "Results-Focused Delivery", description: "190+ projects delivered with a 100% Job Success Score and long-term client relationships." },
+              { icon: ShieldCheck, title: "Verified Data Quality", description: "Multi-source validation on every record, with unverifiable or risky addresses flagged." },
+              { icon: Search, title: "Research Built From Your Criteria", description: "Companies and people researched against the requirements you provide." },
+              { icon: TrendingUp, title: "Proven Delivery Record", description: "190+ projects delivered with a 100% Job Success Score and long-term client relationships." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -432,15 +432,15 @@ export default function B2BLeadGenerationPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-              Ready to Fill Your Pipeline?
+              Ready to See the Research Quality?
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Get a free sample of verified prospects for your ICP—see the quality before you commit.
+              Request a free sample of prospect research for your target criteria—see the quality before you commit.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
                 <Link href="/free-consultation">
-                  Book a Consultation
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

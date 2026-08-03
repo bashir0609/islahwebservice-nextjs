@@ -15,7 +15,7 @@ export const portfolioItems = pgTable("portfolio_items", {
   image: text("image"),
   tags: jsonb("tags").notNull().default("[]").$type<string[]>(),
   // Measurable outcomes shown on the case-study page and in structured data,
-  // e.g. [{ label: "Reply rate", value: "32%" }, ...]
+  // e.g. [{ label: "Verified contacts", value: "1,240" }, ...]
   results: jsonb("results").notNull().default("[]").$type<PortfolioResult[]>(),
   featured: integer("featured").notNull().default(0),
   createdAt: timestamp("created_at").defaultNow(),

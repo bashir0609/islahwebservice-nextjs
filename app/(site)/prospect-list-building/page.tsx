@@ -22,15 +22,15 @@ import { RelatedGuides } from "@/components/site/related-guides";
 const faqs = [
   {
     q: "How are companies selected for my prospect list?",
-    a: "We start from your ICP—industry, company size, location, and tech signals—then research each company against real business data sources so only qualified targets make the list.",
+    a: "We start from your targeting criteria—industry, company size, location, and other signals—then research each company against real business data sources so only criteria-matched targets make the list.",
   },
   {
-    q: "Why does ICP matter in list building?",
-    a: "A list built around your ideal customer profile converts far better than a generic database. Every record is filtered against the profile of a company likely to buy from you.",
+    q: "Why do custom criteria matter in list building?",
+    a: "A list built around your target requirements is more relevant than a generic database. Every record is filtered against the criteria you provide.",
   },
   {
     q: "How do you verify the data?",
-    a: "Each list passes multi-step validation: email format and domain checks, role confirmation, and source tracing. This keeps bounce rates low and outreach deliverable.",
+    a: "Each list passes multi-step validation: email format and domain checks, role confirmation, and source tracing. Records that cannot be verified are clearly flagged.",
   },
   {
     q: "Can you build lists for a specific market or territory?",
@@ -104,13 +104,13 @@ export default function ProspectListBuildingPage() {
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-400">
                 <Database className="h-4 w-4" />
-                Prospect List Building Service
+                Prospect List Building
               </div>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Targeted
+                Custom
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-purple-400">
                   Prospect List Building
                 </span>
@@ -120,7 +120,7 @@ export default function ProspectListBuildingPage() {
 
             <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                We research, filter, and qualify companies against your ideal customer profile—so you receive a database built for conversion, not just volume.
+                We research, filter, and match companies against your targeting criteria—so you receive a database built for your exact requirements, not just volume.
               </p>
             </SectionReveal>
 
@@ -148,16 +148,16 @@ export default function ProspectListBuildingPage() {
               What Makes Our Lists Different
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Most list sellers give you volume. We give you qualification.
+              Most list sellers give you volume. We give you criteria-matched research.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Target, title: "ICP-First Research", description: "Every company is researched against your ideal customer profile before it earns a place." },
-              { icon: Filter, title: "Multi-Criteria Filtering", description: "Industry, size, location, tech stack, and growth signals narrow the list to real fits." },
-              { icon: ShieldCheck, title: "Qualified Contact Data", description: "Decision-maker-level records with verified emails, not generic company inboxes." },
-              { icon: FileSpreadsheet, title: "Database Quality", description: "Clean, deduplicated, and formatted for your CRM—ready for immediate outreach." },
+              { icon: Target, title: "Criteria-First Research", description: "Every company is researched against the targeting criteria you provide." },
+              { icon: Filter, title: "Multi-Criteria Filtering", description: "Industry, size, location, tech stack, and other signals narrow the list to real fits." },
+              { icon: ShieldCheck, title: "Decision-Maker Contact Data", description: "Records with verified decision-maker details, not generic company inboxes." },
+              { icon: FileSpreadsheet, title: "Database Quality", description: "Clean, deduplicated, and formatted for your CRM—ready for immediate use." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -268,8 +268,8 @@ export default function ProspectListBuildingPage() {
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: ShieldCheck, title: "Verified Quality", description: "Multi-step validation keeps bounce rates under 2% on every delivered list." },
-              { icon: Filter, title: "Real Qualification", description: "We filter by your ICP, so your sales team reaches prospects that fit." },
+              { icon: ShieldCheck, title: "Multi-Step Validation", description: "Each record passes format, domain, and role checks, with unverifiable records flagged." },
+              { icon: Filter, title: "Research Built From Your Criteria", description: "Companies are matched against the requirements you provide, not a generic template." },
               { icon: TrendingUp, title: "Proven Track Record", description: "190+ projects and a 100% Job Success Score across US, UK, and AU markets." },
             ].map((item, index) => {
               const Icon = item.icon;

@@ -21,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     staticEntry("", "weekly", 1),
     staticEntry("/about", "monthly", 0.8),
     staticEntry("/services", "weekly", 0.9),
+    staticEntry("/b2b-prospect-research", "weekly", 0.9),
     staticEntry("/b2b-lead-generation", "weekly", 0.8),
     staticEntry("/prospect-list-building", "weekly", 0.8),
     staticEntry("/contact-enrichment", "weekly", 0.8),

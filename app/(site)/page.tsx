@@ -1,18 +1,222 @@
 "use client";
 
 import Link from "next/link";
-import { TrendingUp, Wrench, Users, ArrowRight, CheckCircle2, Globe2, MapPin, ShieldCheck, Mail, Star, Award, ChevronRight, Target, X } from "lucide-react";
-import { SectionReveal } from "@/components/motion/animated-section";
+import {
+  Building2,
+  Users,
+  ArrowRight,
+  CheckCircle2,
+  Globe2,
+  MapPin,
+  ShieldCheck,
+  Mail,
+  Star,
+  Award,
+  ChevronRight,
+  Target,
+  Search,
+  Database,
+  FileSpreadsheet,
+  Filter,
+  ClipboardCheck,
+  BadgeCheck,
+} from "lucide-react";
+import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import HeroVisual from "@/components/site/hero-visual";
+
+const faqs = [
+  {
+    q: "What does Islah Web Service provide?",
+    a: "We provide B2B prospect research and sales intelligence data. Clients tell us which companies and decision-makers they want to reach, and we deliver a customized, verified, CRM-ready prospect database built around those criteria.",
+  },
+  {
+    q: "Do you run cold email campaigns or book meetings?",
+    a: "No. We specialize in the research and data stage of outbound sales. We identify target companies, find relevant decision-makers, enrich and verify contact data, and deliver the database in a CRM-ready format. Your team or outreach partner controls messaging, campaign execution, meetings, and sales.",
+  },
+  {
+    q: "Can you help refine my targeting criteria?",
+    a: "Yes. If your requirements are incomplete, we help clarify targeting criteria, suggest useful research filters, identify missing data requirements, explain which criteria can realistically be researched, and translate a general target market into an executable research brief.",
+  },
+  {
+    q: "What company criteria can you research?",
+    a: "Almost any realistically researchable requirement: industry, category, country, state, city, postal code, radius, employee count, revenue range, technologies used, CRM or software, funding stage and dates, hiring activity, office locations, property ownership, certifications, website characteristics, growth signals, and more.",
+  },
+  {
+    q: "Which decision-maker titles can you find?",
+    a: "You specify the functions or titles that matter to you—CEO, founder, CFO, VP of Sales, IT director, operations director, property manager, HR director, and many others. We find current people matching those requirements and verify names, roles, seniority, and employment status.",
+  },
+  {
+    q: "What fields can be included?",
+    a: "Full name, current job title, seniority, business email, LinkedIn profile, direct phone where legitimately available, company telephone, website, location, employee count, revenue, industry, technologies, funding information, and any other client-requested fields.",
+  },
+  {
+    q: "Can you enrich an existing database?",
+    a: "Yes. You can submit an existing list or CRM export and we fill missing fields, add contact discovery, verify emails, update job titles, deduplicate, complete company data, standardize records, and reformat for your CRM.",
+  },
+  {
+    q: "How do you verify business emails?",
+    a: "We use multi-source checks including format validation, domain verification, and inbox-level verification where available. Records are classified by verification status, and catch-all or uncertain addresses are clearly marked. Email status can change after verification.",
+  },
+  {
+    q: "Can you guarantee a specific bounce rate?",
+    a: "No. We verify each record against the checks available at the time, but email campaign behavior, sending infrastructure, catch-all domains, data age, and client activity can affect final bounce rates. We deliver verified, clean data—not a campaign performance guarantee.",
+  },
+  {
+    q: "What format will I receive?",
+    a: "CSV, Excel, or Google Sheets, with custom column formatting to match your CRM or workflow. We also deduplicate, standardize, and quality-check records before delivery.",
+  },
+  {
+    q: "Which countries and industries can you research?",
+    a: "We regularly research the USA, UK, and Australia across industries including manufacturing, real estate, SaaS, healthcare, MSP/IT services, recruitment, and professional services. Custom requirements in other markets are scoped on request.",
+  },
+  {
+    q: "How long does a project take?",
+    a: "Most projects deliver an initial verified database within 5–10 business days, depending on target industry, geography, list size, and research complexity. Larger or multi-segment projects are scoped and delivered in phases.",
+  },
+  {
+    q: "Do you use AI or automation?",
+    a: "Yes, as a supporting method. We use tools like Clay, n8n, APIs, enrichment and verification tools, and custom scripts to improve research efficiency and consistency—always combined with human quality review. We are a research service, not a software platform.",
+  },
+  {
+    q: "Can you work with unusual custom requirements?",
+    a: "Yes. Handling unusual, multi-layered research criteria is one of our strongest differentiators—from property portfolios and association memberships to tech-stack and funding combinations. If a criterion is realistically researchable, we can build around it.",
+  },
+];
+
+const coreServices = [
+  {
+    href: "/b2b-lead-generation",
+    icon: Search,
+    tint: "bg-blue-500/15 text-blue-400",
+    title: "Company & Account Research",
+    description: "Companies researched against your exact criteria—industry, geography, size, tech, funding, and more.",
+  },
+  {
+    href: "/prospect-list-building",
+    icon: Database,
+    tint: "bg-purple-500/15 text-purple-400",
+    title: "Prospect List Building",
+    description: "Custom, criteria-matched prospect databases built from fresh research—not prepackaged data.",
+  },
+  {
+    href: "/decision-maker-research",
+    icon: Users,
+    tint: "bg-orange-500/15 text-orange-400",
+    title: "Decision-Maker Research",
+    description: "Current people matching your requested titles and responsibilities, with roles and seniority verified.",
+  },
+  {
+    href: "/contact-enrichment",
+    icon: Mail,
+    tint: "bg-emerald-500/15 text-emerald-400",
+    title: "Contact Enrichment",
+    description: "Emails, LinkedIn profiles, titles, and company fields added to your records or built from scratch.",
+  },
+  {
+    href: "/contact-enrichment",
+    icon: ShieldCheck,
+    tint: "bg-rose-500/15 text-rose-400",
+    title: "Email Verification & Data Cleaning",
+    description: "Verification, deduplication, standardization, and missing-field checks so records are clean and current.",
+  },
+  {
+    href: "/prospect-list-building",
+    icon: FileSpreadsheet,
+    tint: "bg-cyan-500/15 text-cyan-400",
+    title: "CRM-Ready Formatting",
+    description: "CSV, Excel, or Google Sheets delivery with custom column formatting matched to your CRM.",
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Share Your Target Criteria",
+    desc: "Provide your existing ICP, target account description, geography, company characteristics, desired titles, and required fields.",
+  },
+  {
+    step: "02",
+    title: "Refine the Research Brief",
+    desc: "We clarify ambiguous criteria, confirm available data sources, define exclusions, and agree on the final deliverable.",
+  },
+  {
+    step: "03",
+    title: "Research Target Companies",
+    desc: "We find companies matching the approved criteria using relevant business sources.",
+  },
+  {
+    step: "04",
+    title: "Identify Decision-Makers",
+    desc: "We locate and verify people matching your requested roles or responsibilities.",
+  },
+  {
+    step: "05",
+    title: "Enrich and Verify the Data",
+    desc: "We add contact details, company fields, LinkedIn profiles, and emails, validating across sources.",
+  },
+  {
+    step: "06",
+    title: "Clean and Deliver",
+    desc: "We deduplicate, standardize, quality-check, and deliver the database in your required format.",
+  },
+];
+
+const whyChoose = [
+  { icon: Search, title: "Research Built From Your Requirements", description: "Every database starts from your criteria, not a generic template." },
+  { icon: Filter, title: "Complex Filters Handled", description: "Multi-layered, unusual criteria are a strength—not a limitation." },
+  { icon: Users, title: "Human Review Supported by Technology", description: "Automation improves efficiency; people verify the final records." },
+  { icon: Globe2, title: "Multi-Source Validation", description: "Records are checked and compared across relevant sources." },
+  { icon: Target, title: "Decision-Maker-Level Records", description: "Named people with current roles, not generic company inboxes." },
+  { icon: FileSpreadsheet, title: "Fresh, Project-Specific Research", description: "Data researched for your project, not recycled from stock lists." },
+  { icon: Database, title: "Custom Fields & Formatting", description: "Columns, segmentation, and delivery format matched to your CRM." },
+  { icon: ClipboardCheck, title: "Transparent Scope & Direct Communication", description: "Clear deliverables, agreed criteria, and a single point of contact." },
+  { icon: ShieldCheck, title: "CRM-Ready Delivery", description: "Clean, deduplicated, standardized records ready to load and use." },
+];
+
+const proofPoints = [
+  {
+    icon: Award,
+    value: "190+",
+    label: "Projects Completed",
+    detail: "B2B prospect research and data delivery projects.",
+  },
+  {
+    icon: Star,
+    value: "100%",
+    label: "Job Success Score",
+    detail: "Current Upwork Job Success Score maintained over time.",
+  },
+  {
+    icon: MapPin,
+    value: "US · UK · AU",
+    label: "Markets Researched",
+    detail: "Business data research across American, British, and Australian markets.",
+  },
+  {
+    icon: Users,
+    value: "Long-Term",
+    label: "Client Relationships",
+    detail: "Returning clients across lead lists, enrichment, and research projects.",
+  },
+];
+
+const provenStats = [
+  {
+    icon: Award,
+    value: "Since 2016",
+    label: "Serving B2B Teams",
+    detail: "Long-running prospect research and data delivery for B2B teams.",
+  },
+  ...proofPoints,
+];
 
 export default function HomePage() {
   return (
     <main className="flex flex-col">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-slate-950">
-        {/* Differentiated background treatment */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.18),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.12),transparent_50%)]" />
@@ -31,30 +235,29 @@ export default function HomePage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
                   </span>
-                  ACCEPTING NEW CLIENTS — Limited Availability
+                  Custom Research · Verified Data · CRM-Ready Delivery
                 </div>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  AI-Powered B2B
+                  B2B Prospect Research
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                    Lead Generation
+                    for Sales Teams
                   </span>
-                  <span className="block text-white">for Sales Teams</span>
                 </h1>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  We help B2B companies identify their ideal customers, find verified decision-makers, enrich contact data, and build CRM-ready prospect lists that support successful outbound sales campaigns.
+                  Tell us which companies and decision-makers you need to reach. We research, enrich, verify, and organize the records into a targeted, CRM-ready prospect database built around your requirements.
                 </p>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
                   <Link href="/free-consultation">
-                    Book a Consultation
+                    Request a Free Sample
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -64,7 +267,7 @@ export default function HomePage() {
                   variant="outline"
                   className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
                 >
-                  <Link href="#process">View Our Process</Link>
+                  <Link href="/free-consultation">Discuss Your Target Criteria</Link>
                 </Button>
               </SectionReveal>
 
@@ -79,12 +282,12 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  <span>USA, UK & AU Markets</span>
+                  <span>USA, UK & AU Research</span>
                 </div>
               </SectionReveal>
             </div>
 
-            {/* Product mockup visual */}
+            {/* Prospect database visual */}
             <SectionReveal immediate delay={0.3}>
               <HeroVisual />
             </SectionReveal>
@@ -96,379 +299,144 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-slate-950 border-b border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.07),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <SectionReveal className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-              <div className="flex items-center justify-center gap-1 text-amber-400 mb-3">
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-                <Star className="h-5 w-5 fill-current" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">190+</div>
-              <div className="text-xs sm:text-sm text-slate-400">Projects Completed</div>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-              <div className="flex items-center justify-center gap-1 text-cyan-400 mb-3">
-                <Award className="h-5 w-5" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">100%</div>
-              <div className="text-xs sm:text-sm text-slate-400">Job Success Score</div>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-              <div className="flex items-center justify-center gap-1 text-emerald-400 mb-3">
-                <CheckCircle2 className="h-5 w-5" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">USA, UK & AU</div>
-              <div className="text-xs sm:text-sm text-slate-400">Markets Served</div>
-            </div>
+          <SectionReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {proofPoints.map((point) => {
+              const Icon = point.icon;
+              return (
+                <div key={point.label} className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
+                  <div className="flex items-center justify-center gap-1 text-cyan-400 mb-3">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{point.value}</div>
+                  <div className="text-xs sm:text-sm text-slate-400">{point.label}</div>
+                  <div className="mt-1 text-[11px] text-slate-500">{point.detail}</div>
+                </div>
+              );
+            })}
           </SectionReveal>
         </div>
       </section>
 
-      {/* Who We Help */}
+      {/* Built Around Exact Targeting Criteria */}
       <section className="relative overflow-hidden bg-slate-950 border-b border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(34,211,238,0.06),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Who We Help
+              Your Target Market Is Specific.
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                Your Prospect Database Should Be Too.
+              </span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              We build prospect pipelines for B2B teams that sell to other businesses—across the industries where targeted outreach matters most.
+              Generic databases force your team to filter thousands of irrelevant records. We build each database from your requirements, combining company research, decision-maker discovery, enrichment, and verification.
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                href: "/industries/msp",
-                icon: ShieldCheck,
-                title: "Managed Service Providers",
-                desc: "Target businesses that need outsourced IT and managed services.",
+                icon: Building2,
+                title: "Manufacturing + Tech Stack",
+                description: "Find manufacturing companies in Texas using NetSuite, with 50–250 employees, funded within the last 18 months—and identify the CFO or VP of Finance.",
               },
               {
-                href: "/industries/saas",
-                icon: TrendingUp,
-                title: "SaaS Companies",
-                desc: "Find companies ready for your software, platform, and tools.",
+                icon: MapPin,
+                title: "Property Portfolios",
+                description: "Find commercial property owners in Chicago that own more than five buildings and identify the person responsible for acquisitions.",
               },
               {
-                href: "/industries/recruitment",
                 icon: Users,
-                title: "Recruitment Firms",
-                desc: "Reach hiring decision-makers for staffing and recruitment solutions.",
+                title: "Hiring Signals",
+                description: "Find companies using HubSpot that have recently hired SDRs and identify the relevant sales leader.",
               },
               {
-                href: "/industries/professional-services",
                 icon: Globe2,
-                title: "Professional Services",
-                desc: "Connect with consultancies, agencies, and advisory firms.",
+                title: "Local Business Discovery",
+                description: "Find local businesses from Google Maps within a specific radius, verify their websites, and identify the owner or marketing decision-maker.",
               },
-              {
-                href: "/services",
-                icon: Target,
-                title: "B2B Sales Teams",
-                desc: "Give your own team a repeatable flow of verified prospects.",
-              },
-            ].map((item, index) => (
-              <SectionReveal key={item.title} delay={index * 0.1} className="h-full">
-                <Link href={item.href} className="group block h-full">
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <StaggerItem key={item.title}>
                   <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                     <CardHeader>
                       <div className="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <item.icon className="h-6 w-6 text-cyan-400" />
+                        <Icon className="h-6 w-6 text-cyan-400" />
                       </div>
                       <CardTitle className="text-lg text-white leading-snug">{item.title}</CardTitle>
-                      <CardDescription className="text-sm text-slate-400 leading-relaxed">{item.desc}</CardDescription>
                     </CardHeader>
+                    <CardContent>
+                      <p className="text-slate-400 leading-relaxed text-sm">{item.description}</p>
+                    </CardContent>
                   </Card>
-                </Link>
-              </SectionReveal>
-            ))}
-          </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Core Services */}
       <section className="relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.10),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.06),transparent_50%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              B2B Lead Generation Services
+              Prospect Research Services
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              From prospect discovery to verified, CRM-ready data—every service is built around one outcome: qualified opportunities for your sales team.
+              Our B2B lead generation services are built on research and verification—company discovery, list building, enrichment, and CRM-ready data delivery, not outreach or meeting booking.
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <SectionReveal delay={0}>
-              <Link href="/b2b-lead-generation" className="group block h-full">
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Globe2 className="h-6 w-6 text-blue-400" />
-                    </div>
-                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">B2B Lead Generation</CardTitle>
-                    <CardDescription className="text-slate-400">Identify companies matching your ideal customer profile.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            </SectionReveal>
-
-            <SectionReveal delay={0.1}>
-              <Link href="/prospect-list-building" className="group block h-full">
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <TrendingUp className="h-6 w-6 text-purple-400" />
-                    </div>
-                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">Prospect List Building</CardTitle>
-                    <CardDescription className="text-slate-400">Build targeted prospect databases for outbound campaigns.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            </SectionReveal>
-
-            <SectionReveal delay={0.2}>
-              <Link href="/contact-enrichment" className="group block h-full">
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-orange-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Wrench className="h-6 w-6 text-orange-400" />
-                    </div>
-                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">Contact Enrichment</CardTitle>
-                    <CardDescription className="text-slate-400">Find verified decision-makers and complete company data.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            </SectionReveal>
-
-            <SectionReveal delay={0.3}>
-              <Link href="/contact-enrichment" className="group block h-full">
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Mail className="h-6 w-6 text-emerald-400" />
-                    </div>
-                    <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">Email Verification</CardTitle>
-                    <CardDescription className="text-slate-400">Reduce bounce rates with validated business email addresses.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            </SectionReveal>
-          </div>
-
-          <div className="mt-12 text-center">
-            <Button asChild size="lg">
-              <Link href="/services">
-                See Full System
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {coreServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <StaggerItem key={service.title}>
+                  <Link href={service.href} className="group block h-full">
+                    <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                      <CardHeader>
+                        <div className={`w-12 h-12 rounded-xl ${service.tint} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="text-white group-hover:text-cyan-400 transition-colors">{service.title}</CardTitle>
+                        <CardDescription className="text-slate-400 text-sm leading-relaxed">{service.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
 
-      {/* Irresistible Offer */}
-      <section className="relative overflow-hidden bg-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.08),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.06),transparent_50%)]" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <SectionReveal className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400 mb-6">
-              <CheckCircle2 className="h-4 w-4" />
-              Limited-Time Offer
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Free AI Lead Generation Audit
-            </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Get a personalized audit of your current lead generation process. We'll show you exactly where you're losing prospects and build a custom AI system to fix it—100% free.
-            </p>
-          </SectionReveal>
-
-          <SectionReveal>
-            <Card className="border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
-              <CardHeader>
-                <CardTitle className="text-2xl text-center text-white">What You'll Get</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    "Complete audit of your current lead sources",
-                    "AI-powered analysis of your ideal customer profile",
-                    "Custom roadmap to 2× qualified leads in 30 days",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 text-center">
-                  <Button asChild size="lg" className="w-full sm:w-auto">
-                    <Link href="/free-consultation">
-                      Claim Your Free Audit
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <p className="mt-3 text-xs text-slate-400">No credit card required. 15-minute strategy session.</p>
-                </div>
-              </CardContent>
-            </Card>
-          </SectionReveal>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="relative overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(45,212,191,0.08),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.06),transparent_50%)]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Why Choose Islah Web Service
-            </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              We combine B2B lead generation expertise, automation, and verified data quality so your team can focus on closing deals.
-            </p>
-          </SectionReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: ShieldCheck,
-                title: "Verified Data",
-                description: "Every contact list is validated through multi-step verification to reduce bounced emails and improve outreach accuracy.",
-              },
-              {
-                icon: Globe2,
-                title: "USA, UK & Australia Focus",
-                description: "We specialize in B2B lead generation for American, British, and Australian markets, with campaigns tuned to each region's industries.",
-              },
-              {
-                icon: MapPin,
-                title: "Market Expertise",
-                description: "Deep knowledge of US, UK, and Australian business directories, registries, and market-specific data sources for better targeting.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Conversion Focused",
-                description: "Our lead generation analysis doesn't just collect data—it improves lead scoring, segmentation, and cold email conversion.",
-              },
-              {
-                icon: Wrench,
-                title: "Automation Ready",
-                description: "We design workflows that connect with your CRM and outreach stack, reducing manual work and repeatable errors.",
-              },
-              {
-                icon: Users,
-                title: "Dedicated Support",
-                description: "A real team handles your campaigns, not a black-box tool. You get direct updates, QA checks, and campaign tuning.",
-              },
-            ].map((item, index) => (
-              <SectionReveal key={item.title} delay={index * 0.1}>
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4">
-                      <item.icon className="h-6 w-6 text-cyan-400" />
-                    </div>
-                    <CardTitle className="text-xl text-white">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-400 leading-relaxed">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why We're Different — comparison table */}
-      <section className="relative overflow-hidden bg-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.07),transparent_55%)]" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <SectionReveal className="text-center mb-14">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Why Our Workflow Is Different
-            </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Most list providers sell volume. We build a pipeline your sales team can actually act on.
-            </p>
-          </SectionReveal>
-
-          <SectionReveal delay={0.2}>
-            <Card className="overflow-hidden border-white/10 bg-white/5 backdrop-blur-sm">
-              <div className="hidden sm:grid grid-cols-2 border-b border-white/10">
-                <div className="px-5 py-4 text-sm font-semibold uppercase tracking-wider text-slate-400">
-                  Traditional List Building
-                </div>
-                <div className="px-5 py-4 text-sm font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10">
-                  Islah Web Service
-                </div>
-              </div>
-              {[
-                { traditional: "Generic databases", islah: "ICP-based research" },
-                { traditional: "Unverified contacts", islah: "Multi-step verification" },
-                { traditional: "Bulk exports", islah: "CRM-ready delivery" },
-                { traditional: "Minimal qualification", islah: "AI + human quality review" },
-              ].map((row, index) => (
-                <div
-                  key={index}
-                  className={`grid grid-cols-1 sm:grid-cols-2 ${index < 3 ? "border-b border-white/10" : ""}`}
-                >
-                  <div className="px-5 py-3 sm:py-4 flex items-start gap-2 text-slate-300">
-                    <X className="h-5 w-5 text-rose-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm sm:text-base">{row.traditional}</span>
-                  </div>
-                  <div className="px-5 py-3 sm:py-4 flex items-start gap-2 text-white bg-cyan-500/10">
-                    <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm sm:text-base">{row.islah}</span>
-                  </div>
-                </div>
-              ))}
-            </Card>
-          </SectionReveal>
-        </div>
-      </section>
-
-      {/* Visual Process */}
+      {/* How the Process Works */}
       <section id="process" className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.07),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              How It Works
+              How the Process Works
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              A simple workflow to go from business goals to qualified B2B contacts and automated follow-up processes.
+              A transparent six-step workflow from your criteria to a verified, CRM-ready database.
             </p>
           </SectionReveal>
 
           <div className="relative">
-            {/* Connector line behind steps on desktop */}
             <div className="absolute left-0 right-0 top-1/2 hidden -translate-y-1/2 border-t-2 border-dashed border-cyan-500/30 lg:block" />
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-4">
-              {[
-                { step: "01", title: "Define Your ICP", desc: "Lock in your ideal customer profile, target industries, and company size." },
-                { step: "02", title: "Research Target Companies", desc: "Find companies that match your ICP across your target markets." },
-                { step: "03", title: "Identify Decision Makers", desc: "Locate the right people—by name, title, and role." },
-                { step: "04", title: "Verify Contact Data", desc: "Validate emails and phone numbers to keep bounce rates low." },
-                { step: "05", title: "Deliver CRM-Ready Prospect Lists", desc: "Hand off clean, verified lists ready for your CRM and outreach stack." },
-              ].map((item, index) => (
-                <SectionReveal key={item.step} delay={index * 0.08} className="md:last:col-start-2 lg:col-start-auto">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-6 md:gap-6 lg:gap-4">
+              {processSteps.map((item, index) => (
+                <SectionReveal key={item.step} delay={index * 0.08}>
                   <div className="relative rounded-2xl border border-white/10 bg-slate-900/80 p-4 md:p-6 text-center h-full backdrop-blur-sm">
                     <div className="text-cyan-400 text-xs font-semibold mb-2">STEP {item.step}</div>
                     <div className="text-sm font-semibold text-white mb-1">{item.title}</div>
                     <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
-                    {item.step !== "05" && (
+                    {item.step !== "06" && (
                       <ChevronRight className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-cyan-600 text-white shadow-md lg:block" aria-hidden="true" />
                     )}
                   </div>
@@ -479,16 +447,127 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Case Studies */}
+      {/* What the Client Receives */}
+      <section className="relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,212,191,0.08),transparent_55%)]" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              What You&apos;ll Receive
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              A customized database with the fields and formatting your workflow needs.
+            </p>
+          </SectionReveal>
+
+          <SectionReveal>
+            <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
+              <CardHeader>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { icon: Building2, label: "Target company information" },
+                    { icon: Users, label: "Decision-maker names" },
+                    { icon: Search, label: "Job titles & seniority" },
+                    { icon: Mail, label: "Business emails (verified)" },
+                    { icon: Globe2, label: "LinkedIn profiles" },
+                    { icon: MapPin, label: "Phone numbers where available" },
+                    { icon: Database, label: "Firmographic data" },
+                    { icon: Target, label: "Technographic data where requested" },
+                    { icon: ShieldCheck, label: "Funding or growth information" },
+                    { icon: BadgeCheck, label: "Verification status" },
+                    { icon: FileSpreadsheet, label: "Source or confidence fields" },
+                    { icon: ClipboardCheck, label: "Custom columns & CRM-ready formatting" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center flex-shrink-0">
+                        <item.icon className="h-5 w-5 text-cyan-400" />
+                      </div>
+                      <span className="text-slate-300 text-sm leading-relaxed">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardHeader>
+            </Card>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* Proven Experience */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.08),transparent_60%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Proven Experience
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Years of prospect research and data delivery for B2B teams across US, UK, and Australian markets.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+            {provenStats.map((point, index) => {
+              const Icon = point.icon;
+              return (
+                <StaggerItem key={point.label}>
+                  <Card className="h-full text-center border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
+                    <CardHeader>
+                      <div className="w-14 h-14 mx-auto rounded-2xl bg-cyan-500/15 flex items-center justify-center mb-4">
+                        <Icon className="h-7 w-7 text-cyan-400" />
+                      </div>
+                      <div className="text-3xl md:text-4xl font-bold text-white mb-1">{point.value}</div>
+                      <CardTitle className="text-sm font-medium text-slate-300">{point.label}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-slate-400 leading-relaxed">{point.detail}</p>
+                    </CardContent>
+                  </Card>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+
+          <SectionReveal delay={0.3} className="mt-12 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Long-Term Client, USA",
+                  quote: "Bashir has been an instrumental part in our lead-generation efforts. He brings a wealth of knowledge around SEO and Email Marketing infrastructure and strategies. His team is professional and gets tasks done in a timely manner.",
+                  meta: "3+ years of ongoing collaboration",
+                },
+                {
+                  title: "Returning Client, USA",
+                  quote: "Bashir worked on a lead generation project for me for several months. I plan to hire him again in the future if I need additional leads.",
+                  meta: "Long-term repeat engagement",
+                },
+                {
+                  title: "5-Star Client, USA",
+                  quote: "Bashir is an excellent worker and I will hire him again.",
+                  meta: "5.0 rating",
+                },
+              ].map((item, index) => (
+                <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm">
+                  <Star className="h-5 w-5 fill-amber-400 text-amber-400 mb-3" />
+                  <p className="text-sm text-slate-300 leading-relaxed mb-4">"{item.quote}"</p>
+                  <div className="text-xs font-semibold text-cyan-400">{item.title}</div>
+                  <div className="text-xs text-slate-500 mt-1">{item.meta}</div>
+                </div>
+              ))}
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* Selected Project Examples */}
       <section className="relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,212,191,0.08),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Measurable Client Results
+              Selected Project Examples
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Real outcomes from recent lead generation and outreach projects.
+              Research challenges we&apos;ve translated into verified, criteria-matched prospect databases.
             </p>
           </SectionReveal>
 
@@ -496,26 +575,22 @@ export default function HomePage() {
             <SectionReveal delay={0}>
               <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="text-white">Local Marketing Agency, USA</CardTitle>
-                  <CardDescription className="text-cyan-400/80">Verified Prospect List Delivery</CardDescription>
+                  <CardTitle className="text-white">Managed IT Provider, USA</CardTitle>
+                  <CardDescription className="text-cyan-400/80">Custom Prospect Database</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3 text-slate-300">
+                  <div className="space-y-3 text-slate-300 text-sm">
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Needed: 5,000 verified prospects</span>
+                      <span>Requirement: SMB decision-makers for a managed cybersecurity retainer program</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Delivered: 5,600 verified contacts</span>
+                      <span>Delivered: 1,240 verified contacts with direct dials and validated emails</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Bounce rate: under 2%</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Campaign launched in 3 days</span>
+                      <span>Research: 50–500 employee companies in target metro areas, IT director and vCISO roles</span>
                     </div>
                   </div>
                 </CardContent>
@@ -525,285 +600,109 @@ export default function HomePage() {
             <SectionReveal delay={0.2}>
               <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="text-white">SaaS Startup, UK</CardTitle>
-                  <CardDescription className="text-cyan-400/80">Automated Lead Sourcing</CardDescription>
+                  <CardTitle className="text-white">Staffing Firm, USA</CardTitle>
+                  <CardDescription className="text-cyan-400/80">CRM-Ready Prospect Database</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3 text-slate-300">
+                  <div className="space-y-3 text-slate-300 text-sm">
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Built automated lead sourcing workflow</span>
+                      <span>Requirement: engineering-hiring companies with active demand</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Reduced manual research by 80%</span>
+                      <span>Delivered: 1,100 researched organizations with hiring-manager contacts</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Saved 20+ hours per week</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Scaled outreach without adding headcount</span>
+                      <span>Formatting: structured for direct CRM import and used the same day</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </SectionReveal>
           </div>
+
+          <SectionReveal delay={0.3} className="mt-12 text-center">
+            <Button asChild size="lg">
+              <Link href="/portfolio">
+                View the Full Portfolio
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </SectionReveal>
         </div>
       </section>
 
-      {/* Testimonials / Case Studies */}
+      {/* Why Clients Choose Us */}
       <section className="relative overflow-hidden bg-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(34,211,238,0.08),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(45,212,191,0.08),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Client Success Stories
+              Why Clients Choose Islah Web Service
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Real feedback from clients who trusted Islah Web Service with lead generation, research, and outreach-ready data.
+              Research built from your requirements, checked by humans, delivered clean.
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <SectionReveal delay={0}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-white">B2B Lead Generation</CardTitle>
-                  <CardDescription className="text-cyan-400/80">Long-term Client, USA</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-400 leading-relaxed mb-4">
-                    "Bashir has been an instrumental part in our lead-generation efforts. He brings a wealth of knowledge around SEO and Email Marketing infrastructure and strategies. His team is professional and gets tasks done in a timeline manner."
-                  </p>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <CheckCircle2 className="h-4 w-4" />
-                    <span className="text-sm font-medium">3+ years of ongoing collaboration</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </SectionReveal>
-
-            <SectionReveal delay={0.1}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-white">Prospect Lists</CardTitle>
-                  <CardDescription className="text-cyan-400/80">5-Star Rated Client, USA</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-400 leading-relaxed mb-4">
-                    "Bashir is an excellent worker and I will hire him again."
-                  </p>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <CheckCircle2 className="h-4 w-4" />
-                    <span className="text-sm font-medium">5.0 rating</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </SectionReveal>
-
-            <SectionReveal delay={0.2}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-white">Lead Generation & Virtual Assistant</CardTitle>
-                  <CardDescription className="text-cyan-400/80">Returning Client, USA</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-400 leading-relaxed mb-4">
-                    "It has been a pleasure working with Bashir. The only reason we're stopping this contract is that we are moving to a new larger contract. Looking forward to working with him again."
-                  </p>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <CheckCircle2 className="h-4 w-4" />
-                    <span className="text-sm font-medium">Upgraded to a larger contract</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </SectionReveal>
-
-            <SectionReveal delay={0.3}>
-              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-white">Email & Lead Outreach</CardTitle>
-                  <CardDescription className="text-cyan-400/80">Repeat Client, USA</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-400 leading-relaxed mb-4">
-                    "Bashir worked on a lead generation project for me for several months. I plan to hire him again in the future if I need additional leads."
-                  </p>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <CheckCircle2 className="h-4 w-4" />
-                    <span className="text-sm font-medium">Long-term repeat engagement</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </SectionReveal>
-          </div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChoose.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <StaggerItem key={item.title}>
+                  <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
+                    <CardHeader>
+                      <div className="w-12 h-12 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4">
+                        <Icon className="h-6 w-6 text-cyan-400" />
+                      </div>
+                      <CardTitle className="text-xl text-white">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-slate-400 leading-relaxed text-sm">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
 
-      {/* FAQ structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What is an AI lead generation system?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "An AI lead generation system automatically discovers, verifies, enriches, and qualifies prospects using data from Google Maps, company websites, and B2B datasets—so you get outreach-ready leads instead of generic contact lists.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How do you verify B2B contact lists?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We verify contacts through multi-step checks including email validation, phone verification, role confirmation, and source tracing. This reduces bounce rates and improves campaign deliverability.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Which countries do you serve?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We mainly serve businesses in the USA, UK, and Australia. Our research, data sources, and outreach strategies are tailored to these markets, though we can support campaigns targeting other English-speaking regions as well.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Can you automate my existing outreach workflow?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes. We integrate CRM automation, email sequencing, and follow-up workflows to reduce manual effort and keep your sales team focused on high-value conversations.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How long does it take to build a verified lead list?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Most projects deliver initial verified contact lists within 5–10 business days, depending on target industry, geography, and list size.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What is B2B lead generation?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "B2B lead generation is the process of identifying and qualifying companies and decision-makers that match your ideal customer profile, so your sales team can focus on prospects most likely to buy.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Which industries do you specialize in?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We primarily build prospect pipelines for Managed Service Providers (MSPs), SaaS companies, recruitment firms, and B2B professional services—though our process works for any B2B market.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What information is included in a prospect list?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Each prospect list includes company name, website, industry, location, verified business email, and decision-maker contact details—formatted and ready for your CRM or cold email tool.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
-
-      {/* FAQ */}
+      {/* Scope Clarification */}
       <section className="relative overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.06),transparent_60%)]" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Frequently Asked Questions
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.08),transparent_60%)]" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+          <SectionReveal>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+              We Build the Data. Your Team Controls the Outreach.
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Common questions about AI lead generation systems, data enrichment, and automation with Islah Web Service.
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              Our responsibility is to research the right companies, identify the requested people, enrich and verify the records, and deliver clean data. Your messaging, outreach system, sales conversations, meetings, and closed deals remain under your team&apos;s control.
             </p>
           </SectionReveal>
-
-          <div className="space-y-6">
-            {[
-              {
-                q: "What is an AI lead generation system?",
-                a: "An AI lead generation system automatically discovers, verifies, enriches, and qualifies prospects using data from Google Maps, company websites, and B2B datasets—so you get outreach-ready leads instead of generic contact lists.",
-              },
-              {
-                q: "How do you verify B2B contact lists?",
-                a: "We verify contacts through multi-step checks including email validation, phone verification, role confirmation, and source tracing. This reduces bounce rates and improves campaign deliverability.",
-              },
-              {
-                q: "Which countries do you serve?",
-                a: "We mainly serve businesses in the USA, UK, and Australia. Our research, data sources, and outreach strategies are tailored to these markets, though we can support campaigns targeting other English-speaking regions as well.",
-              },
-              {
-                q: "Can you automate my existing outreach workflow?",
-                a: "Yes. We integrate CRM automation, email sequencing, and follow-up workflows to reduce manual effort and keep your sales team focused on high-value conversations.",
-              },
-              {
-                q: "How long does it take to build a verified lead list?",
-                a: "Most projects deliver initial verified contact lists within 5–10 business days, depending on target industry, geography, and list size.",
-              },
-              {
-                q: "What is B2B lead generation?",
-                a: "B2B lead generation is the process of identifying and qualifying companies and decision-makers that match your ideal customer profile, so your sales team can focus on prospects most likely to buy.",
-              },
-              {
-                q: "Which industries do you specialize in?",
-                a: "We primarily build prospect pipelines for Managed Service Providers (MSPs), SaaS companies, recruitment firms, and B2B professional services—though our process works for any B2B market.",
-              },
-              {
-                q: "What information is included in a prospect list?",
-                a: "Each prospect list includes company name, website, industry, location, verified business email, and decision-maker contact details—formatted and ready for your CRM or cold email tool.",
-              },
-            ].map((item, index) => (
-              <SectionReveal key={item.q} delay={index * 0.05}>
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-lg text-white">{item.q}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-400 leading-relaxed">{item.a}</p>
-                  </CardContent>
-                </Card>
-              </SectionReveal>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* CTA Banner */}
+      {/* Free Sample CTA */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.15),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(45,212,191,0.10),transparent_50%)]" />
         <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-        <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-10 h-80 w-80 rounded-full bg-teal-500/10 blur-3xl animate-pulse" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-              Ready to 2× Your Qualified Leads?
+              See the Research Quality Before Starting a Full Project
             </h2>
-            <p className="text-xl text-slate-400 mb-4 max-w-2xl mx-auto">
-              Book a free lead generation strategy call. We'll show you exactly how to build a system that delivers consistent, qualified prospects to your sales team.
+            <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+              Share your targeting criteria and receive a small sample showing the type of companies, contacts, verification fields, and formatting available for your project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
                 <Link href="/free-consultation">
-                  Book a Free Strategy Call
+                  Request a Free 20-Record Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -819,8 +718,54 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <p className="mt-4 text-sm text-slate-400">Free consultation · No obligation · Sample data available</p>
+            <p className="mt-4 text-sm text-slate-400">Free sample · No obligation · Your criteria stay private</p>
           </SectionReveal>
+        </div>
+      </section>
+
+      {/* FAQ structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
+
+      {/* FAQ */}
+      <section className="relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.06),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Common questions about B2B prospect research, data verification, and project scope.
+            </p>
+          </SectionReveal>
+
+          <div className="space-y-6">
+            {faqs.map((item, index) => (
+              <SectionReveal key={item.q} delay={index * 0.05}>
+                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-white">{item.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-400 leading-relaxed">{item.a}</p>
+                  </CardContent>
+                </Card>
+              </SectionReveal>
+            ))}
+          </div>
         </div>
       </section>
     </main>
