@@ -20,7 +20,7 @@ Most teams lose deals before outreach ever happens — not because their emails 
 Three problems repeat in every industry we work with:
 
 1. **Your ICP is fuzzy.** "We sell to SMBs" is not a target. Without firmographics (industry, employee count, revenue, location, tech stack) you can't filter the market.
-2. **The data is stale.** Contact databases decay by roughly 2–3% per month. Job titles change, people leave, companies pivot.
+2. **The data is stale.** Contact data goes stale quickly — job titles change, people leave, companies pivot.
 3. **You're contacting the wrong person.** Sending to the company inbox or a generic "info@" address wastes most of your outreach budget.
 
 If any of these sound familiar, you are not a lead generation problem — you have a *data and research* problem, and it is very fixable.
@@ -32,10 +32,10 @@ Before any research starts, write down the exact attributes of a company that bu
 - **Industry** — which verticals have the pain you solve?
 - **Company size** — employee count bands (e.g., 5–50, 50–200).
 - **Location** — countries, states, or metro areas you can serve.
-- **Technology** — tools they already use that signal intent (e.g., a company running HubSpot is a warmer CRM prospect).
+- **Technology** — client-defined technology criteria (e.g., a company running HubSpot matches a CRM vendor's targeting filter).
 - **Signals** — hiring IT staff, opening new offices, recent funding, new roles posted.
 
-A tight ICP makes every later step faster. If you need help defining one, our [B2B prospect research service](/b2b-prospect-research) starts here — no research happens before the profile is agreed.
+Clear targeting criteria make every later step faster. If your targeting requirements are incomplete, our [B2B prospect research service](/b2b-prospect-research) can help translate them into practical research criteria before research begins.
 
 ## Step 2: Research Target Companies
 
@@ -119,8 +119,8 @@ We focus on MSPs, SaaS, recruitment agencies, and B2B professional services — 
 **What information is included in a prospect list?**
 Company firmographics, decision-maker names and titles, verified emails, LinkedIn URLs, and ICP match notes.
 
-**Can you build lists for a specific ICP?**
-Yes — every project starts by agreeing the ICP before any research begins.
+**Can you build lists for specific targeting criteria?**
+Yes — every project starts by confirming your target criteria before any research begins.
 
 **How do you deliver the final data?**
 As a CRM-ready spreadsheet or CSV, formatted for your stack and ready to import.

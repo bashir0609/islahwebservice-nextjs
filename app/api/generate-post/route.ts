@@ -16,9 +16,9 @@ export async function POST(req: Request) {
 
     const serviceKeywords = [
       "B2B Prospect Research",
-      "Prospect List Building",
-      "Decision-Maker Research",
+      "Company and Decision-Maker Research",
       "Contact Enrichment and Verification",
+      "Existing Database Enrichment",
       "CRM-Ready Prospect Data",
     ].join(", ");
 

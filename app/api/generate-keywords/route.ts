@@ -16,11 +16,11 @@ export async function POST(req: Request) {
 
     const system = `You are an SEO keyword researcher for a B2B prospect research and data services company that specializes in:
 - B2B Prospect Research
-- Prospect List Building
-- Decision-Maker Research
+- Company and Decision-Maker Research
 - Contact Enrichment and Verification
+- Existing Database Enrichment
 - CRM-Ready Prospect Data
-Generate unique, high-intent keyword phrases relevant to these services.`;
+Generate unique keyword phrases relevant to these services.`;
 
     const user = `Topic: ${topic}
 Generate ${count} unique, specific keyword phrases directly related to this B2B topic and our services.

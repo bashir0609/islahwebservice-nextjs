@@ -34,7 +34,7 @@ Before you touch a data source, write down your ideal customer profile:
 - Location (countries, states, metros)
 - Revenue or funding signals
 - Tech stack or tools in use
-- Intent signals (hiring, expansion, new roles)
+- Research signals (hiring, expansion, new roles)
 
 Every company that enters the list must match this profile. This single step does more to improve conversion than any other.
 

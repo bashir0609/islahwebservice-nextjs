@@ -342,17 +342,13 @@ Cold email works best when the list, offer, and message all match.
 The best way to build a B2B lead list is to start with a clear target market, collect company data from reliable sources, filter leads based on fit, identify relevant decision-makers, verify email addresses, remove duplicates, enrich records with useful context, and deliver the final file in a CRM-ready format.
 This process gives your campaign a cleaner foundation and helps your team avoid wasting time on bad data.
 ## Need Help Building a Clean B2B Lead List?
-If you want a clean, verified lead list for cold email, LinkedIn outreach, calling, or appointment setting, Islah Web Service can help.
-I build [targeted prospect lists](/b2b-prospect-research) based on your exact market.
-You can request:
-B2B lead lists
-Google Maps leads
-Local business lists
-LinkedIn research
-Decision-maker research
+If you want a clean, verified prospect database for your own outreach, Islah Web Service can help.
+We build [targeted prospect lists](/b2b-prospect-research) based on your exact market. Our research covers:
+B2B prospect research (company and decision-maker research)
+Google Maps and local business research
+Existing database enrichment
 Verified email research
 CRM-ready formatting
-Ecommerce SEO content support
 
 Start with a [free sample request](/request-sample).
 I'll build 20 free sample leads from your target market so you can check the quality before starting a full project.

@@ -34,7 +34,7 @@ Not all data is equal. Focus enrichment effort on fields that change outreach ou
 - **Job title and seniority** — are you reaching the buyer or the gatekeeper?
 - **Direct phone number** — only where appropriate and permitted
 - **Company size and industry** — ICP filtering
-- **Technologies in use** — intent signals and personalization hooks
+- **Technologies in use** — technographic targeting signals and personalization hooks
 
 A record with a verified email and a current title is worth ten records with names only.
 

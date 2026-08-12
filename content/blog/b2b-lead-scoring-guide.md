@@ -91,4 +91,4 @@ Yes — our [B2B prospect research](/b2b-prospect-research) projects can include
 
 ## Rank Your Pipeline With Confidence
 
-Stop guessing which accounts deserve attention. [Request a free sample](/request-sample) and we'll show you how verified data plus a simple scoring model can focus your sales team on the accounts most likely to buy.
+Stop guessing which accounts deserve attention. [Request a free sample](/request-sample) and we'll show you how verified data plus a simple scoring model can focus your sales team on the accounts that match your criteria.
