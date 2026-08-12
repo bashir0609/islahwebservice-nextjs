@@ -1,7 +1,7 @@
 ---
-title: The B2B Sales Prospecting Playbook: How to Find Qualified Buyers
+title: The B2B Sales Prospecting Playbook
 slug: sales-prospecting-playbook
-excerpt: A step-by-step sales prospecting playbook — how to find, qualify, and prioritize B2B accounts that match your ICP, so your outbound pipeline starts with real opportunities.
+excerpt: A step-by-step sales prospecting playbook — how to find and research B2B accounts that match your target criteria, so your outreach starts with verified data and the right contacts.
 tags: Sales Prospecting, B2B Lead Generation, Outbound Sales
 author: Islah Web Service
 readTime: 10
@@ -77,11 +77,11 @@ Prospecting data decays — roughly 2–3% of contacts go stale every month. Tit
 - Mailbox status (valid, risky, or invalid)
 - Current job titles and LinkedIn URLs
 
-A verified list protects your domain reputation and your reply rates. The deeper workflow lives in our [contact enrichment guide](/blog/contact-enrichment-guide), and the full methodology behind [how to build prospect lists that convert](/blog/how-to-build-b2b-prospect-lists) walks through research, filtering, and qualification end to end.
+A verified list protects your domain reputation and your reply rates. The deeper workflow lives in our [contact enrichment guide](/blog/contact-enrichment-guide), and the full methodology behind [how to build targeted prospect lists](/blog/how-to-build-b2b-prospect-lists) walks through research, filtering, and verification end to end.
 
 ## Prospecting vs. Lead Generation
 
-Sales prospecting is the *activity* of finding and qualifying accounts. B2B lead generation is the *system* that produces sales-ready databases on demand — using AI-assisted research to build prospect lists at scale. If prospecting is a firehose, lead generation is the filter that turns it into CRM-ready data.
+Sales prospecting is the *activity* of finding and researching accounts. B2B lead generation is the *system* that produces verified databases on demand — using research workflows to build prospect lists at scale. If prospecting is a firehose, lead generation is the filter that turns it into CRM-ready data.
 
 ## Frequently Asked Questions
 
@@ -102,4 +102,4 @@ Yes — every [prospect research project](/b2b-prospect-research) starts by agre
 
 ## Start Prospecting With Better Data
 
-The fastest way to improve your outbound results is to fix the data your reps work from. [Request a free sample](/request-sample) and we'll map your ICP and show you what a verified, sales-ready prospect list for your market looks like.
+The fastest way to improve your outbound results is to fix the data your reps work from. [Request a free sample](/request-sample) and we'll help refine your research criteria and show you what a verified, CRM-ready prospect list for your market looks like.

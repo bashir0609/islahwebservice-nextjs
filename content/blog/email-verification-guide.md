@@ -35,7 +35,7 @@ A solid verification pipeline runs layered checks:
 
 Each address is then classified into one of three states:
 
-- **Valid** — passed all checks and is safe to send
+- **Valid** — passed the checks available at the time of verification
 - **Risky** — likely deliverable but with signals that could cause soft bounces or low engagement
 - **Invalid** — will bounce; removed from the list
 

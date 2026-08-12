@@ -191,6 +191,16 @@ export default function MspIndustryPage() {
               );
             })}
           </StaggerContainer>
+
+          <SectionReveal delay={0.2} className="mt-10">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-center backdrop-blur-sm">
+              <p className="text-sm leading-relaxed text-slate-400">
+                Research signals help identify companies matching your targeting criteria. They do not
+                prove that a company needs managed services, intends to switch providers, or is ready
+                to purchase.
+              </p>
+            </div>
+          </SectionReveal>
         </div>
       </section>
 
@@ -297,7 +307,7 @@ export default function MspIndustryPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/portfolio">View Case Studies</Link>
+                <Link href="/portfolio/msp-prospect-database-us-it-provider">See the MSP Case Study</Link>
               </Button>
             </div>
           </SectionReveal>
@@ -382,13 +392,13 @@ export default function MspIndustryPage() {
         guides={[
           {
             href: "/blog/msp-lead-generation-guide",
-            title: "MSP Lead Generation: Finding Businesses That Need IT",
+            title: "MSP Lead Generation: Researching Companies With IT Signals",
             description: "Researching companies with IT-related signals and building verified prospect lists for targeted outreach.",
           },
           {
             href: "/blog/complete-guide-to-b2b-lead-generation",
             title: "The Complete Guide to B2B Lead Generation",
-            description: "The full workflow — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+            description: "The full workflow — from defining target criteria to delivering CRM-ready prospect lists with verified decision makers.",
           },
           {
             href: "/blog/how-to-extract-verified-leads-from-google-maps-ethically",

@@ -300,7 +300,7 @@ export default function ProfessionalServicesIndustryPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/portfolio">View Case Studies</Link>
+                <Link href="/portfolio/contact-enrichment-uk-consultancy">See the Professional Services Case Study</Link>
               </Button>
             </div>
           </SectionReveal>
@@ -392,11 +392,11 @@ export default function ProfessionalServicesIndustryPage() {
           {
             href: "/blog/sales-prospecting-playbook",
             title: "The B2B Sales Prospecting Playbook",
-            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+            description: "Find accounts that match your target criteria and identify the right contacts for outreach.",
           },
           {
             href: "/blog/how-to-build-b2b-prospect-lists",
-            title: "How to Build B2B Prospect Lists That Convert",
+            title: "How to Build Targeted B2B Prospect Lists",
             description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
           },
         ]}

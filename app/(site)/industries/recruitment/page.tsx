@@ -299,7 +299,7 @@ export default function RecruitmentIndustryPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/portfolio">View Case Studies</Link>
+                <Link href="/portfolio/recruitment-decision-maker-list">See the Recruitment Case Study</Link>
               </Button>
             </div>
           </SectionReveal>

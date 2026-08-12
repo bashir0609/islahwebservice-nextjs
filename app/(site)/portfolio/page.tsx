@@ -1,109 +1,14 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import {
-  Search,
-  MapPin,
-  Building2,
-  Users,
-  ArrowRight,
-} from "lucide-react";
-import {
-  SectionReveal,
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/motion/animated-section";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { MapPin } from "lucide-react";
+import { SectionReveal } from "@/components/motion/animated-section";
+import PortfolioGallery from "@/components/site/portfolio-gallery";
 import { listPortfolioItems } from "@/lib/actions/portfolio";
-import type { PortfolioItem } from "@/lib/db/schema";
 
-export default function PortfolioPage() {
-  const [projects, setProjects] = useState<PortfolioItem[]>([]);
-  const [filteredProjects, setFilteredProjects] = useState<PortfolioItem[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState("All");
+// Server component: fetches the case studies directly from the database so the
+// page ships with content in the HTML (no client-side fetch dependency).
+export const dynamic = "force-dynamic";
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const data = await listPortfolioItems();
-      setProjects(data);
-      setFilteredProjects(data);
-    };
-    fetchProjects();
-  }, []);
-
-  useEffect(() => {
-    const tags = Array.from(
-      new Set(
-        projects
-          .flatMap((p) => {
-            try {
-              const parsed = typeof p.tags === 'string' ? JSON.parse(p.tags) : p.tags;
-              return Array.isArray(parsed) ? parsed : [];
-            } catch {
-              return [];
-            }
-          })
-          .filter((tag): tag is string => typeof tag === "string" && Boolean(tag)),
-      ),
-    ).sort();
-    const allTags = ["All", ...tags];
-    setSelectedTag((prev) => (allTags.includes(prev) ? prev : "All"));
-  }, [projects]);
-
-  useEffect(() => {
-    let filtered = projects;
-
-    if (searchTerm) {
-      const searchLower = searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (project) =>
-          project.title.toLowerCase().includes(searchLower) ||
-          (project.description || "").toLowerCase().includes(searchLower),
-      );
-    }
-
-    if (selectedTag !== "All") {
-      filtered = filtered.filter((project) => {
-        let projectTags: string[] = [];
-        try {
-          projectTags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
-        } catch {
-          projectTags = [];
-        }
-        return projectTags.includes(selectedTag);
-      });
-    }
-
-    setFilteredProjects(filtered);
-  }, [searchTerm, selectedTag, projects]);
-
-  const allTags = [
-    "All",
-    ...Array.from(
-      new Set(
-        projects
-          .flatMap((p) => {
-            try {
-              const parsed = typeof p.tags === 'string' ? JSON.parse(p.tags) : p.tags;
-              return Array.isArray(parsed) ? parsed : [];
-            } catch {
-              return [];
-            }
-          })
-          .filter((tag): tag is string => typeof tag === "string" && Boolean(tag)),
-      ),
-    ).sort(),
-  ];
+export default async function PortfolioPage() {
+  const projects = await listPortfolioItems();
 
   return (
     <main className="flex flex-col">
@@ -117,22 +22,24 @@ export default function PortfolioPage() {
             <SectionReveal immediate delay={0.2} className="mb-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <MapPin className="h-4 w-4" />
-                B2B Prospect Research Projects
+                Verified B2B Prospect Research
               </div>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-                Our
+                B2B Prospect Research
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                  Research Projects
+                  Case Studies
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-8 max-w-2xl mx-auto">
               <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Explore how our B2B prospect research delivers verified, criteria-matched databases for businesses across the USA, UK, and Australia.
+                How we research companies, identify decision-makers, verify
+                contact data, and deliver CRM-ready prospect databases for
+                businesses across the USA, UK, and Australia.
               </p>
             </SectionReveal>
           </div>
@@ -150,149 +57,17 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Research Projects
+              Selected Research Projects
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Discover how our B2B prospect research delivers verified, criteria-matched databases.
+              Verified record counts, research criteria, and deliverable facts
+              for each project.
             </p>
           </SectionReveal>
 
-          {/* Filters */}
           <SectionReveal delay={0.2} className="mb-12">
-            <div className="flex flex-col md:flex-row gap-6 justify-between items-center mb-8">
-              <div className="relative w-full md:w-96">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-500" />
-                <input
-                  type="text"
-                  placeholder="Search projects..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all backdrop-blur-sm"
-                />
-              </div>
-
-              <div className="flex flex-wrap gap-2 w-full md:w-auto justify-center">
-                {allTags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setSelectedTag(tag)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
-                      selectedTag === tag
-                        ? "bg-cyan-600 text-white shadow-lg border-cyan-600"
-                        : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:border-white/20"
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <PortfolioGallery projects={projects} />
           </SectionReveal>
-
-          {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
-            <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {filteredProjects.map((project) => {
-                let tags: string[] = [];
-                try {
-                  tags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
-                } catch {
-                  tags = [];
-                }
-                return (
-                  <StaggerItem key={project.id} className="group">
-                    <Card className="overflow-hidden h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-500">
-                      <div className="relative h-64 overflow-hidden">
-                        <Image
-                          src={project.image || "/placeholder.svg"}
-                          alt={project.title}
-                          fill
-                          unoptimized
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="flex flex-wrap gap-2 mb-2">
-                            {tags.slice(0, 3).map((tag, index) => (
-                              <span
-                                key={index}
-                                className="px-3 py-1 bg-cyan-500/90 text-white text-xs rounded-full font-medium"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <h3 className="text-xl font-bold text-white">
-                            {project.title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <CardContent className="p-8 flex-grow">
-                        <CardDescription className="text-slate-400 leading-relaxed mb-6">
-                          {project.description}
-                        </CardDescription>
-
-                        <div className="flex items-center justify-between mb-6 text-sm text-slate-400">
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1">
-                              <Building2 className="h-4 w-4" />
-                              <span>Industry</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Users className="h-4 w-4" />
-                              <span>50+ Users</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {project.featured === 1 && (
-                          <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full border border-cyan-500/30">
-                            <div className="w-2 h-2 bg-cyan-500 rounded-full" />
-                            <span className="text-sm font-medium text-cyan-400">
-                              Featured Project
-                            </span>
-                          </div>
-                        )}
-                      </CardContent>
-
-                      <div className="px-8 pb-8 mt-auto">
-                        <Button
-                          asChild
-                          variant="outline"
-                          className="w-full border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-cyan-500/40 transition-all"
-                        >
-                          <Link
-                            href={`/portfolio/${project.slug || project.id}`}
-                            className="flex items-center justify-center gap-2"
-                          >
-                            View Case Study
-                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </Card>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerContainer>
-          ) : (
-            <SectionReveal className="text-center py-20">
-              <div className="max-w-md mx-auto">
-                <div className="w-24 h-24 mx-auto mb-6 bg-white/5 border border-white/10 rounded-full flex items-center justify-center">
-                  <Search className="h-8 w-8 text-slate-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  No Projects Found
-                </h3>
-                <p className="text-slate-400">
-                  {projects.length === 0
-                    ? "Our portfolio is growing. Check back soon for new projects."
-                    : "No projects match your current filters. Try adjusting your search criteria."}
-                </p>
-              </div>
-            </SectionReveal>
-          )}
         </div>
       </section>
     </main>

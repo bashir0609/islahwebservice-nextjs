@@ -18,7 +18,7 @@ const SERVICE = {
     href: "/b2b-prospect-research",
     title: "B2B Prospect Research",
     description:
-      "Custom B2B prospect research: companies researched against your criteria, requested decision-makers identified, and contact details enriched, verified, and delivered CRM-ready.",
+      "B2B prospect research: companies researched against your criteria, requested decision-makers identified, and contact details enriched, verified, and delivered CRM-ready.",
   },
   enrichment: {
     href: "/contact-enrichment",
@@ -33,13 +33,13 @@ const INDUSTRY = {
     href: "/industries/msp",
     title: "Managed Service Providers",
     description:
-      "Prospect lists for MSPs targeting managed IT, cloud, and cybersecurity buyers.",
+      "Prospect lists for MSPs built around IT, cloud, and cybersecurity research signals.",
   },
   saas: {
     href: "/industries/saas",
     title: "SaaS Companies",
     description:
-      "Data for SaaS sales teams targeting software buyers by stack, size, and budget.",
+      "Data for SaaS sales teams researching software companies by stack, size, and growth signals.",
   },
   recruitment: {
     href: "/industries/recruitment",
@@ -180,7 +180,7 @@ export interface RelatedGuide {
 const GUIDE = {
   mspLeadGen: {
     href: "/blog/msp-lead-generation-guide",
-    title: "MSP Lead Generation: Finding Businesses That Need Managed IT Services",
+    title: "MSP Lead Generation: Researching Companies With IT-Related Signals",
     description:
       "Research companies with IT-related signals, map the right decision makers, and build verified prospect lists for targeted outreach.",
   },
@@ -188,7 +188,7 @@ const GUIDE = {
     href: "/blog/complete-guide-to-b2b-lead-generation",
     title: "The Complete Guide to B2B Lead Generation",
     description:
-      "The complete playbook — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+      "The complete playbook — from defining target criteria to delivering CRM-ready prospect lists with verified decision makers.",
   },
   coldEmail: {
     href: "/blog/cold-email-for-b2b-lead-generation",
@@ -198,9 +198,9 @@ const GUIDE = {
   },
   prospectLists: {
     href: "/blog/how-to-build-b2b-prospect-lists",
-    title: "How to Build B2B Prospect Lists That Actually Convert",
+    title: "How to Build Targeted B2B Prospect Lists",
     description:
-      "A step-by-step guide to building targeted prospect lists — research, filtering, qualification, and verification that converts.",
+      "A step-by-step guide to building targeted prospect lists — research, filtering, and verification that delivers CRM-ready data.",
   },
   cleanList: {
     href: "/blog/how-to-build-a-clean-b2b-lead-list-for-cold-email",
@@ -230,7 +230,7 @@ const GUIDE = {
     href: "/blog/sales-prospecting-playbook",
     title: "The B2B Sales Prospecting Playbook",
     description:
-      "A step-by-step playbook for finding, qualifying, and prioritizing accounts that match your ICP.",
+      "A step-by-step playbook for finding accounts that match your target criteria and identifying the right contacts.",
   },
   linkedin: {
     href: "/blog/linkedin-outreach-for-b2b-sales",

@@ -107,4 +107,4 @@ What tools are best for B2B lead generation?
 
 ## Get a Free B2B Lead Generation Consultation
 
-Whether you need ICP-qualified prospect lists, verified decision-maker contacts, or CRM-ready prospect data, we can help. [Request a free sample](/request-sample) and we'll map your ideal customer profile and show you exactly what a verified, sales-ready prospect list for your market looks like.
+Whether you need criteria-matched prospect lists, verified decision-maker contacts, or CRM-ready prospect data, we can help. [Request a free sample](/request-sample) and we'll refine your research criteria and show you what a verified, CRM-ready prospect list for your market looks like.

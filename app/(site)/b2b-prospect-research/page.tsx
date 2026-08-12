@@ -573,7 +573,7 @@ export default function B2BProspectResearchPage() {
           {
             href: "/blog/complete-guide-to-b2b-lead-generation",
             title: "The Complete Guide to B2B Lead Generation",
-            description: "The pillar guide — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+            description: "The pillar guide — from defining target criteria to delivering CRM-ready prospect lists with verified decision makers.",
           },
           {
             href: "/blog/how-to-build-b2b-prospect-lists",

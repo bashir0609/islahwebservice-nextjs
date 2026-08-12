@@ -301,7 +301,7 @@ export default function SaasIndustryPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/portfolio">View Case Studies</Link>
+                <Link href="/portfolio/saas-lead-generation-uk-analytics-platform">See the SaaS Case Study</Link>
               </Button>
             </div>
           </SectionReveal>
@@ -387,18 +387,18 @@ export default function SaasIndustryPage() {
         guides={[
           {
             href: "/blog/how-to-build-b2b-prospect-lists",
-            title: "How to Build B2B Prospect Lists That Convert",
+            title: "How to Build Targeted B2B Prospect Lists",
             description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
           },
           {
             href: "/blog/complete-guide-to-b2b-lead-generation",
             title: "The Complete Guide to B2B Lead Generation",
-            description: "The full workflow — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+            description: "The full workflow — from defining target criteria to delivering CRM-ready prospect lists with verified decision makers.",
           },
           {
             href: "/blog/sales-prospecting-playbook",
             title: "The B2B Sales Prospecting Playbook",
-            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+            description: "Find accounts that match your target criteria and identify the right contacts for outreach.",
           },
         ]}
       />

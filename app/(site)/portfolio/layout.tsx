@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Portfolio",
+  title: "B2B Prospect Research Case Studies",
   description:
-    "Browse selected B2B prospect research projects and case studies—custom company research, decision-maker discovery, contact enrichment, and verified CRM-ready data delivery.",
+    "Case studies in B2B prospect research — company research, decision-maker discovery, contact enrichment, email verification, and verified CRM-ready prospect data delivery.",
   path: "/portfolio",
 });
 

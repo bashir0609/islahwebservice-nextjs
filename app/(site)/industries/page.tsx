@@ -194,16 +194,16 @@ export default function IndustriesPage() {
           {
             href: "/blog/complete-guide-to-b2b-lead-generation",
             title: "The Complete Guide to B2B Lead Generation",
-            description: "The pillar guide — from defining your ICP to delivering CRM-ready prospect lists with verified decision makers.",
+            description: "The pillar guide — from defining target criteria to delivering CRM-ready prospect lists with verified decision makers.",
           },
           {
             href: "/blog/sales-prospecting-playbook",
             title: "The B2B Sales Prospecting Playbook",
-            description: "Find, qualify, and prioritize accounts that match your ICP so your outbound pipeline starts with real opportunities.",
+            description: "Find accounts that match your target criteria and identify the right contacts for outreach.",
           },
           {
             href: "/blog/how-to-build-b2b-prospect-lists",
-            title: "How to Build B2B Prospect Lists That Convert",
+            title: "How to Build Targeted B2B Prospect Lists",
             description: "Research, filtering, qualification, and verification — the four steps that turn a spreadsheet into a sales asset.",
           },
         ]}
