@@ -8,7 +8,7 @@ date: 2026-03-22
 results: [{"label":"Contacts delivered","value":"3,200"},{"label":"Accounts profiled","value":"900"},{"label":"Roles","value":"TA · IT · Procurement"}]
 ---
 
-A UK recruitment agency expanding into contract IT staffing needed direct access to hiring decision makers at enterprise organizations — not generic HR inboxes.
+A UK recruitment agency expanding into contract IT staffing needed direct access to the talent and hiring roles at enterprise organizations — not generic HR inboxes.
 
 We profiled 900 target accounts by tech hiring volume and contract spend, then researched the talent acquisition lead, IT hiring manager, and procurement contact at each one, capturing direct lines and role-specific emails.
 

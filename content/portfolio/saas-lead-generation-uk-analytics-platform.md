@@ -8,7 +8,7 @@ date: 2026-04-18
 results: [{"label":"Accounts enriched","value":"2,300"},{"label":"Contacts delivered","value":"4,100"},{"label":"Segmentation","value":"Technographic"}]
 ---
 
-A UK-based business intelligence SaaS company was struggling to fill the top of their funnel with buyers who fit their product-led growth model.
+A UK-based business intelligence SaaS company was struggling to fill the top of their funnel with accounts that fit their product-led growth model.
 
 We built a technographic segmentation across their ideal customer profile — companies running competing analytics stacks, recent hiring in data teams, and Series A–C funding — then researched the head of data, CTO, and analytics leads at each account.
 

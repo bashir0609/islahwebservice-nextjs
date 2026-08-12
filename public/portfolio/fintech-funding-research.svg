@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="CRM-Ready Database case study">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="B2B Prospect Research for Fintech case study">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#020617"/>
       <stop offset="1" stop-color="#0f172a"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.85" cy="0.85" r="0.9">
-      <stop offset="0" stop-color="rgba(45,212,191,0.22)"/>
-      <stop offset="1" stop-color="rgba(45,212,191,0)"/>
+    <radialGradient id="glow" cx="0.82" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="rgba(34,211,238,0.3)"/>
+      <stop offset="1" stop-color="rgba(34,211,238,0)"/>
     </radialGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
@@ -15,8 +15,9 @@
     <line x1="0" y1="126" x2="1200" y2="126"/><line x1="0" y1="252" x2="1200" y2="252"/><line x1="0" y1="378" x2="1200" y2="378"/><line x1="0" y1="504" x2="1200" y2="504"/>
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
-  <circle cx="1000" cy="140" r="160" fill="rgba(45,212,191,0.09)"/>
-  <text x="600" y="300" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" fill="#67e8f9" text-anchor="middle">CRM-Ready Prospect Database</text>
-  <text x="600" y="356" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#94a3b8" text-anchor="middle">1,100 accounts · CRM-ready import</text>
+  <circle cx="250" cy="180" r="170" fill="rgba(34,211,238,0.09)"/>
+  <circle cx="980" cy="480" r="140" fill="rgba(45,212,191,0.07)"/>
+  <text x="600" y="290" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="bold" fill="#67e8f9" text-anchor="middle">B2B Prospect Research · Fintech</text>
+  <text x="600" y="348" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#94a3b8" text-anchor="middle">1,400 accounts · funding-stage mapped</text>
   <text x="600" y="430" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3" fill="#22d3ee" text-anchor="middle">ISLAH WEB SERVICE · CASE STUDY</text>
 </svg>
