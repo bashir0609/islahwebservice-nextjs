@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "B2B Prospect Research & Lead Data Services",
+  title: "B2B Research & Data Capabilities",
   description:
-    "B2B prospect research and lead data services for the USA, UK, and Australia: company research, decision-maker discovery, contact enrichment, email verification, and CRM-ready data delivery.",
+    "Explore Islah Web Service's B2B research and data capabilities: prospect research, decision-maker discovery, contact enrichment, email verification, and CRM-ready data delivery for B2B sales teams.",
   path: "/services",
 });
 
