@@ -2,7 +2,7 @@
 title: CRM-Ready Prospect Data: Cleaning, Deduplication, and Formatting
 slug: crm-ready-prospect-data-guide
 excerpt: What it actually takes to make prospect data CRM-ready — deduplication, standardization, field mapping, and the verification that keeps your CRM clean.
-tags: CRM, Data Cleaning, Prospect Research, B2B Data
+tags: Data Quality & Enrichment, Prospect Research
 author: Islah Web Service
 readTime: 8
 published: false

@@ -38,6 +38,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     staticEntry("/about", "monthly", 0.8),
     staticEntry("/free-consultation", "weekly", 0.6),
     staticEntry("/contact", "monthly", 0.7),
+    staticEntry("/privacy-policy", "monthly", 0.3),
+    staticEntry("/terms", "monthly", 0.3),
   ];
 
   // Dynamic blog posts (published only) and portfolio case studies.

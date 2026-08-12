@@ -78,7 +78,7 @@ export default function FreeConsultationPage() {
         pushEvent("consultation_form_submitted", { service: data.service, company: data.company });
         toast({
           title: "Request Received",
-          description: result.message + " We'll reply within 24 hours to schedule your consultation.",
+          description: result.message + " We'll typically reply within one business day to schedule your consultation.",
           variant: "success",
         });
         reset();
@@ -136,7 +136,7 @@ export default function FreeConsultationPage() {
               </Button>
               <div className="flex items-center gap-2 text-sm text-slate-400">
                 <Clock className="h-4 w-4 text-emerald-400" />
-                Replies within 24 hours
+                Typically replies within one business day
               </div>
             </SectionReveal>
 
@@ -203,7 +203,7 @@ export default function FreeConsultationPage() {
               {[
                 { value: "15 min", label: "Focused strategy session" },
                 { value: "$0", label: "No cost, no obligation" },
-                { value: "24 hrs", label: "Response time" },
+                { value: "1 day", label: "Typical response time" },
               ].map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm">
                   <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">{stat.value}</div>
@@ -352,6 +352,13 @@ export default function FreeConsultationPage() {
                   <p className="text-center text-xs text-slate-500">
                     Free · No credit card required · Your data stays private
                   </p>
+                  <p className="text-center text-xs text-slate-500">
+                    By submitting this form, you agree to our{" "}
+                    <Link href="/privacy-policy" className="text-cyan-400 hover:underline">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
                 </form>
               </Card>
             </SectionReveal>
@@ -412,7 +419,7 @@ export default function FreeConsultationPage() {
                     </div>
                     <div className="flex items-center gap-2 text-slate-400">
                       <MessageSquare className="h-4 w-4 text-cyan-400" />
-                      <span>Replies within 24 hours, Mon–Fri</span>
+                      <span>Typically replies within one business day, Mon–Fri</span>
                     </div>
                   </div>
                 </Card>

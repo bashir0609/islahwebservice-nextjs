@@ -2,7 +2,7 @@
 title: SaaS Prospecting: How to Research Companies That Match Your ICP
 slug: saas-prospecting-guide
 excerpt: A practical guide to researching SaaS companies for outbound sales — the company criteria, growth and technology signals, and decision-maker roles that build a criteria-matched prospect list.
-tags: SaaS, B2B Lead Generation, Prospect Research, Prospecting
+tags: Industry Guides, B2B Lead Generation, Prospect Research
 author: Islah Web Service
 readTime: 10
 published: true

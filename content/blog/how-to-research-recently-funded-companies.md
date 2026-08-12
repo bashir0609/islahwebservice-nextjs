@@ -2,7 +2,7 @@
 title: How to Research Recently Funded Companies
 slug: how-to-research-recently-funded-companies
 excerpt: How to find and research companies that recently raised funding — where funding data lives, how to verify it, and how to build a criteria-matched prospect list around funding stage and date.
-tags: Funded Companies, B2B Lead Generation, Prospect Research, Growth Signals
+tags: Prospect Research, Tools & Workflows, B2B Lead Generation
 author: Islah Web Service
 readTime: 8
 published: true

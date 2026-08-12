@@ -2,7 +2,7 @@
 title: Account-Based Research: Building the Data Layer for ABM
 slug: account-based-research-guide
 excerpt: How to research named accounts for account-based marketing and sales — org mapping, buying-committee identification, enrichment, and verified data for every target.
-tags: ABM, Account-Based Marketing, Prospect Research, B2B Data
+tags: B2B Lead Generation, Prospect Research, Tools & Workflows
 author: Islah Web Service
 readTime: 9
 published: false

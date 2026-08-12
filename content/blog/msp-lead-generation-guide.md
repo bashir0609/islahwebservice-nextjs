@@ -2,7 +2,7 @@
 title: MSP Lead Generation: Researching Companies With IT-Related Signals
 slug: msp-lead-generation-guide
 excerpt: A practical guide to MSP lead generation — researching companies with IT-related signals, mapping the right decision makers, and building verified prospect lists for outreach.
-tags: MSP, B2B Lead Generation, Prospect Lists
+tags: Industry Guides, B2B Lead Generation
 author: Islah Web Service
 readTime: 9
 published: true

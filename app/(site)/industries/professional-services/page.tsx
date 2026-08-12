@@ -176,7 +176,7 @@ export default function ProfessionalServicesIndustryPage() {
               { icon: TrendingUp, title: "Growth-event research", description: "Companies showing hiring, expansion, or new-location events where you request them." },
               { icon: Building2, title: "Firmographic fit", description: "Industry, geography, employee count, revenue, and business model researched for fit." },
               { icon: Globe2, title: "Client-defined signals", description: "Technology, hiring, and other indicators you specify — never unproven purchase intent." },
-              { icon: ShieldCheck, title: "Verified, CRM-ready data", description: "Every record enriched and email-validated, formatted for your CRM and follow-up workflows." },
+              { icon: ShieldCheck, title: "Verified, CRM-ready data", description: "Contact data enriched and business emails verified where available, formatted for your CRM and sales workflow." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (

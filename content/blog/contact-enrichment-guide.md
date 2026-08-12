@@ -2,7 +2,7 @@
 title: Contact Enrichment: How to Complete and Verify B2B Contact Data
 slug: contact-enrichment-guide
 excerpt: What contact enrichment is, which data fields matter most, and how verification separates valid, risky, and invalid addresses — so your outreach starts from accurate data.
-tags: Contact Enrichment, Data Enrichment, B2B Lead Generation
+tags: Data Quality & Enrichment, B2B Lead Generation
 author: Islah Web Service
 readTime: 8
 published: true

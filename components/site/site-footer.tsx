@@ -6,6 +6,8 @@ import { Separator } from "@radix-ui/react-separator";
 import { Linkedin, Twitter, Instagram, Facebook, Github, ArrowUp } from "lucide-react";
 import { useSiteSettings } from "@/components/site/site-settings-provider";
 import { pushEvent } from "@/lib/analytics";
+import { INDUSTRIES } from "@/lib/industries";
+import { openCookiePreferences } from "@/components/site/cookie-consent";
 import { cn } from "@/lib/utils";
 
 const SOCIAL_META: { key: string; label: string; icon: React.ReactNode }[] = [
@@ -27,7 +29,7 @@ export default function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-slate-950">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 sm:gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2">
               <Image
@@ -42,8 +44,29 @@ export default function SiteFooter() {
               Islah Web Service builds customized B2B prospect databases through company research, decision-maker discovery, contact enrichment, verification, and CRM-ready data preparation.
             </p>
             <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs">
-              Serving MSPs, SaaS companies, recruitment firms, and B2B sales teams with criteria-matched prospect data.
+              Helping B2B sales teams build criteria-matched prospect databases across multiple industries.
             </p>
+            <div className="mt-4 space-y-1 text-xs sm:text-sm text-slate-400">
+              <p>
+                <a
+                  href={settings.contactEmail ? `mailto:${settings.contactEmail}` : undefined}
+                  onClick={() => pushEvent("email_click", { type: "footer" })}
+                  className="transition-colors hover:text-cyan-400"
+                >
+                  {settings.contactEmail}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={settings.contactPhone ? `tel:${settings.contactPhone.replace(/[^+\d]/g, "")}` : undefined}
+                  onClick={() => pushEvent("phone_click", { type: "footer" })}
+                  className="transition-colors hover:text-cyan-400"
+                >
+                  {settings.contactPhone}
+                </a>
+              </p>
+              <p>{settings.contactAddress}</p>
+            </div>
           </div>
 
           <div>
@@ -63,11 +86,13 @@ export default function SiteFooter() {
               Industries
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
-              <li><Link href="/industries/msp" className="transition-colors hover:text-cyan-400">Managed Service Providers</Link></li>
-              <li><Link href="/industries/saas" className="transition-colors hover:text-cyan-400">SaaS Companies</Link></li>
-              <li><Link href="/industries/recruitment" className="transition-colors hover:text-cyan-400">Recruitment Firms</Link></li>
-              <li><Link href="/industries/professional-services" className="transition-colors hover:text-cyan-400">Professional Services</Link></li>
-              <li><Link href="/industries/real-estate" className="transition-colors hover:text-cyan-400">Real Estate</Link></li>
+              {INDUSTRIES.map((industry) => (
+                <li key={industry.href}>
+                  <Link href={industry.href} className="transition-colors hover:text-cyan-400">
+                    {industry.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -79,36 +104,27 @@ export default function SiteFooter() {
               <li><Link href="/about" className="transition-colors hover:text-cyan-400">About</Link></li>
               <li><Link href="/portfolio" className="transition-colors hover:text-cyan-400">Case Studies</Link></li>
               <li><Link href="/blog" className="transition-colors hover:text-cyan-400">Blog</Link></li>
+              <li><Link href="/contact" className="transition-colors hover:text-cyan-400">Contact</Link></li>
               <li><Link href="/free-consultation" className="transition-colors hover:text-cyan-400">Free Consultation</Link></li>
               <li><Link href="/request-sample" className="transition-colors hover:text-cyan-400">Request a Free Sample</Link></li>
-              <li><Link href="/contact" className="transition-colors hover:text-cyan-400">Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-white">
-              Contact
+              Legal
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
+              <li><Link href="/privacy-policy" className="transition-colors hover:text-cyan-400">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="transition-colors hover:text-cyan-400">Website Terms of Use</Link></li>
               <li>
-                <a
-                  href={settings.contactEmail ? `mailto:${settings.contactEmail}` : undefined}
-                  onClick={() => pushEvent("email_click", { type: "footer" })}
+                <button
+                  onClick={openCookiePreferences}
                   className="transition-colors hover:text-cyan-400"
                 >
-                  {settings.contactEmail}
-                </a>
+                  Cookie Preferences
+                </button>
               </li>
-              <li>
-                <a
-                  href={settings.contactPhone ? `tel:${settings.contactPhone.replace(/[^+\d]/g, "")}` : undefined}
-                  onClick={() => pushEvent("phone_click", { type: "footer" })}
-                  className="transition-colors hover:text-cyan-400"
-                >
-                  {settings.contactPhone}
-                </a>
-              </li>
-              <li><span>{settings.contactAddress}</span></li>
             </ul>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "B2B Prospect Research & Lead Generation Blog",
   description:
-    "Practical guides on B2B prospect research, prospect list building, decision-maker discovery, contact enrichment, and email verification.",
+    "Practical guides on B2B prospect research, decision-maker discovery, contact enrichment, data quality, and email verification.",
   path: "/blog",
 });
 

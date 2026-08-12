@@ -2,7 +2,7 @@
 title: What Is B2B Lead Generation? A 2026 Guide for Growth Teams
 slug: what-is-b2b-lead-generation-a-2026-guide-for-growth-teams
 excerpt: A comprehensive guide to B2B lead generation, explaining strategies, best practices, and tools to help growth teams generate qualified business leads in 2026.
-tags: B2B Lead Generation, Lead Generation Guide, Growth Teams
+tags: B2B Lead Generation, Sales Prospecting
 author: Bashir Ahmed
 readTime: 5
 published: true

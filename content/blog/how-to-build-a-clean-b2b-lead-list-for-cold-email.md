@@ -2,7 +2,7 @@
 title: How to Build a Clean B2B Lead List for Cold Email
 slug: how-to-build-a-clean-b2b-lead-list-for-cold-email
 excerpt: Learn how clean, verified B2B lead lists improve cold email campaigns and reduce bounced emails.
-tags: Cold Email, B2B Lead Lists, Prospect Lists
+tags: B2B Lead Generation, Data Quality & Enrichment, Sales Prospecting
 author: Islah Web Service
 readTime: 11
 published: true

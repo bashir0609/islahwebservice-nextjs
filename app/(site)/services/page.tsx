@@ -18,6 +18,16 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motio
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import HeroVisual from "@/components/site/hero-visual";
+import { INDUSTRIES } from "@/lib/industries";
+
+// Industry icons paired with the shared industry config (lib/industries.ts).
+const INDUSTRY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  "/industries/saas": TrendingUp,
+  "/industries/msp": ShieldCheck,
+  "/industries/recruitment": Users,
+  "/industries/professional-services": Briefcase,
+  "/industries/real-estate": Building2,
+};
 
 export default function ServicesPage() {
   const services = [
@@ -76,11 +86,10 @@ export default function ServicesPage() {
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  B2B Prospect Research
+                  B2B Research &amp; Data
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400">
-                    and Lead Data Services
+                    Capabilities
                   </span>
-                  <span className="block text-white">for B2B Sales Teams</span>
                 </h1>
               </SectionReveal>
 
@@ -203,14 +212,9 @@ export default function ServicesPage() {
             </p>
           </SectionReveal>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { href: "/industries/saas", title: "SaaS", icon: TrendingUp, description: "Funding, growth, and technology signals for software sales teams." },
-              { href: "/industries/msp", title: "Managed Service Providers", icon: ShieldCheck, description: "Local company research by geography, size, and IT-related criteria." },
-              { href: "/industries/recruitment", title: "Recruitment", icon: Users, description: "Hiring-signal research for recruitment and staffing firms." },
-              { href: "/industries/professional-services", title: "Professional Services", icon: Briefcase, description: "Criteria-matched accounts for consultancies and agencies." },
-            ].map((industry, index) => {
-              const Icon = industry.icon;
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {INDUSTRIES.map((industry, index) => {
+              const Icon = INDUSTRY_ICONS[industry.href] ?? Briefcase;
               return (
                 <StaggerItem key={industry.href} className="h-full">
                   <Link href={industry.href} className="group block h-full">

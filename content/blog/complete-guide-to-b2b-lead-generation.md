@@ -2,7 +2,7 @@
 title: The Complete Guide to B2B Lead Generation
 slug: complete-guide-to-b2b-lead-generation
 excerpt: The complete playbook for B2B lead generation — from defining your ideal customer profile to delivering CRM-ready prospect lists with verified decision makers.
-tags: B2B Lead Generation, Prospect Lists, Contact Enrichment, Email Verification
+tags: B2B Lead Generation, Prospect Research, Data Quality & Enrichment
 author: Islah Web Service
 readTime: 13
 published: true

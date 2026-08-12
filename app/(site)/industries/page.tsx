@@ -6,64 +6,60 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motio
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
+import { INDUSTRIES } from "@/lib/industries";
 
-const industries = [
+// Page-specific presentation (icon, tint, example criteria and roles) keyed by
+// the canonical industry href. Identity (title/tagline/description) comes from
+// lib/industries.ts — the single source of truth — so a rename or a sixth
+// industry added there propagates to this hub automatically.
+const industryDetails: Record<
+  string,
   {
-    href: "/industries/saas",
+    icon: React.ComponentType<{ className?: string }>;
+    tint: string;
+    criteria: string[];
+    roles: string[];
+  }
+> = {
+  "/industries/saas": {
     icon: TrendingUp,
     tint: "bg-purple-500/15 text-purple-400",
-    title: "SaaS",
-    tagline: "Software companies targeting other businesses",
-    description:
-      "Criteria-matched company research for SaaS sales teams: technology stacks, funding stage, hiring activity, and the revenue roles your product supports.",
     criteria: ["Funding stage & last funding date", "Technologies used", "Employee growth & hiring activity", "SaaS category & company size"],
     roles: ["VP Sales · Head of Sales · CRO", "VP Marketing · Head of Growth · RevOps", "IT leadership", "Finance leadership"],
   },
-  {
-    href: "/industries/msp",
+  "/industries/msp": {
     icon: ShieldCheck,
     tint: "bg-cyan-500/15 text-cyan-400",
-    title: "Managed Service Providers",
-    tagline: "IT service companies that sell to other businesses",
-    description:
-      "Targeted company research for MSPs: businesses matching your geography, size, industry, and IT-related criteria — with the owners and IT leaders you want to reach.",
     criteria: ["Geographic radius · city · state", "Employee count & locations", "Technologies used & IT job openings", "Business growth & company age"],
     roles: ["Owner · CEO · COO", "Operations Director", "IT Manager · IT Director · CTO", "Office Manager"],
   },
-  {
-    href: "/industries/recruitment",
+  "/industries/recruitment": {
     icon: Users,
     tint: "bg-orange-500/15 text-orange-400",
-    title: "Recruitment",
-    tagline: "Staffing and recruitment agencies",
-    description:
-      "Hiring-signal research for recruitment firms: companies with open roles, hiring growth, and expansion — matched to the talent leaders your agency serves.",
     criteria: ["Active job postings & open roles", "Hiring growth & department hiring", "Seniority of open roles", "Geographic expansion & funding"],
     roles: ["HR Director · HR Manager", "Talent Acquisition Manager", "Head of Talent · People Director", "Recruitment Manager · Department Head"],
   },
-  {
-    href: "/industries/professional-services",
+  "/industries/professional-services": {
     icon: Briefcase,
     tint: "bg-emerald-500/15 text-emerald-400",
-    title: "Professional Services",
-    tagline: "Consultancies, agencies & advisory firms",
-    description:
-      "Criteria-matched account research for consultancies, agencies, and advisory firms — companies showing the growth events and business-model signals your firm specializes in.",
     criteria: ["Industry · geography · employee count", "Revenue & business model", "Recent expansion & new locations", "Hiring & growth events"],
     roles: ["Owner · Partner · Founder", "CEO · Managing Director", "Department heads", "Practice leads"],
   },
-  {
-    href: "/industries/real-estate",
+  "/industries/real-estate": {
     icon: Building2,
     tint: "bg-sky-500/15 text-sky-400",
-    title: "Real Estate",
-    tagline: "Commercial property & real estate organizations",
-    description:
-      "Research property owners, investors, property-management companies, and other real estate organizations using location, ownership, portfolio, property-type, and client-defined criteria.",
     criteria: ["Property ownership", "Portfolio size", "Asset type", "Geography", "Decision-maker role"],
     roles: ["Owner · Principal · Managing Partner", "Director of Acquisitions · Asset Manager", "Property Manager · Director of Property Management", "Operations · Facilities · Investment leadership"],
   },
-];
+};
+
+const industries = INDUSTRIES.map((industry) => ({
+  href: industry.href,
+  title: industry.title,
+  tagline: industry.tagline,
+  description: industry.description,
+  ...industryDetails[industry.href],
+}));
 
 export default function IndustriesPage() {
   return (

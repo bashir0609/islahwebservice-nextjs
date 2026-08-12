@@ -2,7 +2,7 @@
 title: "MSP Prospect Database for a US Managed IT Provider"
 slug: msp-prospect-database-us-it-provider
 image: /portfolio/msp-prospect-database.svg
-tags: "MSP, Prospect List Building, USA, B2B Lead Generation"
+tags: "MSP, Prospect Research, USA, B2B Lead Generation"
 featured: true
 date: 2026-05-12
 results: [{"label":"Verified contacts","value":"1,240"},{"label":"Roles identified","value":"IT director · vCISO"},{"label":"Delivery","value":"CRM-ready"}]

@@ -2,7 +2,7 @@
 title: How to Find Decision Makers in B2B Companies
 slug: how-to-find-decision-makers-in-b2b-companies
 excerpt: A field guide to identifying and verifying decision makers for B2B outreach — title mapping, org structure, LinkedIn and directory signals, enrichment, and what a researcher can and cannot confirm.
-tags: Decision Makers, B2B Lead Generation, Prospect Research, Contact Enrichment
+tags: Prospect Research, Sales Prospecting, B2B Lead Generation
 author: Islah Web Service
 readTime: 9
 published: true

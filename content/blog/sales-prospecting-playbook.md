@@ -2,7 +2,7 @@
 title: The B2B Sales Prospecting Playbook
 slug: sales-prospecting-playbook
 excerpt: A step-by-step sales prospecting playbook — how to find and research B2B accounts that match your target criteria, so your outreach starts with verified data and the right contacts.
-tags: Sales Prospecting, B2B Lead Generation, Outbound Sales
+tags: Sales Prospecting, B2B Lead Generation
 author: Islah Web Service
 readTime: 10
 published: true

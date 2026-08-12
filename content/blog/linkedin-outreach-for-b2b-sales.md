@@ -2,7 +2,7 @@
 title: LinkedIn Outreach for B2B Sales: Reaching the Right Decision Makers
 slug: linkedin-outreach-for-b2b-sales
 excerpt: A practical guide to LinkedIn outreach for B2B sales — finding the right decision makers, personalizing at scale, and getting replies instead of ignored connection requests.
-tags: LinkedIn Outreach, Social Selling, Decision Maker Research
+tags: Sales Prospecting, Tools & Workflows, B2B Lead Generation
 author: Islah Web Service
 readTime: 10
 published: true

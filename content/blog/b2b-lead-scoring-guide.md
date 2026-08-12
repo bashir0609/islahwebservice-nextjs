@@ -2,7 +2,7 @@
 title: B2B Lead Scoring: How to Rank Prospects and Prioritize Your Sales Team
 slug: b2b-lead-scoring-guide
 excerpt: Learn how to build a B2B lead scoring model — fit, behavior, and intent signals — so your sales team always works the highest-value accounts first.
-tags: Lead Scoring, B2B Lead Generation, Sales Pipeline
+tags: Sales Prospecting, B2B Lead Generation, Data Quality & Enrichment
 author: Islah Web Service
 readTime: 9
 published: true

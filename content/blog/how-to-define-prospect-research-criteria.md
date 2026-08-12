@@ -2,7 +2,7 @@
 title: How to Define Prospect Research Criteria (Before You Build a List)
 slug: how-to-define-prospect-research-criteria
 excerpt: The research brief is what separates a useful prospect list from a useless one. Here's how to define company, signal, and decision-maker criteria before the research starts.
-tags: Prospect Research, B2B Lead Generation, ICP, Data
+tags: Prospect Research, B2B Lead Generation
 author: Islah Web Service
 readTime: 9
 published: false

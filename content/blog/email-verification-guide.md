@@ -2,7 +2,7 @@
 title: Email Verification: How to Cut Bounce Rates Before You Send
 slug: email-verification-guide
 excerpt: Why email verification is non-negotiable for cold outreach, how valid, risky, and invalid addresses are classified, and how clean lists protect your domain reputation.
-tags: Email Verification, Cold Email, Deliverability
+tags: Data Quality & Enrichment, Tools & Workflows
 author: Islah Web Service
 readTime: 7
 published: true

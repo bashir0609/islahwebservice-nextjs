@@ -267,7 +267,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           {results.length > 0 && (
             <div className="mt-12">
               <h2 className="text-3xl font-bold text-white mb-6">
-                Results
+                Research Output
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {results.map((result) => (

@@ -2,7 +2,7 @@
 
 ## Overview
 
-A B2B prospect research and data services website built with Next.js 14, featuring custom B2B prospect research, prospect list building, decision-maker research, contact enrichment, and email verification services.
+A B2B prospect research and data services website built with Next.js 14. The site is built around one core service — B2B prospect research (company research, decision-maker discovery, contact enrichment, verification, and CRM-ready delivery) — plus a distinct existing-database enrichment service, applied across five priority industries: SaaS, MSP, recruitment, professional services, and real estate.
 
 ## Features
 
@@ -179,6 +179,8 @@ npm install resend
 │   │   ├── blog/page.tsx
 │   │   ├── blog/[slug]/page.tsx
 │   │   ├── contact/page.tsx
+│   │   ├── privacy-policy/page.tsx
+│   │   ├── terms/page.tsx
 │   │   └── not-found.tsx
 │   └──
 │   └── (admin)/         # Admin panel

@@ -2,7 +2,7 @@
 title: Lead Generation for Professional Services: Researching the Right Firms
 slug: professional-services-lead-generation-guide
 excerpt: How to build prospect lists for marketing agencies, consultancies, accounting firms, and other professional services — the criteria, signals, and decision makers that matter.
-tags: Professional Services, B2B Lead Generation, Prospect Research
+tags: Industry Guides, B2B Lead Generation
 author: Islah Web Service
 readTime: 9
 published: false

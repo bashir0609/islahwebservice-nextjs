@@ -173,7 +173,7 @@ export default function MspIndustryPage() {
               { icon: MapPin, title: "Local market research", description: "Businesses extracted by location, size, and category so you target companies in your actual service area." },
               { icon: Users, title: "Decision-maker discovery", description: "Owners, IT managers, and operations leads identified by role at each company." },
               { icon: Search, title: "IT-related criteria", description: "Technologies used, IT job openings, and internal IT team presence researched where legitimately available." },
-              { icon: Mail, title: "Verified contact data", description: "Every email validated and every record enriched before delivery, with unverifiable records flagged." },
+              { icon: Mail, title: "Verified contact data", description: "Contact data enriched and business emails verified where available, with unverifiable records flagged — formatted for your CRM and sales workflow." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (

@@ -2,7 +2,7 @@
 title: Cold Email for B2B Lead Generation: From First Send to First Reply
 slug: cold-email-for-b2b-lead-generation
 excerpt: How to run cold email campaigns that actually get replies — starting with verified prospect data, then crafting subject lines, sequences, and follow-ups that earn meetings.
-tags: Cold Email, Email Marketing, B2B Lead Generation
+tags: B2B Lead Generation, Sales Prospecting, Tools & Workflows
 author: Islah Web Service
 readTime: 11
 published: true

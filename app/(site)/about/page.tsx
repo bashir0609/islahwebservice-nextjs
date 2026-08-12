@@ -254,6 +254,17 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
+            <div className="mt-10 text-center">
+              <a
+                href="https://www.upwork.com/freelancers/bashirahmed"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-slate-300 backdrop-blur-sm transition-colors hover:border-cyan-500/40 hover:text-cyan-400"
+              >
+                <Star className="h-4 w-4 text-amber-400" />
+                View verified Upwork profile
+              </a>
+            </div>
           </SectionReveal>
         </div>
       </section>

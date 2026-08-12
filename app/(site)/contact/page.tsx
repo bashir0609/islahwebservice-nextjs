@@ -154,7 +154,7 @@ export default function ContactPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                 </span>
-                Replies within 24 hours
+                Typically replies within one business day
               </div>
             </SectionReveal>
           </div>
@@ -336,6 +336,14 @@ export default function ContactPage() {
                       </span>
                     )}
                   </Button>
+
+                  <p className="text-center text-xs text-slate-500">
+                    By submitting this form, you agree to our{" "}
+                    <Link href="/privacy-policy" className="text-cyan-400 hover:underline">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
                 </form>
               </Card>
             </SectionReveal>

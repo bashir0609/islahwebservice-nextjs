@@ -5,10 +5,10 @@ image: /portfolio/professional-services-enrichment.svg
 tags: "Professional Services, Contact Enrichment, USA"
 featured: false
 date: 2026-02-14
-results: [{"label":"Records enriched","value":"40,000"},{"label":"Outdated contacts","value":"Flagged for removal"},{"label":"Accounts re-mapped","value":"Current roles"}]
+results: [{"label":"Records enriched","value":"Full legacy CRM"},{"label":"Outdated contacts","value":"Flagged for removal"},{"label":"Accounts re-mapped","value":"Current roles"}]
 ---
 
-A US professional services consultancy had a 40,000-row legacy CRM full of outdated contacts and missing decision-maker data.
+A US professional services consultancy had a legacy CRM full of outdated contacts and missing decision-maker data.
 
 We enriched the entire database with current job titles, verified emails, direct dials, and company technographics — flagging departed contacts for removal and re-mapping accounts to their current decision-maker roles.
 

@@ -2,7 +2,7 @@
 title: How to Build Targeted B2B Prospect Lists
 slug: how-to-build-b2b-prospect-lists
 excerpt: A step-by-step guide to building targeted B2B prospect lists — research, filtering, and verification — so your outbound campaigns start with verified, criteria-matched data.
-tags: Prospect Lists, B2B Lead Generation, Sales Prospecting
+tags: Prospect Research, B2B Lead Generation, Sales Prospecting
 author: Islah Web Service
 readTime: 9
 published: true

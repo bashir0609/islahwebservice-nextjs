@@ -197,7 +197,7 @@ export default function RealEstateIndustryPage() {
               { icon: Users, title: "Decision-maker discovery", description: "Acquisition, asset-management, and property-management roles identified and verified by current title." },
               { icon: Landmark, title: "Ownership research", description: "Owner entities and property-management companies identified where ownership information is publicly researchable." },
               { icon: Search, title: "Client-defined signals", description: "Technology usage, hiring activity, growth, and other indicators you specify — never treated as purchase intent." },
-              { icon: ShieldCheck, title: "Verified, CRM-ready data", description: "Every record enriched and email-validated, formatted for your CRM and follow-up workflows." },
+              { icon: ShieldCheck, title: "Verified, CRM-ready data", description: "Contact data enriched and business emails verified where available, formatted for your CRM and sales workflow." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (

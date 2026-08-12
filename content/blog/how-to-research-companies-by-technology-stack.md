@@ -2,7 +2,7 @@
 title: How to Research Companies by Technology Stack
 slug: how-to-research-companies-by-technology-stack
 excerpt: How to find companies using specific technologies — CRM, cloud, cybersecurity, and ecommerce signals — and turn them into a criteria-matched prospect list for your outreach.
-tags: Technology Stack, B2B Lead Generation, Prospect Research, Data
+tags: Prospect Research, Tools & Workflows, B2B Lead Generation
 author: Islah Web Service
 readTime: 9
 published: true

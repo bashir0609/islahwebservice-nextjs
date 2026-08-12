@@ -2,7 +2,7 @@
 title: Recruitment Lead Generation: Researching Companies Around Hiring Signals
 slug: recruitment-lead-generation-guide
 excerpt: How to build recruitment prospect lists from public hiring signals — open roles, hiring velocity, expansion, and funding — and identify the people who own talent decisions.
-tags: Recruitment, B2B Lead Generation, Prospect Research, Hiring Signals
+tags: Industry Guides, B2B Lead Generation
 author: Islah Web Service
 readTime: 10
 published: true

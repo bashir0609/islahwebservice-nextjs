@@ -101,7 +101,7 @@ export default function RequestSamplePage() {
         pushEvent("sample_request_submitted", { company: data.company, industry: data.industry });
         toast({
           title: "Sample Request Received",
-          description: result.message + " We'll reply within 24 hours with a sample built around your criteria.",
+          description: result.message + " We'll typically reply within one business day with a sample built around your criteria.",
           variant: "success",
         });
         reset();
@@ -411,6 +411,13 @@ export default function RequestSamplePage() {
                   <p className="text-center text-xs text-slate-500">
                     Free · No credit card required · We research the sample before any commitment
                   </p>
+                  <p className="text-center text-xs text-slate-500">
+                    By submitting this form, you agree to our{" "}
+                    <Link href="/privacy-policy" className="text-cyan-400 hover:underline">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
                 </form>
               </Card>
             </SectionReveal>
@@ -430,7 +437,7 @@ export default function RequestSamplePage() {
                   {[
                     { icon: Target, label: "Built From Your Criteria", description: "Companies and contacts matched to the requirements you provide." },
                     { icon: ShieldCheck, label: "Verified Before Delivery", description: "Emails and roles checked against the sources available at research time." },
-                    { icon: Mail, label: "Replies Within 24 Hours", description: "We review your criteria and respond with a scoped sample plan." },
+                    { icon: Mail, label: "Typically Replies Within One Business Day", description: "We review your criteria and respond with a scoped sample plan." },
                   ].map((feature, index) => {
                     const Icon = feature.icon;
                     return (
