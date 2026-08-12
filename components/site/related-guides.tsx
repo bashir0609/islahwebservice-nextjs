@@ -70,8 +70,8 @@ export function RelatedGuides({
 
         <SectionReveal delay={0.3} className="mt-12 text-center">
           <Button asChild size="lg">
-            <Link href="/free-consultation">
-              Book a Free Consultation
+            <Link href="/request-sample">
+              Request a Free Sample
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

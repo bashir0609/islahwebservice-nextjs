@@ -66,7 +66,7 @@ A company can have perfect fit and zero signals — they're still worth tracking
 
 A scoring model is only as good as the data feeding it. If firmographics are wrong or outdated, fit scores lie. If the emails are invalid, engagement signals are noise. This is where data quality becomes a competitive advantage — [contact enrichment](/contact-enrichment) keeps firmographics, titles, and contact details current, and verified data ensures the signals you score are real.
 
-For the full pipeline view — from prospecting to scoring to outreach — start with [the complete guide to B2B lead generation](/blog/complete-guide-to-b2b-lead-generation). And if you need the underlying research, [our prospect list building service](/prospect-list-building) delivers the ICP-matched accounts your scoring model will rank.
+For the full pipeline view — from prospecting to scoring to outreach — start with [the complete guide to B2B lead generation](/blog/complete-guide-to-b2b-lead-generation). And if you need the underlying research, [our B2B prospect research service](/b2b-prospect-research) delivers the ICP-matched accounts your scoring model will rank.
 
 ## What About AI and Predictive Scoring?
 
@@ -87,8 +87,8 @@ Re-score accounts whenever new signals appear (hiring, funding, engagement) and 
 Yes — a spreadsheet works for small volumes. But scoring compounds in value when it's wired into your CRM and outbound queue.
 
 **Do you provide scored prospect lists?**
-Yes — our [prospect list building](/prospect-list-building) and [lead generation](/b2b-lead-generation) projects can include fit scoring on every account we deliver.
+Yes — our [B2B prospect research](/b2b-prospect-research) projects can include fit scoring on every account we deliver.
 
 ## Rank Your Pipeline With Confidence
 
-Stop guessing which accounts deserve attention. [Book a free consultation](/free-consultation) and we'll show you how verified data plus a simple scoring model can focus your sales team on the accounts most likely to buy.
+Stop guessing which accounts deserve attention. [Request a free sample](/request-sample) and we'll show you how verified data plus a simple scoring model can focus your sales team on the accounts most likely to buy.

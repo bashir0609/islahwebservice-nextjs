@@ -35,7 +35,7 @@ Before any research starts, write down the exact attributes of a company that bu
 - **Technology** — tools they already use that signal intent (e.g., a company running HubSpot is a warmer CRM prospect).
 - **Signals** — hiring IT staff, opening new offices, recent funding, new roles posted.
 
-A tight ICP makes every later step faster. If you need help defining one, our [B2B lead generation service](/b2b-lead-generation) starts here — no research happens before the profile is agreed.
+A tight ICP makes every later step faster. If you need help defining one, our [B2B prospect research service](/b2b-prospect-research) starts here — no research happens before the profile is agreed.
 
 ## Step 2: Research Target Companies
 
@@ -85,7 +85,7 @@ The final deliverable should drop straight into your sales stack — no cleaning
 - Notes on why each company matched your ICP
 - Source and verification status for every field
 
-If you want the exact format we ship, the [prospect list building](/prospect-list-building) page shows the full deliverable structure.
+If you want the exact format we ship, the [B2B prospect research](/b2b-prospect-research) page shows the full deliverable structure.
 
 ## What About AI and Automation Tools?
 
@@ -127,4 +127,4 @@ As a CRM-ready spreadsheet or CSV, formatted for your stack and ready to import.
 
 ## Ready to Build a Sales-Ready Prospect Database?
 
-Stop losing deals to bad data. [Book a free consultation](/free-consultation) and we'll map your ICP and show you exactly what a verified prospect list for your market looks like.
+Stop losing deals to bad data. [Request a free sample](/request-sample) and we'll map your ICP and show you exactly what a verified prospect list for your market looks like.

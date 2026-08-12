@@ -55,7 +55,7 @@ Verification at the list-building stage costs a fraction of what reputation repa
 
 Verification is the last line of defense — the first is clean acquisition. Verified lists start with:
 
-- Companies matching your ICP (see our [prospect list building](/prospect-list-building) process)
+- Companies matching your ICP (see our [B2B prospect research](/b2b-prospect-research) process)
 - Decision makers mapped to the buying committee
 - Email addresses sourced from multiple quality channels
 - Verification before delivery, always
@@ -70,7 +70,7 @@ A client came to us with an existing list of 5,000 contacts bought from a cheap 
 - 310 classified risky and flagged
 - Remaining 3,810 re-verified and cleaned
 
-Their next campaign bounced at 1.8% and open rates rose 40%. The same emails, the same copy — only the data changed.
+Per the client's reporting, their next campaign bounced at 1.8% versus 14% on the previous list. Campaign execution, sending, and reporting were run entirely by the client's team — our responsibility ended at the verified, cleaned list.
 
 ## Frequently Asked Questions
 
@@ -91,4 +91,4 @@ In [contact enrichment](/contact-enrichment) we verify the full record — email
 
 ## Protect Your Deliverability
 
-One verification pass protects months of sending reputation. [Book a free consultation](/free-consultation) and we'll review your list and show you a free verification sample.
+One verification pass protects months of sending reputation. [Request a free sample](/request-sample) and we'll review your list and show you a free verification sample.

@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "B2B Services for USA, UK & Australia",
+  title: "B2B Prospect Research & Lead Data Services",
   description:
-    "B2B prospect research, prospect list building, decision-maker research, contact enrichment, and email verification services for companies in the USA, UK, and Australia.",
+    "B2B prospect research and lead data services for the USA, UK, and Australia: company research, decision-maker discovery, contact enrichment, email verification, and CRM-ready data delivery.",
   path: "/services",
 });
 

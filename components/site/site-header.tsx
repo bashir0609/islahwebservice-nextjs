@@ -37,14 +37,13 @@ export default function SiteHeader() {
     };
   }, [open]);
 
+  // One core service, applied across industries. Case Studies = /portfolio.
   const nav = [
-    { href: "/b2b-prospect-research", label: "B2B Prospect Research" },
-    { href: "/services", label: "Services" },
     { href: "/industries", label: "Industries" },
-    { href: "/portfolio", label: "Portfolio" },
+    { href: "/b2b-prospect-research", label: "B2B Prospect Research" },
+    { href: "/portfolio", label: "Case Studies" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
   ];
 
   const isActive = (href: string) =>
@@ -60,7 +59,7 @@ export default function SiteHeader() {
           </span>
           <span className="font-semibold tracking-wide">ACCEPTING NEW B2B PROSPECT RESEARCH PROJECTS</span>
           <span className="hidden sm:inline text-slate-300">— Custom Research · Verified Data · CRM-Ready Delivery</span>
-          <Link href="/free-consultation" className="ml-2 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium">
+          <Link href="/request-sample" className="ml-2 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium">
             Request a sample <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
           </Link>
         </div>
@@ -107,7 +106,7 @@ export default function SiteHeader() {
 
           <div className="hidden lg:flex items-center gap-2 xl:gap-3">
             <Button asChild size="sm">
-              <Link href="/free-consultation">Request a Sample</Link>
+              <Link href="/request-sample">Request a Sample</Link>
             </Button>
           </div>
 
@@ -168,7 +167,7 @@ export default function SiteHeader() {
                     </Link>
                   ))}
                   <Link
-                    href="/free-consultation"
+                    href="/request-sample"
                     onClick={() => setOpen(false)}
                     className="mt-2 rounded-lg bg-cyan-600 px-3 py-2.5 text-center text-sm sm:text-base font-medium text-white transition-colors hover:bg-cyan-700"
                   >

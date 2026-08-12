@@ -4,14 +4,15 @@ import Link from "next/link";
 import {
   Search,
   Database,
-  Users,
-  Mail,
-  ShieldCheck,
-  FileSpreadsheet,
   ArrowRight,
   CheckCircle2,
   Target,
   Building2,
+  Users,
+  FileSpreadsheet,
+  ShieldCheck,
+  Briefcase,
+  TrendingUp,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,62 +22,38 @@ import HeroVisual from "@/components/site/hero-visual";
 export default function ServicesPage() {
   const services = [
     {
-      slug: "b2b-prospect-research",
+      href: "/b2b-prospect-research",
       title: "B2B Prospect Research",
       icon: Search,
       tint: "bg-blue-500/15 text-blue-400",
-      description: "Company and account research built around your exact criteria—industry, geography, size, technology, funding, and more.",
+      description:
+        "The core service: companies researched against your criteria, requested decision-makers identified, and contact data enriched, verified, and delivered CRM-ready.",
       features: [
-        "Companies researched against your stated requirements",
-        "Multi-criteria filtering by industry, size, location, and tech",
-        "Funding, hiring, and growth signals where requested",
-        "Custom research briefs for unusual requirements"
-      ]
+        "Company research built around your targeting criteria",
+        "Decision-maker discovery by requested title and role",
+        "Contact enrichment, email verification, and data cleaning",
+        "CRM-ready delivery in CSV, Excel, or Google Sheets",
+      ],
     },
     {
-      slug: "prospect-list-building",
-      title: "Prospect List Building",
+      href: "/contact-enrichment",
+      title: "Existing Database Enrichment",
       icon: Database,
       tint: "bg-purple-500/15 text-purple-400",
-      description: "Custom-built prospect databases from fresh, project-specific research—not prepackaged or recycled data.",
+      description:
+        "Already have a list? We complete and clean your existing prospect or CRM data: missing emails, phones, LinkedIn URLs, updated titles, verification, and deduplication.",
       features: [
-        "ICP-matched company research and selection",
-        "Multi-criteria filtering by industry, size, and location",
-        "Decision-maker-level contact data",
-        "Clean, deduplicated, CRM-ready delivery"
-      ]
+        "Missing emails, phones, and LinkedIn URLs added",
+        "Job-title updates and contact replacement",
+        "Company-field completion and record standardization",
+        "Email verification, deduplication, and database cleanup",
+      ],
     },
-    {
-      slug: "contact-enrichment",
-      title: "Contact Enrichment",
-      icon: Mail,
-      tint: "bg-orange-500/15 text-orange-400",
-      description: "Complete your prospect records with verified emails, LinkedIn profiles, job titles, and company data.",
-      features: [
-        "Verified email addresses and LinkedIn URLs",
-        "Job titles and decision-maker identification",
-        "Company size, industry, and technology data",
-        "Valid / risky / invalid email classification"
-      ]
-    },
-    {
-      slug: "decision-maker-research",
-      title: "Decision-Maker Research",
-      icon: Users,
-      tint: "bg-emerald-500/15 text-emerald-400",
-      description: "Find current people matching the titles and responsibilities you specify—by name, role, and verified contact.",
-      features: [
-        "Research against the roles and titles you request",
-        "Named decision-makers at each company",
-        "Verified business emails and LinkedIn profiles",
-        "Identity and role verification across sources"
-      ]
-    }
   ];
 
   return (
     <main className="flex flex-col">
-      {/* Hero Section — two-column with prospect database visual */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.18),transparent_55%)]" />
@@ -84,9 +61,8 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
         <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl animate-pulse" />
 
-        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Copy */}
             <div className="text-center lg:text-left">
               <SectionReveal immediate delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
                 <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-blue-400">
@@ -110,13 +86,14 @@ export default function ServicesPage() {
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  We research target companies, match them against your criteria, identify the requested decision-makers, enrich and verify contact details, and prepare the data for your sales workflow.
+                  We research target companies, match them against your criteria, identify the requested
+                  decision-makers, enrich and verify contact details, and prepare the data for your sales workflow.
                 </p>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
-                  <Link href="/free-consultation">
+                  <Link href="/request-sample">
                     Request a Free Sample
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -147,7 +124,6 @@ export default function ServicesPage() {
               </SectionReveal>
             </div>
 
-            {/* Prospect database visual */}
             <SectionReveal immediate delay={0.3}>
               <HeroVisual />
             </SectionReveal>
@@ -155,7 +131,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Detail */}
+      {/* Services */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.07),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,13 +140,13 @@ export default function ServicesPage() {
               What We Offer
             </h2>
             <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-              Four research services that combine into one customized, verified prospect database.
+              One core service — B2B prospect research — plus a distinct service for clients who already have a list.
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {services.map((service, index) => (
-              <SectionReveal delay={index * 0.2} className="h-full" key={service.slug}>
+              <SectionReveal delay={index * 0.2} className="h-full" key={service.href}>
                 <Card className="group relative overflow-hidden h-full flex flex-col border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
                   <CardHeader className="p-8 flex-grow">
                     <div className={`w-16 h-16 rounded-2xl ${service.tint} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -178,7 +154,7 @@ export default function ServicesPage() {
                     </div>
                     <CardTitle className="text-2xl mb-4 text-white">
                       <Link
-                        href={`/${service.slug}`}
+                        href={service.href}
                         className="group-hover:text-cyan-400 transition-colors hover:underline"
                       >
                         {service.title}
@@ -200,7 +176,7 @@ export default function ServicesPage() {
                       ))}
                     </div>
                     <Link
-                      href={`/${service.slug}`}
+                      href={service.href}
                       className="inline-flex items-center text-cyan-400 font-medium hover:gap-2 transition-all mt-6"
                     >
                       Learn more
@@ -214,6 +190,52 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Industries */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Research by Industry
+            </h2>
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
+              The same research process, applied with industry-specific criteria and decision-maker roles.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { href: "/industries/saas", title: "SaaS", icon: TrendingUp, description: "Funding, growth, and technology signals for software sales teams." },
+              { href: "/industries/msp", title: "Managed Service Providers", icon: ShieldCheck, description: "Local company research by geography, size, and IT-related criteria." },
+              { href: "/industries/recruitment", title: "Recruitment", icon: Users, description: "Hiring-signal research for recruitment and staffing firms." },
+              { href: "/industries/professional-services", title: "Professional Services", icon: Briefcase, description: "Criteria-matched accounts for consultancies and agencies." },
+            ].map((industry, index) => {
+              const Icon = industry.icon;
+              return (
+                <StaggerItem key={industry.href} className="h-full">
+                  <Link href={industry.href} className="group block h-full">
+                    <Card className="h-full p-6 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4">
+                        <Icon className="h-5 w-5 text-cyan-400" />
+                      </div>
+                      <CardTitle className="text-lg text-white mb-2 group-hover:text-cyan-400 transition-colors">{industry.title}</CardTitle>
+                      <CardDescription className="text-sm leading-relaxed text-slate-400">{industry.description}</CardDescription>
+                    </Card>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+
+          <SectionReveal delay={0.3} className="mt-10 text-center">
+            <Link href="/industries" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              Explore all industry research
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </SectionReveal>
+        </div>
+      </section>
+
       {/* Process Steps */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.06),transparent_55%)]" />
@@ -223,7 +245,7 @@ export default function ServicesPage() {
               Our Process
             </h2>
             <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-              From your target criteria to verified, CRM-ready data—a repeatable workflow.
+              From your target criteria to verified, CRM-ready data — a repeatable workflow.
             </p>
           </SectionReveal>
 
@@ -277,11 +299,12 @@ export default function ServicesPage() {
               We Build the Data. Your Team Controls the Outreach.
             </h2>
             <p className="text-lg sm:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Tell us who you want to target—or describe your ideal customer—and we will help refine the research criteria before building a customized, verified prospect database.
+              Tell us who you want to target — or describe your ideal customer — and we will help refine the
+              research criteria before building a customized, verified prospect database.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/free-consultation">Request a Free Sample</Link>
+                <Link href="/request-sample">Request a Free Sample</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white w-full sm:w-auto">
                 <Link href="/portfolio">View Research Projects</Link>

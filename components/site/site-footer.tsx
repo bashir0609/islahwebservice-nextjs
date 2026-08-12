@@ -52,10 +52,9 @@ export default function SiteFooter() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li><Link href="/b2b-prospect-research" className="transition-colors hover:text-cyan-400">B2B Prospect Research</Link></li>
-              <li><Link href="/b2b-lead-generation" className="transition-colors hover:text-cyan-400">B2B Lead Generation</Link></li>
-              <li><Link href="/prospect-list-building" className="transition-colors hover:text-cyan-400">Prospect List Building</Link></li>
-              <li><Link href="/contact-enrichment" className="transition-colors hover:text-cyan-400">Contact Enrichment</Link></li>
-              <li><Link href="/decision-maker-research" className="transition-colors hover:text-cyan-400">Decision Maker Research &amp; Contact Discovery</Link></li>
+              <li><Link href="/contact-enrichment" className="transition-colors hover:text-cyan-400">Existing Database Enrichment</Link></li>
+              <li><Link href="/industries" className="transition-colors hover:text-cyan-400">Industries We Research</Link></li>
+              <li><Link href="/request-sample" className="transition-colors hover:text-cyan-400">Request a Free Sample</Link></li>
             </ul>
           </div>
 
@@ -77,9 +76,10 @@ export default function SiteFooter() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li><Link href="/about" className="transition-colors hover:text-cyan-400">About</Link></li>
-              <li><Link href="/portfolio" className="transition-colors hover:text-cyan-400">Portfolio</Link></li>
+              <li><Link href="/portfolio" className="transition-colors hover:text-cyan-400">Case Studies</Link></li>
               <li><Link href="/blog" className="transition-colors hover:text-cyan-400">Blog</Link></li>
               <li><Link href="/free-consultation" className="transition-colors hover:text-cyan-400">Free Consultation</Link></li>
+              <li><Link href="/request-sample" className="transition-colors hover:text-cyan-400">Request a Free Sample</Link></li>
               <li><Link href="/contact" className="transition-colors hover:text-cyan-400">Contact</Link></li>
             </ul>
           </div>

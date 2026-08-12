@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 import { SectionReveal } from "@/components/motion/animated-section";
@@ -23,12 +23,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
-  useEffect(() => {
-    setMounted(true);
-    loadStats();
-  }, []);
-
-  const loadStats = async () => {
+  const loadStats = useCallback(async () => {
     try {
       setLoading(true);
       const [portfolioData, blogData] = await Promise.all([
@@ -54,7 +49,12 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
+
+  useEffect(() => {
+    setMounted(true);
+    loadStats();
+  }, [loadStats]);
 
   if (!mounted) {
     return (
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
               Content Overview
             </CardTitle>
             <CardDescription>
-              Summary of your website's content performance
+              Summary of your website&apos;s content performance
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -35,7 +35,7 @@ Your subject line and copy can be perfect, but if the email address is wrong, th
 
 The full workflow for building a clean list — including how to avoid the bounce-rate trap entirely — is in our [email verification guide](/blog/email-verification-guide). When a campaign ships with verified data, reply rates are dramatically higher and domain health stays intact.
 
-If you'd rather not build it yourself, our [B2B lead generation service](/b2b-lead-generation) delivers verified, ICP-matched lists ready for your first send. Verticals like [recruitment agencies](/industries/recruitment) run some of the highest-volume cold email motions in B2B — and they're also the first to feel the pain of unverified data, since every bounce burns reputation and time.
+If you'd rather not build it yourself, our [B2B prospect research service](/b2b-prospect-research) delivers verified, ICP-matched lists ready for your first send. Verticals like [recruitment agencies](/industries/recruitment) run some of the highest-volume cold email motions in B2B — and they're also the first to feel the pain of unverified data, since every bounce burns reputation and time.
 
 ## The Anatomy of a Cold Email That Gets Replies
 
@@ -118,4 +118,4 @@ We provide the verified prospect lists and the data foundation; most clients run
 
 ## Turn Cold Email Into a Repeatable Channel
 
-Cold email works when the data is clean and the message is relevant. [Book a free consultation](/free-consultation) and we'll show you a verified prospect list built for your ICP — the foundation every good cold email campaign stands on.
+Cold email works when the data is clean and the message is relevant. [Request a free sample](/request-sample) and we'll show you a verified prospect list built for your ICP — the foundation every good cold email campaign stands on.

@@ -61,7 +61,7 @@ Sending to unverified addresses tanks your domain reputation and inbox placement
 
 ## Example: Enriching a Recruitment Database
 
-A recruitment firm had 2,000 client contacts with names but only 40% email coverage. We enriched the records to 96% coverage with verified emails, added current job titles, and flagged accounts matching their staffing ICP. Their campaign volume tripled and bounce rate dropped below 3%.
+A recruitment firm had 2,000 client contacts with names but only 40% email coverage. We enriched the records to 96% coverage with verified emails, added current job titles, and flagged accounts matching their staffing ICP. The client ran the campaigns themselves and, per their reporting, scaled volume while keeping bounce low — campaign execution and results were entirely theirs.
 
 For more on ICP-driven work in this space, see our [recruitment industry page](/industries/recruitment).
 
@@ -84,4 +84,4 @@ Done properly, yes — enrichment targets business contact data for legitimate s
 
 ## Complete Your Data Before You Send
 
-Accurate data is the foundation of every successful outbound campaign. [Book a free consultation](/free-consultation) to see how we can enrich and verify your contact database.
+Accurate data is the foundation of every successful outbound campaign. [Request a free sample](/request-sample) to see how we can enrich and verify your contact database.

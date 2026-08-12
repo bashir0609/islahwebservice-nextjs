@@ -17,24 +17,26 @@ const staticEntry = (path: string, changeFrequency: MetadataRoute.Sitemap[number
 });
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Industry pages are the primary SEO acquisition layer, so they carry the
+  // highest priorities after the homepage. Consolidated stage-of-service URLs
+  // (/prospect-list-building, /decision-maker-research, /b2b-lead-generation)
+  // were removed once their 301 redirects were established.
   const staticPages: MetadataRoute.Sitemap = [
     staticEntry("", "weekly", 1),
-    staticEntry("/about", "monthly", 0.8),
-    staticEntry("/services", "weekly", 0.9),
+    staticEntry("/industries", "weekly", 0.9),
+    staticEntry("/industries/msp", "weekly", 0.9),
+    staticEntry("/industries/saas", "weekly", 0.9),
+    staticEntry("/industries/recruitment", "weekly", 0.9),
+    staticEntry("/industries/professional-services", "weekly", 0.9),
     staticEntry("/b2b-prospect-research", "weekly", 0.9),
-    staticEntry("/b2b-lead-generation", "weekly", 0.8),
-    staticEntry("/prospect-list-building", "weekly", 0.8),
-    staticEntry("/contact-enrichment", "weekly", 0.8),
-    staticEntry("/decision-maker-research", "weekly", 0.8),
     staticEntry("/portfolio", "weekly", 0.8),
+    staticEntry("/request-sample", "weekly", 0.9),
+    staticEntry("/services", "weekly", 0.7),
+    staticEntry("/contact-enrichment", "weekly", 0.8),
     staticEntry("/blog", "weekly", 0.8),
-    staticEntry("/free-consultation", "weekly", 0.8),
+    staticEntry("/about", "monthly", 0.8),
+    staticEntry("/free-consultation", "weekly", 0.6),
     staticEntry("/contact", "monthly", 0.7),
-    staticEntry("/industries", "weekly", 0.8),
-    staticEntry("/industries/msp", "monthly", 0.7),
-    staticEntry("/industries/saas", "monthly", 0.7),
-    staticEntry("/industries/recruitment", "monthly", 0.7),
-    staticEntry("/industries/professional-services", "monthly", 0.7),
   ];
 
   // Dynamic blog posts (published only) and portfolio case studies.

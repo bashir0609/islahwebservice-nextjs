@@ -248,7 +248,7 @@ export default function AboutPage() {
               ].map((item, index) => (
                 <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm">
                   <Star className="h-5 w-5 fill-amber-400 text-amber-400 mb-3" />
-                  <p className="text-sm text-slate-300 leading-relaxed mb-4">"{item.quote}"</p>
+                  <p className="text-sm text-slate-300 leading-relaxed mb-4">&ldquo;{item.quote}&rdquo;</p>
                   <div className="text-xs font-semibold text-cyan-400">{item.title}</div>
                   <div className="text-xs text-slate-500 mt-1">{item.meta}</div>
                 </div>
@@ -273,13 +273,13 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
+                <Link href="/request-sample">
                   Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/services">Explore Services</Link>
+                <Link href="/b2b-prospect-research">Explore B2B Prospect Research</Link>
               </Button>
             </div>
           </SectionReveal>

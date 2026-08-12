@@ -5,74 +5,77 @@ import {
   TrendingUp,
   Target,
   Users,
-  Globe2,
   ArrowRight,
   CheckCircle2,
   Zap,
   ShieldCheck,
   Briefcase,
+  Building2,
+  Search,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
 
+const researchCriteria = [
+  "Funding stage & last funding date",
+  "Employee growth & headcount trends",
+  "Hiring activity — including recent sales hiring",
+  "Technologies used & existing CRM",
+  "SaaS category & product fit",
+  "Company size & geography",
+  "ARR or revenue where researchable",
+  "Expansion signals & new locations",
+];
+
+const decisionMakerRoles = [
+  "VP Sales · Head of Sales · CRO",
+  "VP Marketing · Head of Growth · RevOps",
+  "IT leadership",
+  "Finance leadership",
+];
+
 export default function SaasIndustryPage() {
-  const challenges = [
+  const faqs = [
     {
-      title: "Volume without fit",
-      description:
-        "Large data providers hand you thousands of contacts that don't match your ICP. Your sales team wastes time on companies that will never buy.",
+      q: "How do you find companies that match my SaaS ICP?",
+      a: "We build prospect research around your exact ideal customer profile — industry, company size, tech stack, funding stage, and growth signals — so every company is a criteria-matched account for your platform.",
     },
     {
-      title: "Missing buying signals",
-      description:
-        "The best SaaS leads are companies already using similar tools, growing headcount, or adopting the technology category you serve. Generic lists miss them.",
+      q: "Which decision-makers should a SaaS team research?",
+      a: "You specify the roles that matter. Common requests include VP Sales, Head of Sales, CRO, VP Marketing, Head of Growth, RevOps, and IT or finance leadership. We find current people matching those requirements and verify names, roles, and seniority.",
     },
     {
-      title: "Unreachable contacts",
-      description:
-        "Outdated or role-generic emails bounce and hurt your domain reputation. Verified, decision-maker-level data keeps campaigns healthy.",
-    },
-  ];
-
-  const howWeHelp = [
-    {
-      icon: Target,
-      title: "ICP-qualified lists",
-      description:
-        "We build prospect lists around your exact ideal customer profile—industry, size, tech stack, and growth signals.",
+      q: "Can you support ABM campaigns?",
+      a: "Yes. We can research an account-focused prospect list for your target account list, complete with decision-makers and verified contacts for account-based outreach.",
     },
     {
-      icon: Zap,
-      title: "Category & intent matching",
-      description:
-        "We target companies adopting the tools or services that make them a natural fit for your platform.",
+      q: "Does your research prove purchase intent?",
+      a: "No. We deliver criteria-matched companies and relevant research signals — such as requested funding, hiring, or technology indicators. We do not claim companies are ready to buy or that leads are guaranteed to convert.",
     },
-    {
-      icon: Users,
-      title: "Decision-maker contacts",
-      description:
-        "We find the founders, VPs, and heads of the departments your product helps—not just a generic company inbox.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Verified, CRM-ready data",
-      description:
-        "Every record is email-validated and enriched, formatted for your CRM and cold email stack.",
-    },
-  ];
-
-  const deliverables = [
-    "Companies matching your ICP and buying signals",
-    "Verified business emails and phone numbers",
-    "Decision-maker names and job titles",
-    "Technographic and firmographic data",
-    "CRM-ready formatting for your outreach stack",
   ];
 
   return (
     <main className="flex flex-col">
+      {/* Service structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "SaaS Lead Generation Services",
+            serviceType: "B2B Prospect Research",
+            description:
+              "SaaS lead generation services built on accurate prospect data: companies researched against your target market criteria, relevant decision-makers identified, and contact data enriched, verified, and delivered CRM-ready.",
+            provider: { "@type": "Organization", name: "Islah Web Service", url: "https://www.islahwebservice.com" },
+            areaServed: ["US", "GB", "AU"],
+            url: "https://www.islahwebservice.com/industries/saas",
+          }),
+        }}
+      />
+
       {/* Breadcrumbs structured data */}
       <script
         type="application/ld+json"
@@ -83,7 +86,7 @@ export default function SaasIndustryPage() {
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.islahwebservice.com/industries" },
-              { "@type": "ListItem", position: 3, name: "SaaS Lead Generation", item: "https://www.islahwebservice.com/industries/saas" },
+              { "@type": "ListItem", position: 3, name: "SaaS Lead Generation Services", item: "https://www.islahwebservice.com/industries/saas" },
             ],
           }),
         }}
@@ -96,32 +99,11 @@ export default function SaasIndustryPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "How do you find companies that fit my SaaS ICP?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We build prospect lists around your exact ideal customer profile—industry, company size, tech stack, and growth signals—so every company is a natural fit for your platform.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Which decision-makers should a SaaS team contact?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We identify founders, revenue operations leads, sales directors, and marketing directors—the roles that evaluate and buy software—by name, title, and verified contact.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Do you support ABM campaigns?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes. We can build account-focused prospect lists for your target account list, complete with decision-makers and verified contacts for account-based outreach.",
-                },
-              },
-            ],
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
           }),
         }}
       />
@@ -139,88 +121,64 @@ export default function SaasIndustryPage() {
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-400">
                 <TrendingUp className="h-4 w-4" />
-                For SaaS Companies
+                For SaaS Sales Teams
               </div>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                SaaS Lead Generation
+                SaaS Lead Generation Services
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
-                  That Targets Your ICP
+                  Built on Accurate Prospect Data
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                We build ICP-qualified prospect lists for SaaS teams—companies that fit your profile, with verified decision-makers ready for outreach.
+                We research companies that match your target market, identify relevant decision-makers, enrich and
+                verify contact data, and deliver CRM-ready prospect lists for your outbound team.
               </p>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
-                  Book a Consultation
+                <Link href="/request-sample">
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/contact-enrichment">See Contact Enrichment</Link>
+                <Link href="/b2b-prospect-research">See B2B Prospect Research</Link>
               </Button>
             </SectionReveal>
           </div>
         </div>
       </section>
 
-      {/* Why SaaS outreach fails */}
+      {/* How we research SaaS accounts */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.06),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Why SaaS Outreach Underperforms
+              SaaS-Specific Research Criteria
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Three mistakes that cost SaaS teams pipeline—and how we fix them.
+              We research companies against the criteria that matter for software sales — requested growth and
+              technology indicators, never unproven purchase intent.
             </p>
           </SectionReveal>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {challenges.map((challenge, index) => (
-              <StaggerItem key={index}>
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mb-4">
-                      <TrendingUp className="h-6 w-6 text-red-400" />
-                    </div>
-                    <CardTitle className="text-xl mb-3 text-white">{challenge.title}</CardTitle>
-                    <CardDescription className="text-base leading-relaxed text-slate-400">
-                      {challenge.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* How we help */}
-      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              How We Build Your SaaS Pipeline
-            </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              A prospect database engineered for software sales cycles.
-            </p>
-          </SectionReveal>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {howWeHelp.map((item, index) => {
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Zap, title: "Technology & stack signals", description: "Technologies used, existing CRM, and the tools your product complements or replaces." },
+              { icon: TrendingUp, title: "Funding & growth indicators", description: "Funding stage, last funding date, employee growth, and expansion signals — where requested." },
+              { icon: Users, title: "Hiring activity", description: "Recent sales hiring and team-building signals that indicate an active go-to-market motion." },
+              { icon: Building2, title: "Company & category fit", description: "SaaS category, company size, geography, and ARR or revenue where researchable." },
+              { icon: Target, title: "Criteria-matched accounts", description: "Every company is matched against the ICP and targeting criteria you provide." },
+              { icon: ShieldCheck, title: "Verified contact data", description: "Requested decision-makers identified, enriched, and verified before delivery." },
+            ].map((item, index) => {
               const Icon = item.icon;
               return (
                 <StaggerItem key={index}>
@@ -230,15 +188,73 @@ export default function SaasIndustryPage() {
                         <Icon className="h-6 w-6 text-purple-400" />
                       </div>
                       <CardTitle className="text-lg mb-3 text-white">{item.title}</CardTitle>
-                      <CardDescription className="text-sm leading-relaxed text-slate-400">
-                        {item.description}
-                      </CardDescription>
+                      <CardDescription className="text-sm leading-relaxed text-slate-400">{item.description}</CardDescription>
                     </CardHeader>
                   </Card>
                 </StaggerItem>
               );
             })}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Research criteria + roles */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <SectionReveal>
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-3 flex items-center gap-3">
+                    <Search className="h-6 w-6 text-purple-400" />
+                    Company Research Criteria
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    Typical criteria SaaS teams request for company research:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-slate-300">
+                    {researchCriteria.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+
+            <SectionReveal delay={0.15}>
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-3 flex items-center gap-3">
+                    <Users className="h-6 w-6 text-purple-400" />
+                    Decision-Maker Research
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    Example roles SaaS teams request — you specify the titles that matter:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2.5 text-sm text-slate-300">
+                    {decisionMakerRoles.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-sm text-slate-400 leading-relaxed">
+                    We identify current people matching the requested roles. We do not claim companies are ready to
+                    buy, that they need your software, or that purchase intent is proven.
+                  </p>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 
@@ -251,7 +267,7 @@ export default function SaasIndustryPage() {
               What You&apos;ll Receive
             </h2>
             <p className="text-xl text-slate-400">
-              Every SaaS prospect list is qualified, verified, and ready to use.
+              A CRM-ready prospect database of criteria-matched SaaS accounts.
             </p>
           </SectionReveal>
 
@@ -259,7 +275,13 @@ export default function SaasIndustryPage() {
             <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
               <CardHeader>
                 <div className="space-y-4">
-                  {deliverables.map((item, index) => (
+                  {[
+                    "Companies matching your ICP and requested research signals",
+                    "Verified business emails and phone numbers where available",
+                    "Decision-maker names, titles, and LinkedIn profiles",
+                    "Firmographic and technographic data",
+                    "CRM-ready formatting for your outreach stack",
+                  ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
                       <span className="text-slate-300 text-base leading-relaxed">{item}</span>
@@ -273,7 +295,7 @@ export default function SaasIndustryPage() {
           <SectionReveal delay={0.2} className="mt-12">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
+                <Link href="/request-sample">
                   Get a Free Sample List
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -297,20 +319,7 @@ export default function SaasIndustryPage() {
           </SectionReveal>
 
           <div className="space-y-6">
-            {[
-              {
-                q: "How do you find companies that fit my SaaS ICP?",
-                a: "We build prospect lists around your exact ideal customer profile—industry, company size, tech stack, and growth signals—so every company is a natural fit for your platform.",
-              },
-              {
-                q: "Which decision-makers should a SaaS team contact?",
-                a: "We identify founders, revenue operations leads, sales directors, and marketing directors—the roles that evaluate and buy software—by name, title, and verified contact.",
-              },
-              {
-                q: "Do you support ABM campaigns?",
-                a: "Yes. We can build account-focused prospect lists for your target account list, complete with decision-makers and verified contacts for account-based outreach.",
-              },
-            ].map((item, index) => (
+            {faqs.map((item, index) => (
               <SectionReveal key={item.q} delay={index * 0.05}>
                 <Card className="border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
                   <CardHeader>
@@ -332,7 +341,7 @@ export default function SaasIndustryPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Other Industries We Serve
+              Other Industries We Research
             </h2>
           </SectionReveal>
 
@@ -361,6 +370,13 @@ export default function SaasIndustryPage() {
               );
             })}
           </div>
+
+          <SectionReveal delay={0.3} className="mt-10 text-center">
+            <Link href="/b2b-prospect-research" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              See how our B2B prospect research applies to your SaaS sales team
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </SectionReveal>
         </div>
       </section>
 

@@ -23,7 +23,7 @@ There are three common failure modes:
 2. **Wrong contacts.** Generic inbox addresses and stale job titles mean your emails go nowhere relevant.
 3. **No verification.** A list full of invalid email addresses kills your domain reputation and bounce rates before you send a single valuable message.
 
-The fix is process, not luck. Here's the process we use in our [prospect list building service](/prospect-list-building).
+The fix is process, not luck. Here's the process we use in our [B2B prospect research service](/b2b-prospect-research).
 
 ## Step 1: Start With the ICP, Not the Database
 
@@ -90,7 +90,7 @@ A clean import means your reps start selling on day one instead of reformatting 
 
 ## Example: An MSP Prospect List
 
-An IT services company wanted MSP prospects in the UK. We filtered for businesses with 10–100 employees that had posted IT-support job openings in the last 90 days. That intent signal produced a list where 1 in 4 accounts booked a first call — versus their previous broad list where the rate was closer to 1 in 40.
+An IT services company wanted MSP prospects in the UK. We researched businesses with 10–100 employees that had posted IT-support job openings in the last 90 days and delivered a verified, CRM-ready list. The client ran the outreach with their own team and, per their reporting, saw better first-call results than their previous broad list — campaign execution, meetings, and outcomes were entirely theirs.
 
 You can read more about that approach in our [MSP lead generation guide](/blog/msp-lead-generation-guide).
 
@@ -113,4 +113,4 @@ Typically 1–3 weeks depending on the ICP and target market size.
 
 ## Start With Better Data
 
-A great campaign starts with a great list. [Book a free consultation](/free-consultation) and we'll show you what a verified, ICP-matched prospect list looks like for your market.
+A great campaign starts with a great list. [Request a free sample](/request-sample) and we'll show you what a verified, ICP-matched prospect list looks like for your market.

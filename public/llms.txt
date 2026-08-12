@@ -1,27 +1,25 @@
 # islahwebservice.com
 
-> AI-powered B2B lead generation agency. We build targeted prospect lists with verified decision-maker contacts for sales teams in the USA, UK, and Australia — through research, contact enrichment, and AI-powered automation.
+> B2B lead generation services built around accurate prospect data. We research target companies, identify relevant decision-makers, enrich and verify contact information, and deliver CRM-ready prospect databases built around your targeting criteria.
 
-Islah Web Service is a B2B lead generation agency that helps companies identify their ideal customers, find verified decision-makers, enrich contact data, and build CRM-ready prospect lists for outbound sales campaigns. Founded in 2016, the agency serves managed service providers (MSPs), SaaS companies, recruitment firms, and B2B professional services across the USA, UK, and Australia.
+Islah Web Service provides the research and data stage of B2B lead generation: company research, decision-maker discovery, contact enrichment, email verification, data cleaning, and CRM-ready delivery. Founded in 2016, the company serves managed service providers (MSPs), SaaS companies, recruitment firms, and B2B professional services across the USA, UK, and Australia. We build the data — your team controls the outreach.
 
 Key facts:
 - Founded: 2016
 - Markets: USA, UK, Australia
 - Clients: MSPs, SaaS, recruitment firms, professional services, B2B sales teams
-- Services: B2B lead generation, prospect list building, contact enrichment, decision-maker research
+- Core service: B2B prospect research (one service, applied across industries)
 - Contact: hello@islahwebservice.com · +1 (442) 222-8258
 
 ## Services
-- [B2B Lead Generation](https://www.islahwebservice.com/b2b-lead-generation): AI-powered lead generation building targeted prospect databases with verified decision-makers and CRM-ready contact information for outbound campaigns.
-- [Prospect List Building](https://www.islahwebservice.com/prospect-list-building): Researched, filtered, and qualified prospect databases built around your ideal customer profile.
-- [Contact Enrichment](https://www.islahwebservice.com/contact-enrichment): Complete prospect records with verified emails, LinkedIn profiles, job titles, and company data.
-- [Decision Maker Research & Contact Discovery](https://www.islahwebservice.com/decision-maker-research): Identify the operations managers, IT directors, sales directors, owners, and marketing managers who actually buy.
+- [B2B Prospect Research](https://www.islahwebservice.com/b2b-prospect-research): The core service — companies researched against your criteria, requested decision-makers identified, and contact data enriched, verified, and delivered CRM-ready.
+- [Existing Database Enrichment](https://www.islahwebservice.com/contact-enrichment): Complete and clean an existing prospect or CRM list — missing emails, phone numbers, LinkedIn URLs, updated titles, verification, and deduplication.
 
 ## Industries
-- [Managed Service Providers](https://www.islahwebservice.com/industries/msp): Verified prospect lists for businesses that need managed IT, security, and support.
-- [SaaS Companies](https://www.islahwebservice.com/industries/saas): ICP-qualified prospect lists for software and platform teams.
-- [Recruitment Firms](https://www.islahwebservice.com/industries/recruitment): Verified company and hiring-decision-maker data for recruiters.
-- [Professional Services](https://www.islahwebservice.com/industries/professional-services): Targeted prospect databases for consultancies and agencies.
+- [Managed Service Providers](https://www.islahwebservice.com/industries/msp): MSP lead generation services built on targeted company research by geography, size, and IT-related criteria.
+- [SaaS Companies](https://www.islahwebservice.com/industries/saas): SaaS lead generation services built on accurate prospect data — stack, funding, and growth signals.
+- [Recruitment Firms](https://www.islahwebservice.com/industries/recruitment): Recruitment lead generation built around hiring signals.
+- [Professional Services](https://www.islahwebservice.com/industries/professional-services): Lead generation research for consultancies, agencies, and advisory firms.
 
 ## Guides
 - [Complete Guide to B2B Lead Generation](https://www.islahwebservice.com/blog/complete-guide-to-b2b-lead-generation): The pillar guide covering the full B2B lead generation workflow.
@@ -31,11 +29,12 @@ Key facts:
 - [B2B Lead Scoring](https://www.islahwebservice.com/blog/b2b-lead-scoring-guide): How to rank prospects and prioritize your sales team.
 
 ## Company
-- [Home](https://www.islahwebservice.com/): AI-powered B2B lead generation for sales teams.
+- [Home](https://www.islahwebservice.com/): B2B lead generation services built around accurate prospect data.
 - [About](https://www.islahwebservice.com/about): Our story, mission, values, and impact since 2016.
-- [Services](https://www.islahwebservice.com/services): The full lead generation system — one system, four services.
-- [Industries](https://www.islahwebservice.com/industries): Prospect lists built for your specific industry.
-- [Portfolio](https://www.islahwebservice.com/portfolio): Client success stories and measurable results.
+- [Services](https://www.islahwebservice.com/services): One core service — B2B prospect research — plus existing database enrichment.
+- [Industries](https://www.islahwebservice.com/industries): B2B lead generation by industry.
+- [Portfolio](https://www.islahwebservice.com/portfolio): Client case studies and delivered research projects.
 - [Blog](https://www.islahwebservice.com/blog): The Islah Journal — expert insights for B2B growth teams.
-- [Free Consultation](https://www.islahwebservice.com/free-consultation): Book a free, no-obligation B2B lead generation consultation.
+- [Request a Free Sample](https://www.islahwebservice.com/request-sample): Get a free sample of prospect research for your criteria.
+- [Free Consultation](https://www.islahwebservice.com/free-consultation): Optional, no-obligation research scoping call.
 - [Contact](https://www.islahwebservice.com/contact): Get in touch with the Islah Web Service team.

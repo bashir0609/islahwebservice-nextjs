@@ -34,7 +34,7 @@ Before searching, know who you're looking for *inside* the account. Different de
 - **Professional services and consulting** → Founder, Managing Partner, COO
 - **Marketing platforms** → Marketing Manager, CMO
 
-For [professional services firms](/industries/professional-services), the buyer is usually a partner or founder — and the research matters more because there's less hierarchy to guide you. For every persona, we research [decision makers and contact discovery](/decision-maker-research) so outreach goes to the right human, with their correct role and context.
+For [professional services firms](/industries/professional-services), the buyer is usually a partner or founder — and the research matters more because there's less hierarchy to guide you. For every persona, we research [decision makers](/b2b-prospect-research) so outreach goes to the right human, with their correct role and context.
 
 ## Step 2: Research Before You Connect
 
@@ -68,7 +68,7 @@ Keep the conversation human. Move to email or a call only when they show interes
 
 The strongest B2B motion is multi-channel: a researched LinkedIn touch plus a verified email sequence. LinkedIn builds recognition; email carries the structured message. When both reference the same research, prospects see a coordinated, credible outreach — not spam.
 
-This is why we pair [LinkedIn-ready decision maker research](/decision-maker-research) with [verified contact data](/contact-enrichment) in every project: you get the LinkedIn URL, the verified email, and the context note that makes both channels work.
+This is why we pair [LinkedIn-ready decision maker research](/b2b-prospect-research) with [verified contact data](/contact-enrichment) in every project: you get the LinkedIn URL, the verified email, and the context note that makes both channels work.
 
 ## Measure LinkedIn Outreach Like Any Channel
 
@@ -96,8 +96,8 @@ Connect first with a note, then message after acceptance. Sending long cold mess
 LinkedIn is a warmer, relationship-first channel; email carries detail and structure. The best results come from combining both on the same researched accounts.
 
 **Can you find the right decision makers for us?**
-Yes — that's exactly what our [decision maker research service](/decision-maker-research) does, and the [contact enrichment guide](/blog/contact-enrichment-guide) shows how we complete the data around each contact.
+Yes — that's exactly what our [decision maker research](/b2b-prospect-research) does, and the [contact enrichment guide](/blog/contact-enrichment-guide) shows how we complete the data around each contact.
 
 ## Build a LinkedIn Outreach Motion That Converts
 
-Stop guessing who to connect with. [Book a free consultation](/free-consultation) and we'll research the decision makers in your target accounts — so every connection request and follow-up starts from a position of knowledge.
+Stop guessing who to connect with. [Request a free sample](/request-sample) and we'll research the decision makers in your target accounts — so every connection request and follow-up starts from a position of knowledge.

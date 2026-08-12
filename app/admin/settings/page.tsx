@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
@@ -27,11 +27,7 @@ export default function AdminSettingsPage() {
   });
   const { toast } = useToast();
 
-  useEffect(() => {
-    loadSettings();
-  }, []);
-
-  const loadSettings = async () => {
+  const loadSettings = useCallback(async () => {
     try {
       const data = await getAdminSettings();
       setSettings((prev) => ({
@@ -47,7 +43,11 @@ export default function AdminSettingsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
+
+  useEffect(() => {
+    loadSettings();
+  }, [loadSettings]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Lead Generation for MSPs",
+  title: "MSP Lead Generation Services",
   description:
-    "Verified B2B prospect lists for Managed Service Providers. We help MSPs find local and regional businesses that need outsourced IT, managed security, and support.",
+    "MSP lead generation services built on targeted company research. Research businesses matching your geography, size, industry, and IT-related criteria, with verified decision-maker contacts.",
   path: "/industries/msp",
 });
 

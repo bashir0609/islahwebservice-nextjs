@@ -68,20 +68,40 @@ const nextConfig = {
         destination: "https://www.islahwebservice.com/robots.txt",
         permanent: true,
       },
-      // Volume 2: old service URLs now live at dedicated keyword pages.
+      // Architecture consolidation (2026): the site now presents ONE core
+      // service (B2B Prospect Research) with industry applications. The old
+      // stage-of-service pages 301 to the master service page. Destinations
+      // are FINAL (no chains): any older /services/* redirect also lands
+      // directly on its final page.
+      {
+        source: "/prospect-list-building",
+        destination: "/b2b-prospect-research",
+        permanent: true,
+      },
+      {
+        source: "/decision-maker-research",
+        destination: "/b2b-prospect-research",
+        permanent: true,
+      },
+      {
+        // "B2B lead generation" is now the homepage's broad-market positioning.
+        source: "/b2b-lead-generation",
+        destination: "/",
+        permanent: true,
+      },
       {
         source: "/services/verified-b2b-contact-lists",
-        destination: "/prospect-list-building",
+        destination: "/b2b-prospect-research",
         permanent: true,
       },
       {
         source: "/services/lead-generation-analysis",
-        destination: "/b2b-lead-generation",
+        destination: "/b2b-prospect-research",
         permanent: true,
       },
       {
         source: "/services/business-process-automation",
-        destination: "/prospect-list-building",
+        destination: "/b2b-prospect-research",
         permanent: true,
       },
     ];

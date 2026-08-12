@@ -21,22 +21,22 @@ import { SiteSettingsProvider } from "@/components/site/site-settings-provider";
 
 const quickLinks = [
   {
-    href: "/services",
+    href: "/b2b-prospect-research",
     icon: Compass,
-    title: "Our Services",
-    description: "B2B prospect research, list building, decision-maker research, and contact enrichment.",
-  },
-  {
-    href: "/b2b-lead-generation",
-    icon: Target,
-    title: "B2B Lead Generation",
-    description: "Verified prospect databases with decision-maker contacts.",
+    title: "B2B Prospect Research",
+    description: "The core service: company research, decision-maker discovery, enrichment, and verification.",
   },
   {
     href: "/industries",
     icon: Building2,
-    title: "Industries We Serve",
-    description: "Prospect lists built for MSPs, SaaS, recruitment, and more.",
+    title: "Industries We Research",
+    description: "Industry-specific prospect research for SaaS, MSPs, recruitment, and more.",
+  },
+  {
+    href: "/contact-enrichment",
+    icon: Target,
+    title: "Existing Database Enrichment",
+    description: "Complete and clean an existing prospect or CRM list.",
   },
   {
     href: "/blog",
@@ -45,9 +45,9 @@ const quickLinks = [
     description: "Practical guides on prospecting, cold email, and lead scoring.",
   },
   {
-    href: "/free-consultation",
+    href: "/request-sample",
     icon: SearchX,
-    title: "Free Consultation",
+    title: "Request a Free Sample",
     description: "Get a free sample of prospect data for your target criteria.",
   },
   {
@@ -118,8 +118,8 @@ export default function NotFound() {
                       variant="outline"
                       className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
                     >
-                      <Link href="/free-consultation">
-                        Get a Free Consultation
+                      <Link href="/request-sample">
+                        Request a Free Sample
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>

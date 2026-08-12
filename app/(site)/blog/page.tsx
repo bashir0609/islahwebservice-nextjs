@@ -86,12 +86,12 @@ export default function BlogPage() {
             <SectionReveal immediate delay={0.7} className="mt-8">
               <div className="flex flex-wrap justify-center gap-3">
                 {[
-                  { href: "/b2b-lead-generation", label: "B2B Lead Generation" },
-                  { href: "/prospect-list-building", label: "Prospect Lists" },
-                  { href: "/contact-enrichment", label: "Contact Enrichment" },
+                  { href: "/b2b-prospect-research", label: "B2B Prospect Research" },
+                  { href: "/industries", label: "Industries" },
+                  { href: "/contact-enrichment", label: "Existing Database Enrichment" },
                   { href: "/industries/saas", label: "SaaS" },
                   { href: "/industries/msp", label: "MSP" },
-                  { href: "/free-consultation", label: "Free Consultation" },
+                  { href: "/request-sample", label: "Request a Sample" },
                 ].map(({ href, label }) => (
                   <Link
                     key={href}

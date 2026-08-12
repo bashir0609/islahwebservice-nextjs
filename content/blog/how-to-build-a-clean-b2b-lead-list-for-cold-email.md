@@ -165,7 +165,7 @@ Selling SEO content to ecommerce stores → Ecommerce Manager, Founder, Marketin
 Selling appointment setting to agencies → Founder, CEO, Head of Sales
 Selling software to clinics → Owner, Practice Manager, Operations Manager
 
-[Decision-maker research](/decision-maker-research) can be done using company websites, team pages, LinkedIn, and enrichment tools.
+[Decision-maker research](/b2b-prospect-research) can be done using company websites, team pages, LinkedIn, and enrichment tools.
 ## Step 6: Verify Email Addresses
 Email verification is essential for cold email — see our [email verification guide](/blog/email-verification-guide) for the full methodology.
 Unverified emails can increase bounce rates and hurt deliverability.
@@ -343,7 +343,7 @@ The best way to build a B2B lead list is to start with a clear target market, co
 This process gives your campaign a cleaner foundation and helps your team avoid wasting time on bad data.
 ## Need Help Building a Clean B2B Lead List?
 If you want a clean, verified lead list for cold email, LinkedIn outreach, calling, or appointment setting, Islah Web Service can help.
-I build [targeted prospect lists](/prospect-list-building) based on your exact market.
+I build [targeted prospect lists](/b2b-prospect-research) based on your exact market.
 You can request:
 B2B lead lists
 Google Maps leads
@@ -354,7 +354,7 @@ Verified email research
 CRM-ready formatting
 Ecommerce SEO content support
 
-Start with a [free consultation](/free-consultation).
+Start with a [free sample request](/request-sample).
 I'll build 20 free sample leads from your target market so you can check the quality before starting a full project.
 
 

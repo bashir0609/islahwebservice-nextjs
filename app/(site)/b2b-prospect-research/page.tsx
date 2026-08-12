@@ -136,7 +136,7 @@ export default function B2BProspectResearchPage() {
 
             <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
+                <Link href="/request-sample">
                   Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -307,6 +307,221 @@ export default function B2BProspectResearchPage() {
         </div>
       </section>
 
+      {/* Research criteria */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(34,211,238,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Research Criteria We Can Build Around
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              You define the criteria. We confirm what is realistically researchable, then build the database around it.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <SectionReveal>
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-3 flex items-center gap-3">
+                    <Building2 className="h-6 w-6 text-cyan-400" />
+                    Company Research Criteria
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    Companies can be researched against almost any realistically researchable requirement, including:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-slate-300">
+                    {[
+                      "Industry & category",
+                      "Location — country, state, city, postal code, radius",
+                      "Employee size",
+                      "Revenue range",
+                      "Technologies used",
+                      "Funding stage & funding date",
+                      "Hiring activity",
+                      "Property ownership & number of properties",
+                      "Business directories",
+                      "Google Maps listings",
+                      "Office locations & footprint",
+                      "Growth signals",
+                      "Certifications & memberships",
+                      "Custom project criteria",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+
+            <SectionReveal delay={0.15}>
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-3 flex items-center gap-3">
+                    <Users className="h-6 w-6 text-cyan-400" />
+                    Decision-Maker Research Criteria
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    People are researched against the roles and responsibilities you specify — matched to current,
+                    verifiable positions:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-slate-300">
+                    {[
+                      "Job title",
+                      "Function & department",
+                      "Seniority level",
+                      "Geography",
+                      "Company match",
+                      "Client-specified responsibility",
+                      "Employment status & role currency",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-sm text-slate-400 leading-relaxed">
+                    We identify current people matching the requested titles or responsibilities. We do not claim that
+                    a researched person holds budget authority or is the sole buyer — we verify the role you ask for
+                    and deliver the contact.
+                  </p>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Existing database enrichment */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,212,191,0.08),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <SectionReveal>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+                Already Have a List?
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                  We Enrich and Clean Existing Databases
+                </span>
+              </h2>
+              <p className="text-lg text-slate-400 leading-relaxed mb-6">
+                You don&apos;t need fresh research if you already have a prospect list or CRM export. Islah can complete
+                and clean your existing data: missing emails, missing phone numbers, LinkedIn URLs, job-title updates,
+                contact replacement, company-field completion, email verification, deduplication, record
+                standardization, and database cleanup — delivered back in a CRM-ready format.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-slate-300 mb-8">
+                {[
+                  "Missing email addresses",
+                  "Missing phone numbers",
+                  "LinkedIn URLs",
+                  "Job-title updates",
+                  "Contact replacement",
+                  "Company-field completion",
+                  "Email verification",
+                  "Deduplication & cleanup",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg">
+                  <Link href="/contact-enrichment">
+                    See Existing Database Enrichment
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
+                  <Link href="/request-sample">Request a Sample</Link>
+                </Button>
+              </div>
+            </SectionReveal>
+
+            <SectionReveal delay={0.2}>
+              <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl text-white mb-3">Typical Enrichment Workflow</CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    Upload a list, tell us which fields to complete, and we return a verified, standardized database:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {[
+                      { step: 1, title: "Share your existing records", description: "CSV, Excel, or Google Sheets export from your CRM or list." },
+                      { step: 2, title: "Agree the completion fields", description: "Which missing fields to research, replace, or verify." },
+                      { step: 3, title: "Research, verify & clean", description: "Enrichment, email verification, deduplication, and standardization." },
+                      { step: 4, title: "Deliver CRM-ready data", description: "Clean records returned in your required format." },
+                    ].map((item) => (
+                      <div key={item.step} className="flex gap-4">
+                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center flex-shrink-0">
+                          <span className="text-white font-bold text-sm">{item.step}</span>
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-white mb-1">{item.title}</div>
+                          <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Research by industry */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(34,211,238,0.06),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Prospect Research by Industry
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              The same research process, applied with industry-specific criteria and decision-maker roles.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { href: "/industries/saas", title: "SaaS Lead Generation", description: "See how our research applies to SaaS sales teams targeting by stack, funding, and growth signals." },
+              { href: "/industries/msp", title: "MSP Lead Generation", description: "Explore MSP lead-generation research built on geography, size, and IT-related criteria." },
+              { href: "/industries/recruitment", title: "Recruitment Lead Generation", description: "See recruitment prospect research examples built around hiring signals and open roles." },
+              { href: "/industries/professional-services", title: "Professional Services", description: "Discover how consultancies and agencies use criteria-matched prospect research." },
+            ].map((item, index) => (
+              <SectionReveal key={item.href} delay={index * 0.08} className="h-full">
+                <Link href={item.href} className="group block h-full">
+                  <Card className="h-full p-6 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                    <CardHeader className="p-0">
+                      <CardTitle className="text-lg text-white mb-2 group-hover:text-cyan-400 transition-colors">{item.title}</CardTitle>
+                      <CardDescription className="text-sm leading-relaxed text-slate-400 mb-4">{item.description}</CardDescription>
+                    </CardHeader>
+                    <span className="inline-flex items-center text-cyan-400 text-sm font-medium">
+                      Explore industry research
+                      <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Card>
+                </Link>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Scope */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.08),transparent_60%)]" />
@@ -389,7 +604,7 @@ export default function B2BProspectResearchPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
+                <Link href="/request-sample">
                   Request a Free 20-Record Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

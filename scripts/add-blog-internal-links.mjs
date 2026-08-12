@@ -1,5 +1,5 @@
 // scripts/add-blog-internal-links.mjs
-// One-off: adds internal links (service/blog/industry pages + /free-consultation CTA)
+// One-off: adds internal links (service/blog/industry pages + /request-sample CTA)
 // to the 4 blog posts that exist only in the DB (no markdown file).
 // Usage: node scripts/add-blog-internal-links.mjs
 import fs from "node:fs";
@@ -45,7 +45,7 @@ const EDITS = [
       ],
       [
         "**5. Web Scraping for Lead Data**\n\nWeb scraping tools, such as Python-based scrapers or specialized services, can be used to extract valuable lead data from websites like Google Maps, LinkedIn, or industry directories. This helps build targeted lead lists for outreach.",
-        "**5. Web Scraping for Lead Data**\n\nWeb scraping tools, such as Python-based scrapers or specialized services, can be used to extract valuable lead data from websites like Google Maps, LinkedIn, or industry directories. This helps build [targeted lead lists](/prospect-list-building) for outreach — the same approach we apply for [SaaS companies](/industries/saas), [managed service providers](/industries/msp), and other B2B verticals.",
+        "**5. Web Scraping for Lead Data**\n\nWeb scraping tools, such as Python-based scrapers or specialized services, can be used to extract valuable lead data from websites like Google Maps, LinkedIn, or industry directories. This helps build [targeted lead lists](/b2b-prospect-research) for outreach — the same approach we apply for [SaaS companies](/industries/saas), [managed service providers](/industries/msp), and other B2B verticals.",
       ],
       [
         "- Clearbit: Data enrichment tool for enhancing lead lists with real-time information.",
@@ -59,7 +59,7 @@ const EDITS = [
         // CTA must sit at the very end of the article (after the FAQ).
         // Anchoring to the last FAQ bullet keeps this idempotent.
         "- Clearbit for real-time [data enrichment](/contact-enrichment)",
-        "- Clearbit for real-time [data enrichment](/contact-enrichment)\n\n**Get a Free B2B Lead Generation Consultation**\n\nWhether you need ICP-qualified prospect lists, verified decision-maker contacts, or a complete lead generation system, we can help. [Book a free consultation](/free-consultation) and we'll map your ideal customer profile and show you exactly what a verified, sales-ready prospect list for your market looks like.",
+        "- Clearbit for real-time [data enrichment](/contact-enrichment)\n\n**Get a Free B2B Lead Generation Consultation**\n\nWhether you need ICP-qualified prospect lists, verified decision-maker contacts, or a complete lead generation system, we can help. [Request a free sample](/request-sample) and we'll map your ideal customer profile and show you exactly what a verified, sales-ready prospect list for your market looks like.",
       ],
     ],
   },
@@ -80,15 +80,15 @@ const EDITS = [
       ],
       [
         "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, CRM-ready prospect lists for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
-        "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, [CRM-ready prospect lists](/prospect-list-building) for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
+        "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, [CRM-ready prospect lists](/b2b-prospect-research) for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
       ],
       [
         "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with decision-maker research, validates emails, removes duplicates, and delivers CRM-ready files for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
-        "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with [decision-maker research](/decision-maker-research), validates emails, removes duplicates, and delivers CRM-ready files for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
+        "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with [decision-maker research](/b2b-prospect-research), validates emails, removes duplicates, and delivers CRM-ready files for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
       ],
       [
         "How does Islah Web Service improve Google Maps lead lists?",
-        "How do I get a free sample of verified local leads?\n\n[Book a free consultation](/free-consultation) and we'll build a small sample of verified, CRM-ready prospects from your target niche and location — so you can judge the quality before committing to a full list.\n\nHow does Islah Web Service improve Google Maps lead lists?",
+        "How do I get a free sample of verified local leads?\n\n[Request a free sample](/request-sample) and we'll build a small sample of verified, CRM-ready prospects from your target niche and location — so you can judge the quality before committing to a full list.\n\nHow does Islah Web Service improve Google Maps lead lists?",
       ],
     ],
   },
@@ -105,7 +105,7 @@ const EDITS = [
       ],
       [
         "B2B list building means creating a new prospect list from scratch based on your target criteria.",
-        "B2B list building means creating a new [prospect list](/prospect-list-building) from scratch based on your target criteria.",
+        "B2B list building means creating a new [prospect list](/b2b-prospect-research) from scratch based on your target criteria.",
       ],
       [
         "Let’s say a SaaS company wants to sell software to real estate agencies in the United States.",
@@ -113,11 +113,11 @@ const EDITS = [
       ],
       [
         "Islah Web Service helps businesses with B2B data enrichment, list building, web research, email verification, and CRM-ready data preparation.",
-        "Islah Web Service helps businesses with B2B data enrichment, [list building](/prospect-list-building), web research, email verification, and CRM-ready data preparation.",
+        "Islah Web Service helps businesses with B2B data enrichment, [list building](/b2b-prospect-research), web research, email verification, and CRM-ready data preparation.",
       ],
       [
         "Need help enriching your B2B contact list? Contact Islah Web Service to get accurate, verified, and CRM-ready prospect data for your next sales campaign.",
-        "Need help enriching your B2B contact list? [Book a free consultation](/free-consultation) and we'll show you how to get accurate, verified, and CRM-ready prospect data for your next sales campaign.",
+        "Need help enriching your B2B contact list? [Request a free sample](/request-sample) and we'll show you how to get accurate, verified, and CRM-ready prospect data for your next sales campaign.",
       ],
     ],
   },
@@ -134,7 +134,7 @@ const EDITS = [
       ],
       [
         "Decision-maker research can be done using company websites, team pages, LinkedIn, and enrichment tools.",
-        "[Decision-maker research](/decision-maker-research) can be done using company websites, team pages, LinkedIn, and enrichment tools.",
+        "[Decision-maker research](/b2b-prospect-research) can be done using company websites, team pages, LinkedIn, and enrichment tools.",
       ],
       [
         "Email verification is essential for cold email.\nUnverified emails can increase bounce rates and hurt deliverability.",
@@ -142,11 +142,11 @@ const EDITS = [
       ],
       [
         "I build targeted prospect lists based on your exact market.",
-        "I build [targeted prospect lists](/prospect-list-building) based on your exact market.",
+        "I build [targeted prospect lists](/b2b-prospect-research) based on your exact market.",
       ],
       [
         "Start with a free sample.\nI can build 20 free sample leads from your target market so you can check the quality before starting a full project.",
-        "Start with a [free consultation](/free-consultation).\nI'll build 20 free sample leads from your target market so you can check the quality before starting a full project.",
+        "Start with a [free consultation](/request-sample).\nI'll build 20 free sample leads from your target market so you can check the quality before starting a full project.",
       ],
     ],
   },

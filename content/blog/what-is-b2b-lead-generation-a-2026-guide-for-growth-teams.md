@@ -47,7 +47,7 @@ By automating repetitive tasks like follow-up emails, lead segmentation, and tra
 
 ## 5. Web Scraping for Lead Data
 
-Web scraping tools, such as Python-based scrapers or specialized services, can be used to extract valuable lead data from websites like Google Maps, LinkedIn, or industry directories. This helps build [targeted lead lists](/prospect-list-building) for outreach — the same approach we apply for [SaaS companies](/industries/saas), [managed service providers](/industries/msp), and other B2B verticals.
+Web scraping tools, such as Python-based scrapers or specialized services, can be used to extract valuable lead data from websites like Google Maps, LinkedIn, or industry directories. This helps build [targeted lead lists](/b2b-prospect-research) for outreach — the same approach we apply for [SaaS companies](/industries/saas), [managed service providers](/industries/msp), and other B2B verticals.
 
 ## Top Tools for B2B Lead Generation in 2026
 
@@ -107,4 +107,4 @@ What tools are best for B2B lead generation?
 
 ## Get a Free B2B Lead Generation Consultation
 
-Whether you need ICP-qualified prospect lists, verified decision-maker contacts, or CRM-ready prospect data, we can help. [Book a free consultation](/free-consultation) and we'll map your ideal customer profile and show you exactly what a verified, sales-ready prospect list for your market looks like.
+Whether you need ICP-qualified prospect lists, verified decision-maker contacts, or CRM-ready prospect data, we can help. [Request a free sample](/request-sample) and we'll map your ideal customer profile and show you exactly what a verified, sales-ready prospect list for your market looks like.

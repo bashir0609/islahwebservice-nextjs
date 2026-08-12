@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck, TrendingUp, Users, Briefcase, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, TrendingUp, Users, Briefcase, ArrowRight, CheckCircle2, Search, Target } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,31 +9,37 @@ import { RelatedGuides } from "@/components/site/related-guides";
 
 const industries = [
   {
+    href: "/industries/saas",
+    icon: TrendingUp,
+    tint: "bg-purple-500/15 text-purple-400",
+    title: "SaaS",
+    tagline: "Software companies targeting other businesses",
+    description:
+      "Criteria-matched company research for SaaS sales teams: technology stacks, funding stage, hiring activity, and the revenue roles your product supports.",
+    criteria: ["Funding stage & last funding date", "Technologies used", "Employee growth & hiring activity", "SaaS category & company size"],
+    roles: ["VP Sales · Head of Sales · CRO", "VP Marketing · Head of Growth · RevOps", "IT leadership", "Finance leadership"],
+  },
+  {
     href: "/industries/msp",
     icon: ShieldCheck,
     tint: "bg-cyan-500/15 text-cyan-400",
     title: "Managed Service Providers",
     tagline: "IT service companies that sell to other businesses",
     description:
-      "We help MSPs build prospect lists of local and regional businesses that need outsourced IT, managed security, and support—with verified decision-maker contacts.",
-  },
-  {
-    href: "/industries/saas",
-    icon: TrendingUp,
-    tint: "bg-purple-500/15 text-purple-400",
-    title: "SaaS Companies",
-    tagline: "Software businesses targeting other companies",
-    description:
-      "From cold email data to ICP-qualified prospect lists, we help SaaS teams fill their pipeline with companies ready for their platform.",
+      "Targeted company research for MSPs: businesses matching your geography, size, industry, and IT-related criteria — with the owners and IT leaders you want to reach.",
+    criteria: ["Geographic radius · city · state", "Employee count & locations", "Technologies used & IT job openings", "Business growth & company age"],
+    roles: ["Owner · CEO · COO", "Operations Director", "IT Manager · IT Director · CTO", "Office Manager"],
   },
   {
     href: "/industries/recruitment",
     icon: Users,
     tint: "bg-orange-500/15 text-orange-400",
-    title: "Recruitment Firms",
+    title: "Recruitment",
     tagline: "Staffing and recruitment agencies",
     description:
-      "We deliver verified company and hiring-decision-maker data so recruiters spend more time placing talent and less time researching targets.",
+      "Hiring-signal research for recruitment firms: companies with open roles, hiring growth, and expansion — matched to the talent leaders your agency serves.",
+    criteria: ["Active job postings & open roles", "Hiring growth & department hiring", "Seniority of open roles", "Geographic expansion & funding"],
+    roles: ["HR Director · HR Manager", "Talent Acquisition Manager", "Head of Talent · People Director", "Recruitment Manager · Department Head"],
   },
   {
     href: "/industries/professional-services",
@@ -42,7 +48,9 @@ const industries = [
     title: "Professional Services",
     tagline: "Consultancies, agencies & advisory firms",
     description:
-      "We build targeted prospect databases for B2B consultancies and agencies that need a steady flow of qualified business development opportunities.",
+      "Criteria-matched account research for consultancies, agencies, and advisory firms — companies showing the growth events and business-model signals your firm specializes in.",
+    criteria: ["Industry · geography · employee count", "Revenue & business model", "Recent expansion & new locations", "Hiring & growth events"],
+    roles: ["Owner · Partner · Founder", "CEO · Managing Director", "Department heads", "Practice leads"],
   },
 ];
 
@@ -68,31 +76,33 @@ export default function IndustriesPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Prospect Lists Built
+                B2B Lead Generation
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-purple-400">
-                  For Your Industry
+                  by Industry
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Every industry has its own decision-makers, buying signals, and data sources. We build verified prospect lists tuned to yours.
+                Different industries require different research criteria. Islah Web Service builds targeted
+                prospect databases using industry-specific company research, decision-maker discovery, contact
+                enrichment, and verification.
               </p>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.8} className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400">
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                Verified decision-maker contacts
+                Industry-specific research criteria
               </span>
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                ICP research included
+                Requested decision-maker roles
               </span>
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                CRM-ready formatting
+                Verified, CRM-ready delivery
               </span>
             </SectionReveal>
           </div>
@@ -105,10 +115,10 @@ export default function IndustriesPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Industries We Serve
+              Industries We Research
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Choose your industry to see how we build sales-ready prospect databases for your exact market.
+              Choose an industry to see the research criteria and decision-maker roles we build prospect data around.
             </p>
           </SectionReveal>
 
@@ -133,8 +143,39 @@ export default function IndustriesPage() {
                       <CardDescription className="text-base leading-relaxed text-slate-400 mb-6">
                         {industry.description}
                       </CardDescription>
+
+                      <div className="mb-6">
+                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                          <Search className="h-3.5 w-3.5 text-cyan-400" />
+                          Example research criteria
+                        </div>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-sm text-slate-300">
+                          {industry.criteria.map((item) => (
+                            <li key={item} className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="mb-6">
+                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                          <Target className="h-3.5 w-3.5 text-cyan-400" />
+                          Typical decision-maker roles
+                        </div>
+                        <ul className="space-y-1.5 text-sm text-slate-300">
+                          {industry.roles.map((item) => (
+                            <li key={item} className="flex items-start gap-2">
+                              <CheckCircle2 className="h-4 w-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
                       <span className="inline-flex items-center text-cyan-400 font-medium">
-                        Explore industry solutions
+                        Explore industry research
                         <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                       </span>
                     </Card>
@@ -178,17 +219,18 @@ export default function IndustriesPage() {
               Don&apos;t See Your Industry?
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Our process works for any B2B market. Tell us your ideal customer profile and we&apos;ll build the prospect list to match.
+              Our process works for any B2B market. Tell us your ideal customer profile and we&apos;ll build the
+              prospect research to match.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
-                  Book a Consultation
+                <Link href="/request-sample">
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/services">Explore Services</Link>
+                <Link href="/b2b-prospect-research">Explore B2B Prospect Research</Link>
               </Button>
             </div>
           </SectionReveal>

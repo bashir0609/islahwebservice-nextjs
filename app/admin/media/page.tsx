@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Upload, Trash2, ExternalLink, ImageOff, Search } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,7 @@ export default function AdminMediaPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
-  const loadImages = async () => {
+  const loadImages = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`/api/admin/cloudinary?action=list&folder=${encodeURIComponent(newFolder)}`);
@@ -47,11 +48,11 @@ export default function AdminMediaPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [newFolder, toast]);
 
   useEffect(() => {
     loadImages();
-  }, [newFolder]);
+  }, [loadImages]);
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -221,10 +222,13 @@ export default function AdminMediaPage() {
                 className="group relative aspect-video rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image.url}
                   alt={image.publicId}
-                  className="w-full h-full object-cover"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                   <Button
@@ -283,10 +287,13 @@ export default function AdminMediaPage() {
                 Close
               </Button>
             </div>
-            <img
+            <Image
               src={selectedImage.url}
               alt={selectedImage.publicId}
-              className="w-full max-h-[70vh] object-contain"
+              width={selectedImage.width}
+              height={selectedImage.height}
+              unoptimized
+              className="w-full h-auto max-h-[70vh] object-contain"
             />
             <div className="p-4 text-sm text-slate-600 dark:text-slate-400 space-y-1">
               <p>Format: {selectedImage.format}</p>

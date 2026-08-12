@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Plus, Pencil, Trash2, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
@@ -48,7 +48,7 @@ export default function AdminBlogPage() {
   });
   const { toast } = useToast();
 
-  const loadPosts = async () => {
+  const loadPosts = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/admin/blog");
@@ -63,11 +63,11 @@ export default function AdminBlogPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
   useEffect(() => {
     loadPosts();
-  }, []);
+  }, [loadPosts]);
 
   const resetForm = () => {
     setFormData({

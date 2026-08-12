@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Plus, Pencil, Trash2 } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Button } from "@/components/ui/button";
@@ -36,7 +37,7 @@ export default function AdminPortfolioPage() {
   });
   const { toast } = useToast();
 
-  const loadItems = async () => {
+  const loadItems = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/admin/portfolio");
@@ -51,11 +52,11 @@ export default function AdminPortfolioPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
   useEffect(() => {
     loadItems();
-  }, []);
+  }, [loadItems]);
 
   const resetForm = () => {
     setFormData({
@@ -275,9 +276,12 @@ export default function AdminPortfolioPage() {
                   >
                     <td className="p-4">
                       {item.image ? (
-                        <img
+                        <Image
                           src={item.image}
                           alt={item.title}
+                          width={80}
+                          height={48}
+                          unoptimized
                           className="h-12 w-20 rounded-md border border-slate-200 dark:border-slate-700 object-cover"
                         />
                       ) : (

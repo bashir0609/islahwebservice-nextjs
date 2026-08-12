@@ -219,10 +219,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Need Prospect Data for Your Target Market?
                 </h3>
                 <p className="text-slate-400 mb-6">
-                  Book a free consultation and we&apos;ll discuss how to research companies and decision-makers that match your criteria.
+                  Request a free sample and we&apos;ll research companies and decision-makers that match your criteria.
                 </p>
                 <Button asChild size="lg">
-                  <Link href="/free-consultation">Request a Free Sample</Link>
+                  <Link href="/request-sample">Request a Free Sample</Link>
                 </Button>
               </CardContent>
             </Card>

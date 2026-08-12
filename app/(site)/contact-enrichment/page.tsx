@@ -10,10 +10,11 @@ import {
   Database,
   ArrowRight,
   ShieldCheck,
-  Zap,
   Search,
   Layers,
-  Globe2,
+  UserCog,
+  FileSpreadsheet,
+  CheckCircle2,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,12 +23,16 @@ import { RelatedGuides } from "@/components/site/related-guides";
 
 const faqs = [
   {
-    q: "What fields can you enrich?",
-    a: "We can add verified email addresses, LinkedIn URLs, phone numbers (where appropriate), job titles, company size, industry, and technology stack information to your existing records.",
+    q: "What is existing database enrichment?",
+    a: "You already have a prospect list or CRM export. We complete the missing or outdated fields — emails, phone numbers, LinkedIn URLs, job titles, company details — then verify, deduplicate, and standardize the records so the database is ready for your workflow.",
+  },
+  {
+    q: "Which fields can you complete on my existing list?",
+    a: "Missing business emails, missing phone numbers, LinkedIn URLs, job-title updates, contact replacement, company-field completion (size, industry, revenue, location), email verification, deduplication, record standardization, and general database cleanup.",
   },
   {
     q: "Can you enrich my existing CRM data?",
-    a: "Yes. Upload your current records and we'll fill in missing fields, deduplicate, and standardize the data—delivered back in your CRM-ready format.",
+    a: "Yes. Upload your current records and we'll fill in missing fields, deduplicate, and standardize the data — delivered back in your CRM-ready format.",
   },
   {
     q: "How is enriched data verified?",
@@ -35,7 +40,7 @@ const faqs = [
   },
   {
     q: "What is the difference between valid, risky, and invalid emails?",
-    a: "Valid emails pass all checks available at the time of verification and are generally usable. Risky emails have formatting or domain signals that may reduce deliverability—review before sending. Invalid emails fail verification and are excluded from your list.",
+    a: "Valid emails pass all checks available at the time of verification and are generally usable. Risky emails have formatting or domain signals that may reduce deliverability — review before sending. Invalid emails fail verification and are excluded from your list.",
   },
 ];
 
@@ -49,10 +54,10 @@ export default function ContactEnrichmentPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Contact Enrichment Service",
-            serviceType: "Contact Enrichment",
+            name: "Existing Database Enrichment & Contact Data Completion",
+            serviceType: "B2B Contact Data Enrichment",
             description:
-              "Complete your prospect records with verified emails, LinkedIn profiles, job titles, company data, and technologies—so your outreach reaches the right people.",
+              "Complete and clean an existing prospect or CRM database: missing emails, phone numbers, LinkedIn URLs, job-title updates, contact replacement, company-field completion, email verification, deduplication, and record standardization.",
             provider: { "@type": "Organization", name: "Islah Web Service", url: "https://www.islahwebservice.com" },
             areaServed: ["US", "GB", "AU"],
             url: "https://www.islahwebservice.com/contact-enrichment",
@@ -70,7 +75,7 @@ export default function ContactEnrichmentPage() {
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Services", item: "https://www.islahwebservice.com/services" },
-              { "@type": "ListItem", position: 3, name: "Contact Enrichment", item: "https://www.islahwebservice.com/contact-enrichment" },
+              { "@type": "ListItem", position: 3, name: "Existing Database Enrichment", item: "https://www.islahwebservice.com/contact-enrichment" },
             ],
           }),
         }}
@@ -105,63 +110,79 @@ export default function ContactEnrichmentPage() {
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-400">
                 <Layers className="h-4 w-4" />
-                Contact Enrichment Service
+                For Clients Who Already Have a List
               </div>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Contact
+                Existing Database
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
-                  Enrichment Service
+                  Enrichment &amp; Contact Data Completion
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                We complete your prospect records with verified emails, LinkedIn profiles, job titles, and company data—so every contact is ready for outreach.
+                You already have the list. We complete it — missing emails, missing phone numbers, LinkedIn
+                URLs, updated job titles, and verified, clean records delivered back CRM-ready.
               </p>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
-                  Book a Consultation
+                <Link href="/request-sample">
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/decision-maker-research">Decision-Maker Research</Link>
+                <Link href="/b2b-prospect-research">B2B Prospect Research</Link>
               </Button>
+            </SectionReveal>
+
+            <SectionReveal immediate delay={1} className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                For lists you already own
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                Verification status on every record
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                Deduplicated &amp; standardized
+              </span>
             </SectionReveal>
           </div>
         </div>
       </section>
 
-      {/* What we enrich */}
+      {/* What we complete */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.06),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              What We Enrich
+              What We Complete on Your List
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Missing data costs you replies. We fill every field your outreach needs.
+              Tell us which fields are missing or outdated. We research, verify, and return the completed database.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Mail, title: "Email Addresses", description: "Verified business emails that pass format, domain, and deliverability checks." },
-              { icon: Linkedin, title: "LinkedIn Profiles", description: "Find and confirm the right person's LinkedIn URL for research and outreach." },
-              { icon: Phone, title: "Phone Numbers", description: "Direct dials and office lines where appropriate and relevant to your campaign." },
-              { icon: Briefcase, title: "Job Titles", description: "Accurate roles so your message reaches the decision-maker, not a gatekeeper." },
-              { icon: Building2, title: "Company Size", description: "Employee counts to segment by the company scale that fits your ICP." },
-              { icon: Database, title: "Industry", description: "Correct industry classification for precise targeting and segmentation." },
-              { icon: Zap, title: "Technologies", description: "Tech stack signals that identify companies ready for your solution." },
-              { icon: Globe2, title: "Company Details", description: "Website, location, and firmographic data to complete each record." },
+              { icon: Mail, title: "Missing Emails", description: "Verified business emails added to records that lack a valid address." },
+              { icon: Phone, title: "Missing Phone Numbers", description: "Direct dials and office lines where legitimately available and relevant." },
+              { icon: Linkedin, title: "LinkedIn URLs", description: "Correct LinkedIn profiles found and confirmed for each contact." },
+              { icon: Briefcase, title: "Job-Title Updates", description: "Outdated or missing titles corrected so you reach the right person." },
+              { icon: UserCog, title: "Contact Replacement", description: "Replacing contacts who moved on with the current person in the role." },
+              { icon: Building2, title: "Company-Field Completion", description: "Size, industry, revenue, location, and website details filled in." },
+              { icon: ShieldCheck, title: "Email Verification", description: "Every address classified valid, risky, or invalid before delivery." },
+              { icon: Database, title: "Deduplication & Cleanup", description: "Duplicate records merged, standardized, and cleaned for your CRM." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -182,57 +203,25 @@ export default function ContactEnrichmentPage() {
         </div>
       </section>
 
-      {/* Verification levels */}
+      {/* How it works */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Email Verification That Helps Protect Your Domain
+              How Existing Database Enrichment Works
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Every email is classified by verification status so you know which records to prioritize.
-            </p>
-          </SectionReveal>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { status: "Valid", color: "text-emerald-400", ring: "border-emerald-500/30 bg-emerald-500/10", description: "Passes all checks available at verification time—format, domain, and mailbox. Generally usable." },
-              { status: "Risky", color: "text-amber-400", ring: "border-amber-500/30 bg-amber-500/10", description: "Shows signals that may reduce deliverability. Review before sending. Status can change." },
-              { status: "Invalid", color: "text-red-400", ring: "border-red-500/30 bg-red-500/10", description: "Fails verification. Excluded from your list to protect your sender reputation." },
-            ].map((item, index) => (
-              <StaggerItem key={index}>
-                <Card className={`h-full border ${item.ring} backdrop-blur-sm hover:-translate-y-2 transition-all duration-300`}>
-                  <CardHeader className="text-center">
-                    <CardTitle className={`text-2xl mb-3 ${item.color}`}>{item.status}</CardTitle>
-                    <CardDescription className="text-base leading-relaxed text-slate-400">{item.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* How we work */}
-      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.06),transparent_60%)]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              How We Work
-            </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              From raw records to complete, verified contacts in four steps.
+              From your records to a verified, standardized database in four steps.
             </p>
           </SectionReveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { step: 1, title: "Upload Your Records", description: "Send your existing contacts or let us build the list from scratch." },
-              { step: 2, title: "Discovery & Matching", description: "We match companies and find missing people and contact fields." },
-              { step: 3, title: "Enrichment", description: "We add emails, LinkedIn, titles, and firmographic data to each record." },
-              { step: 4, title: "Verification & Delivery", description: "Every record is verified, deduplicated, and returned CRM-ready." },
+              { step: 1, title: "Share Your Existing Records", description: "Send a CSV, Excel, or Google Sheets export from your CRM or list." },
+              { step: 2, title: "Agree the Completion Fields", description: "We confirm which missing fields to research, replace, or verify." },
+              { step: 3, title: "Research, Verify & Clean", description: "Enrichment, email verification, deduplication, and standardization." },
+              { step: 4, title: "Deliver CRM-Ready Data", description: "Clean, labeled records returned in your required format." },
             ].map((item, index) => (
               <StaggerItem key={index}>
                 <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-purple-500/40 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-300">
@@ -250,7 +239,39 @@ export default function ContactEnrichmentPage() {
         </div>
       </section>
 
-      {/* Deliverables */}
+      {/* Verification levels */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Email Verification That Helps Protect Your Domain
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Every email is classified by verification status so you know which records to prioritize.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { status: "Valid", color: "text-emerald-400", ring: "border-emerald-500/30 bg-emerald-500/10", description: "Passes all checks available at verification time — format, domain, and mailbox. Generally usable." },
+              { status: "Risky", color: "text-amber-400", ring: "border-amber-500/30 bg-amber-500/10", description: "Shows signals that may reduce deliverability. Review before sending. Status can change." },
+              { status: "Invalid", color: "text-red-400", ring: "border-red-500/30 bg-red-500/10", description: "Fails verification. Excluded from your list to protect your sender reputation." },
+            ].map((item, index) => (
+              <StaggerItem key={index}>
+                <Card className={`h-full border ${item.ring} backdrop-blur-sm hover:-translate-y-2 transition-all duration-300`}>
+                  <CardHeader className="text-center">
+                    <CardTitle className={`text-2xl mb-3 ${item.color}`}>{item.status}</CardTitle>
+                    <CardDescription className="text-base leading-relaxed text-slate-400">{item.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* What you receive */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.06),transparent_55%)]" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -259,7 +280,7 @@ export default function ContactEnrichmentPage() {
               What You&apos;ll Receive
             </h2>
             <p className="text-xl text-slate-400">
-              Complete, verified contact records ready for your CRM.
+              Your completed database — clean, verified, and ready for your CRM.
             </p>
           </SectionReveal>
 
@@ -268,12 +289,12 @@ export default function ContactEnrichmentPage() {
               <CardHeader>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { icon: Mail, label: "Verified emails" },
+                    { icon: Mail, label: "Completed email fields" },
                     { icon: Linkedin, label: "LinkedIn profiles" },
-                    { icon: Briefcase, label: "Job titles" },
-                    { icon: Building2, label: "Company size & industry" },
-                    { icon: Zap, label: "Technology signals" },
+                    { icon: Briefcase, label: "Updated job titles" },
+                    { icon: Building2, label: "Completed company fields" },
                     { icon: ShieldCheck, label: "Validity classification" },
+                    { icon: FileSpreadsheet, label: "Deduplicated, CRM-ready records" },
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center flex-shrink-0">
@@ -305,8 +326,8 @@ export default function ContactEnrichmentPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: ShieldCheck, title: "Verification Classification", description: "Valid, risky, and invalid classification so you know which records to prioritize." },
-              { icon: Search, title: "Right-Person Focus", description: "We find the decision-maker by role—not a generic company inbox." },
-              { icon: Database, title: "Accurate Firmographics", description: "Company size, industry, and tech data you can filter and segment by." },
+              { icon: Search, title: "Right-Person Focus", description: "We find and confirm the person by role — not a generic company inbox." },
+              { icon: Database, title: "Clean Database Output", description: "Deduplicated, standardized records you can load straight into your CRM." },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -385,20 +406,21 @@ export default function ContactEnrichmentPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-              Complete Your Contact Data Today
+              See What We Can Complete on a Few of Your Records
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Send us a sample of your records and see how much we can enrich—free.
+              Send a small sample of your existing list and we&apos;ll enrich, verify, and clean it — free, so you
+              can judge the result before committing to the full database.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
-                  Book a Consultation
+                <Link href="/request-sample">
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/prospect-list-building">Build a Prospect List</Link>
+                <Link href="/b2b-prospect-research">Explore B2B Prospect Research</Link>
               </Button>
             </div>
           </SectionReveal>

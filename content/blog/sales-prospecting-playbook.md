@@ -39,7 +39,7 @@ Most sales teams start with a database export and call it a list. The better app
 
 Every company that survives this stage must match the ICP on at least your core firmographic filters. Cut duplicates, remove companies you already cover, and drop anything outside your size and location bands. A 50–70% reduction at this stage is normal and healthy.
 
-This is exactly the process our [prospect list building service](/prospect-list-building) industrializes — we build the pool, filter it, and deliver only the accounts that match.
+This is exactly the process our [B2B prospect research service](/b2b-prospect-research) industrializes — we build the pool, filter it, and deliver only the accounts that match.
 
 ## Step 3: Identify and Map the Buying Committee
 
@@ -98,8 +98,8 @@ No — but it works best as part of a multi-channel approach that also includes 
 Quality lists are verified at build time and classified valid/risky/invalid so you know exactly what you're sending to.
 
 **Can you build prospect lists for my ICP?**
-Yes — every [prospect list project](/prospect-list-building) starts by agreeing the ICP before any research begins.
+Yes — every [prospect research project](/b2b-prospect-research) starts by agreeing the ICP before any research begins.
 
 ## Start Prospecting With Better Data
 
-The fastest way to improve your outbound results is to fix the data your reps work from. [Book a free consultation](/free-consultation) and we'll map your ICP and show you what a verified, sales-ready prospect list for your market looks like.
+The fastest way to improve your outbound results is to fix the data your reps work from. [Request a free sample](/request-sample) and we'll map your ICP and show you what a verified, sales-ready prospect list for your market looks like.

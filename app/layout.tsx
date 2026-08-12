@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    "B2B lead generation",
     "B2B prospect research",
-    "prospect list building",
+    "prospect data services",
     "decision-maker research",
     "contact enrichment",
-    "business email verification",
+    "email verification",
     "CRM-ready prospect data",
-    "custom B2B database",
     "company research service",
   ],
   openGraph: {
@@ -88,7 +88,7 @@ const organizationJsonLd = {
         url: "https://www.linkedin.com/in/bashir0609",
       },
       description:
-        "B2B prospect research for companies in the USA, UK, and Australia: company research, decision-maker discovery, contact enrichment, email verification, and CRM-ready prospect databases.",
+        "B2B lead generation data services: Islah Web Service researches target companies, identifies requested decision-makers, enriches and verifies contacts, and delivers CRM-ready prospect databases for the USA, UK, and Australia.",
       areaServed: ["US", "GB", "AU"],
       address: {
         "@type": "PostalAddress",
@@ -109,12 +109,18 @@ const organizationJsonLd = {
         "https://www.upwork.com/freelancers/bashirahmed",
         "https://youtu.be/sCuJWWqi7S8",
       ],
+      // Service hierarchy reflects the new architecture: one core service
+      // (B2B Prospect Research) plus its distinct existing-database enrichment
+      // application. No appointment setting, outreach, or pipeline claims.
       makesOffer: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
             name: "B2B Prospect Research",
+            serviceType: "B2B Prospect Research",
+            description:
+              "Company research, decision-maker discovery, contact enrichment, email verification, and CRM-ready data delivery built around client targeting criteria.",
             url: `${SITE_URL}/b2b-prospect-research`,
           },
         },
@@ -122,24 +128,11 @@ const organizationJsonLd = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Prospect List Building",
-            url: `${SITE_URL}/prospect-list-building`,
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Contact Enrichment",
+            name: "Existing Database Enrichment & Contact Data Completion",
+            serviceType: "B2B Contact Data Enrichment",
+            description:
+              "Complete and clean an existing prospect or CRM database: missing emails, phone numbers, LinkedIn URLs, job-title updates, company-field completion, verification, deduplication, and record standardization.",
             url: `${SITE_URL}/contact-enrichment`,
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Decision Maker Research & Contact Discovery",
-            url: `${SITE_URL}/decision-maker-research`,
           },
         },
       ],

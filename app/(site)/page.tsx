@@ -20,6 +20,8 @@ import {
   Filter,
   ClipboardCheck,
   BadgeCheck,
+  TrendingUp,
+  Briefcase,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -87,46 +89,46 @@ const faqs = [
 
 const coreServices = [
   {
-    href: "/b2b-lead-generation",
-    icon: Search,
+    href: "/b2b-prospect-research",
+    icon: Building2,
     tint: "bg-blue-500/15 text-blue-400",
-    title: "Company & Account Research",
+    title: "Company Research",
     description: "Companies researched against your exact criteria—industry, geography, size, tech, funding, and more.",
   },
   {
-    href: "/prospect-list-building",
-    icon: Database,
-    tint: "bg-purple-500/15 text-purple-400",
-    title: "Prospect List Building",
-    description: "Custom, criteria-matched prospect databases built from fresh research—not prepackaged data.",
-  },
-  {
-    href: "/decision-maker-research",
+    href: "/b2b-prospect-research",
     icon: Users,
     tint: "bg-orange-500/15 text-orange-400",
     title: "Decision-Maker Research",
     description: "Current people matching your requested titles and responsibilities, with roles and seniority verified.",
   },
   {
-    href: "/contact-enrichment",
+    href: "/b2b-prospect-research",
     icon: Mail,
     tint: "bg-emerald-500/15 text-emerald-400",
     title: "Contact Enrichment",
-    description: "Emails, LinkedIn profiles, titles, and company fields added to your records or built from scratch.",
+    description: "Business emails, LinkedIn profiles, titles, and company fields added to your records.",
   },
   {
-    href: "/contact-enrichment",
+    href: "/b2b-prospect-research",
     icon: ShieldCheck,
     tint: "bg-rose-500/15 text-rose-400",
     title: "Email Verification & Data Cleaning",
     description: "Verification, deduplication, standardization, and missing-field checks so records are clean and current.",
   },
   {
-    href: "/prospect-list-building",
+    href: "/b2b-prospect-research",
     icon: FileSpreadsheet,
     tint: "bg-cyan-500/15 text-cyan-400",
-    title: "CRM-Ready Formatting",
+    title: "CRM-Ready Delivery",
     description: "CSV, Excel, or Google Sheets delivery with custom column formatting matched to your CRM.",
+  },
+  {
+    href: "/contact-enrichment",
+    icon: Database,
+    tint: "bg-purple-500/15 text-purple-400",
+    title: "Existing Database Enrichment",
+    description: "Already have a list? We complete missing fields, verify emails, deduplicate, and clean your data.",
   },
 ];
 
@@ -241,22 +243,23 @@ export default function HomePage() {
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  B2B Prospect Research
+                  B2B Lead Generation Services
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                    for Sales Teams
+                    Built Around Accurate Prospect Data
                   </span>
                 </h1>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  Tell us which companies and decision-makers you need to reach. We research, enrich, verify, and organize the records into a targeted, CRM-ready prospect database built around your requirements.
+                  We research target companies, identify relevant decision-makers, enrich and verify contact
+                  information, and deliver accurate CRM-ready prospect data built around your targeting criteria.
                 </p>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
-                  <Link href="/free-consultation">
+                  <Link href="/request-sample">
                     Request a Free Sample
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -267,7 +270,7 @@ export default function HomePage() {
                   variant="outline"
                   className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white"
                 >
-                  <Link href="/free-consultation">Discuss Your Target Criteria</Link>
+                  <Link href="/request-sample">Discuss Your Target Criteria</Link>
                 </Button>
               </SectionReveal>
 
@@ -384,10 +387,12 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Prospect Research Services
+              What We Deliver
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Our B2B lead generation services are built on research and verification—company discovery, list building, enrichment, and CRM-ready data delivery, not outreach or meeting booking.
+              One core service — B2B prospect research — across the full workflow: company research, decision-maker
+              discovery, contact enrichment, verification, and CRM-ready data delivery. Not outreach, meeting
+              booking, or campaign management.
             </p>
           </SectionReveal>
 
@@ -411,6 +416,54 @@ export default function HomePage() {
               );
             })}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Industries We Support */}
+      <section className="relative overflow-hidden bg-slate-900 border-b border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(168,85,247,0.08),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <SectionReveal className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Industries We Support
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Different industries need different research criteria. See how our prospect research applies to your market.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { href: "/industries/saas", icon: TrendingUp, tint: "bg-purple-500/15 text-purple-400", title: "SaaS", description: "Criteria-matched companies, funding and growth signals, and revenue roles." },
+              { href: "/industries/msp", icon: ShieldCheck, tint: "bg-cyan-500/15 text-cyan-400", title: "Managed Service Providers", description: "Local businesses researched by geography, size, and IT-related criteria." },
+              { href: "/industries/recruitment", icon: Users, tint: "bg-orange-500/15 text-orange-400", title: "Recruitment", description: "Companies with open roles and hiring signals, matched to your verticals." },
+              { href: "/industries/professional-services", icon: Briefcase, tint: "bg-emerald-500/15 text-emerald-400", title: "Professional Services", description: "Criteria-matched accounts for consultancies, agencies, and advisory firms." },
+            ].map((industry, index) => {
+              const Icon = industry.icon;
+              return (
+                <StaggerItem key={industry.href} className="h-full">
+                  <Link href={industry.href} className="group block h-full">
+                    <Card className="h-full p-6 border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
+                      <CardHeader className="p-0">
+                        <div className={`w-12 h-12 rounded-xl ${industry.tint} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="text-lg text-white mb-2 group-hover:text-cyan-400 transition-colors">{industry.title}</CardTitle>
+                        <CardDescription className="text-sm leading-relaxed text-slate-400">{industry.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+
+          <SectionReveal delay={0.3} className="mt-10 text-center">
+            <Link href="/industries" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              Explore all industry research
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </SectionReveal>
         </div>
       </section>
 
@@ -548,7 +601,7 @@ export default function HomePage() {
               ].map((item, index) => (
                 <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm">
                   <Star className="h-5 w-5 fill-amber-400 text-amber-400 mb-3" />
-                  <p className="text-sm text-slate-300 leading-relaxed mb-4">"{item.quote}"</p>
+                  <p className="text-sm text-slate-300 leading-relaxed mb-4">&ldquo;{item.quote}&rdquo;</p>
                   <div className="text-xs font-semibold text-cyan-400">{item.title}</div>
                   <div className="text-xs text-slate-500 mt-1">{item.meta}</div>
                 </div>
@@ -701,7 +754,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
+                <Link href="/request-sample">
                   Request a Free 20-Record Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

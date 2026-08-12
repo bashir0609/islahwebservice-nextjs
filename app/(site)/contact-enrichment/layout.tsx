@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Contact Enrichment Service",
+  title: "Existing Database Enrichment & Contact Data Completion",
   description:
-    "Contact enrichment service: find missing emails, LinkedIn profiles, job titles, company data, and technologies. Complete your prospect records with verified business data.",
+    "Complete and clean an existing prospect or CRM database: missing emails, phone numbers, LinkedIn URLs, job-title updates, company fields, email verification, deduplication, and record standardization.",
   path: "/contact-enrichment",
 });
 

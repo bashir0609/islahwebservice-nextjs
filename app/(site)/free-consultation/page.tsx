@@ -43,10 +43,9 @@ const consultationFormSchema = z.object({
 type ConsultationFormData = z.infer<typeof consultationFormSchema>;
 
 const services = [
-  "B2B Lead Generation",
-  "Prospect List Building",
-  "Contact Enrichment",
-  "Decision Maker Research & Contact Discovery",
+  "B2B Prospect Research",
+  "Existing Database Enrichment",
+  "B2B Lead Generation Data Services",
   "Not sure yet — recommend a solution",
 ];
 
@@ -140,6 +139,16 @@ export default function FreeConsultationPage() {
                 Replies within 24 hours
               </div>
             </SectionReveal>
+
+            <SectionReveal immediate delay={0.9} className="mt-6">
+              <p className="text-sm text-slate-400">
+                Prefer to skip the call?{" "}
+                <Link href="/request-sample" className="text-cyan-400 hover:text-cyan-300 font-medium">
+                  Request a free sample directly
+                </Link>
+                {" "}— no consultation required.
+              </p>
+            </SectionReveal>
           </div>
         </div>
       </section>
@@ -149,7 +158,7 @@ export default function FreeConsultationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">What You'll Get</h2>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">What You&apos;ll Get</h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Every consultation is designed to leave you with something actionable — whether or not we work together.
             </p>
@@ -213,7 +222,7 @@ export default function FreeConsultationPage() {
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Book Your Free Consultation</h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Tell us about your target market and what you're looking for. We'll come prepared with ideas specific to your criteria.
+              Tell us about your target market and what you&apos;re looking for. We&apos;ll come prepared with ideas specific to your criteria.
             </p>
           </SectionReveal>
 
@@ -353,7 +362,7 @@ export default function FreeConsultationPage() {
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-4">Why Book a Call?</h3>
                   <p className="text-slate-400 leading-relaxed mb-6">
-                    Most providers sell volume. We build databases around your exact targeting criteria — and we're happy to prove it before you spend a cent.
+                    Most providers sell volume. We build databases around your exact targeting criteria — and we&apos;re happy to prove it before you spend a cent.
                   </p>
                 </div>
 

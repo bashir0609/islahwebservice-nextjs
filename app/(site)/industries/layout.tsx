@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Industries We Serve",
+  title: "B2B Lead Generation by Industry",
   description:
-    "B2B lead generation for Managed Service Providers, SaaS companies, recruitment firms, and professional services. Verified prospect lists built for your target industry.",
+    "Industry-specific B2B lead generation research for SaaS, MSPs, recruitment firms, and professional services. Criteria-matched company research, decision-maker discovery, and verified CRM-ready prospect data.",
   path: "/industries",
 });
 

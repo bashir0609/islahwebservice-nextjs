@@ -10,68 +10,71 @@ import {
   ShieldCheck,
   TrendingUp,
   LineChart,
+  Search,
+  Building2,
 } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
 
+const researchCriteria = [
+  "Industry & geography",
+  "Employee count & revenue",
+  "Recent expansion & new locations",
+  "Technology & hiring activity",
+  "Business model",
+  "Growth events",
+  "Client-specific service indicators",
+];
+
+const decisionMakerRoles = [
+  "Owner · Partner · Founder",
+  "CEO · Managing Director",
+  "Department heads",
+  "Practice leads",
+];
+
 export default function ProfessionalServicesIndustryPage() {
-  const challenges = [
+  const faqs = [
     {
-      title: "Referral pipelines run dry",
-      description:
-        "Consultancies and agencies grow on referrals until they plateau. Without a repeatable outbound engine, business development becomes feast or famine.",
+      q: "What kinds of professional services firms benefit from this?",
+      a: "Consultancies, marketing and creative agencies, accounting firms, IT consultancies, advisory firms, and other B2B service providers that need criteria-matched prospect research for their business development teams.",
     },
     {
-      title: "Too-broad targeting",
-      description:
-        "Professional services win by specialization. Generic lists don't identify companies that need your specific consulting or agency offering.",
+      q: "How do you find companies matching our target criteria?",
+      a: "Islah researches companies matching your target criteria — industry, geography, employee count, revenue, recent expansion, technology, hiring, business model, growth events, and client-specific service indicators — and identifies relevant business decision-makers for your outreach team.",
     },
     {
-      title: "Decision-maker reach",
-      description:
-        "Selling into companies means reaching owners, partners, and department heads. Generic contact data misses the right person entirely.",
-    },
-  ];
-
-  const howWeHelp = [
-    {
-      icon: Briefcase,
-      title: "Specialist-fit targeting",
-      description:
-        "We build lists of companies that need your specific service line—by industry, size, and pain-point indicators.",
+      q: "Who should our firm contact in a prospect company?",
+      a: "We deliver owners, partners, founders, CEOs, managing directors, department heads, and practice leads — the people you request — with verified contact details.",
     },
     {
-      icon: Users,
-      title: "Partner & owner contacts",
-      description:
-        "We find owners, partners, and department heads so your proposals land with the person who buys.",
+      q: "Does your research identify companies that need our service?",
+      a: "No. We deliver potentially relevant companies and criteria-matched accounts showing client-defined research signals. We do not claim to identify buyers ready to purchase or build your pipeline for you.",
     },
-    {
-      icon: LineChart,
-      title: "Growth-signal research",
-      description:
-        "We flag companies hiring, expanding, or changing—the moments when external expertise gets hired.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Verified, CRM-ready data",
-      description:
-        "Every record is enriched and email-validated, formatted for your CRM and follow-up workflows.",
-    },
-  ];
-
-  const deliverables = [
-    "Companies matching your service specialization",
-    "Verified business emails and phone numbers",
-    "Owner, partner, and decision-maker contacts",
-    "Industry, size, and growth-signal data",
-    "CRM-ready formatting for your outreach stack",
   ];
 
   return (
     <main className="flex flex-col">
+      {/* Service structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Lead Generation for Professional Services",
+            serviceType: "B2B Prospect Research",
+            description:
+              "Lead generation research for professional services firms: companies researched against your target criteria, with relevant business decision-makers identified, enriched, verified, and delivered CRM-ready.",
+            provider: { "@type": "Organization", name: "Islah Web Service", url: "https://www.islahwebservice.com" },
+            areaServed: ["US", "GB", "AU"],
+            url: "https://www.islahwebservice.com/industries/professional-services",
+          }),
+        }}
+      />
+
       {/* Breadcrumbs structured data */}
       <script
         type="application/ld+json"
@@ -82,7 +85,7 @@ export default function ProfessionalServicesIndustryPage() {
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://www.islahwebservice.com" },
               { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.islahwebservice.com/industries" },
-              { "@type": "ListItem", position: 3, name: "Professional Services Lead Generation", item: "https://www.islahwebservice.com/industries/professional-services" },
+              { "@type": "ListItem", position: 3, name: "Lead Generation for Professional Services", item: "https://www.islahwebservice.com/industries/professional-services" },
             ],
           }),
         }}
@@ -95,32 +98,11 @@ export default function ProfessionalServicesIndustryPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What kinds of professional services firms benefit from this?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Consultancies, marketing and creative agencies, advisory firms, and specialized B2B service providers that need a steady pipeline of qualified business development opportunities.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How do you find companies that need our specific services?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We identify companies by industry, size, and growth signals—such as hiring, expansion, or new initiatives—that indicate demand for external expertise.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Who should our firm contact in a prospect company?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We deliver owners, partners, and department heads—the decision-makers who approve consulting and agency engagements—with verified contact details.",
-                },
-              },
-            ],
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
           }),
         }}
       />
@@ -144,82 +126,58 @@ export default function ProfessionalServicesIndustryPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Professional Services
+                Lead Generation
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
-                  Lead Generation
+                  for Professional Services Firms
                 </span>
               </h1>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.6} className="mb-8 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                We build targeted prospect databases for consultancies and agencies that need a steady flow of qualified business development opportunities.
+                Islah researches companies matching your target criteria and identifies relevant business
+                decision-makers for your outreach team.
               </p>
             </SectionReveal>
 
             <SectionReveal immediate delay={0.8} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
-                  Book a Consultation
+                <Link href="/request-sample">
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/services">Explore Services</Link>
+                <Link href="/b2b-prospect-research">Explore B2B Prospect Research</Link>
               </Button>
             </SectionReveal>
           </div>
         </div>
       </section>
 
-      {/* Why BD stalls */}
+      {/* How we research */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.06),transparent_55%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Why Business Development Stalls
+              Research Built Around Your Target Criteria
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Three reasons firm growth plateaus—and how verified data unblocks it.
+              We deliver criteria-matched accounts and client-defined research signals — not claims about need or
+              readiness to buy.
             </p>
           </SectionReveal>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {challenges.map((challenge, index) => (
-              <StaggerItem key={index}>
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-300">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mb-4">
-                      <Briefcase className="h-6 w-6 text-red-400" />
-                    </div>
-                    <CardTitle className="text-xl mb-3 text-white">{challenge.title}</CardTitle>
-                    <CardDescription className="text-base leading-relaxed text-slate-400">
-                      {challenge.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* How we help */}
-      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              How We Build Your BD Pipeline
-            </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              A prospect database engineered for professional services growth.
-            </p>
-          </SectionReveal>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {howWeHelp.map((item, index) => {
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: LineChart, title: "Criteria-matched accounts", description: "Potentially relevant companies matched to the service indicators and criteria you define." },
+              { icon: Users, title: "Partner & owner contacts", description: "Owners, partners, founders, and department heads identified at each company." },
+              { icon: TrendingUp, title: "Growth-event research", description: "Companies showing hiring, expansion, or new-location events where you request them." },
+              { icon: Building2, title: "Firmographic fit", description: "Industry, geography, employee count, revenue, and business model researched for fit." },
+              { icon: Globe2, title: "Client-defined signals", description: "Technology, hiring, and other indicators you specify — never unproven purchase intent." },
+              { icon: ShieldCheck, title: "Verified, CRM-ready data", description: "Every record enriched and email-validated, formatted for your CRM and follow-up workflows." },
+            ].map((item, index) => {
               const Icon = item.icon;
               return (
                 <StaggerItem key={index}>
@@ -229,15 +187,73 @@ export default function ProfessionalServicesIndustryPage() {
                         <Icon className="h-6 w-6 text-emerald-400" />
                       </div>
                       <CardTitle className="text-lg mb-3 text-white">{item.title}</CardTitle>
-                      <CardDescription className="text-sm leading-relaxed text-slate-400">
-                        {item.description}
-                      </CardDescription>
+                      <CardDescription className="text-sm leading-relaxed text-slate-400">{item.description}</CardDescription>
                     </CardHeader>
                   </Card>
                 </StaggerItem>
               );
             })}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Criteria + roles */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.07),transparent_55%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <SectionReveal>
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-3 flex items-center gap-3">
+                    <Search className="h-6 w-6 text-emerald-400" />
+                    Research Criteria
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    Example criteria professional services firms request:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-slate-300">
+                    {researchCriteria.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+
+            <SectionReveal delay={0.15}>
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-3 flex items-center gap-3">
+                    <Users className="h-6 w-6 text-emerald-400" />
+                    Decision-Maker Roles
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-400 leading-relaxed">
+                    Example roles professional services firms request:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2.5 text-sm text-slate-300">
+                    {decisionMakerRoles.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-sm text-slate-400 leading-relaxed">
+                    We deliver potentially relevant companies and criteria-matched accounts showing client-defined
+                    research signals — we do not claim to identify buyers ready to purchase.
+                  </p>
+                </CardContent>
+              </Card>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 
@@ -250,7 +266,7 @@ export default function ProfessionalServicesIndustryPage() {
               What You&apos;ll Receive
             </h2>
             <p className="text-xl text-slate-400">
-              Every prospect list is targeted, verified, and ready for business development.
+              A verified, CRM-ready prospect database built around your target criteria.
             </p>
           </SectionReveal>
 
@@ -258,7 +274,13 @@ export default function ProfessionalServicesIndustryPage() {
             <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
               <CardHeader>
                 <div className="space-y-4">
-                  {deliverables.map((item, index) => (
+                  {[
+                    "Potentially relevant companies matching your target criteria",
+                    "Verified business emails and phone numbers where available",
+                    "Owner, partner, founder, and decision-maker contacts with LinkedIn profiles",
+                    "Industry, size, and growth-signal data",
+                    "CRM-ready formatting for your outreach stack",
+                  ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-emerald-400 mt-0.5 flex-shrink-0" />
                       <span className="text-slate-300 text-base leading-relaxed">{item}</span>
@@ -272,7 +294,7 @@ export default function ProfessionalServicesIndustryPage() {
           <SectionReveal delay={0.2} className="mt-12">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
+                <Link href="/request-sample">
                   Get a Free Sample List
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -296,20 +318,7 @@ export default function ProfessionalServicesIndustryPage() {
           </SectionReveal>
 
           <div className="space-y-6">
-            {[
-              {
-                q: "What kinds of professional services firms benefit from this?",
-                a: "Consultancies, marketing and creative agencies, advisory firms, and specialized B2B service providers that need a steady pipeline of qualified business development opportunities.",
-              },
-              {
-                q: "How do you find companies that need our specific services?",
-                a: "We identify companies by industry, size, and growth signals—such as hiring, expansion, or new initiatives—that indicate demand for external expertise.",
-              },
-              {
-                q: "Who should our firm contact in a prospect company?",
-                a: "We deliver owners, partners, and department heads—the decision-makers who approve consulting and agency engagements—with verified contact details.",
-              },
-            ].map((item, index) => (
+            {faqs.map((item, index) => (
               <SectionReveal key={item.q} delay={index * 0.05}>
                 <Card className="border-white/10 bg-white/5 backdrop-blur-sm hover:border-emerald-500/40 transition-all duration-300">
                   <CardHeader>
@@ -331,7 +340,7 @@ export default function ProfessionalServicesIndustryPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Other Industries We Serve
+              Other Industries We Research
             </h2>
           </SectionReveal>
 
@@ -360,6 +369,13 @@ export default function ProfessionalServicesIndustryPage() {
               );
             })}
           </div>
+
+          <SectionReveal delay={0.3} className="mt-10 text-center">
+            <Link href="/b2b-prospect-research" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              See how our company and decision-maker research applies to professional services firms
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </SectionReveal>
         </div>
       </section>
 

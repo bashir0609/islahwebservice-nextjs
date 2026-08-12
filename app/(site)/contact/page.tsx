@@ -99,10 +99,9 @@ export default function ContactPage() {
   };
 
   const services = [
-    "B2B Lead Generation",
-    "Prospect List Building",
-    "Contact Enrichment",
-    "Decision Maker Research & Contact Discovery",
+    "B2B Prospect Research",
+    "Existing Database Enrichment",
+    "B2B Lead Generation Data Services",
     "Not sure yet — recommend a solution",
   ];
 
@@ -140,7 +139,7 @@ export default function ContactPage() {
 
             <SectionReveal immediate delay={0.6} className="mb-10 mx-auto max-w-2xl">
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed">
-                Tell us about your targeting criteria and we'll help scope a B2B prospect research project.
+                Tell us about your targeting criteria and we&apos;ll help scope a B2B prospect research project.
               </p>
             </SectionReveal>
 
@@ -349,7 +348,7 @@ export default function ContactPage() {
                     Need to Scope a Research Project?
                   </h3>
                   <p className="text-slate-400 leading-relaxed mb-6">
-                    Share your targeting criteria and we'll confirm what can be researched, outline the fields and verification available, and provide a timeline and quote.
+                    Share your targeting criteria and we&apos;ll confirm what can be researched, outline the fields and verification available, and provide a timeline and quote.
                   </p>
                 </div>
 

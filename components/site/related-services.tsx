@@ -20,7 +20,11 @@ export function RelatedServices({ slug, tone = "900", subtitle }: RelatedService
 
   const serviceLinks = services.map((s) => ({ ...s, kind: "service" as const }));
   const industryLinks = industries.map((i) => ({ ...i, kind: "industry" as const }));
-  const links = [...serviceLinks, ...industryLinks];
+  // Deduplicate by href — consolidation can map several former services to the
+  // same master page (e.g. B2B Prospect Research).
+  const links = [...serviceLinks, ...industryLinks].filter(
+    (link, index, all) => all.findIndex((l) => l.href === link.href) === index,
+  );
 
   if (links.length === 0) return null;
 
@@ -79,7 +83,7 @@ export function RelatedServices({ slug, tone = "900", subtitle }: RelatedService
 
         <SectionReveal delay={0.3} className="mt-12 text-center">
           <Link
-            href="/free-consultation"
+            href="/request-sample"
             className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
           >
             Request a free sample of prospect data for your criteria

@@ -221,13 +221,13 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <Link href="/free-consultation">
-                  Book a Free Consultation
+                <Link href="/request-sample">
+                  Request a Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                <Link href="/services">Explore Services</Link>
+                <Link href="/b2b-prospect-research">Explore B2B Prospect Research</Link>
               </Button>
             </div>
           </div>
@@ -302,17 +302,17 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                 Want Verified Prospect Data Like This?
               </h3>
               <p className="text-slate-400 mb-6">
-                Let's discuss how we can build a customized prospect database for your business.
+                Request a free sample and see how we can build a customized prospect database for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg">
-                  <Link href="/free-consultation">
-                    Book a Free Consultation
+                  <Link href="/request-sample">
+                    Request a Free Sample
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white">
-                  <Link href="/services">Explore Services</Link>
+                  <Link href="/b2b-prospect-research">Explore B2B Prospect Research</Link>
                 </Button>
               </div>
             </CardContent>

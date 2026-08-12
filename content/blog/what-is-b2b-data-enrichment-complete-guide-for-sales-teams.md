@@ -173,7 +173,7 @@ Company type
 
 This helps your sales team prioritize the best leads first.
 ## B2B Data Enrichment vs B2B List Building
-B2B data enrichment and B2B list building are connected, but they are not exactly the same.B2B list building means creating a new [prospect list](/prospect-list-building) from scratch based on your target criteria.Example:“Find 1,000 SaaS companies in the USA with founders, LinkedIn profiles, and verified emails.”B2B data enrichment means improving an existing list by adding missing details.Example:“Here is a list of 1,000 company websites. Add decision-makers, emails, LinkedIn profiles, industry, and location.”Many businesses need both. First, they build a targeted list. Then, they enrich and verify it before outreach.
+B2B data enrichment and B2B list building are connected, but they are not exactly the same.B2B list building means creating a new [prospect list](/b2b-prospect-research) from scratch based on your target criteria.Example:“Find 1,000 SaaS companies in the USA with founders, LinkedIn profiles, and verified emails.”B2B data enrichment means improving an existing list by adding missing details.Example:“Here is a list of 1,000 company websites. Add decision-makers, emails, LinkedIn profiles, industry, and location.”Many businesses need both. First, they build a targeted list. Then, they enrich and verify it before outreach.
 ## What Data Can Be Enriched?
 The type of data depends on your sales goals. Common B2B enrichment fields include:
 ### Contact Information
@@ -262,7 +262,7 @@ Duplicate contacts waste time and may cause your team to contact the same person
 ### Update Data Regularly
 B2B data changes quickly. People change jobs, companies change websites, and emails become invalid.Regular enrichment keeps your database fresh.
 ## How Islah Web Service Can Help
-Islah Web Service helps businesses with B2B data enrichment, [list building](/prospect-list-building), web research, email verification, and CRM-ready data preparation.Whether you already have a list that needs improvement or you want a fresh targeted prospect list, our team can help you collect, clean, verify, and organize the data.We can help with:
+Islah Web Service helps businesses with B2B data enrichment, [prospect research](/b2b-prospect-research), web research, email verification, and CRM-ready data preparation.Whether you already have a list that needs improvement or you want a fresh targeted prospect list, our team can help you collect, clean, verify, and organize the data.We can help with:
 B2B lead list building
 Contact data enrichment
 CRM data enrichment
@@ -275,7 +275,7 @@ Web research and data extraction
 
 Our goal is simple: help your sales team reach the right prospects with accurate and useful data.
 ## Final Thoughts
-B2B data enrichment is not just about adding more information to a spreadsheet. It is about improving the quality of your sales process.With enriched data, your team can target better prospects, personalize outreach, reduce bounce rates, improve CRM accuracy, and save hours of manual research.If your current prospect list is incomplete, outdated, or not ready for outreach, B2B data enrichment can turn it into a clean and sales-ready database.Need help enriching your B2B contact list? [Book a free consultation](/free-consultation) and we'll show you how to get accurate, verified, and CRM-ready prospect data for your next sales campaign.
+B2B data enrichment is not just about adding more information to a spreadsheet. It is about improving the quality of your sales process.With enriched data, your team can target better prospects, personalize outreach, reduce bounce rates, improve CRM accuracy, and save hours of manual research.If your current prospect list is incomplete, outdated, or not ready for outreach, B2B data enrichment can turn it into a clean and sales-ready database.Need help enriching your B2B contact list? [Request a free sample](/request-sample) and we'll show you how to get accurate, verified, and CRM-ready prospect data for your next sales campaign.
 
 
 
