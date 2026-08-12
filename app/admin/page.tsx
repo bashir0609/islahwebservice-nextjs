@@ -123,7 +123,7 @@ export default function AdminDashboard() {
           },
           {
             icon: TrendingUp,
-            label: "Views This Month",
+            label: "Analytics",
             value: stats.totalViews,
             color: "from-orange-500/20 to-red-500/20",
             borderColor: "border-orange-500/30",
@@ -143,7 +143,7 @@ export default function AdminDashboard() {
                       <div className="h-6 w-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
                     ) : (
                       <div className={`text-3xl font-bold ${stat.textColor}`}>
-                        {stat.value}
+                        {stat.label === "Analytics" && stat.value === 0 ? "—" : stat.value}
                       </div>
                     )}
                   </div>
@@ -158,7 +158,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Quick Actions */}
-      <SectionReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <SectionReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
         {[
           {
             href: "/admin/portfolio",
