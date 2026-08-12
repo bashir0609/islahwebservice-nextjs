@@ -79,12 +79,12 @@ const EDITS = [
         "Unverified emails can increase bounce risk and hurt sender reputation. Before launching cold email campaigns, run [email verification](/blog/email-verification-guide) and remove high-risk records.",
       ],
       [
-        "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, CRM-ready prospect lists for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
-        "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, [CRM-ready prospect lists](/b2b-prospect-research) for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
+        "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, CRM-ready prospect data that clients can use in their own sales and outreach workflows.",
+        "At Islah Web Service, the focus is not just collecting local businesses. The goal is to build clean, verified, [CRM-ready prospect data](/b2b-prospect-research) that clients can use in their own sales and outreach workflows.",
       ],
       [
-        "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with decision-maker research, validates emails, removes duplicates, and delivers CRM-ready files for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
-        "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with [decision-maker research](/b2b-prospect-research), validates emails, removes duplicates, and delivers CRM-ready files for cold email, LinkedIn outreach, calling, appointment setting, and sales campaigns.",
+        "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with decision-maker research, validates emails, removes duplicates, and delivers CRM-ready prospect data that clients can use in their own sales and outreach workflows.",
+        "Islah Web Service filters prospects by niche and location, verifies company details, enriches records with [decision-maker research](/b2b-prospect-research), validates emails, removes duplicates, and delivers CRM-ready prospect data that clients can use in their own sales and outreach workflows.",
       ],
       [
         "How does Islah Web Service improve Google Maps lead lists?",
