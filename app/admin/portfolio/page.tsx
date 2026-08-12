@@ -3,14 +3,16 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Plus, Pencil, Trash2 } from "lucide-react";
+import { ArrowLeft, Plus, Pencil, Trash2, Loader2 } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -151,10 +153,7 @@ export default function AdminPortfolioPage() {
 
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
-            <Button
-              onClick={resetForm}
-             
-            >
+            <Button onClick={resetForm}>
               <Plus className="h-4 w-4 mr-2" />
               New Item
             </Button>
@@ -164,6 +163,11 @@ export default function AdminPortfolioPage() {
               <DialogTitle>
                 {editingItem ? "Edit Item" : "Create Item"}
               </DialogTitle>
+              <DialogDescription>
+                {editingItem
+                  ? "Update the details of this portfolio item."
+                  : "Fill in the details to create a new portfolio item."}
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
               <div className="space-y-2">
@@ -218,7 +222,7 @@ export default function AdminPortfolioPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, featured: e.target.checked })
                   }
-                  className="h-4 w-4 rounded border-slate-300"
+                  className="h-4 w-4 accent-cyan-600"
                 />
                 <label htmlFor="featured" className="text-sm font-medium">
                   Featured
@@ -244,7 +248,10 @@ export default function AdminPortfolioPage() {
 
       <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
         {loading ? (
-          <div className="p-8 text-center text-slate-500">Loading...</div>
+          <div className="flex items-center justify-center gap-2 p-8 text-slate-500">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Loading...
+          </div>
         ) : items.length === 0 ? (
           <div className="p-8 text-center text-slate-500">
             No portfolio items yet. Create your first item above.
@@ -301,15 +308,9 @@ export default function AdminPortfolioPage() {
                       </div>
                     </td>
                     <td className="p-4">
-                      <span
-                        className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                          item.featured === 1
-                            ? "bg-cyan-100 text-cyan-700"
-                            : "bg-slate-100 text-slate-600"
-                        }`}
-                      >
+                      <Badge variant={item.featured === 1 ? "success" : "secondary"}>
                         {item.featured === 1 ? "Featured" : "Standard"}
-                      </span>
+                      </Badge>
                     </td>
                     <td className="p-4">
                       <div className="flex items-center justify-end gap-2">
@@ -317,6 +318,8 @@ export default function AdminPortfolioPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleEdit(item)}
+                          aria-label="Edit item"
+                          title="Edit item"
                         >
                           <Pencil className="h-4 w-4" />
                         </Button>
@@ -324,6 +327,8 @@ export default function AdminPortfolioPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleDelete(item.id)}
+                          aria-label="Delete item"
+                          title="Delete item"
                         >
                           <Trash2 className="h-4 w-4 text-red-600" />
                         </Button>

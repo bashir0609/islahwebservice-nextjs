@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Plus, Pencil, Trash2, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, ArrowLeft, Loader2 } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -181,10 +182,7 @@ export default function AdminBlogPage() {
 
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
-            <Button
-              onClick={resetForm}
-             
-            >
+            <Button onClick={resetForm}>
               <Plus className="h-4 w-4 mr-2" />
               New Post
             </Button>
@@ -194,6 +192,11 @@ export default function AdminBlogPage() {
               <DialogTitle>
                 {editingPost ? "Edit Post" : "Create Post"}
               </DialogTitle>
+              <DialogDescription>
+                {editingPost
+                  ? "Update the details of this blog post."
+                  : "Fill in the details to create a new blog post."}
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
               <div className="space-y-2">
@@ -270,7 +273,7 @@ export default function AdminBlogPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, published: e.target.checked })
                   }
-                  className="h-4 w-4 rounded border-slate-300"
+                  className="h-4 w-4 accent-cyan-600"
                 />
                 <label htmlFor="published" className="text-sm font-medium">
                   Published
@@ -296,7 +299,10 @@ export default function AdminBlogPage() {
 
       <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
         {loading ? (
-          <div className="p-8 text-center text-slate-500">Loading...</div>
+          <div className="flex items-center justify-center gap-2 p-8 text-slate-500">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Loading...
+          </div>
         ) : posts.length === 0 ? (
           <div className="p-8 text-center text-slate-500">
             No blog posts yet. Create your first post above.
@@ -342,7 +348,7 @@ export default function AdminBlogPage() {
                     <td className="p-4">
                       <Badge
                         variant={
-                          post.published === 1 ? "default" : "secondary"
+                          post.published === 1 ? "success" : "secondary"
                         }
                       >
                         {post.published === 1 ? "Published" : "Draft"}
@@ -354,6 +360,10 @@ export default function AdminBlogPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleTogglePublish(post.id)}
+                          aria-label={
+                            post.published === 1 ? "Unpublish post" : "Publish post"
+                          }
+                          title={post.published === 1 ? "Unpublish" : "Publish"}
                         >
                           {post.published === 1 ? (
                             <EyeOff className="h-4 w-4" />
@@ -365,6 +375,8 @@ export default function AdminBlogPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleEdit(post)}
+                          aria-label="Edit post"
+                          title="Edit post"
                         >
                           <Pencil className="h-4 w-4" />
                         </Button>
@@ -372,6 +384,8 @@ export default function AdminBlogPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleDelete(post.id)}
+                          aria-label="Delete post"
+                          title="Delete post"
                         >
                           <Trash2 className="h-4 w-4 text-red-600" />
                         </Button>
