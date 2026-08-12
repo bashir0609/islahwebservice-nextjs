@@ -53,6 +53,12 @@ const INDUSTRY = {
     description:
       "Verified contacts for consultancies, agencies, and advisory firms.",
   },
+  realEstate: {
+    href: "/industries/real-estate",
+    title: "Real Estate",
+    description:
+      "Property owners, investors, and property-management companies researched by location, ownership, portfolio size, and asset type.",
+  },
 } as const;
 
 export const RELATED_CONTENT_BY_POST: Record<string, RelatedContent> = {
@@ -159,6 +165,26 @@ export const RELATED_CONTENT_BY_PORTFOLIO: Record<string, RelatedContent> = {
   },
   "verified-contact-list-australian-saas": {
     services: [SERVICE.b2b, SERVICE.enrichment],
+    industries: [INDUSTRY.saas],
+  },
+  "b2b-prospect-research-fintech-software": {
+    services: [SERVICE.b2b, SERVICE.b2b],
+    industries: [INDUSTRY.saas],
+  },
+  "cloud-migration-tech-stack-research": {
+    services: [SERVICE.b2b, SERVICE.b2b],
+    industries: [INDUSTRY.saas, INDUSTRY.msp],
+  },
+  "healthcare-it-decision-maker-research": {
+    services: [SERVICE.b2b, SERVICE.b2b],
+    industries: [INDUSTRY.professionalServices],
+  },
+  "property-management-prospect-list": {
+    services: [SERVICE.b2b, SERVICE.b2b, SERVICE.b2b],
+    industries: [INDUSTRY.realEstate, INDUSTRY.msp],
+  },
+  "saas-existing-database-enrichment": {
+    services: [SERVICE.enrichment, SERVICE.b2b],
     industries: [INDUSTRY.saas],
   },
 };

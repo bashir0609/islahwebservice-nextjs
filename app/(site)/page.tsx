@@ -438,6 +438,7 @@ export default function HomePage() {
               { href: "/industries/msp", icon: ShieldCheck, tint: "bg-cyan-500/15 text-cyan-400", title: "Managed Service Providers", description: "Local businesses researched by geography, size, and IT-related criteria." },
               { href: "/industries/recruitment", icon: Users, tint: "bg-orange-500/15 text-orange-400", title: "Recruitment", description: "Companies with open roles and hiring signals, matched to your verticals." },
               { href: "/industries/professional-services", icon: Briefcase, tint: "bg-emerald-500/15 text-emerald-400", title: "Professional Services", description: "Criteria-matched accounts for consultancies, agencies, and advisory firms." },
+              { href: "/industries/real-estate", icon: Building2, tint: "bg-sky-500/15 text-sky-400", title: "Real Estate", description: "Property owners, investors, and managers researched by ownership, portfolio size, and asset type." },
             ].map((industry, index) => {
               const Icon = industry.icon;
               return (
@@ -653,14 +654,14 @@ export default function HomePage() {
             <SectionReveal delay={0.2}>
               <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="text-white">Staffing Firm, USA</CardTitle>
+                  <CardTitle className="text-white">Staffing Firm, UK</CardTitle>
                   <CardDescription className="text-cyan-400/80">CRM-Ready Prospect Database</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 text-slate-300 text-sm">
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span>Requirement: engineering-hiring companies with active demand</span>
+                      <span>Requirement: companies with active engineering hiring</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />

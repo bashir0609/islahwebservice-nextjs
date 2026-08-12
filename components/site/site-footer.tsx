@@ -67,6 +67,7 @@ export default function SiteFooter() {
               <li><Link href="/industries/saas" className="transition-colors hover:text-cyan-400">SaaS Companies</Link></li>
               <li><Link href="/industries/recruitment" className="transition-colors hover:text-cyan-400">Recruitment Firms</Link></li>
               <li><Link href="/industries/professional-services" className="transition-colors hover:text-cyan-400">Professional Services</Link></li>
+              <li><Link href="/industries/real-estate" className="transition-colors hover:text-cyan-400">Real Estate</Link></li>
             </ul>
           </div>
 

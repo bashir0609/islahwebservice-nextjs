@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck, TrendingUp, Users, Briefcase, ArrowRight, CheckCircle2, Search, Target } from "lucide-react";
+import { ShieldCheck, TrendingUp, Users, Briefcase, Building2, ArrowRight, CheckCircle2, Search, Target } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,17 @@ const industries = [
       "Criteria-matched account research for consultancies, agencies, and advisory firms — companies showing the growth events and business-model signals your firm specializes in.",
     criteria: ["Industry · geography · employee count", "Revenue & business model", "Recent expansion & new locations", "Hiring & growth events"],
     roles: ["Owner · Partner · Founder", "CEO · Managing Director", "Department heads", "Practice leads"],
+  },
+  {
+    href: "/industries/real-estate",
+    icon: Building2,
+    tint: "bg-sky-500/15 text-sky-400",
+    title: "Real Estate",
+    tagline: "Commercial property & real estate organizations",
+    description:
+      "Research property owners, investors, property-management companies, and other real estate organizations using location, ownership, portfolio, property-type, and client-defined criteria.",
+    criteria: ["Property ownership", "Portfolio size", "Asset type", "Geography", "Decision-maker role"],
+    roles: ["Owner · Principal · Managing Partner", "Director of Acquisitions · Asset Manager", "Property Manager · Director of Property Management", "Operations · Facilities · Investment leadership"],
   },
 ];
 

@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     staticEntry("/industries/saas", "weekly", 0.9),
     staticEntry("/industries/recruitment", "weekly", 0.9),
     staticEntry("/industries/professional-services", "weekly", 0.9),
+    staticEntry("/industries/real-estate", "weekly", 0.9),
     staticEntry("/b2b-prospect-research", "weekly", 0.9),
     staticEntry("/portfolio", "weekly", 0.8),
     staticEntry("/request-sample", "weekly", 0.9),

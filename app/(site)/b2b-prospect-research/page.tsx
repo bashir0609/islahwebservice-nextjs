@@ -194,6 +194,7 @@ export default function B2BProspectResearchPage() {
                 title: "Property Portfolios",
                 description:
                   "Find commercial property owners in Chicago that own more than five buildings and identify the person responsible for acquisitions.",
+                href: "/industries/real-estate",
               },
               {
                 icon: Users,
@@ -220,6 +221,15 @@ export default function B2BProspectResearchPage() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-slate-400 leading-relaxed text-sm">{item.description}</p>
+                      {item.href && (
+                        <Link
+                          href={item.href}
+                          className="mt-3 inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 text-sm font-medium"
+                        >
+                          See real estate research
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      )}
                     </CardContent>
                   </Card>
                 </StaggerItem>
