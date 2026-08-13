@@ -27,6 +27,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ADDITIONAL_INDUSTRY_EXPERIENCE } from "@/lib/industries";
 
 export default function AboutPage() {
   return (
@@ -131,6 +132,42 @@ export default function AboutPage() {
               </div>
             </SectionReveal>
           </div>
+        </div>
+      </section>
+
+      {/* Research Experience Across B2B Markets */}
+      <section className="relative overflow-hidden py-16 sm:py-20 bg-slate-950 border-t border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.05),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">
+              <Search className="h-3.5 w-3.5 text-cyan-400" />
+              Broader Research History
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+              Research Experience Across B2B Markets
+            </h2>
+            <p className="text-lg text-slate-400 leading-relaxed">
+              Since 2016, Islah Web Service has supported research and data projects across SaaS, IT services,
+              recruitment, professional services, real estate, ecommerce, healthcare, agencies, local businesses,
+              and other B2B markets. The research criteria vary by project, but the core process remains consistent:
+              identify relevant organizations, research requested decision-makers, enrich available contact
+              information, verify data, and prepare structured records for client use.
+            </p>
+          </SectionReveal>
+          <SectionReveal delay={0.2}>
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              {ADDITIONAL_INDUSTRY_EXPERIENCE.map((item) => (
+                <span
+                  key={item.label}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-slate-300"
+                >
+                  <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400" />
+                  {item.label}
+                </span>
+              ))}
+            </div>
+          </SectionReveal>
         </div>
       </section>
 

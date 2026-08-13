@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck, TrendingUp, Users, Briefcase, Building2, ArrowRight, CheckCircle2, Search, Target } from "lucide-react";
+import { ShieldCheck, TrendingUp, Users, Briefcase, Building2, ArrowRight, CheckCircle2, Search, Target, Layers } from "lucide-react";
 import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
-import { INDUSTRIES } from "@/lib/industries";
+import { ADDITIONAL_INDUSTRY_EXPERIENCE, INDUSTRIES } from "@/lib/industries";
 
 // Page-specific presentation (icon, tint, example criteria and roles) keyed by
 // the canonical industry href. Identity (title/tagline/description) comes from
@@ -191,6 +191,48 @@ export default function IndustriesPage() {
               );
             })}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Additional Industries — broader experience, NOT separate landing pages */}
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-slate-950 border-t border-white/5">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionReveal className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">
+              <Layers className="h-3.5 w-3.5 text-cyan-400" />
+              Broader Research Experience
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+              Additional Industries We Have Researched
+            </h2>
+            <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              Our research process can be adapted to different B2B markets. In addition to our primary industry
+              specializations, we have supported projects involving ecommerce and retail, healthcare and medical
+              organizations, marketing agencies, local and home-service businesses, manufacturers, distributors, and
+              other client-defined markets.
+            </p>
+          </SectionReveal>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {ADDITIONAL_INDUSTRY_EXPERIENCE.map((item) => (
+              <StaggerItem key={item.label} className="h-full">
+                <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors hover:border-white/20">
+                  <div className="flex items-center gap-3 mb-3">
+                    <CheckCircle2 className="h-5 w-5 text-cyan-400/80 flex-shrink-0" />
+                    <h3 className="text-lg font-semibold text-white">{item.label}</h3>
+                  </div>
+                  <p className="text-sm leading-relaxed text-slate-400">{item.description}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <SectionReveal delay={0.2} className="mt-10 text-center">
+            <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+              These markets are part of our research history and are served with the same criteria-based company
+              research, decision-maker discovery, and verification process used across our primary industries.
+            </p>
+          </SectionReveal>
         </div>
       </section>
 

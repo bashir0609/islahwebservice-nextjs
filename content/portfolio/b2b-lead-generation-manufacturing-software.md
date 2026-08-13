@@ -2,7 +2,7 @@
 title: "B2B Lead Generation for a Manufacturing Software Vendor"
 slug: b2b-lead-generation-manufacturing-software
 image: /portfolio/manufacturing-software-leads.svg
-tags: "B2B Lead Generation, Prospect Research, USA, Contact Enrichment"
+tags: "Manufacturing, B2B Lead Generation, Prospect Research, USA, Contact Enrichment"
 featured: true
 date: 2025-09-25
 results: [{"label":"Target accounts","value":"Criteria-matched plants"},{"label":"Contacts delivered","value":"Plant & ops leadership"},{"label":"Refresh cycle","value":"Quarterly"}]

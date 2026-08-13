@@ -62,3 +62,51 @@ export const INDUSTRIES: IndustryInfo[] = [
 export function getIndustry(href: string): IndustryInfo | undefined {
   return INDUSTRIES.find((i) => i.href === href);
 }
+
+/**
+ * Secondary markets researched across project history.
+ *
+ * Deliberately SEPARATE from INDUSTRIES: these are shown as experience on the
+ * industries hub and About page only. They must NOT feed the footer, nav,
+ * services page, sitemap, or any page-generation code — no dedicated landing
+ * pages exist for them, and none should be auto-generated.
+ */
+export interface AdditionalIndustryExperience {
+  /** Display label, e.g. "Healthcare & Medical". */
+  label: string;
+  /** One-line description of what can be researched in this market. */
+  description: string;
+}
+
+export const ADDITIONAL_INDUSTRY_EXPERIENCE: AdditionalIndustryExperience[] = [
+  {
+    label: "Ecommerce & Retail",
+    description:
+      "Brand and company discovery, retailer research, and manufacturer or distributor research for partnership-focused outreach.",
+  },
+  {
+    label: "Healthcare & Medical",
+    description:
+      "Organization research by client-defined criteria and geography, with relevant executive and operational roles.",
+  },
+  {
+    label: "Marketing Agencies",
+    description:
+      "Agency-type, geography, employee-size, and founder or partner leadership research.",
+  },
+  {
+    label: "Local Businesses & Home Services",
+    description:
+      "Business-directory and Google Maps research by geography and category, with owner and manager discovery.",
+  },
+  {
+    label: "Manufacturers & Distributors",
+    description:
+      "Company and facility research with plant, operations, and engineering leadership roles.",
+  },
+  {
+    label: "Other B2B Markets",
+    description:
+      "Client-defined targeting criteria applied to any researchable B2B market.",
+  },
+];
