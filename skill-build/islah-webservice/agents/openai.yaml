@@ -1,0 +1,4 @@
+interface:
+  display_name: "Islah Web Service"
+  short_description: "Islah Web Service dev, SEO, audits, and deployment"
+  default_prompt: "Use $islah-webservice to audit the Islah Web Service website for technical SEO issues and propose fixes."
