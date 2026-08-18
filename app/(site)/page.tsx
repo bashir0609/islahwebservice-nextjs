@@ -243,9 +243,9 @@ export default function HomePage() {
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  B2B Lead Generation, Built on ICP-Matched Prospect Lists
+                  B2B Lead Generation, Built Around Your ICP
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                    Researched to Your Requirements
+                    ICP-Matched Prospect Lists, Researched to Your Requirements
                   </span>
                 </h1>
               </SectionReveal>
