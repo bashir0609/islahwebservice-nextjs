@@ -243,7 +243,7 @@ export default function HomePage() {
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  ICP-Matched Prospect Lists
+                  B2B Lead Generation, Built on ICP-Matched Prospect Lists
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
                     Researched to Your Requirements
                   </span>
@@ -252,7 +252,7 @@ export default function HomePage() {
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  We research the companies and decision-makers your sales team wants to reach based on your ICP, target geography, account criteria, required roles, and data fields, then deliver an ICP-matched, CRM-ready prospect list.
+                  Our B2B lead generation service starts with research: we identify the companies and decision-makers your sales team wants to reach based on your ICP, target geography, account criteria, required roles, and data fields, then deliver an ICP-matched, CRM-ready prospect list.
                 </p>
               </SectionReveal>
 
@@ -331,7 +331,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              We do not sell a generic database. We research a new prospect list around your ICP, target geography, company criteria, decision-maker roles, and required fields.
+              Effective B2B lead generation starts with the right accounts. We do not sell a generic database; we research a new prospect list around your ICP, target geography, company criteria, decision-maker roles, and required fields.
             </p>
           </SectionReveal>
 

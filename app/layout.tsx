@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "custom prospect list research",
+    "B2B lead generation",
     "B2B prospect research",
     "prospect data services",
     "decision-maker research",
@@ -88,7 +88,7 @@ const organizationJsonLd = {
         url: "https://www.linkedin.com/in/bashir0609",
       },
       description:
-        "Custom B2B prospect-list research: Islah Web Service researches target companies and requested decision-makers from each ICP, then delivers verified, CRM-ready prospect lists for the USA, UK, and Australia.",
+        "B2B lead generation through custom prospect-list research: Islah Web Service researches target companies and requested decision-makers from each ICP, then delivers verified, CRM-ready prospect lists for the USA, UK, and Australia.",
       areaServed: ["US", "GB", "AU"],
       address: {
         "@type": "PostalAddress",
