@@ -243,16 +243,13 @@ export default function HomePage() {
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  B2B Lead Generation, Built Around Your ICP
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                    ICP-Matched Prospect Lists, Researched to Your Requirements
-                  </span>
+                  B2B Lead Generation That Starts With Research
                 </h1>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  Our B2B lead generation service starts with research: we identify the companies and decision-makers your sales team wants to reach based on your ICP, target geography, account criteria, required roles, and data fields, then deliver an ICP-matched, CRM-ready prospect list.
+                  ICP-matched prospect lists, researched to your requirements and delivered in a clean, CRM-ready format.
                 </p>
               </SectionReveal>
 
