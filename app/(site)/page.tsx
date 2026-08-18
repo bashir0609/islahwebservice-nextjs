@@ -31,11 +31,11 @@ import HeroVisual from "@/components/site/hero-visual";
 const faqs = [
   {
     q: "What does Islah Web Service provide?",
-    a: "We provide B2B prospect research and sales intelligence data. Clients tell us which companies and decision-makers they want to reach, and we deliver a customized, verified, CRM-ready prospect database built around those criteria.",
+    a: "We provide B2B prospect research and sales intelligence data. Clients tell us which companies and decision-makers they want to reach, and we deliver a customized, verified, CRM-ready prospect list built around those criteria.",
   },
   {
     q: "Do you run cold email campaigns or book meetings?",
-    a: "No. We specialize in the research and data stage of outbound sales. We identify target companies, find relevant decision-makers, enrich and verify contact data, and deliver the database in a CRM-ready format. Your team or outreach partner controls messaging, campaign execution, meetings, and sales.",
+    a: "No. We specialize in the research and data stage of outbound sales. We identify target companies, find relevant decision-makers, enrich and verify contact data, and deliver the researched prospect list in a CRM-ready format. Your team or outreach partner controls messaging, campaign execution, meetings, and sales.",
   },
   {
     q: "Can you help refine my targeting criteria?",
@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "How long does a project take?",
-    a: "Most projects deliver an initial verified database within 5–10 business days, depending on target industry, geography, list size, and research complexity. Larger or multi-segment projects are scoped and delivered in phases.",
+    a: "Most projects deliver an initial verified prospect list within 5–10 business days, depending on target industry, geography, list size, and research complexity. Larger or multi-segment projects are scoped and delivered in phases.",
   },
   {
     q: "Do you use AI or automation?",
@@ -161,18 +161,18 @@ const processSteps = [
   {
     step: "06",
     title: "Clean and Deliver",
-    desc: "We deduplicate, standardize, quality-check, and deliver the database in your required format.",
+    desc: "We deduplicate, standardize, quality-check, and deliver the prospect list in your required format.",
   },
 ];
 
 const whyChoose = [
-  { icon: Search, title: "Research Built From Your Requirements", description: "Every database starts from your criteria, not a generic template." },
+  { icon: Search, title: "Research Built From Your Requirements", description: "Every prospect list starts from your criteria, not a generic template." },
   { icon: Filter, title: "Complex Filters Handled", description: "Multi-layered, unusual criteria are a strength—not a limitation." },
   { icon: Users, title: "Human Review Supported by Technology", description: "Automation improves efficiency; people verify the final records." },
   { icon: Globe2, title: "Multi-Source Validation", description: "Records are checked and compared across relevant sources." },
   { icon: Target, title: "Decision-Maker-Level Records", description: "Named people with current roles, not generic company inboxes." },
   { icon: FileSpreadsheet, title: "Fresh, Project-Specific Research", description: "Data researched for your project, not recycled from stock lists." },
-  { icon: Database, title: "Custom Fields & Formatting", description: "Columns, segmentation, and delivery format matched to your CRM." },
+  { icon: Database, title: "Custom Fields & Formatting", description: "Columns, segmentation, and delivery format matched to your CRM-ready workflow." },
   { icon: ClipboardCheck, title: "Transparent Scope & Direct Communication", description: "Clear deliverables, agreed criteria, and a single point of contact." },
   { icon: ShieldCheck, title: "CRM-Ready Delivery", description: "Clean, deduplicated, standardized records ready to load and use." },
 ];
@@ -243,24 +243,23 @@ export default function HomePage() {
 
               <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                  B2B Lead Generation Services
+                  ICP-Matched Prospect Lists
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                    Built Around Accurate Prospect Data
+                    Researched to Your Requirements
                   </span>
                 </h1>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.6} className="mb-8 sm:mb-10 mx-auto lg:mx-0 max-w-xl">
                 <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                  We research target companies, identify relevant decision-makers, enrich and verify contact
-                  information, and deliver accurate CRM-ready prospect data built around your targeting criteria.
+                  We research the companies and decision-makers your sales team wants to reach based on your ICP, target geography, account criteria, required roles, and data fields, then deliver an ICP-matched, CRM-ready prospect list.
                 </p>
               </SectionReveal>
 
               <SectionReveal immediate delay={0.8} className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-5 justify-center lg:justify-start">
                 <Button asChild size="lg">
                   <Link href="/request-sample">
-                    Request a Free Sample
+                    Request an ICP-Matched Sample
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -328,11 +327,11 @@ export default function HomePage() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               Your Target Market Is Specific.
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                Your Prospect Database Should Be Too.
+                Your Prospect List Should Match Your ICP.
               </span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Generic databases force your team to filter thousands of irrelevant records. We build each database from your requirements, combining company research, decision-maker discovery, enrichment, and verification.
+              We do not sell a generic database. We research a new prospect list around your ICP, target geography, company criteria, decision-maker roles, and required fields.
             </p>
           </SectionReveal>
 
@@ -621,7 +620,7 @@ export default function HomePage() {
               Selected Project Examples
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Research challenges we&apos;ve translated into verified, criteria-matched prospect databases.
+              Research challenges we&apos;ve translated into verified, ICP-matched prospect lists.
             </p>
           </SectionReveal>
 
@@ -630,7 +629,7 @@ export default function HomePage() {
               <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-white">Managed IT Provider, USA</CardTitle>
-                  <CardDescription className="text-cyan-400/80">Custom Prospect Database</CardDescription>
+                  <CardDescription className="text-cyan-400/80">Custom ICP-Matched Prospect List</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 text-slate-300 text-sm">
@@ -655,7 +654,7 @@ export default function HomePage() {
               <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-white">Staffing Firm, UK</CardTitle>
-                  <CardDescription className="text-cyan-400/80">CRM-Ready Prospect Database</CardDescription>
+                  <CardDescription className="text-cyan-400/80">CRM-Ready Prospect List</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 text-slate-300 text-sm">
@@ -730,7 +729,7 @@ export default function HomePage() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
           <SectionReveal>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-              We Build the Data. Your Team Controls the Outreach.
+              We Research the List. Your Team Controls the Outreach.
             </h2>
             <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
               Our responsibility is to research the right companies, identify the requested people, enrich and verify the records, and deliver clean data. Your messaging, outreach system, sales conversations, meetings, and closed deals remain under your team&apos;s control.

@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "B2B lead generation",
+    "custom prospect list research",
     "B2B prospect research",
     "prospect data services",
     "decision-maker research",
     "contact enrichment",
     "email verification",
-    "CRM-ready prospect data",
+    "ICP-matched prospect lists",
     "company research service",
   ],
   openGraph: {
@@ -88,7 +88,7 @@ const organizationJsonLd = {
         url: "https://www.linkedin.com/in/bashir0609",
       },
       description:
-        "B2B lead generation data services: Islah Web Service researches target companies, identifies requested decision-makers, enriches and verifies contacts, and delivers CRM-ready prospect databases for the USA, UK, and Australia.",
+        "Custom B2B prospect-list research: Islah Web Service researches target companies and requested decision-makers from each ICP, then delivers verified, CRM-ready prospect lists for the USA, UK, and Australia.",
       areaServed: ["US", "GB", "AU"],
       address: {
         "@type": "PostalAddress",

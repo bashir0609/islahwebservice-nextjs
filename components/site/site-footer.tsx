@@ -41,10 +41,10 @@ export default function SiteFooter() {
               />
             </Link>
             <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs">
-              Islah Web Service builds customized B2B prospect databases through company research, decision-maker discovery, contact enrichment, verification, and CRM-ready data preparation.
+              Islah Web Service researches ICP-matched B2B prospect lists through company research, decision-maker discovery, contact verification, and CRM-ready delivery.
             </p>
             <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs">
-              Helping B2B sales teams build criteria-matched prospect databases across multiple industries.
+              Helping B2B sales teams source client-specific, criteria-matched prospect lists across multiple industries.
             </p>
             <div className="mt-4 space-y-1 text-xs sm:text-sm text-slate-400">
               <p>
