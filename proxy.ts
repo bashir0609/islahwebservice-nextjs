@@ -26,7 +26,30 @@ const LEGACY_REDIRECTS: Record<string, string> = {
 };
 
 export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
+
+  // Markdown content negotiation (AIScan C1):
+  // If a client sends Accept: text/markdown OR ?format=md, and the path is
+  // a public page, rewrite to the markdown renderer.
+  const wantsMarkdown =
+    searchParams.get("format") === "md" ||
+    (request.headers.get("accept") || "").includes("text/markdown");
+
+  const isPublicPage =
+    pathname !== "/admin" &&
+    !pathname.startsWith("/admin/") &&
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith("/.well-known/") &&
+    !pathname.startsWith("/_next/") &&
+    !pathname.includes(".");
+
+  if (wantsMarkdown && isPublicPage) {
+    const mdUrl = request.nextUrl.clone();
+    mdUrl.pathname = "/api/render-md";
+    mdUrl.searchParams.set("path", pathname);
+    mdUrl.searchParams.delete("format");
+    return NextResponse.rewrite(mdUrl);
+  }
 
   // Direct 301 for retired legacy URLs (matcher-scoped, so only these run).
   const legacyDestination = LEGACY_REDIRECTS[pathname];
@@ -65,14 +88,9 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
+  // Run on all paths except Next.js internals. Routing logic inside the
+  // proxy decides what to do per path.
   matcher: [
-    "/admin/:path*",
-    "/why-us",
-    "/b2b-lead-generation",
-    "/decision-maker-research",
-    "/prospect-list-building",
-    "/services/verified-b2b-contact-lists",
-    "/services/lead-generation-analysis",
-    "/services/business-process-automation",
+    "/((?!_next|favicon).*)",
   ],
 };
