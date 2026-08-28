@@ -1,0 +1,81 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Islah Web Service API",
+    "version": "1.0.0",
+    "description": "Public and authenticated endpoints for the Islah Web Service website. The contact endpoint is public; all admin endpoints require a session cookie or bearer <_REDACTED>.",
+    "contact": {
+      "name": "Islah Web Service",
+      "email": "hello@islahwebservice.com",
+      "url": "https://www.islahwebservice.com"
+    },
+    "license": {
+      "name": "Proprietary",
+      "url": "https://www.islahwebservice.com/terms"
+    }
+  },
+  "servers": [
+    { "url": "https://www.islahwebservice.com", "description": "Production" }
+  ],
+  "paths": {
+    "/api/contact": {
+      "post": {
+        "summary": "Submit a contact form",
+        "description": "Send a message to the Islah Web Service team. Public, no authentication required.",
+        "operationId": "submitContactForm",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email", "message"],
+                "properties": {
+                  "name": { "type": "string", "minLength": 2, "example": "Jane Doe" },
+                  "email": { "type": "string", "format": "email", "example": "jane@example.com" },
+                  "company": { "type": "string", "example": "Acme Inc." },
+                  "service": { "type": "string", "example": "B2B Prospect Research" },
+                  "message": { "type": "string", "minLength": 10, "example": "We need 500 verified SaaS contacts in the UK." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Missing required fields" },
+          "500": { "description": "Server error" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Admin endpoints only. Obtain a token via /admin/login."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "islah_session",
+        "description": "Admin endpoints only. Session cookie set after login."
+      }
+    }
+  }
+}

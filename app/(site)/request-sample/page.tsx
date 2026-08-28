@@ -123,8 +123,46 @@ export default function RequestSamplePage() {
         : "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:ring-cyan-500/20",
     );
 
+  const pricingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AggregateOffer",
+    offerCount: "2",
+    lowPrice: "150",
+    highPrice: "5000",
+    priceCurrency: "USD",
+    description: "Project pricing is criteria-dependent and quoted per scope. A free 20-record sample is available for qualified projects.",
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Free Sample",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Up to 20 verified, criteria-matched prospect records.",
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Custom Project",
+        price: "150",
+        priceCurrency: "USD",
+        description: "Starts at $150 per project. Final price depends on criteria complexity, geography, list size, and delivery format.",
+        eligibilityDuration: { "@type": "QuantitativeValue", maxValue: 30, unitCode: "DAY" },
+        availability: "https://schema.org/InStock",
+      },
+    ],
+    seller: {
+      "@type": "Organization",
+      name: "Islah Web Service",
+      url: "https://www.islahwebservice.com",
+    },
+  };
+
   return (
     <main className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />

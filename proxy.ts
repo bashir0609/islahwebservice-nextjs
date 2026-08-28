@@ -37,9 +37,16 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  // Everything outside /admin passes straight through.
+  // Everything outside /admin passes straight through — but we tag every
+  // public response with a Link header pointing at the API catalog so
+  // machine clients can discover the OpenAPI description (AIScan D3).
   if (pathname !== "/admin" && !pathname.startsWith("/admin/")) {
-    return NextResponse.next();
+    const res = NextResponse.next();
+    res.headers.append(
+      "Link",
+      '<https://www.islahwebservice.com/.well-known/api-catalog>; rel="describedby"'
+    );
+    return res;
   }
 
   // The login page must stay reachable without a session.
