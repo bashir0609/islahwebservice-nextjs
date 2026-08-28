@@ -165,7 +165,7 @@ export default function RequestSamplePage() {
               </span>
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                Verified contacts &amp; emails
+                Verified contacts & emails
               </span>
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />

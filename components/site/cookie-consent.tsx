@@ -7,7 +7,7 @@ import Link from "next/link";
 /**
  * Consent-gated Google Tag Manager.
  *
- * The site runs Google Tag Manager (container GTM-W6Z7MHG) for analytics and
+ * The site runs Google Tag Manager (container GTM-PV46P5L) for analytics and
  * conversion tracking. Those are non-essential scripts, so they are NOT loaded
  * until the visitor makes a choice on the cookie banner. The choice is
  * remembered in localStorage per device; the banner can be reopened any time
@@ -17,7 +17,7 @@ import Link from "next/link";
  * analytics or advertising tags fire. Changing an existing choice reloads the
  * page so the correct scripts load (or stay unloaded).
  */
-const GTM_ID = "GTM-W6Z7MHG";
+const GTM_ID = "GTM-PV46P5L";
 const STORAGE_KEY = "islah_cookie_consent";
 
 type ConsentChoice = "granted" | "declined" | null;

@@ -118,7 +118,7 @@ export default function ContactEnrichmentPage() {
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Existing Database
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
-                  Enrichment &amp; Contact Data Completion
+                  Enrichment & Contact Data Completion
                 </span>
               </h1>
             </SectionReveal>
@@ -153,7 +153,7 @@ export default function ContactEnrichmentPage() {
               </span>
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                Deduplicated &amp; standardized
+                Deduplicated & standardized
               </span>
             </SectionReveal>
           </div>

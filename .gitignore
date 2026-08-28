@@ -57,3 +57,6 @@ logs
 
 # Hermes
 .hermes
+
+# Freebuff editor state
+.freebuff
