@@ -119,7 +119,7 @@ export default function B2BProspectResearchPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                B2B Prospect Research
+                B2B Prospect Research{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
                   Services
                 </span>
@@ -170,7 +170,7 @@ export default function B2BProspectResearchPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Prospect Research for Complex
+              Prospect Research for Complex{' '}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
                 Targeting Requirements
               </span>

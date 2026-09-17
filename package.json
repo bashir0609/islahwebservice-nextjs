@@ -10,7 +10,8 @@
     "seo:check": "node scripts/seo-check.mjs",
     "seo:verify": "node scripts/seo-verify.mjs",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "generate:llms": "tsx scripts/generate-llms-txt.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "3.9.1",

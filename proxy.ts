@@ -69,6 +69,14 @@ export async function proxy(request: NextRequest) {
       "Link",
       '<https://www.islahwebservice.com/.well-known/api-catalog>; rel="describedby"'
     );
+    // Add Vary: Accept for content negotiation (Task 1)
+    // Append to existing Vary header from Next.js (rsc, next-router-*)
+    const existingVary = res.headers.get('Vary');
+    if (existingVary) {
+      res.headers.set('Vary', `${existingVary}, Accept`);
+    } else {
+      res.headers.set('Vary', 'Accept');
+    }
     return res;
   }
 

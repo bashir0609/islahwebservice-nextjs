@@ -19,7 +19,6 @@ export async function GET() {
         description:
           "Portfolio, blog, media, and settings endpoints powering the admin interface, plus a public contact submission endpoint.",
         url: "https://www.islahwebservice.com/openapi.json",
-        documentation: "https://www.islahwebservice.com/docs",
         authentication: {
           type: "bearer",
           description:

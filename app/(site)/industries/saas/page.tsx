@@ -127,7 +127,7 @@ export default function SaasIndustryPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                SaaS Lead Generation Services
+                SaaS Lead Generation Services{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
                   Built on Accurate Prospect Data
                 </span>

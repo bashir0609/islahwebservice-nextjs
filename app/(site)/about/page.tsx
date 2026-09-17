@@ -51,7 +51,7 @@ export default function AboutPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                A Research Partner for
+                A Research Partner for{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-amber-400">
                   Precise B2B Prospect Data
                 </span>

@@ -126,7 +126,7 @@ export default function MspIndustryPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                MSP Lead Generation Services
+                MSP Lead Generation Services{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
                   Built on Targeted Company Research
                 </span>

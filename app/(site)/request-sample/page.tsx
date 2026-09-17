@@ -181,8 +181,8 @@ export default function RequestSamplePage() {
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-6 sm:mb-8">
-              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl">
-                Request a Free
+              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
+                Request a Free{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
                   Prospect Research Sample
                 </span>

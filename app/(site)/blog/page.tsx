@@ -31,8 +31,8 @@ export default async function BlogPage() {
             </SectionReveal>
 
             <SectionReveal immediate delay={0.4} className="mb-6">
-              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl">
-                Fresh insights for
+              <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
+                Fresh insights for{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">
                   B2B growth teams
                 </span>

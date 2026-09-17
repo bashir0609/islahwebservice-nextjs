@@ -125,7 +125,7 @@ export default function RecruitmentIndustryPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Recruitment Lead Generation
+                Recruitment Lead Generation{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-cyan-400">
                   Built Around Hiring Signals
                 </span>
