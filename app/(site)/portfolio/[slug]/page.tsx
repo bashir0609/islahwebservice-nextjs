@@ -53,12 +53,14 @@ export async function generateMetadata({
 
   const seo = PORTFOLIO_SEO[item.slug];
 
+  const resolvedTitle = seo?.title || item.title;
+
   return pageMetadata({
-    title: seo?.title || item.title,
+    title: resolvedTitle,
     description: seo?.description || item.description || undefined,
     path: `/portfolio/${item.slug}`,
     image: item.image || undefined,
-    imageAlt: `${item.title} — case study illustration`,
+    imageAlt: `${resolvedTitle} — case study illustration`,
     ogType: "article",
     article: {
       publishedTime: item.createdAt

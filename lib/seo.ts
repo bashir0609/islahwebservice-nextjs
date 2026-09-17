@@ -7,8 +7,8 @@ export function absoluteUrl(path: string): string {
   return new URL(path, `${SITE_URL}/`).href;
 }
 export const SITE_DESCRIPTION =
-  "B2B lead generation through custom prospect-list research built around your ICP and requirements. Islah Web Service researches target companies, identifies requested decision-makers, verifies the records, and delivers ICP-matched prospect lists in a CRM-ready format.";
-export const HOME_TITLE = "B2B Lead Generation & Prospect List Research | Islah Web Service";
+  "Custom human research against your ICP — target companies, requested decision-makers, verified contacts, delivered CRM-ready. USA, UK, Australia.";
+export const HOME_TITLE = "Custom B2B Prospect List Research | Islah Web Service";
 
 /** Append the brand suffix to a page title (for pages that want it). */
 export function withSiteName(title: string): string {
