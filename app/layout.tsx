@@ -10,9 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: HOME_TITLE,
-  },
+  title: HOME_TITLE,
   description: SITE_DESCRIPTION,
   keywords: [
     "B2B lead generation",
