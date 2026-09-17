@@ -28,7 +28,6 @@ export default async function PortfolioPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-                <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 B2B Prospect Research{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
                   Case Studies
