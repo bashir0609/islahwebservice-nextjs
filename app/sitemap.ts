@@ -36,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     staticEntry("/contact-enrichment", "weekly", 0.8),
     staticEntry("/blog", "weekly", 0.8),
     staticEntry("/about", "monthly", 0.8),
+    { url: `${siteUrl}/authors/bashir-ahmed`, changeFrequency: "monthly", priority: 0.6 },
     staticEntry("/free-consultation", "weekly", 0.6),
     staticEntry("/contact", "monthly", 0.7),
     staticEntry("/privacy-policy", "monthly", 0.3),

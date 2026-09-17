@@ -2,14 +2,20 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Islah Web Service";
 export const SITE_URL = "https://www.islahwebservice.com";
+
+export function absoluteUrl(path: string): string {
+  return new URL(path, `${SITE_URL}/`).href;
+}
 export const SITE_DESCRIPTION =
   "B2B lead generation through custom prospect-list research built around your ICP and requirements. Islah Web Service researches target companies, identifies requested decision-makers, verifies the records, and delivers ICP-matched prospect lists in a CRM-ready format.";
 export const HOME_TITLE = "B2B Lead Generation & Prospect List Research | Islah Web Service";
 
-/** Append the brand suffix to a page title. */
+/** Append the brand suffix to a page title (for pages that want it). */
 export function withSiteName(title: string): string {
   return `${title} | ${SITE_NAME}`;
 }
+
+export const NO_BRAND_SUFFIX = "__NO_BRAND_SUFFIX__";
 
 interface PageMetadataArgs {
   /** Page name without the brand suffix (it is added automatically). */
@@ -19,6 +25,7 @@ interface PageMetadataArgs {
   path: string;
   /** Optional OG/Twitter image path. */
   image?: string;
+  imageAlt?: string;
   /** Set to "article" for blog posts and case studies. */
   ogType?: "website" | "article";
   /** Article-specific fields for structured social previews. */
@@ -42,10 +49,18 @@ export function pageMetadata({
   description,
   path,
   image,
+  imageAlt = title,
   ogType = "website",
   article,
-}: PageMetadataArgs): Metadata {
-  const fullTitle = withSiteName(title);
+  includeBrandSuffix = false,
+}: PageMetadataArgs & { includeBrandSuffix?: boolean }): Metadata {
+  const fullTitle = includeBrandSuffix ? withSiteName(title) : title;
+  const imageUrl = absoluteUrl(image || "/og-image.png");
+  const socialImage = {
+    url: imageUrl,
+    alt: imageAlt,
+    ...(imageUrl === absoluteUrl("/og-image.png") ? { width: 1200, height: 630 } : {}),
+  };
 
   return {
     title: { absolute: fullTitle },
@@ -56,7 +71,7 @@ export function pageMetadata({
       title: fullTitle,
       description,
       url: path,
-      ...(image ? { images: [{ url: image }] } : {}),
+      images: [socialImage],
       ...(article?.publishedTime ? { publishedTime: article.publishedTime } : {}),
       ...(article?.modifiedTime ? { modifiedTime: article.modifiedTime } : {}),
       ...(article?.authors ? { authors: article.authors } : {}),
@@ -64,7 +79,8 @@ export function pageMetadata({
     twitter: {
       title: fullTitle,
       description,
-      ...(image ? { images: [image] } : {}),
+      card: "summary_large_image",
+      images: [{ url: imageUrl, alt: imageAlt }],
     },
   };
 }

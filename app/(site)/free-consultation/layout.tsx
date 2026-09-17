@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Free B2B Lead Generation Consultation",
+  title: "Free B2B Prospect Research Consultation",
   description:
-    "Book a free B2B prospect research consultation. Discuss your targeting criteria, get a clear project scope and sample data, and a transparent plan — no obligation.",
+    "Book a free consultation to discuss your targeting criteria, research scope, and sample data, with a clear plan for preparing your next prospect database.",
   path: "/free-consultation",
 });
 

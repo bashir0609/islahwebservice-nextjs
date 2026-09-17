@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Get in touch with Islah Web Service to scope a B2B prospect research project—company research, decision-maker discovery, contact enrichment, and verified CRM-ready data delivery.",
+    "Contact Islah Web Service to discuss your company criteria, requested contact roles, and delivery format for a custom prospect research project.",
   path: "/contact",
 });
 

@@ -103,6 +103,9 @@ export default function AboutPage() {
               <p className="text-lg text-slate-400 mb-8 leading-relaxed">
                 Our responsibility is the research and data stage of outbound sales. We do not run campaigns, book meetings, or manage outreach. Your team controls the messaging, execution, and sales conversations that follow.
               </p>
+              <p className="text-lg text-slate-300 mb-8">
+                Meet our founder, <Link href="/authors/bashir-ahmed" className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300">Bashir Ahmed</Link>, and read his research guides.
+              </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild>
                   <Link href="/contact">Discuss Your Research Needs</Link>
@@ -335,4 +338,4 @@ export default function AboutPage() {
       </section>
     </main>
   );
-}
+}

@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "B2B Prospect Research Services",
   description:
-    "B2B prospect research built around your criteria: company research, decision-maker discovery, contact enrichment, and verification delivered as CRM-ready prospect data.",
+    "Get B2B lead generation through custom human research against your ICP, with target companies, requested decision-makers, and CRM-ready contact data.",
   path: "/b2b-prospect-research",
 });
 

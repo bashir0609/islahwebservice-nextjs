@@ -1,23 +1,14 @@
-"use client";
 
-import { useEffect, useState } from "react";
 import { Share2, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type BlogShareProps = {
   title: string;
+  absoluteUrl: string;
 };
 
-export default function BlogShare({ title }: BlogShareProps) {
-  // Read the URL only after mount to avoid a server/client hydration mismatch
-  // (window is undefined during SSR).
-  const [url, setUrl] = useState("");
-
-  useEffect(() => {
-    setUrl(window.location.href);
-  }, []);
-
-  const encodedUrl = encodeURIComponent(url);
+export default function BlogShare({ title, absoluteUrl }: BlogShareProps) {
+  const encodedUrl = encodeURIComponent(absoluteUrl);
   const encodedTitle = encodeURIComponent(title);
 
   return (

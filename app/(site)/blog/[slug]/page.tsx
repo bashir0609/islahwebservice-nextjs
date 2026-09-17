@@ -3,12 +3,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getBlogPostBySlug } from "@/lib/actions/blog";
-import { pageMetadata } from "@/lib/seo";
+import { absoluteUrl, pageMetadata } from "@/lib/seo";
+import { BLOG_SEO } from "@/lib/blog-seo";
+import { BLOG_AUTHOR } from "@/lib/author";
+import { AuthorByline } from "@/components/site/author-byline";
 import { formatDate } from "@/lib/utils";
 import BlogShare from "@/components/blog-share";
 import { RelatedServices } from "@/components/site/related-services";
@@ -24,9 +27,11 @@ export async function generateMetadata({
   const post = await getBlogPostBySlug(slug);
   if (!post) return {};
 
+  const seo = BLOG_SEO[post.slug];
+
   return pageMetadata({
-    title: post.title,
-    description: post.excerpt || undefined,
+    title: seo?.title || post.title,
+    description: seo?.description || post.excerpt || undefined,
     path: `/blog/${post.slug}`,
     image: post.coverImage || undefined,
     ogType: "article",
@@ -37,7 +42,7 @@ export async function generateMetadata({
       modifiedTime: post.updatedAt
         ? new Date(post.updatedAt).toISOString()
         : undefined,
-      authors: post.author ? [post.author] : undefined,
+      authors: [BLOG_AUTHOR.url],
     },
   });
 }
@@ -66,9 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             "@type": "Article",
             headline: post.title,
             description: post.excerpt || undefined,
-            image: post.coverImage
-              ? [post.coverImage]
-              : ["https://www.islahwebservice.com/og-image.png"],
+            image: [absoluteUrl(post.coverImage || "/og-image.png")],
             datePublished: post.createdAt
               ? new Date(post.createdAt).toISOString()
               : undefined,
@@ -77,7 +80,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               : undefined,
             author: {
               "@type": "Person",
-              name: post.author || "Islah Web Service",
+              name: BLOG_AUTHOR.name,
+              url: BLOG_AUTHOR.url,
+              jobTitle: BLOG_AUTHOR.jobTitle,
             },
             publisher: {
               "@type": "Organization",
@@ -177,12 +182,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <Clock className="h-4 w-4" />
                   {readTime} min read
                 </span>
-                {post.author && (
-                  <span className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    By {post.author}
-                  </span>
-                )}
+                <AuthorByline />
               </div>
             </SectionReveal>
           </div>
@@ -230,7 +230,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           <SectionReveal delay={0.4} className="mt-8">
             <div className="flex justify-center">
-              <BlogShare title={post.title} />
+              <BlogShare title={post.title} absoluteUrl={absoluteUrl(`/blog/${post.slug}`)} />
             </div>
           </SectionReveal>
         </div>

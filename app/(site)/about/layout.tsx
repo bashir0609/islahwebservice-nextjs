@@ -1,10 +1,11 @@
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, withSiteName } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "Learn about Islah Web Service's B2B prospect research and data services—company research, decision-maker discovery, contact enrichment, and verification since 2016.",
+    "Meet Islah Web Service, a research partner since 2016, and learn how our team turns client criteria into company research and CRM-ready contact records.",
   path: "/about",
+  includeBrandSuffix: true,
 });
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {

@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Real Estate Lead Generation Services",
+  title: "Real Estate Prospect Research Services",
   description:
-    "Real estate lead generation built on property and company research: research property owners, investors, and property-management companies by location, ownership, portfolio size, and asset type, with verified decision-maker contacts.",
+    "Research property owners and operators by location, asset type, and portfolio criteria, with relevant contacts and structured data prepared for your CRM.",
   path: "/industries/real-estate",
 });
 

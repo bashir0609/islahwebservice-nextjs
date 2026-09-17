@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "B2B Research & Data Capabilities",
   description:
-    "Explore Islah Web Service's B2B research and data capabilities: prospect research, decision-maker discovery, contact enrichment, email verification, and CRM-ready data delivery for B2B sales teams.",
+    "Compare custom prospect research and existing database enrichment to choose the right service for finding new contacts or completing your CRM records.",
   path: "/services",
 });
 

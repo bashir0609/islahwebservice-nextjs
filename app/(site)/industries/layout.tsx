@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "B2B Lead Generation by Industry",
+  title: "B2B Prospect Research by Industry",
   description:
-    "Industry-specific B2B lead generation research for SaaS, MSPs, recruitment firms, professional services, and real estate. Criteria-matched company research, decision-maker discovery, and verified CRM-ready prospect data.",
+    "Explore custom prospect research for SaaS, MSPs, recruitment, professional services, and real estate, built around industry-specific targeting criteria.",
   path: "/industries",
 });
 

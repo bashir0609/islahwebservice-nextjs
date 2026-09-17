@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Request a Free Prospect Research Sample",
   description:
-    "Request a free B2B prospect research sample. Share your targeting criteria and receive a sample of criteria-matched companies, decision-makers, and verified contact data — no obligation.",
+    "Request a free research sample based on your targeting criteria to review the company fields, contact roles, and data format before scoping a project.",
   path: "/request-sample",
 });
 

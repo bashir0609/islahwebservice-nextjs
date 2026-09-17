@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "SaaS Lead Generation Services",
+  title: "SaaS Prospect Research Services",
   description:
-    "Build targeted SaaS prospect lists with company research, decision-maker discovery, contact enrichment, and verified CRM-ready data. SaaS lead generation services for sales teams.",
+    "Build a SaaS prospect database through custom company research against your ICP, with relevant roles, verified contact details, and CRM-ready records.",
   path: "/industries/saas",
 });
 

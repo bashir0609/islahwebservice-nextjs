@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Recruitment Lead Generation Services",
+  title: "Recruitment Prospect Research Services",
   description:
-    "Recruitment lead generation services built around hiring signals. Research companies matching agreed hiring and growth criteria, with verified talent-leader contacts for recruitment firms.",
+    "Research employers against your recruitment criteria, using hiring activity and company signals to identify relevant talent contacts for CRM-ready lists.",
   path: "/industries/recruitment",
 });
 

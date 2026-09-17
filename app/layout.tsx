@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import CookieConsent from "@/components/site/cookie-consent";
-import { HOME_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, HOME_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: HOME_TITLE,
-    template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/og-image.png",
+        url: absoluteUrl("/og-image.png"),
         width: 1200,
         height: 630,
         alt: SITE_NAME,
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: HOME_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.png"],
+    images: [absoluteUrl("/og-image.png")],
   },
   icons: {
     icon: "/favicon.png",
@@ -73,11 +72,11 @@ const organizationJsonLd = {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/og-image.png`,
+        url: absoluteUrl("/og-image.png"),
         width: 1200,
         height: 630,
       },
-      image: `${SITE_URL}/og-image.png`,
+      image: absoluteUrl("/og-image.png"),
       email: "mailto:hello@islahwebservice.com",
       telephone: "+1-442-222-8258",
       foundingDate: "2016",
@@ -107,7 +106,12 @@ const organizationJsonLd = {
         "https://www.linkedin.com/in/bashir0609",
         "https://github.com/bashir0609",
         "https://www.upwork.com/freelancers/bashirahmed",
+        // TODO(human): Confirm whether the existing video remains a featured asset; retained alongside the channel for the requested eight-link identity set.
         "https://youtu.be/sCuJWWqi7S8",
+        "https://www.facebook.com/islahwebservice",
+        "https://www.behance.net/islahwebservice",
+        "https://www.youtube.com/channel/UCdvKnvwQFVu2V0Ce8xzmTBQ",
+        "https://www.glassdoor.com/Reviews/Islah-Web-Service-Reviews-E10540972.htm",
       ],
       // Service hierarchy reflects the new architecture: one core service
       // (B2B Prospect Research) plus its distinct existing-database enrichment

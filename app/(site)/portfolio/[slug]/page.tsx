@@ -13,7 +13,8 @@ import {
   getPortfolioItemBySlug,
   listPortfolioItems,
 } from "@/lib/actions/portfolio";
-import { pageMetadata } from "@/lib/seo";
+import { absoluteUrl, pageMetadata } from "@/lib/seo";
+import { PORTFOLIO_SEO } from "@/lib/portfolio-seo";
 import { getPortfolioGuides } from "@/lib/related-content";
 import { formatDate } from "@/lib/utils";
 
@@ -50,11 +51,14 @@ export async function generateMetadata({
   const item = await resolveItem(slug);
   if (!item) return {};
 
+  const seo = PORTFOLIO_SEO[item.slug];
+
   return pageMetadata({
-    title: item.title,
-    description: item.description || undefined,
+    title: seo?.title || item.title,
+    description: seo?.description || item.description || undefined,
     path: `/portfolio/${item.slug}`,
     image: item.image || undefined,
+    imageAlt: `${item.title} — case study illustration`,
     ogType: "article",
     article: {
       publishedTime: item.createdAt
@@ -95,7 +99,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
     results = [];
   }
 
-  const canonicalUrl = `https://www.islahwebservice.com/portfolio/${item.slug}`;
+  const canonicalUrl = absoluteUrl(`/portfolio/${item.slug}`);
 
   return (
     <main className="flex flex-col">
@@ -105,12 +109,12 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Article",
+            // Retain Google's supported Article type alongside the requested case-study label.
+            // TODO(human): Confirm CaseStudy vocabulary support; schema.org/CaseStudy returned 404 during this audit.
+            "@type": ["CaseStudy", "Article"],
             headline: item.title,
             description: item.description || undefined,
-            image: item.image
-              ? [item.image]
-              : ["https://www.islahwebservice.com/og-image.png"],
+            image: [absoluteUrl(item.image || "/og-image.png")],
             datePublished: item.createdAt
               ? new Date(item.createdAt).toISOString()
               : undefined,
@@ -319,7 +323,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           </Card>
 
           <div className="mt-8 flex justify-center">
-            <BlogShare title={item.title} />
+            <BlogShare title={item.title} absoluteUrl={canonicalUrl} />
           </div>
         </div>
       </section>

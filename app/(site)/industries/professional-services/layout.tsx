@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Lead Generation for Professional Services",
+  title: "Professional Services Prospect Research",
   description:
-    "Lead generation research for professional services firms: consultancies, agencies, accounting firms, and advisory firms. Criteria-matched company research with verified decision-maker contacts.",
+    "Get custom prospect research for consultancies and professional services firms, with companies and contacts matched to your criteria and prepared for CRM.",
   path: "/industries/professional-services",
 });
 

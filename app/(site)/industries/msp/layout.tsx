@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "MSP Lead Generation Services",
+  title: "MSP Prospect Research Services",
   description:
-    "MSP lead generation services built on targeted company research. Research businesses matching your geography, size, industry, and IT-related criteria, with verified decision-maker contacts.",
+    "Find companies matching your MSP service area, size, and IT criteria through custom human research, with relevant contacts and CRM-ready prospect data.",
   path: "/industries/msp",
 });
 
