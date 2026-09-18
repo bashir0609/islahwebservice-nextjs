@@ -1,27 +1,21 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import CookieConsent from "@/components/site/cookie-consent";
-import { absoluteUrl, HOME_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, HOME_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, TITLE_TEMPLATE } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+export const viewport: Viewport = {
+  themeColor: "#020617",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: HOME_TITLE,
+  title: { default: HOME_TITLE, template: TITLE_TEMPLATE },
   description: SITE_DESCRIPTION,
-  keywords: [
-    "B2B lead generation",
-    "B2B prospect research",
-    "prospect data services",
-    "decision-maker research",
-    "contact enrichment",
-    "email verification",
-    "ICP-matched prospect lists",
-    "company research service",
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -44,10 +38,14 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [absoluteUrl("/og-image.png")],
   },
+  manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon-150x150.png",
-    apple: "/favicon-150x150.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/favicon.png", sizes: "300x300", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
 };
 
@@ -70,9 +68,9 @@ const organizationJsonLd = {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/og-image.png"),
-        width: 1200,
-        height: 630,
+        url: absoluteUrl("/Islah-logo.png"),
+        width: 512,
+        height: 512,
       },
       image: absoluteUrl("/og-image.png"),
       email: "mailto:hello@islahwebservice.com",
@@ -101,14 +99,12 @@ const organizationJsonLd = {
         availableLanguage: ["English"],
       },
       sameAs: [
-        "https://www.linkedin.com/in/bashir0609",
+        "https://www.linkedin.com/company/islahwebservicebd",
         "https://github.com/bashir0609",
         "https://www.upwork.com/freelancers/bashirahmed",
-        // TODO(human): Confirm whether the existing video remains a featured asset; retained alongside the channel for the requested eight-link identity set.
-        "https://youtu.be/sCuJWWqi7S8",
+        "https://www.youtube.com/channel/UCdvKnvwQFVu2V0Ce8xzmTBQ",
         "https://www.facebook.com/islahwebservice",
         "https://www.behance.net/islahwebservice",
-        "https://www.youtube.com/channel/UCdvKnvwQFVu2V0Ce8xzmTBQ",
         "https://www.glassdoor.com/Reviews/Islah-Web-Service-Reviews-E10540972.htm",
       ],
       // Service hierarchy reflects the new architecture: one core service

@@ -1,7 +1,7 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Recruitment Prospect Research Services",
+  title: "Recruitment Prospect Lists & Research",
   description:
     "Research employers against your recruitment criteria, using hiring activity and company signals to identify relevant talent contacts for CRM-ready lists.",
   path: "/industries/recruitment",

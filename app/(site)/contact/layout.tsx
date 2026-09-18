@@ -1,7 +1,7 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Contact Us",
+  title: "Contact Us — Start Your Research Project",
   description:
     "Contact Islah Web Service to discuss your company criteria, requested contact roles, and delivery format for a custom prospect research project.",
   path: "/contact",

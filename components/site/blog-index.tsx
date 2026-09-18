@@ -7,7 +7,18 @@ import { User, Calendar, Search } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/motion/animated-section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
-import type { BlogPost } from "@/lib/db/schema";
+
+export interface BlogPostSummary {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  coverImage?: string | null;
+  author?: string | null;
+  createdAt?: string | Date | null;
+  tags?: unknown;
+  readTime?: number | null;
+}
 
 function parseTags(tags: unknown): string[] {
   try {
@@ -20,7 +31,7 @@ function parseTags(tags: unknown): string[] {
   }
 }
 
-export default function BlogIndex({ posts }: { posts: BlogPost[] }) {
+export default function BlogIndex({ posts }: { posts: BlogPostSummary[] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("All");
 

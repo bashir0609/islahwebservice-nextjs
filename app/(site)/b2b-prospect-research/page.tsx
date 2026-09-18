@@ -111,7 +111,7 @@ export default function B2BProspectResearchPage() {
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <Search className="h-4 w-4" />
                 B2B Prospect Research
               </div>
@@ -418,7 +418,7 @@ export default function B2BProspectResearchPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <SectionReveal>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-                Already Have a List?
+                Already Have a List?{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
                   We Enrich and Clean Existing Databases
                 </span>

@@ -118,7 +118,7 @@ export default function MspIndustryPage() {
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <ShieldCheck className="h-4 w-4" />
                 For Managed Service Providers
               </div>
@@ -126,9 +126,9 @@ export default function MspIndustryPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                MSP Lead Generation Services{' '}
+                MSP Prospect Lists{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400">
-                  Built on Targeted Company Research
+                  & Lead Research
                 </span>
               </h1>
             </SectionReveal>

@@ -118,7 +118,7 @@ export default function ProfessionalServicesIndustryPage() {
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400">
                 <Briefcase className="h-4 w-4" />
                 For Professional Services
               </div>
@@ -126,9 +126,9 @@ export default function ProfessionalServicesIndustryPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Lead Generation{' '}
+                Professional Services{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
-                  for Professional Services Firms
+                  Prospect Lists
                 </span>
               </h1>
             </SectionReveal>

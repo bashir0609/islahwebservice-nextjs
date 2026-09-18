@@ -20,7 +20,7 @@ export default async function PortfolioPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <MapPin className="h-4 w-4" />
                 Verified B2B Prospect Research
               </div>

@@ -78,6 +78,7 @@ export default function SiteFooter() {
               <li><Link href="/contact-enrichment" className="transition-colors hover:text-cyan-400">Existing Database Enrichment</Link></li>
               <li><Link href="/industries" className="transition-colors hover:text-cyan-400">Industries We Research</Link></li>
               <li><Link href="/request-sample" className="transition-colors hover:text-cyan-400">Request a Free Sample</Link></li>
+              <li><Link href="/services" className="transition-colors hover:text-cyan-400">All Research Capabilities</Link></li>
             </ul>
           </div>
 
@@ -107,6 +108,16 @@ export default function SiteFooter() {
               <li><Link href="/contact" className="transition-colors hover:text-cyan-400">Contact</Link></li>
               <li><Link href="/free-consultation" className="transition-colors hover:text-cyan-400">Free Consultation</Link></li>
               <li><Link href="/request-sample" className="transition-colors hover:text-cyan-400">Request a Free Sample</Link></li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/islahwebservicebd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-cyan-400"
+                >
+                  LinkedIn Company Page
+                </a>
+              </li>
             </ul>
           </div>
 

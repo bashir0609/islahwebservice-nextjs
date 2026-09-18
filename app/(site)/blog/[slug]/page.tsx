@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, ChevronRight } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,7 @@ import { AuthorByline } from "@/components/site/author-byline";
 import { formatDate } from "@/lib/utils";
 import BlogShare from "@/components/blog-share";
 import { RelatedServices } from "@/components/site/related-services";
+import TableOfContents from "@/components/site/table-of-contents";
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -33,7 +34,7 @@ export async function generateMetadata({
     title: seo?.title || post.title,
     description: seo?.description || post.excerpt || undefined,
     path: `/blog/${post.slug}`,
-    image: post.coverImage || undefined,
+    image: `/blog/${post.slug}/opengraph-image`,
     ogType: "article",
     article: {
       publishedTime: post.createdAt
@@ -173,11 +174,39 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </h1>
             </SectionReveal>
             <SectionReveal immediate delay={0.5}>
+              <nav aria-label="Breadcrumb" className="mb-6">
+                <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-slate-500" vocab="https://schema.org/" typeof="BreadcrumbList">
+                  <li property="itemListElement" typeof="ListItem">
+                    <Link property="item" typeof="WebPage" href="/" className="hover:text-cyan-400 transition-colors">
+                      <span property="name">Home</span>
+                    </Link>
+                    <meta property="position" content="1" />
+                    <ChevronRight className="h-3 w-3" aria-hidden="true" />
+                  </li>
+                  <li property="itemListElement" typeof="ListItem">
+                    <Link property="item" typeof="WebPage" href="/blog" className="hover:text-cyan-400 transition-colors">
+                      <span property="name">Blog</span>
+                    </Link>
+                    <meta property="position" content="2" />
+                    <ChevronRight className="h-3 w-3" aria-hidden="true" />
+                  </li>
+                  <li property="itemListElement" typeof="ListItem" aria-current="page">
+                    <span property="name" className="text-slate-400">{post.title}</span>
+                    <meta property="position" content="3" />
+                  </li>
+                </ol>
+              </nav>
               <div className="flex flex-wrap items-center justify-center gap-6 text-slate-400 mb-8">
                 <span className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
-                  {date}
+                  <time dateTime={post.createdAt ? new Date(post.createdAt).toISOString() : ""}>{date}</time>
                 </span>
+                {post.updatedAt && post.updatedAt !== post.createdAt && (
+                  <span className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    <time dateTime={new Date(post.updatedAt).toISOString()}>Updated {formatDate(new Date(post.updatedAt))}</time>
+                  </span>
+                )}
                 <span className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
                   {readTime} min read
@@ -191,27 +220,36 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Blog Content */}
       <section className="py-16 sm:py-24 bg-slate-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionReveal className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-a:text-cyan-400 prose-strong:text-white prose-blockquote:border-cyan-500/40 prose-blockquote:text-slate-300 prose-code:text-cyan-300">
-            <ReactMarkdown
-              components={{
-                a: ({ href, children }) => {
-                  const isExternal =
-                    typeof href === "string" && /^https?:\/\//.test(href);
-                  return isExternal ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer">
-                      {children}
-                    </a>
-                  ) : (
-                    <a href={href}>{children}</a>
-                  );
-                },
-              }}
-            >
-              {post.content}
-            </ReactMarkdown>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex lg:flex-row gap-12">
+            <div className="flex-1 min-w-0 lg:max-w-3xl">
+              <SectionReveal className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-a:text-cyan-400 prose-strong:text-white prose-blockquote:border-cyan-500/40 prose-blockquote:text-slate-300 prose-code:text-cyan-300">
+                <ReactMarkdown
+                  components={{
+                    a: ({ href, children }) => {
+                      const isExternal =
+                        typeof href === "string" && /^https?:\/\//.test(href);
+                      return isExternal ? (
+                        <a href={href} target="_blank" rel="noopener noreferrer">
+                          {children}
+                        </a>
+                      ) : (
+                        <a href={href}>{children}</a>
+                      );
+                    },
+                  }}
+                >
+                  {post.content}
+                </ReactMarkdown>
+              </SectionReveal>
+            </div>
+            <div className="hidden lg:block lg:w-64">
+              <TableOfContents content={post.content} />
+            </div>
+          </div>
+          <SectionReveal delay={0.3} className="mt-12 lg:hidden">
+            <TableOfContents content={post.content} />
           </SectionReveal>
-
           <SectionReveal delay={0.3} className="mt-12">
             <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
               <CardContent className="p-8 text-center">

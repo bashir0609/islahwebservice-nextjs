@@ -108,7 +108,7 @@ export default function ContactEnrichmentPage() {
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-400">
                 <Layers className="h-4 w-4" />
                 For Clients Who Already Have a List
               </div>

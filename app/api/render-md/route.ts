@@ -4,6 +4,8 @@ import path from "path";
 import { db } from "@/lib/db";
 import { blogPosts, portfolioItems } from "@/lib/db/schema";
 import { eq, desc } from "drizzle-orm";
+import { htmlToMarkdown, htmlMetadata } from "@/lib/markdown-html";
+import { SITE_URL } from "@/lib/seo";
 
 /**
  * Markdown content negotiation.
@@ -18,9 +20,7 @@ import { eq, desc } from "drizzle-orm";
  *   GET /b2b-prospect-research?format=md
  */
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -45,92 +45,6 @@ const STATIC_PATHS = new Set([
   "/privacy-policy",
   "/terms",
 ]);
-
-function escapeMd(text: string): string {
-  return text
-    .replace(/&/g, "&")
-    .replace(/</g, "<")
-    .replace(/>/g, ">")
-    .replace(/"/g, '"')
-    .replace(/'/g, "'");
-}
-
-/**
- * Minimal, dependency-free HTML → markdown converter.
- * Used only as fallback for static pages without markdown source files.
- * Targets the main content area; strips chrome.
- */
-function htmlToMarkdown(html: string): string {
-  // Extract the <main> content if present, else use body.
-  const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-  let content = mainMatch?.[1] ?? bodyMatch?.[1] ?? html;
-
-  let md = content
-    // Remove scripts, styles, noscript, svg, nav, footer, header
-    .replace(/<script[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[\s\S]*?<\/style>/gi, "")
-    .replace(/<noscript[\s\S]*?<\/noscript>/gi, "")
-    .replace(/<svg[\s\S]*?<\/svg>/gi, "")
-    .replace(/<nav[\s\S]*?<\/nav>/gi, "")
-    .replace(/<footer[\s\S]*?<\/footer>/gi, "")
-    .replace(/<header[\s\S]*?<\/header>/gi, "")
-    // Remove JSON-LD script blocks
-    .replace(/<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi, "")
-    // Headings - ensure proper spacing
-    .replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, (_, t) => `\n# ${t.trim()}\n`)
-    .replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, (_, t) => `\n## ${t.trim()}\n`)
-    .replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, (_, t) => `\n### ${t.trim()}\n`)
-    .replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, (_, t) => `\n#### ${t.trim()}\n`)
-    .replace(/<h5[^>]*>([\s\S]*?)<\/h5>/gi, (_, t) => `\n##### ${t.trim()}\n`)
-    // Links (before list items so link text is preserved)
-    .replace(/<a[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, (m, href, text) => {
-      const cleanText = text.replace(/<[^>]+>/g, "").trim();
-      if (!cleanText || !href || href.startsWith("#") || href.startsWith("javascript:")) return cleanText;
-      return `[${cleanText}](${href})`;
-    })
-    // List items
-    .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_, t) => {
-      const clean = t.replace(/<[^>]+>/g, "").trim();
-      return clean ? `- ${clean}\n` : "";
-    })
-    .replace(/<ul[^>]*>/gi, "\n").replace(/<\/ul>/gi, "\n")
-    .replace(/<ol[^>]*>/gi, "\n").replace(/<\/ol>/gi, "\n")
-    // Paragraphs and breaks
-    .replace(/<br\s*\/?>/gi, "\n")
-    .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, t) => {
-      const clean = t.replace(/<[^>]+>/g, "").trim();
-      return clean ? `\n${clean}\n` : "";
-    })
-    // Blockquotes
-    .replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, (_, t) => {
-      const clean = t.replace(/<[^>]+>/g, "").trim();
-      return clean ? `\n> ${clean.split("\n").join("\n> ")}\n` : "";
-    })
-    // Strong / em
-    .replace(/<strong[^>]*>([\s\S]*?)<\/strong>/gi, (_, t) => `**${t.trim()}**`)
-    .replace(/<b[^>]*>([\s\S]*?)<\/b>/gi, (_, t) => `**${t.trim()}**`)
-    .replace(/<em[^>]*>([\s\S]*?)<\/em>/gi, (_, t) => `*${t.trim()}*`)
-    .replace(/<i[^>]*>([\s\S]*?)<\/i>/gi, (_, t) => `*${t.trim()}*`)
-    // Remaining tags
-    .replace(/<[^>]+>/g, "")
-    // Decode entities
-    .replace(/&nbsp;/g, " ")
-    .replace(/&mdash;/g, "—")
-    .replace(/&ndash;/g, "–")
-    .replace(/&hellip;/g, "…")
-    .replace(/&copy;/g, "©")
-    .replace(/&reg;/g, "®")
-    .replace(/&trade;/g, "™")
-    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code, 10)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
-    // Clean up whitespace - ensure blank lines between block elements
-    .replace(/\n{3,}/g, "\n\n")
-    .replace(/[ \t]+\n/g, "\n")
-    .trim();
-
-  return escapeMd(md);
-}
 
 /**
  * Read and parse a markdown file with frontmatter.
@@ -277,14 +191,57 @@ results: ${results}
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const rawPath = searchParams.get("path") || "/";
+  const rawPath = searchParams.get("path") || request.headers.get("x-markdown-path") || "/";
   const pathname = rawPath.split("?")[0].split("#")[0] || "/";
 
   let markdown: string | null = null;
   let notFound = false;
 
+  // 0. Check for blog pagination: /blog/page/[num] - must come before generic /blog/ check
+  if (/^\/blog\/page\/\d+$/.test(pathname)) {
+    // Fall back to HTML-to-markdown conversion
+    try {
+      const pageUrl = new URL(pathname, request.url);
+      const res = await fetch(pageUrl, {
+        headers: {
+          "User-Agent": "IslahWebService-Markdown-Bot/1.0",
+          Accept: "text/html",
+        },
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        return NextResponse.json(
+          { error: "fetch_failed", message: `Upstream returned ${res.status}` },
+          { status: 502, headers: { "Content-Type": "application/json" } }
+        );
+      }
+
+      const html = await res.text();
+      const convertedMd = htmlToMarkdown(html);
+
+      // Prepend a YAML front-matter style title block for agents.
+      const { title, description } = htmlMetadata(html);
+
+      const frontMatter = `---
+title: ${title}
+description: ${description}
+url: https://www.islahwebservice.com${pathname}
+---
+
+`;
+
+      markdown = frontMatter + convertedMd;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      return NextResponse.json(
+        { error: "render_failed", message },
+        { status: 500, headers: { "Content-Type": "application/json" } }
+      );
+    }
+  }
   // 1. Check for blog post: /blog/[slug]
-  if (pathname.startsWith("/blog/") && pathname !== "/blog") {
+  else if (pathname.startsWith("/blog/") && pathname !== "/blog") {
     const slug = pathname.slice("/blog/".length);
     if (slug && !slug.includes("/")) {
       markdown = await getBlogPostMarkdown(slug);
@@ -307,10 +264,13 @@ export async function GET(request: NextRequest) {
   else if (STATIC_PATHS.has(pathname)) {
     // Fall back to HTML-to-markdown conversion
     try {
-      const pageUrl = `${SITE_URL}${pathname}`;
+      const pageUrl = new URL(pathname, request.url);
       const res = await fetch(pageUrl, {
-        headers: { "User-Agent": "IslahWebService-Markdown-Bot/1.0" },
-        next: { revalidate: 3600 },
+        headers: {
+          "User-Agent": "IslahWebService-Markdown-Bot/1.0",
+          Accept: "text/html",
+        },
+        cache: "no-store",
       });
 
       if (!res.ok) {
@@ -324,10 +284,7 @@ export async function GET(request: NextRequest) {
       const convertedMd = htmlToMarkdown(html);
 
       // Prepend a YAML front-matter style title block for agents.
-      const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
-      const title = titleMatch?.[1]?.trim() || pathname;
-      const descMatch = html.match(/<meta[^>]*name="description"[^>]*content="([^"]*)"[^>]*>/i);
-      const description = descMatch?.[1]?.trim() || "";
+      const { title, description } = htmlMetadata(html);
 
       const frontMatter = `---\ntitle: ${title}\ndescription: ${description}\nurl: https://www.islahwebservice.com${pathname}\n---\n\n`;
 

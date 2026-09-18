@@ -174,7 +174,7 @@ export default function RequestSamplePage() {
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-4xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <Sparkles className="h-4 w-4" />
                 Free · No obligation · Your criteria stay private
               </div>

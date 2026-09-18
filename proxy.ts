@@ -48,7 +48,10 @@ export async function proxy(request: NextRequest) {
     mdUrl.pathname = "/api/render-md";
     mdUrl.searchParams.set("path", pathname);
     mdUrl.searchParams.delete("format");
-    return NextResponse.rewrite(mdUrl);
+    // Preserve the negotiated path even when Next normalizes the rewritten URL.
+    const headers = new Headers(request.headers);
+    headers.set("x-markdown-path", pathname);
+    return NextResponse.rewrite(mdUrl, { request: { headers } });
   }
 
   // Direct 301 for retired legacy URLs (matcher-scoped, so only these run).

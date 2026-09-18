@@ -70,7 +70,7 @@ const columns = [
 
 export default function HeroVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden="true">
+    <div className="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden="true" data-md-exclude="true">
       {/* Glow behind the card */}
       <div className="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500/25 via-transparent to-teal-500/25 blur-3xl" />
 

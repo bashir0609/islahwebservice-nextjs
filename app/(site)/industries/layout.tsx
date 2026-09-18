@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
+  templateChildren: true,
   title: "B2B Prospect Research by Industry",
   description:
     "Explore custom prospect research for SaaS, MSPs, recruitment, professional services, and real estate, built around industry-specific targeting criteria.",

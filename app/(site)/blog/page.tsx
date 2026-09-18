@@ -1,16 +1,41 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Tag } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import BlogIndex from "@/components/site/blog-index";
 import { listBlogPosts } from "@/lib/actions/blog";
+import { absoluteUrl, pageMetadata } from "@/lib/seo";
 
-// Server component: fetches posts directly from the database so the index
-// ships with published articles in the HTML (no client-side fetch dependency).
-export const dynamic = "force-dynamic";
+const POSTS_PER_PAGE = 10;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({
+    title: "B2B Lead Generation & Prospecting Blog",
+    description:
+      "Read practical guides to company research, contact enrichment, email verification, and data quality for building and maintaining useful B2B prospect lists.",
+    path: "/blog",
+  });
+}
 
 export default async function BlogPage() {
   const allPosts = await listBlogPosts();
-  const posts = allPosts.filter((post) => post.published);
+  const publishedPosts = allPosts.filter((post) => post.published);
+
+  const totalPages = Math.ceil(publishedPosts.length / POSTS_PER_PAGE);
+  const posts = publishedPosts.slice(0, POSTS_PER_PAGE);
+
+  // Create lighter post objects without content for client serialization
+  const postSummaries = posts.map((post) => ({
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    excerpt: post.excerpt,
+    coverImage: post.coverImage,
+    author: post.author,
+    createdAt: post.createdAt,
+    tags: post.tags,
+    readTime: post.readTime,
+  }));
 
   return (
     <main className="flex flex-col">
@@ -24,7 +49,7 @@ export default async function BlogPage() {
         <div className="relative z-10 mx-auto flex min-h-[45vh] max-w-4xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-400">
                 <Tag className="h-4 w-4" />
                 The Islah Journal
               </div>
@@ -75,8 +100,27 @@ export default async function BlogPage() {
       <section className="py-16 sm:py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal delay={0.2} className="mb-12">
-            <BlogIndex posts={posts} />
+            <BlogIndex posts={postSummaries as any} />
           </SectionReveal>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <SectionReveal delay={0.3} className="mt-12">
+              <nav aria-label="Blog pagination" className="flex flex-wrap items-center justify-center gap-2">
+                <span className="px-4 py-2 text-slate-400">
+                  Page 1 of {totalPages}
+                </span>
+                {totalPages > 1 && (
+                  <Link
+                    href="/blog/page/2"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:border-cyan-500/40 hover:bg-cyan-500/10 hover:text-cyan-300 transition-all"
+                  >
+                    Next
+                  </Link>
+                )}
+              </nav>
+            </SectionReveal>
+          )}
         </div>
       </section>
     </main>

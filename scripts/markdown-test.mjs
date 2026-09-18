@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const ts = require('typescript');
+const compiled = ts.transpileModule(readFileSync('lib/markdown-html.ts','utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const exports = {};
+new Function('require','exports',compiled)(require,exports);
+const {htmlToMarkdown:md,htmlMetadata:meta} = exports;
+assert.equal(md('<main><div data-md-exclude="true"><div>fictional</div></div><p>Real content</p></main>'),'Real content');
+assert.equal(md('<main><h1>Specific.<span>Research</span></h1><p>One</p><p>Two</p></main>'),'# Specific. Research\n\nOne\n\nTwo');
+assert.equal(md('<main><p>&amp; &lt; &gt; &quot; &#39; &nbsp; · — –</p></main>'),'& < > " \' · — –');
+assert.equal(meta('<head><title>Research &amp; Data</title><meta name="description" content="A &amp; B"></head>').title,'Research & Data');
+assert.equal(md('<main><a href="/a">A</a><a href="/b">B</a></main>'),'[A](/a)\n\n[B](/b)');
+assert.equal(md('<main><div data-md-stat="true"><div>190+</div><div>Projects</div></div></main>'),'- 190+ Projects');
+assert.match(md('<main><table><tr><th>A</th><th>B</th></tr><tr><td>1</td><td>2</td></tr></table></main>'),/\| A \| B \|\n\| --- \| --- \|\n\| 1 \| 2 \|/);
+assert.equal(md('<main><nav>Navigation</nav><button>Click</button><div aria-hidden="true">Decoration</div><p>Kept</p><footer>Footer</footer></main>'),'Kept');
+console.log('PASS: 8 markdown serializer fixtures (exclusion, boundaries, entities, metadata, links, stats, tables, semantic UI)');

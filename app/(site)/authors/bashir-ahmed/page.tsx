@@ -5,8 +5,10 @@ import { listBlogPosts } from "@/lib/actions/blog";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
+const authorTitle = "Bashir Ahmed — Founder & Author";
+
 export const metadata: Metadata = pageMetadata({
-  title: "Bashir Ahmed — Founder",
+  title: authorTitle,
   description: "Meet Bashir Ahmed, founder of Islah Web Service, and read his guides to B2B prospect research, contact enrichment, email verification, and ICP definition.",
   path: BLOG_AUTHOR.path,
 });
@@ -35,7 +37,7 @@ export default async function AuthorPage() {
     <main className="bg-slate-950 text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
       <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{BLOG_AUTHOR.name}</h1>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{authorTitle}</h1>
         <p className="mt-4 text-xl text-slate-300">{BLOG_AUTHOR.jobTitle}, Islah Web Service</p>
         <p className="mt-4 text-slate-400">TODO(human): Add a verified professional credential for Bashir Ahmed.</p>
         <nav aria-label="Author profiles" className="mt-6 flex gap-6">

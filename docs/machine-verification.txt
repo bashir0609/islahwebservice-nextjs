@@ -1,0 +1,75 @@
+b. Markdown quality: route | longest line | adjacent links | )]( | ]( | entities
+/ | 327 | 0 | 0 | 13 | 0
+/industries | 329 | 0 | 0 | 8 | 0
+/industries/msp | 282 | 0 | 0 | 7 | 0
+/industries/saas | 247 | 0 | 0 | 7 | 0
+/industries/recruitment | 273 | 0 | 0 | 7 | 0
+/industries/professional-services | 287 | 0 | 0 | 7 | 0
+/industries/real-estate | 251 | 0 | 0 | 8 | 0
+/b2b-prospect-research | 369 | 0 | 0 | 8 | 0
+/portfolio | 693 | 0 | 0 | 0 | 0
+/request-sample | 178 | 0 | 0 | 2 | 0
+/services | 185 | 0 | 0 | 10 | 0
+/contact-enrichment | 276 | 0 | 0 | 3 | 0
+/blog | 221 | 0 | 1 | 42 | 0
+/about | 466 | 0 | 0 | 2 | 0
+/authors/bashir-ahmed | 186 | 0 | 1 | 20 | 0
+/free-consultation | 224 | 0 | 0 | 4 | 0
+/contact | 157 | 0 | 0 | 4 | 0
+/privacy-policy | 395 | 0 | 0 | 2 | 0
+/terms | 323 | 0 | 0 | 2 | 0
+/blog/how-to-research-recently-funded-companies | 418 | 0 | 0 | 2 | 0
+/blog/sales-prospecting-playbook | 358 | 0 | 0 | 7 | 0
+/blog/recruitment-lead-generation-guide | 398 | 0 | 0 | 3 | 0
+/blog/how-to-research-companies-by-technology-stack | 431 | 0 | 0 | 2 | 0
+/blog/cold-email-for-b2b-lead-generation | 394 | 0 | 0 | 5 | 0
+/blog/linkedin-outreach-for-b2b-sales | 335 | 0 | 0 | 7 | 0
+/blog/how-to-find-decision-makers-in-b2b-companies | 426 | 0 | 0 | 2 | 0
+/blog/b2b-lead-scoring-guide | 410 | 0 | 0 | 6 | 0
+/blog/saas-prospecting-guide | 332 | 0 | 0 | 4 | 0
+/blog/complete-guide-to-b2b-lead-generation | 403 | 0 | 0 | 7 | 0
+/blog/how-to-build-b2b-prospect-lists | 405 | 0 | 0 | 5 | 0
+/blog/contact-enrichment-guide | 382 | 0 | 0 | 4 | 0
+/blog/email-verification-guide | 382 | 0 | 0 | 8 | 0
+/blog/msp-lead-generation-guide | 367 | 0 | 0 | 5 | 0
+/blog/how-to-build-a-clean-b2b-lead-list-for-cold-email | 312 | 0 | 0 | 6 | 0
+/blog/what-is-b2b-data-enrichment-complete-guide-for-sales-teams | 821 | 0 | 0 | 6 | 0
+/blog/how-to-extract-verified-leads-from-google-maps-ethically | 678 | 0 | 0 | 5 | 0
+/blog/what-is-b2b-lead-generation-a-2026-guide-for-growth-teams | 418 | 0 | 0 | 7 | 0
+/portfolio/cloud-migration-tech-stack-research | 244 | 0 | 0 | 0 | 0
+/portfolio/saas-existing-database-enrichment | 209 | 0 | 0 | 0 | 0
+/portfolio/msp-prospect-database-us-it-provider | 249 | 0 | 0 | 0 | 0
+/portfolio/property-management-prospect-list | 270 | 0 | 0 | 0 | 0
+/portfolio/saas-lead-generation-uk-analytics-platform | 251 | 0 | 0 | 0 | 0
+/portfolio/healthcare-it-decision-maker-research | 232 | 0 | 0 | 0 | 0
+/portfolio/recruitment-decision-maker-list | 219 | 0 | 0 | 0 | 0
+/portfolio/professional-services-contact-enrichment | 311 | 0 | 0 | 0 | 0
+/portfolio/cold-email-ready-list-cybersecurity-msp | 220 | 0 | 0 | 0 | 0
+/portfolio/b2b-prospect-research-fintech-software | 251 | 0 | 0 | 0 | 0
+/portfolio/decision-maker-research-software-reseller | 248 | 0 | 0 | 0 | 0
+/portfolio/contact-enrichment-uk-consultancy | 199 | 0 | 0 | 0 | 0
+/portfolio/verified-contact-list-australian-saas | 240 | 0 | 0 | 0 | 0
+/portfolio/b2b-lead-generation-manufacturing-software | 296 | 0 | 0 | 0 | 0
+/portfolio/crm-ready-prospect-database-staffing | 208 | 0 | 0 | 0 | 0
+a. Demo name files: {"Sarah Chen":0,"Marcus Webb":0,"David Okafor":0,"Emily Turner":0,"Apex Manufacturing":0,"Harborview Properties":0,"Brightline SaaS":0,"Cascade Dental Group":0}
+Markdown coverage: 52/52; failures: []
+b. Static/dynamic totals: {"static":{"pages":19,"adjacent":0,"pattern":2,"links":156,"entities":0},"dynamic":{"pages":33,"adjacent":0,"pattern":0,"links":91,"entities":0}}
+c. Sitemap URLs=52; lastmod=0; distinct=[]; oldest=none; omitted by approved policy
+d. llms.txt bytes=11105; distinct URLs=52; Notes=true; detail annotations=true; previous URLs=17
+Added: /services, /authors/bashir-ahmed, /blog/how-to-research-recently-funded-companies, /blog/sales-prospecting-playbook, /blog/recruitment-lead-generation-guide, /blog/how-to-research-companies-by-technology-stack, /blog/cold-email-for-b2b-lead-generation, /blog/linkedin-outreach-for-b2b-sales, /blog/how-to-find-decision-makers-in-b2b-companies, /blog/b2b-lead-scoring-guide, /blog/saas-prospecting-guide, /blog/complete-guide-to-b2b-lead-generation, /blog/how-to-build-b2b-prospect-lists, /blog/contact-enrichment-guide, /blog/email-verification-guide, /blog/msp-lead-generation-guide, /blog/how-to-build-a-clean-b2b-lead-list-for-cold-email, /blog/what-is-b2b-data-enrichment-complete-guide-for-sales-teams, /blog/how-to-extract-verified-leads-from-google-maps-ethically, /blog/what-is-b2b-lead-generation-a-2026-guide-for-growth-teams, /portfolio/cloud-migration-tech-stack-research, /portfolio/saas-existing-database-enrichment, /portfolio/msp-prospect-database-us-it-provider, /portfolio/property-management-prospect-list, /portfolio/saas-lead-generation-uk-analytics-platform, /portfolio/healthcare-it-decision-maker-research, /portfolio/recruitment-decision-maker-list, /portfolio/professional-services-contact-enrichment, /portfolio/cold-email-ready-list-cybersecurity-msp, /portfolio/b2b-prospect-research-fintech-software, /portfolio/decision-maker-research-software-reseller, /portfolio/contact-enrichment-uk-consultancy, /portfolio/verified-contact-list-australian-saas, /portfolio/b2b-lead-generation-manufacturing-software, /portfolio/crm-ready-prospect-database-staffing
+llms-full status=200; bytes=259370
+e. services inbound anchors=54; BFS=52/52; depth distribution={"0":1,"1":17,"2":34}
+f. HTML valid=52/52; failures=[]; titles >60=0; descriptions 120–165=52/52
+Vary Accept failures: []
+g. 375px initial-load CLS=0; existing header source unchanged=true
+g. 375px main: {"text":"Explore all research capabilities","classesMatch":true,"styleMatch":true,"visible":true,"overflow":false,"cls":0,"shifts":[]}
+g. 375px footer: {"text":"All Research Capabilities","classesMatch":true,"styleMatch":true,"visible":true,"overflow":false,"cls":0,"shifts":[]}
+g. 1440px initial-load CLS=0; existing header source unchanged=true
+g. 1440px main: {"text":"Explore all research capabilities","classesMatch":true,"styleMatch":true,"visible":true,"overflow":false,"cls":0,"shifts":[]}
+g. 1440px footer: {"text":"All Research Capabilities","classesMatch":true,"styleMatch":true,"visible":true,"overflow":false,"cls":0,"shifts":[]}
+h. Heading junction differences:
+/ h2: Your Target Market Is Specific.Your Prospect List Should Match Your ICP. (11 vs 12)
+/b2b-prospect-research h2: Already Have a List?We Enrich and Clean Existing Databases (9 vs 10)
+/free-consultation h1: Free Prospect Research Consultationfor Your Target Market (7 vs 8)
+/contact h1: Start YourProspect ResearchProject (3 vs 5)
+Automated failures: []

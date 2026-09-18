@@ -1,7 +1,7 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Privacy Policy",
+  title: "Privacy Policy — Website & Form Data",
   description:
     "Read how Islah Web Service collects, uses, and protects personal information submitted through contact, sample request, and consultation website forms.",
   path: "/privacy-policy",

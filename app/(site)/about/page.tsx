@@ -43,7 +43,7 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center">
             <SectionReveal immediate delay={0.2} className="mb-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+              <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
                 <Building2 className="h-4 w-4" />
                 Since 2016 · B2B Prospect Research
               </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.05),transparent_60%)]" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionReveal className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">
+            <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">
               <Search className="h-3.5 w-3.5 text-cyan-400" />
               Broader Research History
             </div>
@@ -254,7 +254,7 @@ export default function AboutPage() {
               const Icon = stat.icon;
               return (
                 <StaggerItem key={index}>
-                  <div className="text-center">
+                  <div data-md-stat="true" className="text-center">
                     <div className="w-20 h-20 mx-auto mb-4 border border-white/10 bg-white/5 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                       <Icon className="h-10 w-10 text-cyan-400" />
                     </div>

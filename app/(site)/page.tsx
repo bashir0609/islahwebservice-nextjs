@@ -189,6 +189,7 @@ const proofPoints = [
     value: "100%",
     label: "Job Success Score",
     detail: "Current Upwork Job Success Score maintained over time.",
+    href: "https://www.upwork.com/freelancers/bashirahmed",
   },
   {
     icon: MapPin,
@@ -232,7 +233,7 @@ export default function HomePage() {
             {/* Copy */}
             <div className="text-center lg:text-left">
               <SectionReveal immediate delay={0.2} className="mb-5 sm:mb-6 flex justify-center lg:justify-start">
-                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
+                <div data-md-exclude="true" className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-cyan-400">
                   <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-cyan-500" />
@@ -301,8 +302,8 @@ export default function HomePage() {
           <SectionReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {proofPoints.map((point) => {
               const Icon = point.icon;
-              return (
-                <div key={point.label} className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
+              const content = (
+                <div data-md-stat="true" className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
                   <div className="flex items-center justify-center gap-1 text-cyan-400 mb-3">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -310,6 +311,13 @@ export default function HomePage() {
                   <div className="text-xs sm:text-sm text-slate-400">{point.label}</div>
                   <div className="mt-1 text-[11px] text-slate-500">{point.detail}</div>
                 </div>
+              );
+              return point.href ? (
+                <a key={point.label} href={point.href} target="_blank" rel="noopener noreferrer" className="block">
+                  {content}
+                </a>
+              ) : (
+                <div key={point.label}>{content}</div>
               );
             })}
           </SectionReveal>
@@ -322,7 +330,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <SectionReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Your Target Market Is Specific.
+              Your Target Market Is Specific.{' '}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
                 Your Prospect List Should Match Your ICP.
               </span>
@@ -412,6 +420,13 @@ export default function HomePage() {
               );
             })}
           </StaggerContainer>
+
+          <SectionReveal delay={0.3} className="mt-10 text-center">
+            <Link href="/services" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              Explore all research capabilities
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </SectionReveal>
         </div>
       </section>
 
@@ -560,7 +575,7 @@ export default function HomePage() {
               const Icon = point.icon;
               return (
                 <StaggerItem key={point.label}>
-                  <Card className="h-full text-center border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
+                  <Card data-md-stat="true" className="h-full text-center border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300">
                     <CardHeader>
                       <div className="w-14 h-14 mx-auto rounded-2xl bg-cyan-500/15 flex items-center justify-center mb-4">
                         <Icon className="h-7 w-7 text-cyan-400" />

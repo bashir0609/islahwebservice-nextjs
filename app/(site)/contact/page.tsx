@@ -129,10 +129,10 @@ export default function ContactPage() {
 
             <SectionReveal immediate delay={0.4} className="mb-6">
               <h1 className="text-4xl font-bold tracking-tight text-white leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
-                Start Your
+                Start Your{' '}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
                   Prospect Research
-                </span>
+                </span>{' '}
                 Project
               </h1>
             </SectionReveal>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_NAME = "Islah Web Service";
+export const TITLE_TEMPLATE = `%s | ${SITE_NAME}`;
 export const SITE_URL = "https://www.islahwebservice.com";
 
 export function absoluteUrl(path: string): string {
@@ -10,16 +11,17 @@ export const SITE_DESCRIPTION =
   "Custom human research against your ICP — target companies, requested decision-makers, verified contacts, delivered CRM-ready. USA, UK, Australia.";
 export const HOME_TITLE = "Custom B2B Prospect List Research | Islah Web Service";
 
-/** Append the brand suffix to a page title (for pages that want it). */
+/** Resolve the same branded title used by the root template and social metadata. */
 export function withSiteName(title: string): string {
   return `${title} | ${SITE_NAME}`;
 }
 
-export const NO_BRAND_SUFFIX = "__NO_BRAND_SUFFIX__";
 
 interface PageMetadataArgs {
   /** Page name without the brand suffix (it is added automatically). */
   title: string;
+  /** Collection layouts must carry the template forward to their children. */
+  templateChildren?: boolean;
   description?: string;
   /** Canonical path, e.g. "/about" (resolved against metadataBase). */
   path: string;
@@ -40,21 +42,20 @@ interface PageMetadataArgs {
  * Build complete, consistent page metadata (title, canonical, OpenGraph,
  * Twitter) so layouts and dynamic pages stop repeating the same copy.
  *
- * The title is emitted as an *absolute* title so it is never re-wrapped by a
- * parent layout's `title.template` (which would otherwise double the brand
- * suffix on pages nested below a layout that defines its own title).
+ * Page titles are unbranded cores; the root layout applies the shared template.
+ * Social metadata uses the resolved title because it does not inherit that template.
  */
 export function pageMetadata({
   title,
+  templateChildren = false,
   description,
   path,
   image,
   imageAlt = title,
   ogType = "website",
   article,
-  includeBrandSuffix = false,
-}: PageMetadataArgs & { includeBrandSuffix?: boolean }): Metadata {
-  const fullTitle = includeBrandSuffix ? withSiteName(title) : title;
+}: PageMetadataArgs): Metadata {
+  const fullTitle = withSiteName(title);
   const imageUrl = absoluteUrl(image || "/og-image.png");
   const socialImage = {
     url: imageUrl,
@@ -63,7 +64,7 @@ export function pageMetadata({
   };
 
   return {
-    title: { absolute: fullTitle },
+    title: templateChildren ? { default: title, template: TITLE_TEMPLATE } : title,
     description,
     alternates: { canonical: path },
     openGraph: {
