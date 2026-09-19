@@ -9,6 +9,8 @@ import { ADMIN_COOKIE_NAME, verifyAdminSession } from "@/lib/auth";
  * redirect map is unambiguous. No chains — every destination is final.
  */
 const LEGACY_REDIRECTS: Record<string, string> = {
+  // Retired technical SEO offer now maps to the core research service.
+  "/technical-seo": "/b2b-prospect-research",
   // Old "Why Us" content overlaps the homepage ("Why Clients Choose Islah").
   "/why-us": "/",
   // Broad-market positioning now lives on the homepage.

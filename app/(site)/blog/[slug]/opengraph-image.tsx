@@ -8,13 +8,7 @@ export default async function generateImageMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  let post = null;
-  try {
-    post = await getBlogPostBySlug(slug);
-  } catch {
-    // Database not available (e.g., during build without DATABASE_URL)
-    // Fall through to default image
-  }
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return new ImageResponse(

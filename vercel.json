@@ -6,12 +6,6 @@
       "has": [{ "type": "host", "value": "islahwebservice.com" }],
       "destination": "https://www.islahwebservice.com/:path*",
       "permanent": true
-    },
-    {
-      "source": "/technical-seo",
-      "destination": "/b2b-prospect-research",
-      "permanent": true,
-      "statusCode": 301
     }
   ],
   "headers": [
