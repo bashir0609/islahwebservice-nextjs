@@ -16,6 +16,7 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motio
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
+import { ContentVisuals } from "@/components/site/content-visuals";
 
 const researchCriteria = [
   "Active job postings & number of open roles",
@@ -400,6 +401,9 @@ export default function RecruitmentIndustryPage() {
           },
         ]}
       />
+
+      <ContentVisuals pathname="/industries/recruitment" />
+
     </main>
   );
 }

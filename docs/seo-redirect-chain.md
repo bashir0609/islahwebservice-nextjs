@@ -1,0 +1,5 @@
+# HTTP apex redirect chain
+
+Vercel upgrades `http://islahwebservice.com/...` to `https://islahwebservice.com/...` at its edge before the request reaches this Next.js application or the repository-defined host redirect. The application can therefore control only the second hop, where `vercel.json` sends the HTTPS apex host directly to the canonical `https://www.islahwebservice.com/...` URL with one 308 while preserving the path and query. Live verification confirms that `https://islahwebservice.com/about` performs exactly one 308 to `https://www.islahwebservice.com/about`, and the canonical URL then returns 200.
+
+The two-hop HTTP-apex path is closed as a documented Vercel platform constraint. Accepting it keeps TLS and domain routing under Vercel with no application hacks. Collapsing both scheme and host in one externally visible response would require an upstream proxy such as Cloudflare to receive the initial HTTP request and redirect directly to HTTPS www; that introduces another DNS, TLS, caching, and operational layer and should be an owner-level infrastructure decision rather than a code workaround.

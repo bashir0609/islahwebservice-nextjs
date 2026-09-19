@@ -2,7 +2,7 @@ import { pageMetadata } from "@/lib/seo";
 
 const blogMetadata = pageMetadata({
   templateChildren: true,
-  title: "B2B Lead Generation & Prospecting Blog",
+  title: "B2B Prospecting & Research Blog",
   description:
     "Read practical guides to company research, contact enrichment, email verification, and data quality for building and maintaining useful B2B prospect lists.",
   path: "/blog",
@@ -17,5 +17,15 @@ export const metadata = {
 };
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Islah Web Service Blog"
+        href="/blog/rss.xml"
+      />
+      {children}
+    </>
+  );
 }

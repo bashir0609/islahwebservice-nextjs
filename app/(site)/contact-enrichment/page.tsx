@@ -20,6 +20,7 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motio
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
+import { ContentVisuals } from "@/components/site/content-visuals";
 
 const faqs = [
   {
@@ -426,6 +427,9 @@ export default function ContactEnrichmentPage() {
           </SectionReveal>
         </div>
       </section>
+
+      <ContentVisuals pathname="/contact-enrichment" />
+
     </main>
   );
 }

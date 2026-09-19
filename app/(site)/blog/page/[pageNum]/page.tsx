@@ -21,7 +21,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const title = page === 1 ? "B2B Lead Generation & Prospecting Blog" : `B2B Lead Gen & Prospecting Blog — Page ${page}`;
+  const title = page === 1 ? "B2B Prospecting & Research Blog" : `B2B Prospecting Blog — Page ${page}`;
   const path = page === 1 ? "/blog" : `/blog/page/${page}`;
   const description = page === 1
     ? "Read practical guides to company research, contact enrichment, email verification, and data quality for building and maintaining useful B2B prospect lists."

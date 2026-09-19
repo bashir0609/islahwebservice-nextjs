@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
 import { ArrowLeft, Clock, Calendar, ChevronRight } from "lucide-react";
 import { SectionReveal } from "@/components/motion/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,6 +16,8 @@ import { formatDate } from "@/lib/utils";
 import BlogShare from "@/components/blog-share";
 import { RelatedServices } from "@/components/site/related-services";
 import TableOfContents from "@/components/site/table-of-contents";
+import { extractMarkdownHeadings, splitBeforeFirstH2 } from "@/lib/markdown-headings";
+import { ContentVisuals } from "@/components/site/content-visuals";
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -34,7 +36,8 @@ export async function generateMetadata({
     title: seo?.title || post.title,
     description: seo?.description || post.excerpt || undefined,
     path: `/blog/${post.slug}`,
-    image: `/blog/${post.slug}/opengraph-image`,
+    // TODO(og): Restore per-post generated images only after a production-safe route is proven.
+    image: "/og-image.png",
     ogType: "article",
     article: {
       publishedTime: post.createdAt
@@ -60,6 +63,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const wordCount = plainText.split(/\s+/).filter(Boolean).length;
   const readTime = post.readTime || Math.max(1, Math.ceil(wordCount / 200));
   const date = post.createdAt ? formatDate(new Date(post.createdAt)) : "";
+  const headings = extractMarkdownHeadings(post.content);
+  const [introduction, remainingContent] = splitBeforeFirstH2(post.content);
+  let headingIndex = 0;
+  const markdownComponents: Components = {
+    a: ({ href, children }) => {
+      const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
+      return isExternal ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    },
+    h2: ({ children }) => {
+      const heading = headings[headingIndex++];
+      return <h2 id={heading?.id}>{children}</h2>;
+    },
+    h3: ({ children }) => {
+      const heading = headings[headingIndex++];
+      return <h3 id={heading?.id}>{children}</h3>;
+    },
+  };
 
   return (
     <main className="flex flex-col">
@@ -221,35 +247,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Blog Content */}
       <section className="py-16 sm:py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex lg:flex-row gap-12">
-            <div className="flex-1 min-w-0 lg:max-w-3xl">
-              <SectionReveal className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-a:text-cyan-400 prose-strong:text-white prose-blockquote:border-cyan-500/40 prose-blockquote:text-slate-300 prose-code:text-cyan-300">
-                <ReactMarkdown
-                  components={{
-                    a: ({ href, children }) => {
-                      const isExternal =
-                        typeof href === "string" && /^https?:\/\//.test(href);
-                      return isExternal ? (
-                        <a href={href} target="_blank" rel="noopener noreferrer">
-                          {children}
-                        </a>
-                      ) : (
-                        <a href={href}>{children}</a>
-                      );
-                    },
-                  }}
-                >
-                  {post.content}
-                </ReactMarkdown>
-              </SectionReveal>
-            </div>
-            <div className="hidden lg:block lg:w-64">
-              <TableOfContents content={post.content} />
-            </div>
+          <div className="mx-auto max-w-3xl">
+            <SectionReveal className="prose prose-lg prose-invert max-w-none prose-headings:scroll-mt-24 prose-headings:text-white prose-a:text-cyan-400 prose-strong:text-white prose-blockquote:border-cyan-500/40 prose-blockquote:text-slate-300 prose-code:text-cyan-300">
+              <ReactMarkdown components={markdownComponents}>{introduction}</ReactMarkdown>
+              <TableOfContents headings={headings} />
+              {remainingContent && (
+                <ReactMarkdown components={markdownComponents}>{remainingContent}</ReactMarkdown>
+              )}
+            </SectionReveal>
           </div>
-          <SectionReveal delay={0.3} className="mt-12 lg:hidden">
-            <TableOfContents content={post.content} />
-          </SectionReveal>
           <SectionReveal delay={0.3} className="mt-12">
             <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
               <CardContent className="p-8 text-center">
@@ -273,6 +279,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </SectionReveal>
         </div>
       </section>
+
+      <ContentVisuals pathname={`/blog/${post.slug}`} />
 
       {/* Reciprocal links back to the matching service and industry pages */}
       <RelatedServices slug={post.slug} tone="900" />

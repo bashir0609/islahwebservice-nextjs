@@ -10,7 +10,7 @@ const POSTS_PER_PAGE = 10;
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
-    title: "B2B Lead Generation & Prospecting Blog",
+    title: "B2B Prospecting & Research Blog",
     description:
       "Read practical guides to company research, contact enrichment, email verification, and data quality for building and maintaining useful B2B prospect lists.",
     path: "/blog",

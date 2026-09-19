@@ -1,7 +1,7 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Compare Research Services & Capabilities",
+  title: "Research Services & Capabilities",
   description:
     "Compare custom prospect research and existing database enrichment to choose the right service for finding new contacts or completing your CRM records.",
   path: "/services",

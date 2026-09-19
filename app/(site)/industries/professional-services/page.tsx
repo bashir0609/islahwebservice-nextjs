@@ -17,6 +17,7 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motio
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RelatedGuides } from "@/components/site/related-guides";
+import { ContentVisuals } from "@/components/site/content-visuals";
 
 const researchCriteria = [
   "Industry & geography",
@@ -401,6 +402,9 @@ export default function ProfessionalServicesIndustryPage() {
           },
         ]}
       />
+
+      <ContentVisuals pathname="/industries/professional-services" />
+
     </main>
   );
 }

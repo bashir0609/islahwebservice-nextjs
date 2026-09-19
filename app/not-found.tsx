@@ -3,6 +3,7 @@ import NotFoundContent from "@/components/site/not-found-content";
 
 export const metadata: Metadata = {
   title: { absolute: "Page Not Found | Islah Web Service" },
+  alternates: { canonical: null },
   robots: { index: false, follow: false },
 };
 

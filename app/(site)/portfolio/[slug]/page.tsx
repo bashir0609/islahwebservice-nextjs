@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Building2, Calendar, ArrowRight } from "lucide-react";
+import { ArrowLeft, Building2, Calendar, ArrowRight, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BlogShare from "@/components/blog-share";
@@ -54,12 +54,13 @@ export async function generateMetadata({
   const seo = PORTFOLIO_SEO[item.slug];
 
   const resolvedTitle = seo?.title || item.title;
+  const socialImage = item.image?.replace(/\.svg$/i, ".png");
 
   return pageMetadata({
     title: resolvedTitle,
     description: seo?.description || item.description || undefined,
     path: `/portfolio/${item.slug}`,
-    image: item.image || undefined,
+    image: socialImage || undefined,
     imageAlt: `${resolvedTitle} — case study illustration`,
     ogType: "article",
     article: {
@@ -191,6 +192,19 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-slate-400">
+                <li className="flex items-center gap-2">
+                  <Link href="/" className="transition-colors hover:text-cyan-400">Home</Link>
+                  <ChevronRight className="h-3 w-3" aria-hidden="true" />
+                </li>
+                <li className="flex items-center gap-2">
+                  <Link href="/portfolio" className="transition-colors hover:text-cyan-400">Portfolio</Link>
+                  <ChevronRight className="h-3 w-3" aria-hidden="true" />
+                </li>
+                <li className="max-w-full truncate text-slate-300" aria-current="page">{item.title}</li>
+              </ol>
+            </nav>
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
@@ -221,8 +235,22 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
               </span>
               <span className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                {item.createdAt ? formatDate(item.createdAt) : "Recent"}
+                {item.createdAt ? (
+                  <time dateTime={new Date(item.createdAt).toISOString()}>
+                    {formatDate(item.createdAt)}
+                  </time>
+                ) : (
+                  "Recent"
+                )}
               </span>
+              {item.updatedAt && item.createdAt && new Date(item.updatedAt).getTime() > new Date(item.createdAt).getTime() && (
+                <span className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  <time dateTime={new Date(item.updatedAt).toISOString()}>
+                    Updated {formatDate(item.updatedAt)}
+                  </time>
+                </span>
+              )}
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">

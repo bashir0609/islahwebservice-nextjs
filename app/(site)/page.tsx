@@ -27,6 +27,7 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/motio
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import HeroVisual from "@/components/site/hero-visual";
+import { ContentVisuals } from "@/components/site/content-visuals";
 
 const faqs = [
   {
@@ -833,6 +834,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ContentVisuals pathname="/" />
+
     </main>
   );
 }
