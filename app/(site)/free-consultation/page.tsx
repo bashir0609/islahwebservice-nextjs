@@ -79,7 +79,7 @@ export default function FreeConsultationPage() {
       if (!token) throw new Error("Please complete the security check.");
       const result = await submitContactForm({ ...data, turnstileToken: token });
       if (result.success) {
-        pushEvent("consultation_form_submitted", { service: data.service, company: data.company });
+        pushEvent("consultation_form_submitted", { service: data.service });
         toast({
           title: "Request Received",
           description: result.message + " We'll typically reply within one business day to schedule your consultation.",
@@ -89,7 +89,7 @@ export default function FreeConsultationPage() {
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : "Failed to send message";
-      pushEvent("consultation_form_error", { error: message });
+      pushEvent("consultation_form_error");
       toast({ title: "Failed to Send", description: message, variant: "error" });
     } finally {
       (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
