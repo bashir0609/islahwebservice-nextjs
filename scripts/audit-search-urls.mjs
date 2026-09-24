@@ -64,9 +64,14 @@ const sitemapResponse = await get(`${origin}/sitemap.xml`);
 if (!sitemapResponse.ok) throw new Error(`Sitemap returned ${sitemapResponse.status}`);
 const sitemap = new Set([...((await sitemapResponse.text()).matchAll(/<loc>(.*?)<\/loc>/g))]
   .map((match) => urlKey(match[1].replaceAll("&amp;", "&"))));
+const allRecords = [...records];
+const exportedPaths = new Set(records.map((row) => urlKey(row[0])));
+for (const pathname of sitemap) {
+  if (!exportedPaths.has(pathname)) allRecords.push([new URL(pathname, origin).href, "", "", "", ""]);
+}
 const audited = [];
-for (let start = 0; start < records.length; start += 5) {
-  const batch = await Promise.all(records.slice(start, start + 5).map(async (row) => {
+for (let start = 0; start < allRecords.length; start += 5) {
+  const batch = await Promise.all(allRecords.slice(start, start + 5).map(async (row) => {
     try { return { row, ...await inspect(row[0]) }; }
     catch (error) { return { row, status: "error", finalUrl: "", chain: String(error), canonical: "", links: [] }; }
   }));
@@ -84,4 +89,4 @@ for (const item of audited) {
   lines.push(values.map(csv).join(","));
 }
 await writeFile(output, lines.join("\n") + "\n");
-console.log(`Audited ${audited.length} exported URLs; ${audited.filter((item) => item.status === 404).length} finish at 404. Report: ${output}`);
+console.log(`Audited ${records.length} exported URLs and ${allRecords.length - records.length} sitemap-only URLs; ${audited.filter((item) => item.status === 404).length} finish at 404. Report: ${output}`);
