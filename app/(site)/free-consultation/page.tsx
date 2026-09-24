@@ -6,6 +6,7 @@ import { submitContactForm } from "@/lib/actions/contact";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Link from "next/link";
+import Script from "next/script";
 import {
   ArrowRight,
   CheckCircle2,
@@ -33,11 +34,12 @@ import { pushEvent } from "@/lib/analytics";
 import { useToast } from "@/components/ui/use-toast";
 
 const consultationFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  company: z.string().min(2, "Company name must be at least 2 characters"),
+  name: z.string().min(2).max(80),
+  email: z.string().email().max(254),
+  company: z.string().min(2).max(120),
   service: z.string().min(1, "Please select a service"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  message: z.string().min(20).max(5000),
+  website: z.string().max(0),
 });
 
 type ConsultationFormData = z.infer<typeof consultationFormSchema>;
@@ -63,7 +65,7 @@ export default function FreeConsultationPage() {
   } = useForm<ConsultationFormData>({
     resolver: zodResolver(consultationFormSchema),
     mode: "onChange",
-    defaultValues: { name: "", email: "", company: "", service: "" },
+    defaultValues: { name: "", email: "", company: "", service: "", website: "" },
   });
 
   const selectedService = watch("service");
@@ -73,7 +75,9 @@ export default function FreeConsultationPage() {
     pushEvent("consultation_form_submit_started", { service: data.service });
 
     try {
-      const result = await submitContactForm(data);
+      const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
+      if (!token) throw new Error("Please complete the security check.");
+      const result = await submitContactForm({ ...data, turnstileToken: token });
       if (result.success) {
         pushEvent("consultation_form_submitted", { service: data.service, company: data.company });
         toast({
@@ -88,12 +92,14 @@ export default function FreeConsultationPage() {
       pushEvent("consultation_form_error", { error: message });
       toast({ title: "Failed to Send", description: message, variant: "error" });
     } finally {
+      (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
       setIsSubmitting(false);
     }
   };
 
   return (
     <main className="flex flex-col">
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
       {/* Hero — free consultation promise */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
@@ -231,6 +237,8 @@ export default function FreeConsultationPage() {
             <SectionReveal delay={0.2} className="lg:col-span-3">
               <Card className="p-8 md:p-12 rounded-2xl border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="absolute -left-[10000px]" aria-hidden="true"><label htmlFor="website">Website</label><input id="website" tabIndex={-1} autoComplete="off" {...register("website")} /></div>
+                  <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="block text-sm font-medium text-slate-300">
