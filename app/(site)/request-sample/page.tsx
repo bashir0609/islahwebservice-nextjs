@@ -95,14 +95,14 @@ export default function RequestSamplePage() {
 
   const onSubmit = async (data: SampleFormData) => {
     setIsSubmitting(true);
-    pushEvent("sample_request_submit_started", { company: data.company, industry: data.industry });
+    pushEvent("sample_request_submit_started", { industry: data.industry });
 
     try {
       const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
       if (!token) throw new Error("Please complete the security check.");
       const result = await submitSampleRequest({ ...data, turnstileToken: token });
       if (result.success) {
-        pushEvent("sample_request_submitted", { company: data.company, industry: data.industry });
+        pushEvent("sample_request_submitted", { industry: data.industry });
         toast({
           title: "Sample Request Received",
           description: result.message + " We'll typically reply within one business day with a sample built around your criteria.",
@@ -112,7 +112,7 @@ export default function RequestSamplePage() {
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : "Failed to send request";
-      pushEvent("sample_request_error", { error: message });
+      pushEvent("sample_request_error");
       toast({ title: "Failed to Send", description: message, variant: "error" });
     } finally {
       (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
