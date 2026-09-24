@@ -99,6 +99,13 @@ export default async function BlogPage() {
       {/* Blog Section */}
       <section className="py-16 sm:py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 rounded-2xl border border-cyan-500/25 bg-cyan-500/10 p-6 text-slate-200">
+            <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">Pricing guide</p>
+            <h2 className="mt-2 text-xl font-semibold text-white">
+              <Link href="/blog/b2b-lead-list-pricing-guide" className="hover:text-cyan-300">What affects the price of a B2B prospect list?</Link>
+            </h2>
+            <p className="mt-2 text-sm text-slate-300">Compare targeting depth, verified fields, quality checks, and delivery requirements before requesting a quote.</p>
+          </div>
           <SectionReveal delay={0.2} className="mb-12">
             <BlogIndex posts={postSummaries as any} />
           </SectionReveal>

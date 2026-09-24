@@ -80,7 +80,6 @@ export default function ContactPage() {
       if (result.success) {
         pushEvent("contact_form_submitted", {
           service: data.service,
-          company: data.company,
         });
         toast({
           title: "Message Sent Successfully",
@@ -93,7 +92,7 @@ export default function ContactPage() {
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Failed to send message";
-      pushEvent("contact_form_error", { error: message });
+      pushEvent("contact_form_error");
       toast({
         title: "Failed to Send Message",
         description: message,

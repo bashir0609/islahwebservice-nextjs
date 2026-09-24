@@ -68,6 +68,7 @@ export async function getMachineIndex(): Promise<MachineIndexEntry[]> {
     ["/services", "weekly", 0.7, ["(site)/services/page.tsx", "(site)/services/layout.tsx"]],
     ["/contact-enrichment", "weekly", 0.8, ["(site)/contact-enrichment/page.tsx", "(site)/contact-enrichment/layout.tsx"]],
     ["/blog", "weekly", 0.8, ["(site)/blog/page.tsx", "(site)/blog/layout.tsx"]],
+    ["/blog/b2b-lead-list-pricing-guide", "monthly", 0.7, ["(site)/blog/b2b-lead-list-pricing-guide/page.tsx"]],
     ["/about", "monthly", 0.8, ["(site)/about/page.tsx", "(site)/about/layout.tsx"]],
     ["/authors/bashir-ahmed", "monthly", 0.6, ["(site)/authors/bashir-ahmed/page.tsx"]],
     ["/free-consultation", "weekly", 0.6, ["(site)/free-consultation/page.tsx", "(site)/free-consultation/layout.tsx"]],

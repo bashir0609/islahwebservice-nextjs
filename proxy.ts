@@ -21,6 +21,10 @@ const LEGACY_REDIRECTS: Record<string, string> = {
   // Retired /services pages → closest relevant current page.
   "/services/verified-b2b-contact-lists": "/b2b-prospect-research",
   "/services/lead-generation-analysis": "/b2b-prospect-research",
+  // Old blog and legal slugs have equivalent current pages.
+  "/blog/what-is-b2b-lead-generation-guide-2026": "/blog/what-is-b2b-lead-generation-a-2026-guide-for-growth-teams",
+  "/blog/how-to-build-clean-b2b-lead-list": "/blog/how-to-build-b2b-prospect-lists",
+  "/terms-of-service": "/terms",
   // Business process automation is unrelated to prospect research; the
   // homepage is the relevant final destination (was previously chained via
   // /b2b-lead-generation — now direct).
