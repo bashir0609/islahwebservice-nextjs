@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Link from "next/link";
+import Script from "next/script";
 import {
   ArrowRight,
   CheckCircle2,
@@ -26,7 +27,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { pushEvent } from "@/lib/analytics";
 import { useToast } from "@/components/ui/use-toast";
-import { submitSampleRequest, type SampleRequestData } from "@/lib/actions/sample-request";
+import { submitSampleRequest } from "@/lib/actions/sample-request";
 
 const sampleFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -44,6 +45,7 @@ const sampleFormSchema = z.object({
   requiredFields: z.string().optional(),
   projectSize: z.string().optional(),
   additionalNotes: z.string().optional(),
+  contactWebsite: z.string().max(0),
 });
 
 type SampleFormData = z.infer<typeof sampleFormSchema>;
@@ -84,19 +86,21 @@ export default function RequestSamplePage() {
   } = useForm<SampleFormData>({
     resolver: zodResolver(sampleFormSchema),
     mode: "onChange",
-    defaultValues: { name: "", email: "", company: "" },
+    defaultValues: { name: "", email: "", company: "", contactWebsite: "" },
   });
 
   const selectedIndustry = watch("industry");
   const selectedCompanySize = watch("companySize");
   const selectedProjectSize = watch("projectSize");
 
-  const onSubmit = async (data: SampleRequestData) => {
+  const onSubmit = async (data: SampleFormData) => {
     setIsSubmitting(true);
     pushEvent("sample_request_submit_started", { company: data.company, industry: data.industry });
 
     try {
-      const result = await submitSampleRequest(data);
+      const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
+      if (!token) throw new Error("Please complete the security check.");
+      const result = await submitSampleRequest({ ...data, turnstileToken: token });
       if (result.success) {
         pushEvent("sample_request_submitted", { company: data.company, industry: data.industry });
         toast({
@@ -111,6 +115,7 @@ export default function RequestSamplePage() {
       pushEvent("sample_request_error", { error: message });
       toast({ title: "Failed to Send", description: message, variant: "error" });
     } finally {
+      (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
       setIsSubmitting(false);
     }
   };
@@ -159,6 +164,7 @@ export default function RequestSamplePage() {
 
   return (
     <main className="flex flex-col">
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
@@ -272,6 +278,8 @@ export default function RequestSamplePage() {
             <SectionReveal delay={0.2} className="lg:col-span-3">
               <Card className="p-8 md:p-12 rounded-2xl border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="absolute -left-[10000px]" aria-hidden="true"><label htmlFor="contactWebsite">Leave this blank</label><input id="contactWebsite" tabIndex={-1} autoComplete="off" {...register("contactWebsite")} /></div>
+                  <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="block text-sm font-medium text-slate-300">

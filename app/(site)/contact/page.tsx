@@ -6,6 +6,7 @@ import { submitContactForm } from "@/lib/actions/contact";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Link from "next/link";
+import Script from "next/script";
 import {
   ArrowLeft,
   ArrowRight,
@@ -32,11 +33,12 @@ import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  company: z.string().min(2, "Company name must be at least 2 characters"),
+  name: z.string().min(2).max(80),
+  email: z.string().email().max(254),
+  company: z.string().min(2).max(120),
   service: z.string().min(1, "Please select a service"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  message: z.string().min(20).max(5000),
+  website: z.string().max(0),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -60,6 +62,7 @@ export default function ContactPage() {
       email: "",
       company: "",
       service: "",
+      website: "",
     },
   });
 
@@ -70,7 +73,9 @@ export default function ContactPage() {
     pushEvent("contact_form_submit_started", { service: data.service });
 
     try {
-      const result = await submitContactForm(data);
+      const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
+      if (!token) throw new Error("Please complete the security check.");
+      const result = await submitContactForm({ ...data, turnstileToken: token });
 
       if (result.success) {
         pushEvent("contact_form_submitted", {
@@ -83,6 +88,7 @@ export default function ContactPage() {
           variant: "success",
         });
         reset();
+        (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
       }
     } catch (error) {
       const message =
@@ -94,6 +100,7 @@ export default function ContactPage() {
         variant: "error",
       });
     } finally {
+      (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
       setIsSubmitting(false);
     }
   };
@@ -107,6 +114,7 @@ export default function ContactPage() {
 
   return (
     <main className="flex flex-col">
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
       {/* Hero Section — compact emerald hero */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950" />
@@ -170,6 +178,7 @@ export default function ContactPage() {
             <SectionReveal delay={0.2} className="lg:col-span-3">
               <Card className="p-8 md:p-12 rounded-2xl border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="absolute -left-[10000px]" aria-hidden="true"><label htmlFor="website">Website</label><input id="website" tabIndex={-1} autoComplete="off" {...register("website")} /></div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name Field */}
                     <div className="space-y-2">
@@ -318,6 +327,7 @@ export default function ContactPage() {
                     )}
                   </div>
 
+                  <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY} />
                   {/* Submit Button */}
                   <Button
                     type="submit"

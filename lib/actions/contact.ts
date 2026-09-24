@@ -1,28 +1,24 @@
 "use server";
 
 import { z } from "zod";
-import { sendEmailToAdmin } from "./settings";
+import { sendEmailToAdmin } from "@/lib/contact-email";
+import { verifyContactRequest } from "@/lib/contact-protection";
 
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  company: z.string().min(2, "Company name must be at least 2 characters"),
-  service: z.string().min(1, "Please select a service"),
-  message: z.string().min(10, "Message must be at least 10 characters")
+const schema = z.object({
+  name: z.string().trim().min(2).max(80),
+  email: z.string().trim().email().max(254),
+  company: z.string().trim().min(2).max(120),
+  service: z.enum(["B2B Prospect Research", "Existing Database Enrichment", "B2B Lead Generation Data Services", "Not sure yet — recommend a solution"]),
+  message: z.string().trim().min(20).max(5000),
+  website: z.string().max(0),
+  turnstileToken: z.string().min(1).max(2048),
 });
 
-type ContactFormData = z.infer<typeof contactFormSchema>;
-
-export async function submitContactForm(data: ContactFormData) {
-  try {
-    const validatedData = contactFormSchema.parse(data);
-    const result = await sendEmailToAdmin(validatedData);
-    return { success: true, message: "Message sent successfully!" };
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      throw new Error(error.errors.map(err => err.message).join(", "));
-    }
-    const message = error instanceof Error ? error.message : "Failed to process your request";
-    throw new Error(message);
-  }
+export async function submitContactForm(data: unknown) {
+  const result = schema.safeParse(data);
+  if (!result.success) throw new Error("Please check the form fields and try again.");
+  await verifyContactRequest(result.data.turnstileToken, result.data.website);
+  const { website, turnstileToken, ...contact } = result.data;
+  await sendEmailToAdmin(contact);
+  return { success: true, message: "Message sent successfully!" };
 }

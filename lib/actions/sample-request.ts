@@ -1,24 +1,27 @@
 "use server";
 
 import { z } from "zod";
-import { sendEmailToAdmin } from "./settings";
+import { sendEmailToAdmin } from "@/lib/contact-email";
+import { verifyContactRequest } from "@/lib/contact-protection";
 
 const sampleRequestSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid work email address"),
-  company: z.string().min(2, "Company name must be at least 2 characters"),
-  website: z.string().optional(),
-  industry: z.string().optional(),
-  targetGeography: z.string().optional(),
-  companySize: z.string().optional(),
-  targetCompanyCriteria: z.string().optional(),
-  technologies: z.string().optional(),
-  fundingRequirements: z.string().optional(),
-  hiringCriteria: z.string().optional(),
-  decisionMakerRoles: z.string().optional(),
-  requiredFields: z.string().optional(),
-  projectSize: z.string().optional(),
-  additionalNotes: z.string().optional(),
+  name: z.string().trim().min(2).max(80),
+  email: z.string().trim().email().max(254),
+  company: z.string().trim().min(2).max(120),
+  website: z.string().max(500).optional(),
+  industry: z.string().max(500).optional(),
+  targetGeography: z.string().max(500).optional(),
+  companySize: z.string().max(500).optional(),
+  targetCompanyCriteria: z.string().max(500).optional(),
+  technologies: z.string().max(500).optional(),
+  fundingRequirements: z.string().max(500).optional(),
+  hiringCriteria: z.string().max(500).optional(),
+  decisionMakerRoles: z.string().max(500).optional(),
+  requiredFields: z.string().max(500).optional(),
+  projectSize: z.string().max(500).optional(),
+  additionalNotes: z.string().max(2000).optional(),
+  contactWebsite: z.string().max(0),
+  turnstileToken: z.string().min(1).max(2048),
 });
 
 export type SampleRequestData = z.infer<typeof sampleRequestSchema>;
@@ -65,6 +68,7 @@ function buildMessage(data: SampleRequestData): string {
 export async function submitSampleRequest(data: SampleRequestData) {
   try {
     const validated = sampleRequestSchema.parse(data);
+    await verifyContactRequest(validated.turnstileToken, validated.contactWebsite);
     const message = buildMessage(validated);
 
     const result = await sendEmailToAdmin({
