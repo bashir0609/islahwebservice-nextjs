@@ -27,6 +27,11 @@ export async function updateSettings(values: Record<string, string>) {
   revalidatePath("/admin/settings");
 }
 
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, (character) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character] || character
+  );
+
 export async function sendEmailToAdmin(data: {
   name: string;
   email: string;
@@ -52,7 +57,7 @@ export async function sendEmailToAdmin(data: {
 
     const resend = new Resend(apiKey);
 
-    const subject = `New Contact Form Submission from ${data.name} - ${data.service}`;
+    const subject = `New Contact Form Submission from ${escapeHtml(data.name)} - ${escapeHtml(data.service)}`;
 
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -64,26 +69,26 @@ export async function sendEmailToAdmin(data: {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold; width: 40%;">Name</td>
-              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${data.name}</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${escapeHtml(data.name)}</td>
             </tr>
             <tr>
               <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Email</td>
-              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${data.email}</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${escapeHtml(data.email)}</td>
             </tr>
             <tr>
               <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Company</td>
-              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${data.company}</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${escapeHtml(data.company)}</td>
             </tr>
             <tr>
               <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Service Interest</td>
-              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${data.service}</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">${escapeHtml(data.service)}</td>
             </tr>
           </table>
 
           <div style="margin-top: 20px;">
             <p style="font-weight: bold; margin-bottom: 10px;">Message:</p>
             <div style="padding: 15px; background: #f8fafc; border-left: 4px solid #0ea5e9; white-space: pre-wrap;">
-              ${data.message}
+              ${escapeHtml(data.message)}
             </div>
           </div>
         </div>
