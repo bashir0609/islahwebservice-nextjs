@@ -106,7 +106,7 @@ export default function SiteHeader() {
 
           <div className="hidden lg:flex items-center gap-2 xl:gap-3">
             <Button asChild size="sm">
-              <Link href="/request-sample">Request a Sample</Link>
+              <Link href="/free-consultation">Free Consultation</Link>
             </Button>
           </div>
 
@@ -167,11 +167,11 @@ export default function SiteHeader() {
                     </Link>
                   ))}
                   <Link
-                    href="/request-sample"
+                    href="/free-consultation"
                     onClick={() => setOpen(false)}
                     className="mt-2 rounded-lg bg-cyan-600 px-3 py-2.5 text-center text-sm sm:text-base font-medium text-white transition-colors hover:bg-cyan-700"
                   >
-                    Request a Sample
+                    Free Consultation
                   </Link>
                 </nav>
               </motion.div>
