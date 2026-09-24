@@ -100,6 +100,7 @@ export default function ContactPage() {
         variant: "error",
       });
     } finally {
+      (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
       setIsSubmitting(false);
     }
   };
