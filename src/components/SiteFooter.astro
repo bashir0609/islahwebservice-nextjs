@@ -4,13 +4,20 @@ import { services, industries } from '../data/site';
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a href="/" class="brand" aria-label="Islah Web Service home"><img class="brand-logo" src="/Islah-logo.png" width="300" height="100" alt="Islah Web Service" /></a>
-      <p>Focused prospect research and a considered path to managed outreach. Research is available independently; managed service scope and availability are discussed by consultation.</p>
-            <nav aria-label="Founder profiles"><a href="https://www.linkedin.com/in/bashir0609" rel="external">Bashir Ahmed on LinkedIn ↗</a><a href="https://www.upwork.com/freelancers/bashirahmed" rel="external">Founder’s Upwork profile ↗</a></nav>
+      <a href="/" class="brand" aria-label="Islah Web Service home">
+        <img class="brand-logo" src="/Islah-logo.png" width="300" height="100" alt="Islah Web Service" />
+      </a>
+      <p>Research-backed B2B lead generation and outbound email systems. Choose One-Time Outbound Setup, Ongoing Campaign Management, or custom B2B Prospect Research.</p>
+      <nav aria-label="Founder profiles">
+        <a href="https://www.linkedin.com/in/bashir0609" rel="external">Bashir Ahmed on LinkedIn ↗</a>
+        <a href="https://www.upwork.com/freelancers/bashirahmed" rel="external">Founder’s Upwork profile ↗</a>
+      </nav>
     </div>
     <div>
-      <h2>Services</h2>
+      <h2>Outbound Services</h2>
       <nav aria-label="Services">
+        <a href="/one-time-setup"><strong>One-Time Outbound Setup</strong></a>
+        <a href="/ongoing-management"><strong>Ongoing Management</strong></a>
         {services.map((service) => <a href={'/' + service.slug}>{service.title}</a>)}
       </nav>
     </div>

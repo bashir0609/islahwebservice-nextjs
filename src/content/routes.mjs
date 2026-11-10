@@ -3,8 +3,8 @@ export const STATIC_PUBLIC_PATHS = Object.freeze([
   '/campaign-management', '/cold-email-marketing', '/contact', '/contact-enrichment',
   '/email-infrastructure', '/free-consultation', '/industries', '/industries/msp',
   '/industries/professional-services', '/industries/real-estate', '/industries/recruitment',
-  '/industries/saas', '/portfolio', '/pricing', '/privacy-policy', '/request-sample',
-  '/services', '/terms',
+  '/industries/saas', '/ongoing-management', '/one-time-setup', '/portfolio', '/pricing',
+  '/privacy-policy', '/request-sample', '/services', '/terms',
 ]);
 
 export const REVIEWED_REDIRECTS = Object.freeze([

@@ -4,53 +4,373 @@ import Button from './Button.astro';
 import FAQ from './FAQ.astro';
 import type { IndustryDetail } from '../data/industry-details';
 
-interface Industry { slug: string; title: string; headline: string; summary: string; signals: string[]; context: string; brief: string; }
-interface Props { industry: Industry; detail: IndustryDetail; }
+interface Industry {
+  slug: string;
+  title: string;
+  headline: string;
+  summary: string;
+  signals: string[];
+  context: string;
+  brief: string;
+}
+
+interface Props {
+  industry: Industry;
+  detail: IndustryDetail;
+}
+
 const { industry, detail } = Astro.props;
 ---
 <div class="industry-page">
   <div class="industry-grid" aria-hidden="true"></div>
   <div class="container industry-container">
     <Breadcrumb items={[{ label: 'Industries', href: '/industries' }, { label: industry.title }]} />
+
+    <!-- Hero Section -->
     <section class="industry-hero" aria-labelledby="industry-title">
-      <div><p class="eyebrow">{industry.title} · B2B PROSPECT RESEARCH</p><h1 id="industry-title">{industry.headline}</h1><p class="industry-lead">{detail.heroText}</p><div class="actions"><Button href="/request-sample">Request a Prospect Sample</Button><Button href="/free-consultation" variant="secondary">Book a Consultation</Button></div></div>
-      <aside class="market-map" aria-label={`Illustrative ${industry.title} targeting framework`}><div class="map-head"><strong>Targeting framework</strong><span>ILLUSTRATIVE</span></div><div class="map-core">{detail.visualLabel}</div>{industry.signals.map((signal, index) => <div class="map-row"><i>{index + 1}</i><span>{signal}</span></div>)}<small>Criteria are agreed for each project; this is not a live prospect record.</small></aside>
+      <div>
+        <p class="eyebrow">{industry.title.toUpperCase()} · B2B OUTBOUND &amp; LEAD GENERATION</p>
+        <h1 id="industry-title">{industry.headline}</h1>
+        <p class="industry-lead">{detail.heroText}</p>
+        <div class="actions hero-actions">
+          <Button href="/one-time-setup">Request One-Time Setup</Button>
+          <Button href="/ongoing-management" variant="secondary">Discuss Ongoing Management</Button>
+          <Button href="/request-sample" variant="secondary">Request a Sample</Button>
+        </div>
+      </div>
+      <aside class="market-map" aria-label={`Targeting framework for ${industry.title}`}>
+        <div class="map-head">
+          <strong>TARGETING FRAMEWORK</strong>
+          <span>OBSERVABLE DATA</span>
+        </div>
+        <div class="map-core">{detail.visualLabel}</div>
+        {industry.signals.map((signal, index) => (
+          <div class="map-row">
+            <i>0{index + 1}</i>
+            <span>{signal}</span>
+          </div>
+        ))}
+        <small>Criteria are calibrated for each project; verified business data only.</small>
+      </aside>
     </section>
 
-    <section class="industry-section" aria-labelledby="challenges-title"><div class="section-intro"><p class="eyebrow">MARKET CONTEXT</p><h2 id="challenges-title">{detail.challengeTitle}</h2><p>{industry.context}</p></div><div class="challenge-grid">{detail.challenges.map((item,index) => <article><span>0{index+1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></section>
+    <!-- Market Context & Challenges -->
+    <section class="industry-section" aria-labelledby="challenges-title">
+      <div class="section-intro">
+        <p class="eyebrow">MARKET CHALLENGES &amp; SOLUTIONS</p>
+        <h2 id="challenges-title">{detail.challengeTitle}</h2>
+        <p>{industry.context}</p>
+      </div>
+      <div class="challenge-grid">
+        {detail.challenges.map((item, index) => (
+          <article>
+            <span>0{index + 1}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
 
-    <section class="criteria-panel" aria-labelledby="criteria-title"><div><p class="eyebrow">ICP AND ACCOUNT CRITERIA</p><h2 id="criteria-title">Turn industry context into observable research fields.</h2><p>{detail.criteriaIntro}</p><p class="boundary">Fit against these fields does not prove need, budget, authority or buying intent.</p></div><div class="criteria-list">{detail.criteria.map(item => <article><span aria-hidden="true">✓</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div></section>
+    <!-- ICP & Account Criteria + Exclusions -->
+    <section class="criteria-panel" aria-labelledby="criteria-title">
+      <div>
+        <p class="eyebrow">ICP &amp; TARGETING CRITERIA</p>
+        <h2 id="criteria-title">Turn industry context into observable research fields.</h2>
+        <p>{detail.criteriaIntro}</p>
+        <div class="exclusions-box">
+          <h4>EXPLICIT PROJECT EXCLUSIONS</h4>
+          <ul>
+            {detail.exclusions.map(ex => <li>{ex}</li>)}
+          </ul>
+        </div>
+        <p class="boundary">Fit against these fields confirms qualification for outreach; it is not evidence of budget or purchase intent.</p>
+      </div>
+      <div class="criteria-list">
+        {detail.criteria.map(item => (
+          <article>
+            <span aria-hidden="true">✓</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
 
-    <section class="industry-section role-section" aria-labelledby="roles-title"><div class="role-copy"><p class="eyebrow">DECISION-MAKER RESEARCH</p><h2 id="roles-title">Research functions—not titles in isolation.</h2><p>{detail.rolesIntro}</p></div><div class="role-grid">{detail.roles.map((role,index) => <article><span>{index+1}</span><h3>{role.title}</h3><p>{role.context}</p></article>)}</div></section>
+    <!-- Decision-Maker Roles & Buying Signals -->
+    <section class="industry-section role-section" aria-labelledby="roles-title">
+      <div class="role-copy">
+        <p class="eyebrow">DECISION-MAKER MAPPING</p>
+        <h2 id="roles-title">Research functional roles, not generic titles.</h2>
+        <p>{detail.rolesIntro}</p>
+        <div class="signals-box">
+          <h4>OBSERVABLE BUYING SIGNALS</h4>
+          <div class="signal-items">
+            {detail.buyingSignals.map(sig => (
+              <div class="signal-item">
+                <strong>{sig.signal}</strong>
+                <span>{sig.interpretation}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="role-grid">
+        {detail.roles.map((role, index) => (
+          <article>
+            <span>0{index + 1}</span>
+            <h3>{role.title}</h3>
+            <p>{role.context}</p>
+          </article>
+        ))}
+      </div>
+    </section>
 
-    <section class="industry-section pathway-section" aria-labelledby="pathways-title"><div class="section-intro"><p class="eyebrow">TWO DATA STARTING POINTS</p><h2 id="pathways-title">Choose research or enrichment based on what you already know.</h2></div><div class="pathway-grid"><article><span>01</span><h3>Prospect research</h3><p>{detail.researchOpportunity}</p><ul>{detail.researchUseCases.map(item => <li>{item}</li>)}</ul><Button href="/b2b-prospect-research" variant="secondary">Explore Prospect Research</Button></article><article><span>02</span><h3>Contact enrichment</h3><p>{detail.enrichmentOpportunity}</p><ul>{detail.enrichmentUseCases.map(item => <li>{item}</li>)}</ul><Button href="/contact-enrichment" variant="secondary">Explore Contact Enrichment</Button></article></div></section>
+    <!-- Example Project Showcase -->
+    <section class="project-showcase" aria-labelledby="example-title">
+      <div class="showcase-header">
+        <p class="eyebrow">EXAMPLE SCOPED PROJECT</p>
+        <h2 id="example-title">{detail.exampleProject.title}</h2>
+        <p class="showcase-scenario">{detail.exampleProject.scenario}</p>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-criteria">
+          <h4>Agreed Project Criteria</h4>
+          <ul>
+            {detail.exampleProject.criteria.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="showcase-deliverables">
+          <h4>Delivered Assets</h4>
+          <ul>
+            {detail.exampleProject.deliverables.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <section class="managed-panel" aria-labelledby="managed-title"><div class="managed-visual" aria-hidden="true"><span>1</span><i></i><span>2</span><i></i><span>3</span></div><div><p class="eyebrow">MANAGED OUTREACH CONSULTATION</p><h2 id="managed-title">{detail.managedTitle}</h2><p>{detail.managedText}</p><p class="managed-note">No campaign launches from this page. A consultation confirms current availability, legal responsibilities, sender ownership and operating scope before work begins.</p><Button href="/free-consultation">Discuss a Managed Scope</Button></div></section>
+    <!-- Three Engagement Models for this Industry -->
+    <section class="industry-section offerings-section" aria-labelledby="offerings-title">
+      <div class="section-intro">
+        <p class="eyebrow">THREE WAYS TO ENGAGE</p>
+        <h2 id="offerings-title">Tailored commercial models for {industry.title}.</h2>
+        <p>Choose the engagement structure that aligns with your internal sales capabilities.</p>
+      </div>
+      <div class="offerings-grid">
+        <article class="offering-card">
+          <span class="offering-tag">One-Time Engagement</span>
+          <h3>{detail.setupOffering.title}</h3>
+          <p>{detail.setupOffering.summary}</p>
+          <ul>
+            {detail.setupOffering.includes.map(inc => <li>{inc}</li>)}
+          </ul>
+          <Button href="/one-time-setup">Explore One-Time Setup</Button>
+        </article>
 
-    <section class="industry-section" aria-labelledby="use-cases-title"><div class="section-intro"><p class="eyebrow">PRACTICAL USE CASES</p><h2 id="use-cases-title">Where focused industry research can help.</h2></div><div class="use-case-grid">{detail.useCases.map(item => <article><span aria-hidden="true">↗</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></section>
+        <article class="offering-card featured">
+          <span class="offering-tag featured-tag">Recurring Engagement</span>
+          <h3>{detail.managementOffering.title}</h3>
+          <p>{detail.managementOffering.summary}</p>
+          <ul>
+            {detail.managementOffering.includes.map(inc => <li>{inc}</li>)}
+          </ul>
+          <Button href="/ongoing-management">Discuss Ongoing Management</Button>
+        </article>
 
-    <section class="industry-section faq-layout" aria-labelledby="faq-title"><div><p class="eyebrow">COMMON QUESTIONS</p><h2 id="faq-title">Plan the brief before collecting records.</h2><p>{industry.brief}</p></div><FAQ items={detail.faqs} /></section>
+        <article class="offering-card">
+          <span class="offering-tag">Standalone Service</span>
+          <h3>{detail.researchOffering.title}</h3>
+          <p>{detail.researchOffering.summary}</p>
+          <ul>
+            {detail.researchOffering.includes.map(inc => <li>{inc}</li>)}
+          </ul>
+          <Button href="/request-sample" variant="secondary">Request a Sample</Button>
+        </article>
+      </div>
+    </section>
 
-    <section class="industry-section related-section" aria-labelledby="related-title"><div class="section-intro"><p class="eyebrow">RELATED SERVICES</p><h2 id="related-title">Continue with the service that matches your starting point.</h2></div><div class="related-grid">{detail.relatedServices.map(item => <a href={item.href}><span>{item.status}</span><h3>{item.title}</h3><p>{item.text}</p><b>View service ↗</b></a>)}</div></section>
+    <!-- Compliance & Deliverability Box -->
+    <section class="compliance-panel" aria-labelledby="compliance-title">
+      <div>
+        <p class="eyebrow">COMPLIANCE &amp; DELIVERABILITY SAFEGUARDS</p>
+        <h2 id="compliance-title">{detail.compliance.framework}</h2>
+        <p>Outreach must comply with relevant jurisdictional frameworks and mailbox provider standards. We enforce strict data hygiene and consent parameters on every campaign.</p>
+      </div>
+      <div class="compliance-rules">
+        {detail.compliance.rules.map(rule => (
+          <div class="rule-row">
+            <span aria-hidden="true">🔒</span>
+            <p>{rule}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
-    <section class="industry-final"><div><p class="eyebrow">START WITH A REVIEWABLE BRIEF</p><h2>{detail.ctaTitle}</h2><p>{detail.ctaText}</p></div><div class="actions"><Button href="/request-sample">Request a Prospect Sample</Button><Button href="/free-consultation" variant="secondary">Book a Consultation</Button></div></section>
+    <!-- Practical Use Cases -->
+    <section class="industry-section" aria-labelledby="use-cases-title">
+      <div class="section-intro">
+        <p class="eyebrow">PRACTICAL USE CASES</p>
+        <h2 id="use-cases-title">Where focused {industry.title} research accelerates growth.</h2>
+      </div>
+      <div class="use-case-grid">
+        {detail.useCases.map(item => (
+          <article>
+            <span aria-hidden="true">↗</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="industry-section faq-layout" aria-labelledby="faq-title">
+      <div>
+        <p class="eyebrow">COMMON QUESTIONS</p>
+        <h2 id="faq-title">Plan your {industry.title} brief before launching.</h2>
+        <p>{industry.brief}</p>
+      </div>
+      <FAQ items={detail.faqs} />
+    </section>
+
+    <!-- Related Services -->
+    <section class="industry-section related-section" aria-labelledby="related-title">
+      <div class="section-intro">
+        <p class="eyebrow">RELATED OUTBOUND SERVICES</p>
+        <h2 id="related-title">Continue with the engagement model that fits your team.</h2>
+      </div>
+      <div class="related-grid">
+        {detail.relatedServices.map(item => (
+          <a href={item.href}>
+            <span>{item.status}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <b>View details ↗</b>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Final CTA Section with 3 Choices -->
+    <section class="industry-final">
+      <div>
+        <p class="eyebrow">READY TO REACH YOUR IDEAL ACCOUNTS?</p>
+        <h2>{detail.ctaTitle}</h2>
+        <p>{detail.ctaText}</p>
+      </div>
+      <div class="actions">
+        <Button href="/one-time-setup">Request Setup</Button>
+        <Button href="/ongoing-management" variant="secondary">Discuss Management</Button>
+        <Button href="/request-sample" variant="secondary">Request a Sample</Button>
+      </div>
+    </section>
   </div>
 </div>
 
 <style>
-  .industry-page { position: relative; overflow: hidden; background: #fff; }.industry-grid { position: absolute; inset: 0 0 auto; height: 760px; pointer-events: none; background-image: linear-gradient(#e8ebe7 1px,transparent 1px),linear-gradient(90deg,#e8ebe7 1px,transparent 1px); background-size: 48px 48px; opacity: .58; mask-image: linear-gradient(#000 58%,transparent); }.industry-container { position: relative; }
-  .industry-hero { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(340px,.8fr); gap: 72px; align-items: center; padding: 66px 0 106px; }.industry-hero>div { max-width: 760px; }.industry-hero h1 { font-size: clamp(48px,5.4vw,74px); }.industry-lead { max-width: 650px; font-size: 17px; }
-  .market-map { padding: 27px; border: 1px solid #dfe2df; border-radius: 18px; background: #fff; box-shadow: 0 24px 54px -30px #1118; transform: rotate(1deg); }.map-head { display: flex; justify-content: space-between; padding-bottom: 17px; border-bottom: 1px solid #e5e5e5; font-size: 10px; }.map-head span { color: #777; }.map-core { display: grid; place-items: center; width: 112px; height: 112px; margin: 25px auto; border: 18px solid #ffe0d6; border-radius: 50%; color: #a72b09; background: #ff4d1c; font-size: 11px; font-weight: 750; text-align: center; }.map-row { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; margin-top: 9px; padding: 11px; border: 1px solid #e8e8e8; border-radius: 8px; font-size: 11px; }.map-row i { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: #111; background: #ff4d1c; font-style: normal; font-weight: 700; }.market-map small { display: block; margin-top: 15px; color: #777; font-size: 9px; }
-  .industry-section { padding: 88px 0; }.section-intro { max-width: 760px; margin-bottom: 44px; }.section-intro h2,.criteria-panel h2,.role-copy h2,.managed-panel h2,.faq-layout h2 { font-size: clamp(34px,4vw,52px); }.section-intro>p:last-child { max-width: 640px; }
-  .challenge-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }.challenge-grid article { min-height: 225px; padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }.challenge-grid span { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 38px; border-radius: 9px; background: #ff4d1c; font-size: 11px; font-weight: 750; }.challenge-grid h3 { font-size: 19px; }.challenge-grid p { margin: 0; font-size: 13px; }
-  .criteria-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; padding: 64px; border: 1px solid #dfe2df; border-radius: 20px; background: #f8f9f8; box-shadow: 0 14px 34px #1110008; }.criteria-panel>div>p:not(.eyebrow) { font-size: 14px; }.boundary { padding: 16px; border-left: 3px solid #ff4d1c; background: #fff; }.criteria-list { display: grid; gap: 12px; }.criteria-list article { display: grid; grid-template-columns: 28px 1fr; gap: 15px; padding: 18px; border: 1px solid #e1e1e1; border-radius: 11px; background: #fff; }.criteria-list article>span { color: #a72b09; font-weight: 800; }.criteria-list h3 { margin-bottom: 5px; font-size: 16px; }.criteria-list p { margin: 0; font-size: 12px; }
-  .role-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 76px; align-items: start; }.role-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }.role-grid article { padding: 24px; border: 1px solid #dfe2df; border-radius: 13px; }.role-grid span { color: #a72b09; font-size: 10px; font-weight: 750; }.role-grid h3 { margin-top: 26px; font-size: 18px; }.role-grid p { margin: 0; font-size: 12px; }
-  .pathway-section { border-top: 1px solid #e5e5e5; }.pathway-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }.pathway-grid article { display: flex; flex-direction: column; align-items: flex-start; padding: 34px; border: 1px solid #dfe2df; border-radius: 16px; background: #f8f9f8; }.pathway-grid article>span { color: #a72b09; font-size: 11px; font-weight: 750; }.pathway-grid h3 { margin-top: 30px; font-size: 27px; }.pathway-grid p { font-size: 14px; }.pathway-grid ul { flex: 1; padding-left: 20px; color: #555; font-size: 13px; line-height: 1.8; }
-  .managed-panel { display: grid; grid-template-columns: .65fr 1.35fr; gap: 72px; align-items: center; padding: 62px; border: 1px solid #e2c8be; border-radius: 20px; background: #fff5f1; }.managed-visual { display: flex; align-items: center; justify-content: center; }.managed-visual span { display: grid; place-items: center; width: 54px; height: 54px; flex: 0 0 auto; border-radius: 50%; background: #ff4d1c; font-weight: 750; }.managed-visual i { width: 54px; height: 2px; background: #ffb69e; }.managed-panel p { font-size: 14px; }.managed-note { padding: 14px; border: 1px solid #ffd0c0; border-radius: 8px; background: #fff; }
-  .use-case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }.use-case-grid article { padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }.use-case-grid article>span { color: #a72b09; font-size: 22px; }.use-case-grid h3 { margin-top: 34px; font-size: 19px; }.use-case-grid p { margin: 0; font-size: 13px; }
-  .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; border-top: 1px solid #e5e5e5; }.faq-layout :global(.faq details) { padding: 25px 0; }
-  .related-section { border-top: 1px solid #e5e5e5; }.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }.related-grid a { display: block; padding: 26px; border: 1px solid #dfe2df; border-radius: 14px; text-decoration: none; transition: transform .2s,box-shadow .2s; }.related-grid a:hover { transform: translateY(-2px); box-shadow: 0 14px 30px #1111; }.related-grid span { color: #a72b09; font-size: 9px; font-weight: 750; text-transform: uppercase; }.related-grid h3 { margin-top: 29px; font-size: 19px; }.related-grid p { font-size: 12px; }.related-grid b { font-size: 11px; }
-  .industry-final { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: center; margin-bottom: 90px; padding: 54px; border: 1px solid #e0e2e0; border-radius: 20px; background: #f8f9f8; background-image: radial-gradient(circle at 88% 50%,#ff4d1c20,transparent 24%); }.industry-final h2 { font-size: clamp(34px,4vw,50px); }.industry-final .actions { justify-content: flex-end; }
-  @media (max-width:900px) { .industry-hero,.criteria-panel,.role-section,.managed-panel,.faq-layout { grid-template-columns: 1fr; gap: 44px; }.market-map { max-width: 620px; transform: none; }.challenge-grid,.use-case-grid,.related-grid { grid-template-columns: repeat(2,1fr); }.industry-final { grid-template-columns: 1fr; }.industry-final .actions { justify-content: flex-start; } }
-  @media (max-width:680px) { .industry-hero { padding: 44px 0 64px; }.industry-hero h1 { font-size: 42px; }.industry-lead { font-size: 15px; }.market-map { padding: 22px; }.industry-section { padding: 60px 0; }.challenge-grid,.role-grid,.pathway-grid,.use-case-grid,.related-grid { grid-template-columns: 1fr; }.challenge-grid article { min-height: 0; padding: 23px; }.challenge-grid span { margin-bottom: 22px; }.criteria-panel,.managed-panel { padding: 38px 22px; border-radius: 16px; }.managed-visual i { width: 32px; }.managed-visual span { width: 46px; height: 46px; }.pathway-grid article,.use-case-grid article { padding: 23px; }.use-case-grid h3 { margin-top: 22px; }.industry-final { margin-bottom: 60px; padding: 38px 22px; }.industry-final .actions { align-items: stretch; flex-direction: column; } }
+  .industry-page { position: relative; overflow: hidden; background: #fff; }
+  .industry-grid { position: absolute; inset: 0 0 auto; height: 760px; pointer-events: none; background-image: linear-gradient(#e8ebe7 1px,transparent 1px),linear-gradient(90deg,#e8ebe7 1px,transparent 1px); background-size: 48px 48px; opacity: .58; mask-image: linear-gradient(#000 58%,transparent); }
+  .industry-container { position: relative; }
+  .industry-hero { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(340px,.8fr); gap: 72px; align-items: center; padding: 66px 0 106px; }
+  .industry-hero > div { max-width: 760px; }
+  .industry-hero h1 { font-size: clamp(44px,5vw,70px); }
+  .industry-lead { max-width: 650px; font-size: 17px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .market-map { padding: 27px; border: 1px solid #dfe2df; border-radius: 18px; background: #fff; box-shadow: 0 24px 54px -30px #1118; transform: rotate(1deg); }
+  .map-head { display: flex; justify-content: space-between; padding-bottom: 17px; border-bottom: 1px solid #e5e5e5; font-size: 10px; }
+  .map-head span { color: #777; }
+  .map-core { display: grid; place-items: center; width: 112px; height: 112px; margin: 25px auto; border: 18px solid #ffe0d6; border-radius: 50%; color: #a72b09; background: #ff4d1c; font-size: 11px; font-weight: 750; text-align: center; }
+  .map-row { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; margin-top: 9px; padding: 11px; border: 1px solid #e8e8e8; border-radius: 8px; font-size: 11px; }
+  .map-row i { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: #111; background: #ff4d1c; font-style: normal; font-weight: 700; }
+  .market-map small { display: block; margin-top: 15px; color: #777; font-size: 9px; }
+  .industry-section { padding: 88px 0; }
+  .section-intro { max-width: 760px; margin-bottom: 44px; }
+  .section-intro h2, .criteria-panel h2, .role-copy h2, .faq-layout h2, .showcase-header h2, .compliance-panel h2 { font-size: clamp(32px,3.8vw,48px); }
+  .section-intro > p:last-child { max-width: 640px; font-size: 14px; }
+  .challenge-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .challenge-grid article { min-height: 225px; padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .challenge-grid span { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 38px; border-radius: 9px; background: #ff4d1c; font-size: 11px; font-weight: 750; }
+  .challenge-grid h3 { font-size: 19px; }
+  .challenge-grid p { margin: 0; font-size: 13px; }
+  .criteria-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; padding: 64px; border: 1px solid #dfe2df; border-radius: 20px; background: #f8f9f8; box-shadow: 0 14px 34px #1110008; }
+  .criteria-panel > div > p:not(.eyebrow) { font-size: 14px; }
+  .exclusions-box { margin: 24px 0; padding: 20px; border-left: 3px solid #111; background: #fff; border-radius: 0 12px 12px 0; }
+  .exclusions-box h4 { margin: 0 0 10px; font-size: 11px; color: #a72b09; letter-spacing: .08em; }
+  .exclusions-box ul { padding-left: 18px; margin: 0; color: #555; font-size: 13px; line-height: 1.7; }
+  .boundary { padding: 16px; border-left: 3px solid #ff4d1c; background: #fff; font-size: 13px; }
+  .criteria-list { display: grid; gap: 12px; }
+  .criteria-list article { display: grid; grid-template-columns: 28px 1fr; gap: 15px; padding: 18px; border: 1px solid #e1e1e1; border-radius: 11px; background: #fff; }
+  .criteria-list article > span { color: #a72b09; font-weight: 800; }
+  .criteria-list h3 { margin-bottom: 5px; font-size: 16px; }
+  .criteria-list p { margin: 0; font-size: 12px; }
+  .role-section { display: grid; grid-template-columns: .85fr 1.15fr; gap: 76px; align-items: start; }
+  .signals-box { margin-top: 28px; padding: 24px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .signals-box h4 { margin: 0 0 16px; font-size: 11px; color: #a72b09; letter-spacing: .08em; }
+  .signal-items { display: grid; gap: 12px; }
+  .signal-item { font-size: 12px; }
+  .signal-item strong { display: block; color: #111; margin-bottom: 2px; }
+  .signal-item span { color: #666; }
+  .role-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .role-grid article { padding: 24px; border: 1px solid #dfe2df; border-radius: 13px; }
+  .role-grid span { color: #a72b09; font-size: 10px; font-weight: 750; }
+  .role-grid h3 { margin-top: 26px; font-size: 18px; }
+  .role-grid p { margin: 0; font-size: 12px; }
+  .project-showcase { padding: 60px; border: 1px solid #dfe2df; border-radius: 20px; background: #f8f9f8; margin: 40px 0; }
+  .showcase-header { max-width: 760px; margin-bottom: 36px; }
+  .showcase-scenario { font-size: 16px; color: #444; }
+  .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .showcase-criteria, .showcase-deliverables { padding: 28px; border: 1px solid #e1e1e1; border-radius: 14px; background: #fff; }
+  .showcase-criteria h4, .showcase-deliverables h4 { margin: 0 0 16px; font-size: 15px; color: #111; }
+  .showcase-criteria ul, .showcase-deliverables ul { padding-left: 18px; margin: 0; color: #444; font-size: 13px; line-height: 1.8; }
+  .offerings-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .offering-card { display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border: 1px solid #dfe2df; border-radius: 16px; background: #f8f9f8; }
+  .offering-card.featured { border-color: #ffd0c0; background: #fff8f5; box-shadow: 0 12px 30px #ff4d1c12; }
+  .offering-tag { display: inline-block; margin-bottom: 14px; padding: 4px 10px; border-radius: 6px; background: #eee; color: #333; font-size: 10px; font-weight: 750; letter-spacing: .08em; }
+  .offering-tag.featured-tag { background: #ffe0d6; color: #a72b09; }
+  .offering-card h3 { margin: 0 0 10px; font-size: 20px; }
+  .offering-card p { font-size: 13px; color: #555; margin-bottom: 16px; }
+  .offering-card ul { padding-left: 18px; margin: 0 0 24px; color: #444; font-size: 12px; line-height: 1.8; flex-grow: 1; }
+  .compliance-panel { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; padding: 60px; border: 1px solid #dfe2df; border-radius: 20px; background: #f8f9f8; margin: 40px 0; }
+  .compliance-panel p { font-size: 14px; color: #555; }
+  .compliance-rules { display: grid; gap: 16px; }
+  .rule-row { display: grid; grid-template-columns: 24px 1fr; gap: 14px; padding: 18px; border: 1px solid #e1e1e1; border-radius: 12px; background: #fff; align-items: start; }
+  .rule-row p { margin: 0; font-size: 13px; color: #333; }
+  .use-case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .use-case-grid article { padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .use-case-grid article > span { color: #a72b09; font-size: 22px; }
+  .use-case-grid h3 { margin-top: 34px; font-size: 19px; }
+  .use-case-grid p { margin: 0; font-size: 13px; }
+  .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; border-top: 1px solid #e5e5e5; }
+  .faq-layout :global(.faq details) { padding: 25px 0; }
+  .related-section { border-top: 1px solid #e5e5e5; }
+  .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .related-grid a { display: block; padding: 26px; border: 1px solid #dfe2df; border-radius: 14px; text-decoration: none; transition: transform .2s,box-shadow .2s; }
+  .related-grid a:hover { transform: translateY(-2px); box-shadow: 0 14px 30px #1111; }
+  .related-grid span { color: #a72b09; font-size: 9px; font-weight: 750; text-transform: uppercase; }
+  .related-grid h3 { margin-top: 29px; font-size: 19px; }
+  .related-grid p { font-size: 12px; }
+  .related-grid b { font-size: 11px; }
+  .industry-final { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; margin-bottom: 90px; padding: 54px; border: 1px solid #e0e2e0; border-radius: 20px; background: #f8f9f8; background-image: radial-gradient(circle at 88% 50%,#ff4d1c20,transparent 24%); }
+  .industry-final h2 { font-size: clamp(34px,4vw,50px); }
+  .industry-final .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+  @media (max-width:900px) {
+    .industry-hero, .criteria-panel, .role-section, .compliance-panel, .faq-layout, .showcase-grid { grid-template-columns: 1fr; gap: 44px; }
+    .market-map { max-width: 620px; transform: none; }
+    .challenge-grid, .use-case-grid, .related-grid, .offerings-grid { grid-template-columns: repeat(2,1fr); }
+    .industry-final { grid-template-columns: 1fr; }
+    .industry-final .actions { justify-content: flex-start; }
+  }
+  @media (max-width:680px) {
+    .industry-hero { padding: 44px 0 64px; }
+    .industry-hero h1 { font-size: 38px; }
+    .industry-lead { font-size: 15px; }
+    .market-map { padding: 22px; }
+    .industry-section { padding: 60px 0; }
+    .challenge-grid, .role-grid, .use-case-grid, .related-grid, .offerings-grid { grid-template-columns: 1fr; }
+    .criteria-panel, .compliance-panel, .project-showcase { padding: 32px 20px; border-radius: 16px; }
+    .industry-final { margin-bottom: 60px; padding: 38px 22px; }
+    .industry-final .actions { align-items: stretch; flex-direction: column; }
+  }
 </style>

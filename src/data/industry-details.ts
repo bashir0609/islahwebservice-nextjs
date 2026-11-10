@@ -1,97 +1,549 @@
+export interface IndustryOffering {
+  title: string;
+  summary: string;
+  includes: string[];
+}
+
 export interface IndustryDetail {
-  heroText: string; visualLabel: string; challengeTitle: string;
+  heroText: string;
+  visualLabel: string;
+  challengeTitle: string;
   challenges: { title: string; text: string }[];
-  criteriaIntro: string; criteria: { title: string; text: string }[];
-  rolesIntro: string; roles: { title: string; context: string }[];
-  researchOpportunity: string; researchUseCases: string[];
-  enrichmentOpportunity: string; enrichmentUseCases: string[];
-  managedTitle: string; managedText: string;
+  criteriaIntro: string;
+  criteria: { title: string; text: string }[];
+  exclusions: string[];
+  rolesIntro: string;
+  roles: { title: string; context: string }[];
+  buyingSignals: { signal: string; interpretation: string }[];
+  exampleProject: {
+    title: string;
+    scenario: string;
+    criteria: string[];
+    deliverables: string[];
+  };
+  compliance: {
+    framework: string;
+    rules: string[];
+  };
+  setupOffering: IndustryOffering;
+  managementOffering: IndustryOffering;
+  researchOffering: IndustryOffering;
   useCases: { title: string; text: string }[];
   faqs: { question: string; answer: string }[];
   relatedServices: { title: string; href: string; status: string; text: string }[];
-  ctaTitle: string; ctaText: string;
+  ctaTitle: string;
+  ctaText: string;
 }
 
 const relatedServices = [
-  { title: 'B2B Prospect Research', href: '/b2b-prospect-research', status: 'Standalone service', text: 'Discover new companies and relevant business roles against an agreed brief.' },
-  { title: 'Contact Enrichment', href: '/contact-enrichment', status: 'Standalone service', text: 'Improve account and contact records you already hold.' },
-  { title: 'Cold Email Marketing', href: '/cold-email-marketing', status: 'Consultation service', text: 'Discuss a managed scope connecting audience, messaging and handoff, subject to confirmed availability.' },
+  { title: 'One-Time Outbound Setup', href: '/one-time-setup', status: 'System Build', text: 'Build a dedicated outbound system and hand it over to your team.' },
+  { title: 'Ongoing Campaign Management', href: '/ongoing-management', status: 'Managed Service', text: 'Recurring research, execution, reply monitoring, and weekly reporting.' },
+  { title: 'B2B Prospect Research', href: '/b2b-prospect-research', status: 'Standalone Data', text: 'Discover new companies and verified business roles against an agreed brief.' },
 ];
 
 export const industryDetails: Record<string, IndustryDetail> = {
   saas: {
-    heroText: 'Build a research brief around product fit, market, company profile and the functions involved in evaluation—without treating technology labels as proof of demand.', visualLabel: 'SaaS ICP',
-    challengeTitle: 'Find product-relevant accounts inside a broad technology market.',
-    challenges: [{title:'Category overlap',text:'Software categories often contain different buyers, operating models and implementation requirements.'},{title:'Complex buying groups',text:'Commercial, operational, technical and security functions may all matter at different stages.'},{title:'Unreliable intent assumptions',text:'Funding, hiring or technology use can inform research criteria but does not prove purchase intent.'}],
-    criteriaIntro: 'Useful SaaS account research connects the product use case to company characteristics that can be observed and reviewed.',
-    criteria: [{title:'Business and revenue model',text:'B2B or B2C focus, product category, customer type and operating model.'},{title:'Market and company profile',text:'Geography, employee range, maturity and eligible verticals or exclusions.'},{title:'Product-relevant context',text:'Public technology, team or operational indicators only when they belong in the agreed research brief.'}],
-    rolesIntro: 'Role research should reflect the problem the software addresses and the company’s size—not a universal list of executive titles.',
-    roles: [{title:'Revenue leadership',context:'For products affecting acquisition, pipeline, sales operations or commercial planning.'},{title:'Operations and finance',context:'For workflows involving efficiency, reporting, procurement or financial control.'},{title:'Technical stakeholders',context:'For implementation, integration, data, infrastructure or security considerations.'},{title:'Functional users',context:'For the teams expected to use, administer or evaluate the product in practice.'}],
-    researchOpportunity:'Discover new accounts that match a defined SaaS use case and research the functions relevant to evaluation.', researchUseCases:['Vertical account-list development','New geography research','Multi-role account mapping'],
-    enrichmentOpportunity:'Improve an existing SaaS CRM when company classifications, roles or business-contact fields are missing or outdated.', enrichmentUseCases:['Complete company and role fields','Standardise segment labels','Review duplicates and outdated employment data'],
-    managedTitle:'Explore controlled outreach to a defined SaaS segment.', managedText:'A managed scope can connect a defined account brief with product-specific messaging, suppression rules and reply ownership. Current availability is confirmed through consultation before campaign work.',
-    useCases:[{title:'Vertical expansion',text:'Research eligible companies in one sector while preserving product and company-fit exclusions.'},{title:'New-market preparation',text:'Map accounts and relevant functions before a UK, US or European market test.'},{title:'Account research for complex sales',text:'Identify multiple relevant functions without claiming that a title alone has authority.'}],
-    faqs:[{question:'Can you identify companies actively looking for our software?',answer:'Not from firmographic research alone. Observable signals can be included, but they do not prove active demand or purchase intent.'},{question:'Can you research multiple roles per account?',answer:'Yes, when the brief defines the functions involved and the required fields. Availability varies by company.'},{question:'What if our target market is still broad?',answer:'Begin with a narrow sample covering one product use case, geography and company profile before increasing volume.'}],
-    relatedServices, ctaTitle:'Turn your SaaS market definition into a reviewable sample.', ctaText:'Share the product use case, eligible company profile, markets and relevant functions. We will use them to shape the research brief.'
+    heroText: 'Build a research brief around software category, company maturity, tech stack, and evaluation roles—without treating generic technology tags as proof of buying intent.',
+    visualLabel: 'SaaS ICP',
+    challengeTitle: 'Find product-relevant accounts inside a crowded software market.',
+    challenges: [
+      { title: 'Broad category overlap', text: 'Categories like "marketing tech" or "analytics" contain widely divergent buyers, price tolerances, and implementation requirements.' },
+      { title: 'Multi-stakeholder buying groups', text: 'SaaS evaluation typically involves revenue, operational, security, and financial decision-makers at different stages.' },
+      { title: 'Unreliable intent assumptions', text: 'Recent funding or advertised job openings show company activity, but do not prove active demand or readiness to switch vendors.' },
+    ],
+    criteriaIntro: 'Effective SaaS prospecting connects your product use case to observable firmographic and technographic characteristics.',
+    criteria: [
+      { title: 'Product Category & Business Model', text: 'B2B vs B2C focus, ACV tiers, platform integrations, and primary customer segments.' },
+      { title: 'Company Scale & Stage', text: 'Headcount bands, funding stage (Seed to Series C+), operating geography, and sales team size.' },
+      { title: 'Observable Technographic Context', text: 'Publicly observable technology stack, CRM platforms, and infrastructure integrations relevant to your offer.' },
+    ],
+    exclusions: [
+      'Direct competitors and vendor partners',
+      'Early pre-product or pre-revenue startups without sales infrastructure',
+      'Companies outside agreed language or geographical support boundaries',
+      'Non-B2B organisations or consumer software providers',
+    ],
+    rolesIntro: 'Identify functional decision-makers and influencers tied to your specific value driver rather than generic C-suite titles.',
+    roles: [
+      { title: 'VP Sales / Chief Revenue Officer', context: 'For software products impacting pipeline generation, sales acceleration, or revenue intelligence.' },
+      { title: 'Head of Operations / RevOps', context: 'For tools addressing workflow automation, CRM integration, data hygiene, or internal efficiency.' },
+      { title: 'CTO / VP Engineering', context: 'For developer tooling, infrastructure software, API integrations, and security solutions.' },
+      { title: 'Product & Functional Leads', context: 'For specialized departmental software where evaluation begins with the day-to-day practitioner.' },
+    ],
+    buyingSignals: [
+      { signal: 'Recent funding rounds (Seed/Series A-C)', interpretation: 'Indicates budget expansion and commercial scaling, but requires discovery on specific priorities.' },
+      { signal: 'Sales or RevOps team hiring', interpretation: 'Signals outbound investment and expanding go-to-market infrastructure.' },
+      { signal: 'New executive leadership appointments', interpretation: 'New leaders often review legacy tooling within their first 90–180 days.' },
+      { signal: 'Technology migration announcements', interpretation: 'Public adoption of related platforms creates integration opportunities.' },
+    ],
+    exampleProject: {
+      title: 'European B2B Analytics Platform',
+      scenario: 'Targeting mid-market B2B software companies (50–250 employees) in the UK and DACH regions using HubSpot or Salesforce.',
+      criteria: [
+        'Geography: UK, Germany, Austria, Switzerland',
+        'Company Size: 50–250 employees',
+        'Observed Tech Stack: HubSpot or Salesforce CRM identified via public signatures',
+        'Target Roles: VP Sales, Head of RevOps, Commercial Director',
+      ],
+      deliverables: [
+        '350 criteria-matched SaaS accounts with verified firmographics',
+        '720 verified decision-maker contacts with direct business emails and LinkedIn URLs',
+        'CRM-ready CSV export with source annotations and gap notes',
+      ],
+    },
+    compliance: {
+      framework: 'PECR, UK GDPR & EU ePrivacy Guidelines',
+      rules: [
+        'B2B outreach to corporate subscribers permitted with clear commercial context and legitimate interest documentation.',
+        'Immediate, functional unsubscribe / opt-out mechanisms included in every communication.',
+        'Strict suppression management against existing customer and churned account databases.',
+      ],
+    },
+    setupOffering: {
+      title: 'One-Time SaaS Outbound Engine',
+      summary: 'Build your entire SaaS outbound infrastructure and hand it over to your internal SDR or sales team.',
+      includes: [
+        'SaaS ICP definition and account scoring matrix',
+        'Secondary domain configuration with SPF, DKIM, and DMARC',
+        'Multi-touch sequence writing (value-led problem hooks + follow-ups)',
+        'Full setup report, deliverability checklist, and team handover session',
+      ],
+    },
+    managementOffering: {
+      title: 'Ongoing SaaS Campaign Operations',
+      summary: 'Recurring monthly research, campaign execution, deliverability monitoring, and reply routing.',
+      includes: [
+        'Monthly batches of fresh, criteria-matched SaaS accounts',
+        'Daily send monitoring within safe deliverability thresholds',
+        'Auto-reply filtering and positive response escalation with context',
+        'Weekly pipeline reporting and iterative sequence optimization',
+      ],
+    },
+    researchOffering: {
+      title: 'Standalone SaaS Prospect Data',
+      summary: 'Custom-built SaaS account lists and decision-maker contact data for your existing team.',
+      includes: [
+        'Target accounts filtered by employee size, funding, and tech stack',
+        'Verified executive and functional decision-maker emails and LinkedIn URLs',
+        'Clean, CRM-compatible CSV formatting with source notes',
+      ],
+    },
+    useCases: [
+      { title: 'Vertical SaaS expansion', text: 'Map eligible accounts in specific vertical subsectors while preserving strict company-fit exclusions.' },
+      { title: 'New geography testing', text: 'Test enterprise and mid-market accounts in the US or UK before establishing local sales offices.' },
+      { title: 'Competitive replacement research', text: 'Identify accounts using legacy platforms where contract renewal cycles justify outbound outreach.' },
+    ],
+    faqs: [
+      { question: 'Can you guarantee that targeted SaaS companies want our tool?', answer: 'No. Observable signals like headcount, funding, and tech stack confirm demographic fit, not active purchase intention. Discovery is required during sales conversations.' },
+      { question: 'Can we research multiple decision-makers per SaaS account?', answer: 'Yes. For mid-market and enterprise deals, multi-threading (targeting both commercial and technical leaders) is explicitly supported.' },
+      { question: 'What if our target market is very narrow?', answer: 'We begin with an exploratory sample to verify account density and contact availability before committing to a larger project scope.' },
+    ],
+    relatedServices,
+    ctaTitle: 'Turn your SaaS market definition into a verified pipeline brief.',
+    ctaText: 'Share your product use case, target geography, size bands, and decision-maker roles to review a representative sample.',
   },
+
   msp: {
-    heroText: 'Research organisations inside your serviceable geography and operating scope, then identify relevant IT or business leadership without assuming dissatisfaction with an incumbent provider.', visualLabel: 'MSP MARKET',
-    challengeTitle: 'Define service fit before researching IT contacts.',
-    challenges:[{title:'Geographic constraints',text:'Coverage, office locations and support boundaries can matter as much as company size.'},{title:'Different IT operating models',text:'Internal teams, co-managed environments and outsourced support needs should not be treated as interchangeable.'},{title:'Specialist service fit',text:'Cloud, cybersecurity, compliance and general support offers require different account criteria.'}],
-    criteriaIntro:'A useful MSP brief combines service geography, supported organisation profile and observable operating context.',
-    criteria:[{title:'Service area and footprint',text:'Eligible countries, regions, office locations and any on-site support limits.'},{title:'Company profile',text:'Employee range, sector, operating complexity and exclusions such as unsupported business types.'},{title:'Relevant IT context',text:'Public environment or compliance indicators only where they can be sourced responsibly.'}],
-    rolesIntro:'The relevant contact depends on organisation size, internal IT structure and the MSP service being offered.',
-    roles:[{title:'IT directors and managers',context:'For organisations with internal technology leadership or co-managed requirements.'},{title:'Security or infrastructure leaders',context:'Where the offer relates specifically to cyber risk, cloud or infrastructure.'},{title:'Operations leadership',context:'Where technology support is owned through broader business operations.'},{title:'Owners or managing directors',context:'Potentially relevant in smaller eligible firms without a dedicated IT leader.'}],
-    researchOpportunity:'Build a regional or vertical account list around support coverage and service specialism.', researchUseCases:['Territory-based account research','Cybersecurity or cloud segment mapping','Relevant IT-function research'],
-    enrichmentOpportunity:'Improve an existing MSP business-development database with agreed company, office, role and business-contact fields.', enrichmentUseCases:['Refresh role and employer data','Complete territory fields','Standardise sector and company-size values'],
-    managedTitle:'Discuss outreach for one serviceable MSP segment.', managedText:'A managed campaign scope can focus on a defined territory and service line, with client-reviewed messaging and clear reply ownership. It cannot assume an account wants to switch providers.',
-    useCases:[{title:'Regional account development',text:'Research eligible organisations within a realistic sales and delivery territory.'},{title:'Vertical MSP prospecting',text:'Create a focused list for sectors that match documented technical and operational capabilities.'},{title:'Specialist service research',text:'Map accounts for security, cloud or support services using criteria appropriate to that offer.'}],
-    faqs:[{question:'Can research show whether a company wants a new MSP?',answer:'No. Public company and technology information does not prove dissatisfaction or readiness to switch.'},{question:'Can the brief exclude unsupported sectors?',answer:'Yes. Geography, sectors, company types and size bands can be included as explicit exclusions.'},{question:'Which IT title should we target?',answer:'That depends on company size, internal structure and the service. Research should start with relevant functions rather than one universal title.'}],
-    relatedServices, ctaTitle:'Build an MSP prospect brief around real service boundaries.', ctaText:'Share your geography, supported company profile, specialist services and relevant functions to request a focused sample.'
+    heroText: 'Research organisations inside your serviceable territory and IT complexity profile, then identify technology and business leadership without assuming dissatisfaction with their existing provider.',
+    visualLabel: 'MSP MARKET',
+    challengeTitle: 'Define regional service fit before researching IT leadership.',
+    challenges: [
+      { title: 'Territorial and on-site support limits', text: 'MSPs typically require client locations within 30–90 minutes of support hubs for hybrid or on-site coverage.' },
+      { title: 'Varied IT co-management models', text: 'Organisations with internal IT directors need co-managed support, while smaller firms without IT staff need fully managed services.' },
+      { title: 'Incumbent contract invisibility', text: 'Public data cannot reveal existing MSP contract expiration dates; outreach must focus on service capabilities rather than contract poaching.' },
+    ],
+    criteriaIntro: 'A high-converting MSP brief aligns geographic service area, headcount thresholds, and observable IT infrastructure needs.',
+    criteria: [
+      { title: 'Service Territory & Multi-Site Profile', text: 'County/state boundaries, office count, primary headquarters, and remote workforce distribution.' },
+      { title: 'Organisation Scale & Industry Risk', text: '20–250 employees (illustrative range), professional sectors with compliance burdens (finance, legal, manufacturing).' },
+      { title: 'Observable IT Infrastructure Context', text: 'Microsoft 365 vs Google Workspace usage, public cybersecurity postures, and cloud infrastructure signals.' },
+    ],
+    exclusions: [
+      'Companies outside your documented on-site support territory',
+      'Micro-businesses (<10 users) lacking commercial IT support budgets',
+      'Competitor MSPs, telecoms resellers, and IT consultancies',
+      'Existing clients and previously churned accounts',
+    ],
+    rolesIntro: 'Targeting depends on company size: operational leadership at smaller firms, dedicated IT directors at mid-sized firms.',
+    roles: [
+      { title: 'Managing Director / Business Owner', context: 'At organisations with 20–75 employees where technology decisions and budget approvals remain with executive ownership.' },
+      { title: 'IT Director / Head of Technology', context: 'At organisations with 75–250+ employees seeking co-managed IT, specialized cybersecurity, or cloud migration assistance.' },
+      { title: 'Finance Director / CFO', context: 'Where IT risk, insurance compliance, capital expenditure, and predictable monthly recurring costs drive evaluation.' },
+      { title: 'Operations Director / COO', context: 'Where system uptime, remote work reliability, and operational continuity are primary management concerns.' },
+    ],
+    buyingSignals: [
+      { signal: 'Office relocation or branch expansion', interpretation: 'Creates immediate network infrastructure, structured cabling, and cloud setup requirements.' },
+      { signal: 'Cybersecurity or compliance regulations', interpretation: 'Industry mandates (Cyber Essentials, ISO 27001, HIPAA) prompt IT posture reviews.' },
+      { signal: 'Rapid headcount expansion', interpretation: 'Internal IT staff become overwhelmed, increasing co-managed support viability.' },
+      { signal: 'Legacy server decommissioning', interpretation: 'Opportunities for Microsoft Azure or hybrid cloud migration projects.' },
+    ],
+    exampleProject: {
+      title: 'Regional UK Managed Service Provider',
+      scenario: 'A London-based MSP targeting professional service firms (legal, accounting, architectural) with 25–150 employees within the M25 ring.',
+      criteria: [
+        'Geography: Greater London (within 45-minute transit radius)',
+        'Company Size: 25–150 employees (illustrative client-defined range)',
+        'Sectors: Legal, Accounting, Architecture, Wealth Management',
+        'Exclusions: Educational institutions, public sector, current client roster',
+      ],
+      deliverables: [
+        '400 verified regional commercial organisations matching sector and size criteria',
+        '650 decision-maker contacts (Managing Partners, Practice Managers, Operations Directors)',
+        'Documented source records with verified corporate emails and phone numbers',
+      ],
+    },
+    compliance: {
+      framework: 'PECR (UK) & CAN-SPAM (US) Standards',
+      rules: [
+        'Clear commercial identification showing the MSP entity name and physical address.',
+        'Relevance requirement: messages address genuine business IT and risk considerations.',
+        'Immediate removal and permanent suppression upon receiving an opt-out request.',
+      ],
+    },
+    setupOffering: {
+      title: 'One-Time MSP Outbound Engine',
+      summary: 'Configure a dedicated outbound business development system for your internal sales rep or account executive.',
+      includes: [
+        'Regional territory mapping and account qualification checklist',
+        'Dedicated sending domains and warmed mailboxes configured for IT decision-makers',
+        'Peer-to-peer sequence writing addressing cybersecurity, cloud, and operational uptime',
+        'Complete handover guide with reply-routing templates and CRM import workflows',
+      ],
+    },
+    managementOffering: {
+      title: 'Ongoing MSP Campaign Management',
+      summary: 'Continuous monthly account research and managed email campaigns across your target territory.',
+      includes: [
+        'Monthly additions of verified regional business accounts',
+        'Gradual outreach execution respecting sender reputation limits',
+        'Lead routing for positive replies directly to your commercial director',
+        'Weekly reporting detailing delivery metrics and verified conversation opportunities',
+      ],
+    },
+    researchOffering: {
+      title: 'Standalone MSP Prospect Lists',
+      summary: 'Verified contact lists of business owners and IT leaders within your exact geographic service footprint.',
+      includes: [
+        'Territory-filtered account datasets with employee count verification',
+        'Direct business email and phone data for executive and IT decision-makers',
+        'Deduplicated and structured for immediate import into your CRM (HubSpot, ConnectWise, Autotask)',
+      ],
+    },
+    useCases: [
+      { title: 'Regional business development', text: 'Systematically map every eligible business within a defined radius of your operations center.' },
+      { title: 'Cybersecurity service launches', text: 'Target companies in regulated sectors with messaging focused on vulnerability assessments and compliance.' },
+      { title: 'Cloud migration campaigns', text: 'Engage companies running legacy infrastructure to introduce managed cloud services.' },
+    ],
+    faqs: [
+      { question: 'Can you tell when an MSP contract expires?', answer: 'No. Contract dates are private commercial agreements. We target observable business characteristics and growth triggers rather than making speculative contract timing assumptions.' },
+      { question: 'Is the 20–250 employee range required?', answer: 'No. The 20–250 range is an illustrative client-defined example. Your brief defines your exact preferred headcount, revenue, and infrastructure thresholds.' },
+      { question: 'Can we exclude businesses already using our competitors?', answer: 'Yes. If competitor client lists or specific accounts are known, they are incorporated directly into the project suppression list.' },
+    ],
+    relatedServices,
+    ctaTitle: 'Build an MSP prospect brief around your exact service territory.',
+    ctaText: 'Share your coverage area, target sectors, employee ranges, and specialist services to request a verified sample.',
   },
+
   recruitment: {
-    heroText: 'Organise employer research around your desk, geography and hiring specialism while keeping business development separate from candidate sourcing and sensitive applicant data.', visualLabel: 'EMPLOYER ICP',
-    challengeTitle: 'Use hiring context carefully when researching employers.',
-    challenges:[{title:'Signal versus demand',text:'A vacancy can support a research brief but does not prove willingness to engage a recruitment agency.'},{title:'Specialist desk boundaries',text:'Role families, seniority, sector and location must align with the recruiters who will use the data.'},{title:'Sensitive-data separation',text:'Employer prospect research should remain distinct from candidate records and applicant information.'}],
-    criteriaIntro:'Employer account research is strongest when it reflects the recruitment specialism and the commercial territory of the desk.',
-    criteria:[{title:'Employer profile',text:'Sector, location, company scale, operating model and explicit exclusions.'},{title:'Hiring context',text:'Public role families or hiring activity only where included in the agreed brief.'},{title:'Desk relevance',text:'Functions, seniority and geographies that align with the agency’s actual recruitment capability.'}],
-    rolesIntro:'Business-development roles vary by employer size and the type of recruitment support being discussed.',
-    roles:[{title:'Talent acquisition leadership',context:'For employers with an established internal hiring function.'},{title:'HR and people leadership',context:'Where recruitment ownership sits within a broader people remit.'},{title:'Department heads',context:'For specialist hiring needs owned by the operational function.'},{title:'Owners or directors',context:'Potentially relevant at eligible smaller employers without dedicated talent leadership.'}],
-    researchOpportunity:'Discover employers aligned with a specialist desk and research relevant hiring or department functions.', researchUseCases:['Employer account mapping','Specialist desk development','Geographic market research'],
-    enrichmentOpportunity:'Refresh an agency business-development CRM without mixing the workflow with candidate or applicant data.', enrichmentUseCases:['Update employer and role fields','Standardise sector and location data','Identify duplicate company records'],
-    managedTitle:'Explore employer outreach around a defined desk focus.', managedText:'A managed scope can connect an eligible employer segment with reviewed messaging and reply routing. Hiring activity would remain a research signal, not a claim of agency demand.',
-    useCases:[{title:'Specialist desk research',text:'Build employer lists around a defined discipline, seniority range and market.'},{title:'Employer mapping',text:'Organise target companies and relevant hiring functions within an agreed geography.'},{title:'CRM data improvement',text:'Improve existing business-development records while preserving candidate-data separation.'}],
-    faqs:[{question:'Does an open vacancy mean an employer needs an agency?',answer:'No. Hiring activity is an observable signal, not evidence of agency demand, budget or intent.'},{question:'Do you research candidates?',answer:'This service page concerns employer-side B2B prospect research. Candidate sourcing and sensitive applicant data are outside this scope.'},{question:'Can we focus on one recruitment specialism?',answer:'Yes. Role families, sectors, geography and employer profile should be explicit parts of the brief.'}],
-    relatedServices, ctaTitle:'Define the employer market for your recruitment desk.', ctaText:'Share your specialism, employer profile, geography and relevant hiring functions to shape a focused research sample.'
+    heroText: 'Organise employer client research around your industry desk, geography, and hiring specialism—keeping business development strictly separate from candidate sourcing and sensitive applicant data.',
+    visualLabel: 'EMPLOYER ICP',
+    challengeTitle: 'Focus on employer client acquisition, not candidate sourcing.',
+    challenges: [
+      { title: 'Confusing candidates with clients', text: 'Recruitment outreach must target hiring managers and HR directors who buy recruitment services, never candidate profiles.' },
+      { title: 'Job post signal misinterpretation', text: 'An active job listing proves hiring activity, but does not prove willingness to engage external agency support.' },
+      { title: 'Desk specialism misalignment', text: 'Target companies must match the exact sector, seniority level, and discipline handled by the specific recruiter desk.' },
+    ],
+    criteriaIntro: 'Successful agency business development targets companies with repeated hiring needs and structural talent competition.',
+    criteria: [
+      { title: 'Employer Sector & Desk Alignment', text: 'Engineering, technology, life sciences, healthcare, finance, or executive placement sectors.' },
+      { title: 'Hiring Volume & Expansion Activity', text: 'Observable job openings, department expansion, new facility launches, and rapid headcount increases.' },
+      { title: 'Company Scale & Organizational Structure', text: 'Mid-market to enterprise employers with sufficient hiring budgets and structured talent acquisition functions.' },
+    ],
+    exclusions: [
+      'Candidate profiles, CVs, and individual applicant personal records',
+      'Competing recruitment agencies, staffing firms, and RPO providers',
+      'Small firms without recruitment budgets or formal agency engagement policies',
+      'Active agency clients and accounts with existing PSL agreements',
+    ],
+    rolesIntro: 'Map decision-makers based on whether your agency sells to internal talent acquisition or directly to departmental hiring managers.',
+    roles: [
+      { title: 'Head of Talent Acquisition / Recruitment', context: 'At larger organisations with structured hiring functions, vendor management systems, and PSL review windows.' },
+      { title: 'HR Director / Chief People Officer', context: 'At mid-sized employers where recruitment strategy, fee agreements, and agency relationships sit with HR leadership.' },
+      { title: 'Engineering / Departmental Hiring Managers', context: 'For niche, technical, or executive desks where business leaders initiate agency engagements for hard-to-fill roles.' },
+      { title: 'Managing Director / Business Founder', context: 'At boutique, fast-growing companies without dedicated internal recruiters.' },
+    ],
+    buyingSignals: [
+      { signal: 'Repeated specialist vacancies open for >60 days', interpretation: 'Indicates internal talent teams are struggling to fill the role organically.' },
+      { signal: 'New regional office or technical facility', interpretation: 'Signals bulk hiring requirements across multiple operational functions.' },
+      { signal: 'Major client wins or project expansion announcements', interpretation: 'Creates urgent delivery capacity requirements for contract or permanent talent.' },
+      { signal: 'Appointment of a new Head of People or Talent', interpretation: 'New leadership frequently reviews supplier performance and existing agency rosters.' },
+    ],
+    exampleProject: {
+      title: 'UK Engineering & Technical Staffing Agency',
+      scenario: 'Targeting manufacturing, aerospace, and robotics engineering employers in the Midlands and North of England with 50–500 employees.',
+      criteria: [
+        'Geography: UK Midlands, Yorkshire, North West',
+        'Industry: Advanced Manufacturing, Robotics, Aerospace Components',
+        'Company Size: 50–500 employees',
+        'Hiring Indicators: Public vacancies for Design Engineers, CNC Programmers, or Quality Managers',
+      ],
+      deliverables: [
+        '300 engineering employer accounts with active or recurring technical hiring requirements',
+        '550 verified hiring decision-makers (Engineering Directors, Operations Managers, HR Heads)',
+        'Structured spreadsheet with verified corporate emails, direct phone lines, and vacancy context',
+      ],
+    },
+    compliance: {
+      framework: 'UK GDPR, Employment Agency Regulations & Data Protection',
+      rules: [
+        'Strict separation: employer business development data is strictly isolated from candidate database repositories.',
+        'No processing of special category personal data or individual CV credentials.',
+        'Transparent corporate B2B identification with standard opt-out provisions on all communications.',
+      ],
+    },
+    setupOffering: {
+      title: 'One-Time Recruiter Outbound Engine',
+      summary: 'Build an automated client-acquisition outbound system tailored to your specific recruitment desk.',
+      includes: [
+        'Desk-specific ICP definition covering employer size, sectors, and hiring signals',
+        'Dedicated sending domains and inboxes warmed to protect primary email reputation',
+        'Value-oriented email sequences addressing talent shortages, time-to-hire, and niche skill access',
+        'Complete setup documentation and recruiter orientation session',
+      ],
+    },
+    managementOffering: {
+      title: 'Ongoing Recruiter Client Acquisition',
+      summary: 'Monthly research of hiring employers and managed outreach to generate recruitment brief opportunities.',
+      includes: [
+        'Weekly tracking of companies advertising relevant vacancies within your desk specialism',
+        'Outreach to hiring managers and talent leaders with tailored vacancy context',
+        'Immediate forwarding of positive client responses requesting fee terms or discovery calls',
+        'Monthly review of sector response rates and targeting refinements',
+      ],
+    },
+    researchOffering: {
+      title: 'Standalone Employer Prospect Data',
+      summary: 'Verified contact lists of hiring decision-makers at employers actively recruiting in your specialist sector.',
+      includes: [
+        'Employer accounts filtered by active vacancy signals and company size',
+        'Verified direct contact details for hiring managers and HR directors',
+        'CRM-ready formatting compatible with Bullhorn, Vincere, or Salesforce',
+      ],
+    },
+    useCases: [
+      { title: 'Specialist desk launching', text: 'Build a targeted database of 500 employer prospects when launching a new geographical or functional recruitment desk.' },
+      { title: 'Hard-to-fill role campaigns', text: 'Identify companies with long-standing vacancies in your niche and introduce pre-qualified candidate profiles.' },
+      { title: 'PSL tender prospecting', text: 'Map enterprise HR and talent leaders ahead of annual Preferred Supplier List renewal windows.' },
+    ],
+    faqs: [
+      { question: 'Do you source candidates or job applicants?', answer: 'No. This service is strictly B2B employer client acquisition for recruitment agencies looking for companies that buy recruitment services. We do not source candidates.' },
+      { question: 'Does an active vacancy guarantee the employer will use an agency?', answer: 'No. A vacancy indicates hiring need, but many companies attempt direct hiring first. Outreach introduces your agency capability when internal methods fall short.' },
+      { question: 'Can we run campaigns across multiple specialist desks?', answer: 'Yes. Campaigns and prospect lists can be segmented by discipline (e.g. Technology, Finance, Engineering) with distinct messaging for each.' },
+    ],
+    relatedServices,
+    ctaTitle: 'Map the hiring employers in your recruitment market.',
+    ctaText: 'Tell us your desk specialism, target sectors, geography, and ideal client size to request an employer prospect sample.',
   },
+
   'professional-services': {
-    heroText: 'Translate a specialist advisory offer into observable company criteria and role functions, rather than treating every owner or executive as the same prospect.', visualLabel: 'CLIENT ICP',
-    challengeTitle: 'Connect expertise to a specific business context.',
-    challenges:[{title:'Broad service language',text:'General descriptions such as consulting or advisory do not identify which organisations are suitable.'},{title:'Variable buying ownership',text:'The relevant function changes with the problem, company size and engagement type.'},{title:'Jurisdiction and fit',text:'Serviceability, regulation and operating market may determine whether an account belongs in the brief.'}],
-    criteriaIntro:'Professional-services research should connect the commercial problem to a serviceable organisation profile.',
-    criteria:[{title:'Organisation type',text:'Business model, ownership, sector and operating structure appropriate to the service.'},{title:'Scale and jurisdiction',text:'Company size, location, regulatory context and any delivery restrictions.'},{title:'Problem-relevant context',text:'Observable characteristics directly connected to the advisory engagement.'}],
-    rolesIntro:'Title selection follows the service and problem. Managing partners may matter for one offer while finance, operations or people leaders matter for another.',
-    roles:[{title:'Owners and managing partners',context:'For strategic or firm-wide services in eligible owner-led organisations.'},{title:'Finance leadership',context:'For accounting, financial control, transaction or risk-related services.'},{title:'Operations leadership',context:'For process, systems, efficiency or delivery-focused engagements.'},{title:'People or functional leaders',context:'For specialist services owned by HR, legal, compliance or another business function.'}],
-    researchOpportunity:'Discover organisations matching a defined advisory use case and map the functions connected to the problem.', researchUseCases:['Focused advisory prospect lists','Referral-partner research','Role mapping for specialist services'],
-    enrichmentOpportunity:'Improve an established business-development database by researching missing company, role and contact fields.', enrichmentUseCases:['Refresh partner and leadership records','Complete jurisdiction and sector fields','Standardise client-development data'],
-    managedTitle:'Discuss outreach for a clearly defined advisory offer.', managedText:'A managed scope can connect a defined account brief with problem-specific messaging and a documented handoff. Current availability and operational requirements are confirmed through consultation.',
-    useCases:[{title:'Advisory prospect research',text:'Build a list around one defined service, client profile and commercial problem.'},{title:'Partnership mapping',text:'Research eligible referral or complementary-service organisations and relevant roles.'},{title:'Market-entry preparation',text:'Map serviceable companies and functions in an agreed jurisdiction.'}],
-    faqs:[{question:'Should we target business owners?',answer:'Only where ownership is relevant to the service and company profile. Many offers belong with a specific functional leader instead.'},{question:'Can research establish that a company needs our advice?',answer:'No. Observable fit does not establish need, budget or willingness to engage.'},{question:'Can jurisdiction be part of the criteria?',answer:'Yes. Geography, serviceability and relevant regulatory boundaries can be included in the brief.'}],
-    relatedServices, ctaTitle:'Turn your advisory offer into a focused account brief.', ctaText:'Describe the service, preferred client profile, jurisdictions and functions normally involved in the engagement.'
+    heroText: 'Translate specialist consulting, legal, financial, or agency expertise into observable business criteria and leadership roles—without treating every business owner as the same prospect.',
+    visualLabel: 'CLIENT ICP',
+    challengeTitle: 'Connect specialist advisory expertise to serviceable corporate needs.',
+    challenges: [
+      { title: 'Vague advisory language', text: 'Broad terms like "business advisory" or "growth consulting" fail to resonate; outreach must address specific commercial friction points.' },
+      { title: 'Fragmented buying authority', text: 'The purchasing executive varies dramatically depending on whether the service touches tax, technology, governance, or operations.' },
+      { title: 'Jurisdictional and regulatory fit', text: 'Advisory capabilities depend heavily on licensing, geographic jurisdiction, and compliance applicability.' },
+    ],
+    criteriaIntro: 'Professional services prospecting connects specific commercial problems to organisations with the scale and complexity to require external counsel.',
+    criteria: [
+      { title: 'Organisation Structure & Scale', text: 'Revenue thresholds, headcount tiers, multi-entity corporate structures, and ownership models (private equity, family-owned, corporate).' },
+      { title: 'Regulatory & Operating Environment', text: 'Subject to specific reporting standards, compliance frameworks, or cross-border trade regulations.' },
+      { title: 'Corporate Transition Triggers', text: 'Mergers, acquisitions, restructuring, executive succession, international expansion, or capital events.' },
+    ],
+    exclusions: [
+      'Micro-businesses without commercial advisory or legal budgets',
+      'Insolvent companies or organisations in administration (unless in turnaround scope)',
+      'Direct peer consulting practices and conflicting service providers',
+      'Existing clients, active retainers, and formal conflict-of-interest accounts',
+    ],
+    rolesIntro: 'Align targeting with the specific executive who owns the commercial problem your practice solves.',
+    roles: [
+      { title: 'Chief Financial Officer / Finance Director', context: 'For corporate finance, forensic accounting, tax restructuring, audit, and transaction advisory services.' },
+      { title: 'Managing Partner / Chief Executive Officer', context: 'For corporate strategy, executive governance, leadership development, and firm-wide restructuring.' },
+      { title: 'Chief Operating Officer / Operations Director', context: 'For operational excellence, supply chain optimization, business transformation, and process consulting.' },
+      { title: 'General Counsel / Head of Legal', context: 'For specialist commercial law, employment compliance, IP protection, and regulatory advisory engagements.' },
+    ],
+    buyingSignals: [
+      { signal: 'M&A transactions or joint venture announcements', interpretation: 'Triggers due diligence, post-merger integration, tax structuring, and contractual review needs.' },
+      { signal: 'Regulatory changes affecting the sector', interpretation: 'Creates urgent compliance, policy review, and strategic adaptation requirements.' },
+      { signal: 'International entity formation or expansion', interpretation: 'Requires cross-border tax, transfer pricing, and local employment law counsel.' },
+      { signal: 'C-suite or board-level succession announcements', interpretation: 'Prompts strategic reviews of corporate direction, governance, and advisor relationships.' },
+    ],
+    exampleProject: {
+      title: 'B2B Commercial Advisory Firm',
+      scenario: 'A specialist consultancy targeting mid-market UK manufacturing and logistics firms (£10M–£50M turnover) undergoing digital supply chain transformation.',
+      criteria: [
+        'Geography: United Kingdom nationwide',
+        'Sector: Logistics, Warehousing, Industrial Manufacturing',
+        'Scale: 75–350 employees / £10M–£50M annual turnover',
+        'Target Roles: Managing Director, Finance Director, Supply Chain Director',
+      ],
+      deliverables: [
+        '350 verified mid-market corporate accounts meeting turnover and industry criteria',
+        '580 senior executive contacts with verified corporate emails and direct phone numbers',
+        'Structured spreadsheet with verified corporate metadata, ownership structure, and recent company activity',
+      ],
+    },
+    compliance: {
+      framework: 'PECR, SRA / ICAEW Marketing Guidelines & UK GDPR',
+      rules: [
+        'Outreach strictly adheres to professional standards and ethical advertising guidelines.',
+        'Factual, non-misleading messaging focused on verifiable business advisory capabilities.',
+        'Complete opt-out mechanisms and data subject suppression honored instantly.',
+      ],
+    },
+    setupOffering: {
+      title: 'One-Time Practice Outbound Setup',
+      summary: 'Build a dignified, professional outbound business development system for your partners and practice heads.',
+      includes: [
+        'Practice-specific ICP definition and corporate trigger mapping',
+        'Executive secondary domains and authenticated mailboxes protecting practice reputation',
+        'Thought-leadership and insight-led email sequences written with professional tone',
+        'Complete operating manual for internal business development teams',
+      ],
+    },
+    managementOffering: {
+      title: 'Ongoing Practice BD Management',
+      summary: 'Monthly research and managed campaign execution to initiate conversations with prospective corporate clients.',
+      includes: [
+        'Continuous research of qualifying corporate accounts and leadership appointments',
+        'Managed campaign sending strictly controlled for executive sender reputation',
+        'Warm handover of interested executive replies directly to practice partners',
+        'Monthly strategic review of market reception and targeting criteria',
+      ],
+    },
+    researchOffering: {
+      title: 'Standalone Corporate Prospect Data',
+      summary: 'Verified executive contact lists for mid-market and enterprise organisations matching your practice focus.',
+      includes: [
+        'Turnover- and employee-verified corporate account lists',
+        'Verified direct contact details for C-suite and partner-level decision-makers',
+        'Formatted for seamless import into professional services CRMs (HubSpot, Salesforce)',
+      ],
+    },
+    useCases: [
+      { title: 'Niche practice area expansion', text: 'Engage target organisations when launching a specialized regulatory, tax, or transformation advisory line.' },
+      { title: 'Trigger-based corporate outreach', text: 'Reach leadership teams at companies that have recently announced acquisitions, funding, or executive changes.' },
+      { title: 'Referral and partnership mapping', text: 'Identify complementary advisory firms (e.g. accounting firms for a legal practice) to build reciprocal referral relationships.' },
+    ],
+    faqs: [
+      { question: 'Will cold outreach harm our professional firm reputation?', answer: 'Not when conducted with professional dignity. We write conservative, insight-led messages that respect executive tone and present relevant business ideas rather than aggressive sales pitches.' },
+      { question: 'Can you filter companies by turnover or revenue?', answer: 'Yes. Where reliable public financial records or company registries exist (e.g. UK Companies House), financial thresholds are incorporated directly into the research.' },
+      { question: 'Who handles the sales discussions?', answer: 'Your partners or senior advisors. We generate and qualify initial interest; complex advisory sales conversations remain firmly with your subject-matter experts.' },
+    ],
+    relatedServices,
+    ctaTitle: 'Define the corporate clients your advisory practice needs.',
+    ctaText: 'Share your practice area, client turnover thresholds, target sectors, and executive roles to request a tailored research sample.',
   },
+
   'real-estate': {
-    heroText: 'Research property-sector businesses by operating model, geography and commercial role while keeping private individuals and homeowner targeting outside the default scope.', visualLabel: 'PROPERTY B2B',
-    challengeTitle: 'Separate property businesses before researching contacts.',
-    challenges:[{title:'Mixed entity types',text:'Agencies, operators, owners, managers, developers and investors have different commercial needs.'},{title:'Business versus individual data',text:'Property sources can mix organisations with private people, requiring careful scope boundaries.'},{title:'Portfolio context',text:'Public portfolio information varies in completeness and does not prove investment or supplier intent.'}],
-    criteriaIntro:'Business-focused property research begins with the operator type, commercial geography and function relevant to the offer.',
-    criteria:[{title:'Property-business category',text:'Commercial operator, agency, manager, developer, investor or another agreed company type.'},{title:'Market and portfolio context',text:'Geography and publicly available portfolio characteristics relevant to the brief.'},{title:'Operating model and scale',text:'Company structure, business size and function appropriate to the service being sold.'}],
-    rolesIntro:'Relevant roles depend on whether the offer concerns acquisition, management, development, operations or portfolio services.',
-    roles:[{title:'Property and asset management',context:'For offers tied to portfolio operations, performance or service delivery.'},{title:'Acquisitions and development',context:'Where the service relates to sourcing, evaluating or delivering commercial projects.'},{title:'Operations leadership',context:'For company-wide suppliers, systems and operating services.'},{title:'Owners or directors',context:'Where appropriate for eligible property businesses—not private homeowner targeting.'}],
-    researchOpportunity:'Discover commercial property businesses and research roles relevant to a defined B2B offer.', researchUseCases:['Commercial operator research','Property-management account mapping','Business-role research by market'],
-    enrichmentOpportunity:'Improve a supplied portfolio of company records with missing business fields and relevant role information.', enrichmentUseCases:['Complete operator classifications','Refresh business role data','Standardise geography and company fields'],
-    managedTitle:'Explore B2B outreach to a defined property segment.', managedText:'A managed scope can use a reviewed business-only audience, appropriate messaging and explicit suppression rules. Private homeowner outreach is not assumed or enabled.',
-    useCases:[{title:'Operator research',text:'Distinguish eligible commercial operators from unrelated property entities.'},{title:'Management-company mapping',text:'Research property or asset management businesses in a defined geography.'},{title:'Portfolio data enrichment',text:'Improve supplied company records without inferring private-person targeting rights.'}],
-    faqs:[{question:'Do you research private homeowners?',answer:'Not under this default B2B scope. Any use involving private individuals requires separate legal, ethical and operational review.'},{question:'Can you identify property owners and operators?',answer:'Public business information may support company research, but availability and entity clarity vary by market.'},{question:'Does portfolio activity indicate buying intent?',answer:'No. Portfolio information is context, not proof of need, budget or intent.'}],
-    relatedServices, ctaTitle:'Define the property businesses relevant to your offer.', ctaText:'Share the operator categories, commercial markets, company criteria and business functions required for a focused sample.'
-  }
+    heroText: 'Research commercial real estate businesses, asset managers, and portfolio operators by property type and geography—keeping private individuals and homeowner marketing strictly outside the default scope.',
+    visualLabel: 'PROPERTY B2B',
+    challengeTitle: 'Target commercial property entities, not private homeowners.',
+    challenges: [
+      { title: 'Complex commercial entity structures', text: 'Property holdings often operate through SPVs, fund managers, asset operators, and development entities that require careful disambiguation.' },
+      { title: 'Consumer vs commercial boundary', text: 'B2B commercial real estate prospecting must be strictly isolated from consumer residential landlord or homeowner marketing.' },
+      { title: 'Portfolio data fragmentation', text: 'Property registry records rarely include direct commercial contact details; research requires manual cross-referencing of corporate filings.' },
+    ],
+    criteriaIntro: 'Commercial property prospecting focuses on operating entities, portfolio scale, asset classes, and regional investment focus.',
+    criteria: [
+      { title: 'Commercial Asset Class Focus', text: 'Industrial, logistics, office, retail, purpose-built student accommodation (PBSA), or hospitality real estate.' },
+      { title: 'Portfolio Scale & Operating Structure', text: 'Asset managers, REITs, private equity property funds, commercial landlords with >5 properties, or development firms.' },
+      { title: 'Geographic Investment Footprint', text: 'Specific urban centers, business parks, regional development corridors, or national logistics hubs.' },
+    ],
+    exclusions: [
+      'Private residential homeowners and individual consumer landlords',
+      'Small residential letting agents without commercial operations',
+      'Entities in liquidation or property portfolios under receivership',
+      'Existing clients, tenants, and conflicting regional suppliers',
+    ],
+    rolesIntro: 'Identify decision-makers responsible for property acquisitions, asset management, capital expenditure, and facility operations.',
+    roles: [
+      { title: 'Head of Asset Management / Portfolio Director', context: 'Responsible for portfolio performance, operational efficiency, supplier procurement, and tenant retention.' },
+      { title: 'Acquisitions Director / Head of Investment', context: 'Responsible for sourcing, evaluating, and closing commercial property transactions and site acquisitions.' },
+      { title: 'Property Management Director', context: 'Oversees day-to-day facility maintenance, supplier contracts, security, and operational standards.' },
+      { title: 'Managing Director / Principal', context: 'At commercial property development and private investment groups where executive leadership controls major purchasing decisions.' },
+    ],
+    buyingSignals: [
+      { signal: 'Commercial property acquisition announcements', interpretation: 'Newly acquired assets immediately require surveying, facilities management, leasing, and renovation suppliers.' },
+      { signal: 'Planning permission approvals for commercial developments', interpretation: 'Triggers contracting requirements for engineering, environmental, construction, and marketing services.' },
+      { signal: 'New property fund close or capital raise', interpretation: 'Signals active investment deployment and upcoming transaction activity.' },
+      { signal: 'ESG and sustainability retrofit commitments', interpretation: 'Creates urgent demand for energy efficiency, solar, HVAC, and building automation retrofits.' },
+    ],
+    exampleProject: {
+      title: 'Commercial Facilities & ESG Solutions Provider',
+      scenario: 'Targeting commercial property asset managers and REITs in the UK South East holding commercial office and industrial portfolios.',
+      criteria: [
+        'Geography: London and South East England',
+        'Asset Types: Commercial Office, Business Parks, Industrial Warehouses',
+        'Portfolio Size: Ownership or management of >5 commercial assets',
+        'Target Roles: Head of Asset Management, Operations Director, ESG Lead',
+      ],
+      deliverables: [
+        '250 commercial property ownership and asset management entities',
+        '420 verified decision-maker contacts with business emails and telephone lines',
+        'Documented portfolio notes detailing primary asset classes and regional holdings',
+      ],
+    },
+    compliance: {
+      framework: 'PECR, B2B Marketing Rules & Commercial Property Standards',
+      rules: [
+        'Strict commercial focus: no personal residential homeowner data is ever researched or contacted.',
+        'Corporate subscriber validation ensures outreach targets verified business legal entities.',
+        'Immediate suppression honored for any entity requesting exclusion from future communications.',
+      ],
+    },
+    setupOffering: {
+      title: 'One-Time CRE Outbound Engine',
+      summary: 'Build an outbound business development infrastructure tailored to commercial real estate deal-sourcing and supplier contracting.',
+      includes: [
+        'Commercial property ICP definition covering asset classes and entity types',
+        'Dedicated sending domains and warmed mailboxes configured for property executives',
+        'High-context sequence copy addressing asset yield, ESG compliance, and operating efficiency',
+        'Complete setup report and operational handover session for your acquisitions team',
+      ],
+    },
+    managementOffering: {
+      title: 'Ongoing CRE Campaign Management',
+      summary: 'Recurring monthly research and managed outreach across commercial property operators and asset managers.',
+      includes: [
+        'Ongoing tracking of commercial property transactions, planning approvals, and portfolio changes',
+        'Managed email outreach with tailored messaging per asset class',
+        'Direct escalation of interested responses to your acquisitions or commercial team',
+        'Weekly reporting tracking outreach deliverability and verified commercial conversations',
+      ],
+    },
+    researchOffering: {
+      title: 'Standalone Commercial Property Data',
+      summary: 'Custom-researched lists of commercial property owners, asset managers, and developers in your target market.',
+      includes: [
+        'Verified corporate ownership entities cross-referenced with commercial registry records',
+        'Direct business contact details for property directors, asset managers, and acquisitions leads',
+        'CRM-ready data delivery formatted for immediate use',
+      ],
+    },
+    useCases: [
+      { title: 'Commercial tenant representation', text: 'Engage commercial office and industrial occupiers ahead of lease expiry events.' },
+      { title: 'Off-market site sourcing', text: 'Identify commercial land and asset owners matching specific redevelopment or acquisition briefs.' },
+      { title: 'Property supplier business development', text: 'Connect commercial suppliers (facilities, security, solar, proptech) with asset management leadership.' },
+    ],
+    faqs: [
+      { question: 'Do you research private residential landlords?', answer: 'No. This service is strictly focused on commercial real estate (B2B). We do not research or market to private residential homeowners or consumer buy-to-let individuals.' },
+      { question: 'How do you identify the actual decision-maker behind an SPV?', answer: 'Special Purpose Vehicles rarely have direct contacts. We research the managing entity, asset management firm, or parent investment group responsible for day-to-day operations.' },
+      { question: 'Can you research portfolios in specific asset classes?', answer: 'Yes. Criteria can specify logistics, industrial, commercial office, retail parks, student housing, or mixed-use developments.' },
+    ],
+    relatedServices,
+    ctaTitle: 'Define the commercial property operators you want to reach.',
+    ctaText: 'Share your target asset classes, geographic market, portfolio scale, and relevant business roles to request a verified sample.',
+  },
 };

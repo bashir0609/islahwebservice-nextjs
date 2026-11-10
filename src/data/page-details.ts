@@ -1,5 +1,6 @@
 export interface ServiceDetail {
   audience: string;
+  availability: string;
   problemTitle: string;
   problems: string[];
   scopeIntro: string;
@@ -7,6 +8,7 @@ export interface ServiceDetail {
   briefText: string;
   deliverableTitles: string[];
   benefits: string[];
+  exclusions: string[];
   clientInput: string;
   stepTitles: string[];
   visualSteps: string[];
@@ -19,86 +21,278 @@ export interface ServiceDetail {
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   'b2b-prospect-research': {
-    audience: 'For founders, sales teams and agencies that need new target accounts or decision-makers, but do not want a generic database assembled around vague filters.',
-    problemTitle: 'Turn a broad market into a researchable sales brief.',
-    problems: ['Your market definition is too broad to guide useful account research.', 'Salespeople spend prospecting time checking basic company and role information.', 'Purchased lists ignore your exclusions, required fields and actual route to market.'],
-    scopeIntro: 'The brief defines what qualifies for research, which roles matter, what fields are required and what must be excluded before volume is discussed.',
-    briefTitle: 'Define the accounts before researching the people.', briefText: 'Share your target geography, company profile, role functions, required fields and exclusions.',
-    deliverableTitles: ['Criteria-matched accounts', 'Relevant business contacts', 'Documented handoff'],
-    benefits: ['A repeatable account definition your team can review.', 'Less sales time spent on first-pass company and role research.', 'CRM-ready records with source notes and unresolved fields visible.'],
-    clientInput: 'You provide the offer, target market, company criteria, relevant role functions, exclusions and intended use. Islah turns that into a sample and documented research workflow.',
-    stepTitles: ['Define the brief', 'Review a sample', 'Receive the dataset'], visualSteps: ['Target criteria agreed', 'Accounts and roles researched', 'Records reviewed and formatted'],
-    useCases: [{title:'New-market research',text:'Map eligible accounts in a defined UK, US or European segment before your team begins outreach.'},{title:'Specialist account lists',text:'Build a focused dataset for a technical, advisory or high-consideration B2B offer.'},{title:'Decision-maker mapping',text:'Research relevant functions and available business-contact fields within agreed accounts.'}],
-    faqs: [{question:'What should a research brief include?',answer:'Start with geography, company type, size, target role functions, required fields and exclusions. Explain the intended use so the handoff can be structured appropriately.'},{question:'Do criteria-matched records indicate buying intent?',answer:'No. Research can establish fit against observable criteria, not budget, need or readiness to buy.'},{question:'Can you verify every business email?',answer:'No. Business emails can be verified where suitable data is available. Missing or uncertain fields remain identified rather than guessed.'}],
-    ctaTitle: 'See how your criteria translate into a prospect sample.', ctaText: 'Share a focused brief and review the structure before discussing a larger research project.',
-    relatedSlugs: ['contact-enrichment', 'cold-email-marketing', 'campaign-management']
+    audience: 'For sales leaders, founders, and growth teams who need accurate, criteria-matched B2B accounts and verified decision-makers—without relying on bloated, generic database exports.',
+    availability: 'Available as a standalone one-time project, a recurring monthly data feed, or as the foundational research layer of our One-Time Setup and Ongoing Management engagements.',
+    problemTitle: 'Turn a broad market definition into a researchable, high-converting brief.',
+    problems: [
+      'Purchased contact databases are cluttered with stale records, generic inboxes, and contacts who left the company months ago.',
+      'Sales reps waste hours manually digging through LinkedIn and search engines rather than holding qualified conversations.',
+      'Targeting criteria fail to account for negative exclusions, specific company maturity stages, or specialized tech stack signals.',
+    ],
+    scopeIntro: 'We research target accounts and relevant decision-maker functions against strict firmographic, technographic, and geographic parameters agreed prior to data collection.',
+    briefTitle: 'Define the target accounts before researching individual contacts.',
+    briefText: 'Specify target geography, industry classifications, headcount bands, observable tech signals, required contact fields, and exclusions.',
+    deliverableTitles: [
+      'Criteria-Matched Account Records',
+      'Verified Decision-Maker Contacts',
+      'Structured CRM-Ready Data Handoff',
+    ],
+    benefits: [
+      'Every record verified against public and commercial data sources before delivery.',
+      'Zero invented data: unavailable or unverified fields are transparently flagged.',
+      'Formatted for direct import into your CRM (HubSpot, Salesforce, Pipedrive, or CSV/Sheets).',
+      'Significant reduction in sales team prospecting overhead.',
+    ],
+    exclusions: [
+      'Consumer marketing or residential personal contact data',
+      'Speculative intent data or unverified claims of buying urgency',
+      'Automated email campaign execution or sequence delivery (covered under outreach services)',
+    ],
+    clientInput: 'You provide your ICP criteria, target geographies, target roles, preferred CRM fields, and customer suppression lists. Islah delivers a test sample for review before full batch execution.',
+    stepTitles: ['Define the Brief & Exclusions', 'Review a Test Sample', 'Receive the Verified Dataset'],
+    visualSteps: ['Criteria & Exclusions Mapped', 'Accounts & Roles Researched', 'Verified & Formatted for CRM'],
+    useCases: [
+      { title: 'New market or territory expansion', text: 'Map eligible accounts and decision-maker densities across the UK, US, or European regions before launching sales operations.' },
+      { title: 'Specialist vertical account lists', text: 'Build focused account datasets for niche technical, industrial, or regulated B2B solutions.' },
+      { title: 'Multi-threaded decision-maker mapping', text: 'Identify multiple relevant functional leaders (e.g., both technical and commercial stakeholders) within high-value target accounts.' },
+    ],
+    faqs: [
+      { question: 'What should our prospect research brief include?', answer: 'Include target geography, company categories, employee size ranges, target job titles or functional roles, required fields (e.g. direct email, LinkedIn, phone), and explicit exclusions.' },
+      { question: 'Does a criteria-matched prospect indicate active buying intent?', answer: 'No. Research confirms demographic and technographic fit against observable criteria. Buying intent, budget, and readiness must be confirmed during sales discovery.' },
+      { question: 'Can you verify every business email address?', answer: 'We verify corporate email addresses using multi-step validation protocols. Where an email cannot be verified with confidence, the field is left transparently flagged rather than guessed.' },
+    ],
+    ctaTitle: 'See how your criteria translate into a verified prospect sample.',
+    ctaText: 'Share your target criteria, exclusions, and preferred fields. We will prepare an initial sample for your review.',
+    relatedSlugs: ['contact-enrichment', 'cold-email-marketing', 'campaign-management'],
   },
+
   'contact-enrichment': {
-    audience: 'For teams that already have account or contact records but cannot rely on them for segmentation, CRM workflows or targeted outreach.',
-    problemTitle: 'Improve the database you already own.',
-    problems: ['Important CRM fields are incomplete or formatted inconsistently.', 'Roles, employers and company details may have changed since collection.', 'Duplicate and unmatched records weaken segmentation and reporting.'],
-    scopeIntro: 'Enrichment begins with your existing schema and agreed field rules. It does not silently replace your records or promise that every gap can be filled.',
-    briefTitle: 'Start with fields, matching rules and safe transfer.', briefText: 'Identify the records you hold, the gaps that matter and how updates or conflicts should be handled.',
-    deliverableTitles: ['Researched gaps', 'Consistent records', 'Transparent exceptions'],
-    benefits: ['More useful records without discarding the database you have built.', 'Explicit overwrite, matching and duplicate-handling rules.', 'A reviewable file showing additions, changes and unresolved fields.'],
-    clientInput: 'You provide a field inventory and representative sample—not a confidential database through the enquiry form. Transfer, access and retention must be agreed separately.',
-    stepTitles: ['Assess the schema', 'Agree update rules', 'Review the enriched file'], visualSteps: ['Fields and matching rules mapped', 'Supplied records enriched', 'Changes and exceptions documented'],
-    useCases: [{title:'CRM preparation',text:'Improve completeness before segmentation, routing or a controlled campaign.'},{title:'Migration cleanup',text:'Standardise formats and identify duplicates before records move into a new system.'},{title:'Field completion',text:'Research agreed company, role or business-contact fields across an agreed dataset.'}],
-    faqs: [{question:'Is enrichment the same as prospect research?',answer:'No. Enrichment improves records you provide. Prospect research discovers new accounts or contacts.'},{question:'Should I upload my database through the form?',answer:'No. Use the form to describe the dataset only. Any file transfer requires a separately arranged secure method.'},{question:'Will every missing field be completed?',answer:'No. Availability varies. Unresolved information remains visible rather than being inferred or fabricated.'}],
-    ctaTitle: 'Make your existing records easier to trust and use.', ctaText: 'Describe the dataset, missing fields and workflow problem. We can then define a safe, reviewable enrichment scope.',
-    relatedSlugs: ['b2b-prospect-research', 'cold-email-marketing', 'campaign-management']
+    audience: 'For revenue teams with existing customer, inbound, or legacy CRM records that suffer from missing fields, outdated titles, inconsistent formatting, or duplicate entries.',
+    availability: 'Available as a one-time database hygiene and enrichment project, or as an ongoing quarterly maintenance service.',
+    problemTitle: 'Improve the value and utility of the database you already own.',
+    problems: [
+      'Valuable past leads cannot be segmented or contacted because key fields (industry, size, direct email) are missing.',
+      'Contacts have moved companies or changed roles, causing high email bounce rates and wasted sales follow-up.',
+      'Duplicate and inconsistent company entries distort pipeline reporting and lead routing.',
+    ],
+    scopeIntro: 'We audit your supplied dataset, apply agreed deduplication and validation rules, research missing commercial fields, and return a clean, enriched file.',
+    briefTitle: 'Start with field schema, matching rules, and secure data transfer.',
+    briefText: 'Identify which records you hold, which fields need updating or completing, and the matching rules for resolving conflicts.',
+    deliverableTitles: [
+      'Missing Field Research & Completion',
+      'Contact Status & Employment Verification',
+      'Cleaned, Deduplicated CRM Export',
+    ],
+    benefits: [
+      'Reactivate dormant leads without discarding your accumulated historical records.',
+      'Dramatically improve deliverability by purging stale and invalid email addresses.',
+      'Consistent firmographic labelling for more accurate sales segmentation.',
+      'Transparent exception reporting detailing every field update.',
+    ],
+    exclusions: [
+      'Generating net-new accounts outside the records provided in the supplied dataset',
+      'Direct CRM integration without explicit contractual authorization',
+      'Receiving sensitive personal data, passwords, or confidential customer financial records',
+    ],
+    clientInput: 'Provide a field inventory, data dictionary, and representative sample via a secure transfer method. Never submit confidential databases through web forms.',
+    stepTitles: ['Assess Schema & Missing Fields', 'Agree Conflict & Matching Rules', 'Receive Enriched Dataset'],
+    visualSteps: ['Field Gaps Analyzed', 'Records Validated & Enriched', 'Clean File & Audit Log Delivered'],
+    useCases: [
+      { title: 'CRM migration cleanup', text: 'Cleanse and standardize historical records before migrating to HubSpot, Salesforce, or another CRM platform.' },
+      { title: 'Inbound lead enrichment', text: 'Complete missing company size, industry, and decision-maker fields on short web-form submissions.' },
+      { title: 'Annual database hygiene', text: 'Re-verify employment status and direct contact info across your existing account universe.' },
+    ],
+    faqs: [
+      { question: 'Is database enrichment the same as prospect research?', answer: 'No. Enrichment improves records you already own. Prospect research identifies and qualifies net-new accounts and contacts.' },
+      { question: 'Will every missing field be successfully completed?', answer: 'Data availability depends on public and commercial records. Fields that cannot be verified are clearly flagged rather than fabricated.' },
+      { question: 'How is data transferred securely?', answer: 'We establish an encrypted file transfer protocol or direct secure workspace. Confidential databases must never be emailed or submitted via online forms.' },
+    ],
+    ctaTitle: 'Make your existing records easier to trust and use.',
+    ctaText: 'Describe your dataset size, missing fields, and workflow challenges to receive an enrichment scope proposal.',
+    relatedSlugs: ['b2b-prospect-research', 'cold-email-marketing', 'campaign-management'],
   },
-  'cold-email-marketing': {
-    audience: 'For B2B teams exploring managed support because audience research, messaging, campaign ownership and reply handoff are currently disconnected.',
-    problemTitle: 'Build a campaign plan before considering delivery.',
-    problems: ['Audience criteria and campaign messaging are developed in isolation.', 'Generic copy does not connect the offer to a specific recipient context.', 'Audience review, suppression and reply ownership are not documented.'],
-    scopeIntro: 'A managed engagement can connect audience preparation, message review, operating controls and handoff. Current availability depends on business, legal and capacity review.',
-    briefTitle: 'Connect audience, offer and operating responsibility.', briefText: 'Bring your offer, target segment, existing systems, constraints and internal owners to a scoping discussion.',
-    deliverableTitles: ['Audience plan', 'Messaging review', 'Operating scope'], benefits: ['One reviewable plan connecting audience, message and handoff.', 'Clear client review before any campaign begins.', 'Reporting definitions tied to observable activity rather than revenue promises.'],
-    clientInput: 'You provide a confirmed offer, sender identity, target-market rationale, legal review where required, suppression data and accountable campaign and reply owners.',
-    stepTitles: ['Scope the campaign', 'Review controls', 'Confirm or stop'], visualSteps: ['Audience and offer reviewed', 'Copy and controls documented', 'Written scope confirmed'],
-    useCases: [{title:'Founder-led outbound',text:'Explore structured support around a specific offer while retaining clear founder or sales-team ownership.'},{title:'Segment testing',text:'Plan a controlled audience and message review without treating early activity as proven demand.'},{title:'Research-to-campaign handoff',text:'Connect an agreed prospect dataset to a documented outreach workflow.'}],
-    faqs: [{question:'Can a campaign launch from this website?',answer:'No. The page supports scoping only. No sending platform or live campaign is connected.'},{question:'Are replies or meetings guaranteed?',answer:'No. Delivery, replies, meetings and revenue are separate outcomes and are not guaranteed.'},{question:'Is managed cold email currently available?',answer:'Current availability and responsibilities are confirmed through consultation and documented before work begins.'}],
-    ctaTitle: 'Discuss whether a managed campaign scope is appropriate.', ctaText: 'A consultation reviews fit, responsibilities and delivery requirements. It does not start sending or reserve delivery capacity.',
-    relatedSlugs: ['b2b-prospect-research', 'email-infrastructure', 'campaign-management']
-  },
+
   'email-infrastructure': {
-    audience: 'For teams considering cold email that need to clarify domain, mailbox, authentication, access and monitoring responsibilities before launch planning.',
-    problemTitle: 'Resolve technical ownership before campaign work begins.', problems: ['Domain and mailbox responsibilities are unclear.', 'SPF, DKIM and DMARC records have not been reviewed in context.', 'Access, monitoring and incident ownership are undefined.'],
-    scopeIntro: 'The consultation scope is a readiness and responsibility review. It does not promise inbox placement or permit changes without explicit authorization.',
-    briefTitle: 'Map the systems and owners first.', briefText: 'Document domains, mailboxes, authentication state, authorized administrators and the intended operating model.',
-    deliverableTitles: ['Ownership checklist', 'Authentication review', 'Handover controls'], benefits: ['A documented readiness checklist before sending is considered.', 'Clear responsibility for authentication and authorized changes.', 'Safer access and handoff boundaries without deliverability guarantees.'],
-    clientInput: 'You provide domain ownership context and current configuration details through an agreed secure process. Never submit passwords or secret keys through a website form.',
-    stepTitles: ['Map the setup', 'Review authorization', 'Document readiness'], visualSteps: ['Domains and owners inventoried', 'Authentication checks scoped', 'Monitoring responsibilities assigned'],
-    useCases: [{title:'Existing setup review',text:'Assess ownership and configuration questions before expanding campaign activity.'},{title:'Dedicated-domain planning',text:'Document campaign-domain responsibilities subject to client authorization.'},{title:'Operational handover',text:'Clarify monitoring, access revocation and incident escalation between teams.'}],
-    faqs: [{question:'Should I send credentials with my enquiry?',answer:'No. Never submit passwords, API keys or DNS credentials. Any access requires a separately arranged least-privilege process.'},{question:'Does authentication guarantee inbox placement?',answer:'No. Authentication is important, but deliverability depends on multiple technical and operational factors.'},{question:'Will Islah change DNS records automatically?',answer:'No. No domains, mailboxes or DNS records are changed through this website.'}],
-    ctaTitle: 'Review responsibilities before changing infrastructure.', ctaText: 'Use a consultation to discuss the existing setup and required checks without sharing credentials or authorizing changes.',
-    relatedSlugs: ['cold-email-marketing', 'campaign-management', 'appointment-setting']
+    audience: 'For B2B companies planning cold email outreach who need their technical sending environment properly architected, authenticated, and warmed before launching campaigns.',
+    availability: 'Core component of the One-Time Outbound Setup engagement, and continuously maintained under Ongoing Campaign Management.',
+    problemTitle: 'Resolve technical sender ownership before launching campaigns.',
+    problems: [
+      'Sending outbound campaigns from primary corporate domains puts everyday business email delivery at severe risk.',
+      'Missing or misconfigured SPF, DKIM, or DMARC records cause emails to be rejected by Google and Microsoft spam filters.',
+      'Uncalibrated sending volume and aggressive sending ramps lead to immediate domain blacklisting.',
+    ],
+    scopeIntro: 'We configure secondary sending domains, set up dedicated Google Workspace or Microsoft 365 mailboxes, enforce strict DNS authentication, and establish safe gradual sending schedules.',
+    briefTitle: 'Engineer dedicated sending infrastructure under full client ownership.',
+    briefText: 'Inventory target sending volumes, domain registrar access, mailbox provider choices, and technical administrative owners.',
+    deliverableTitles: [
+      'Client-Controlled Domain & Mailbox Architecture',
+      'Full DNS Authentication (SPF, DKIM, DMARC, MX)',
+      'Automated Warmup & Gradual Ramp Protocol',
+    ],
+    benefits: [
+      'Complete protection for your primary corporate website domain and daily business emails.',
+      'Full compliance with Google Workspace and Yahoo sender guidelines (2024+ enforcement).',
+      'Safe, automated warmup ramp schedules that build positive sender reputation over 2–4 weeks.',
+      'Client retains 100% legal and technical ownership of all configured domains and inboxes.',
+    ],
+    exclusions: [
+      'Guaranteeing 100% inbox placement (deliverability depends on continuous sender behavior and recipient filters)',
+      'Sharing client administrative passwords via insecure channels',
+      'Hosting infrastructure on Islah-owned accounts without client ownership',
+    ],
+    clientInput: 'Authorize or provision dedicated secondary domain names and email mailbox seats. Provide DNS registrar access via secure delegated administration.',
+    stepTitles: ['Domain & Mailbox Provisioning', 'DNS Authentication Configuration', 'Warmup Activation & Verification'],
+    visualSteps: ['Secondary Domains Secured', 'SPF / DKIM / DMARC Validated', 'Warmup Scheduled & Monitored'],
+    useCases: [
+      { title: 'New outbound sales launch', text: 'Set up a clean, isolated 2–4 domain sending infrastructure before hiring SDRs or launching outreach.' },
+      { title: 'Reputation recovery', text: 'Transition outreach away from a damaged corporate domain to pristine, dedicated secondary sending domains.' },
+      { title: 'Multi-seat outbound scaling', text: 'Scale from 1 to 5+ outbound sending mailboxes while maintaining strict per-mailbox sending limits.' },
+    ],
+    faqs: [
+      { question: 'Why can we not send cold emails from our main company domain?', answer: 'Cold email carries higher spam complaint risks. If your primary domain receives spam flags, your everyday client proposals, invoices, and internal communications will land in spam folders.' },
+      { question: 'Does DNS authentication guarantee inbox placement?', answer: 'No. Authentication (SPF, DKIM, DMARC) is mandatory for modern mailbox providers to accept mail, but inbox placement also depends on copy quality, list accuracy, volume, and recipient engagement.' },
+      { question: 'Who owns the sending domains and mailboxes?', answer: 'You do. All domains, DNS records, and email accounts are registered under your business name and transferred fully to your control.' },
+    ],
+    ctaTitle: 'Engineer your outbound infrastructure safely.',
+    ctaText: 'Discuss domain choices, mailbox requirements, and warmup timelines with our technical team.',
+    relatedSlugs: ['cold-email-marketing', 'campaign-management', 'appointment-setting'],
   },
+
+  'cold-email-marketing': {
+    audience: 'For B2B companies looking for targeted, multi-touch email sequences that initiate business conversations without relying on spammy gimmicks or deceptive templates.',
+    availability: 'Included in One-Time Outbound Setup and continuously refined under Ongoing Campaign Management.',
+    problemTitle: 'Connect your audience, offer, and messaging into an approved outreach plan.',
+    problems: [
+      'Generic, templated cold emails get ignored or marked as spam because they fail to address the recipient’s specific business context.',
+      'Single-touch emails underperform; effective outbound requires multi-step sequences with distinct conversational angles.',
+      'Outreach lacks clear call-to-actions, resulting in vague responses that fail to convert into sales opportunities.',
+    ],
+    scopeIntro: 'We develop research-backed email sequences, follow-up messages, objection handling templates, and opt-out workflows tailored to your verified audience.',
+    briefTitle: 'Craft value-led messages around verifiable recipient context.',
+    briefText: 'Share your value proposition, customer pain points, case study evidence, objection patterns, and preferred sales conversation goals.',
+    deliverableTitles: [
+      'Audience Segmentation & Angle Matrix',
+      'Multi-Touch Email Sequences & Follow-Ups',
+      'Objection Responses & Suppression Protocols',
+    ],
+    benefits: [
+      'Human-sounding, concise copy that respects executive reading time.',
+      'Multiple angle testing (problem hook, case evidence, peer reference, breakup message).',
+      'Explicit client review and sign-off on every sequence before sending.',
+      'Full compliance with CAN-SPAM, PECR, and global commercial email regulations.',
+    ],
+    exclusions: [
+      'Aggressive clickbait, misleading subject lines, or deceptive "FWD:" / "RE:" headers',
+      'Sending unapproved message copy without explicit client written authorization',
+      'Guaranteeing specific reply percentages or closed revenue figures',
+    ],
+    clientInput: 'Provide company background, customer case studies, commercial value drivers, and review feedback during the copywriting review stage.',
+    stepTitles: ['Value Proposition & Angle Mapping', 'Drafting Sequences & Variations', 'Client Review & Sign-Off'],
+    visualSteps: ['Pain Points & Proof Mapped', 'Multi-Step Sequence Authored', 'Client Approved & Loaded'],
+    useCases: [
+      { title: 'Founder-led sales transition', text: 'Turn founder sales conversations into structured, repeatable email sequence frameworks.' },
+      { title: 'Product or service launches', text: 'Engage target market segments with tailored problem-hook sequences for a newly introduced B2B solution.' },
+      { title: 'Account re-engagement', text: 'Re-open conversations with previously unresponsive accounts using fresh insight-led messaging.' },
+    ],
+    faqs: [
+      { question: 'Who approves the email copy before sending?', answer: 'You do. Every sequence, follow-up, and objection response is submitted for your team’s explicit written review and approval prior to campaign loading.' },
+      { question: 'How many touches are in a typical cold email sequence?', answer: 'A standard sequence typically consists of 3 to 4 thoughtfully spaced touches over 14–21 days, each offering a distinct angle or piece of value.' },
+      { question: 'Do you use automated AI spam text generators?', answer: 'No. While we use data to research recipient context, all email copy is crafted and refined by human outbound specialists focusing on clarity, brevity, and business relevance.' },
+    ],
+    ctaTitle: 'Develop outreach copy your prospects will actually read.',
+    ctaText: 'Share your value proposition and target audience to discuss sequence strategy and copywriting scope.',
+    relatedSlugs: ['b2b-prospect-research', 'email-infrastructure', 'campaign-management'],
+  },
+
   'campaign-management': {
-    audience: 'For B2B teams exploring operational support because campaign changes, replies and reporting lack accountable owners.',
-    problemTitle: 'Give campaign decisions a documented owner.', problems: ['Audience, copy and launch changes happen without clear ownership.', 'Replies, objections and suppression requests are handled inconsistently.', 'Activity reporting is confused with pipeline or revenue attribution.'],
-    scopeIntro: 'A managed scope can define review cycles, stop conditions, escalation routes and reporting boundaries before implementation.',
-    briefTitle: 'Turn campaign activity into an accountable workflow.', briefText: 'Define objectives, owners, review stages, suppression rules and the measures that can be reported accurately.',
-    deliverableTitles: ['Review cadence', 'Reply responsibilities', 'Reporting definitions'], benefits: ['Defined review cycles and stop conditions.', 'Clear suppression, reply and escalation ownership.', 'Reporting based on agreed observable measures.'],
-    clientInput: 'You provide the confirmed offer, audience rationale, brand constraints, suppression requirements, internal owners and timely decisions at each review gate.',
-    stepTitles: ['Clarify objectives', 'Assign controls', 'Confirm scope'], visualSteps: ['Campaign inputs reviewed', 'Owners and stop rules assigned', 'Scope status documented'],
-    useCases: [{title:'Cross-team coordination',text:'Document responsibilities across client, research and managed campaign teams.'},{title:'Controlled message review',text:'Manage confirmed changes without losing version history or decision ownership.'},{title:'Operational reporting',text:'Separate sending activity, replies and commercial outcomes in the reporting plan.'}],
-    faqs: [{question:'Is a live campaign platform connected?',answer:'No sending workflow is connected to this website. Current campaign-management availability is confirmed through consultation.'},{question:'Does reporting prove revenue attribution?',answer:'Not by default. Activity, replies, opportunities and revenue are distinct measures with different evidence requirements.'},{question:'Who handles replies?',answer:'Reply ownership and escalation must be agreed during scoping. It should never be assumed.'}],
-    ctaTitle: 'Define the operating model before managing a campaign.', ctaText: 'Discuss owners, review gates and reporting needs. Requesting a consultation does not start a campaign.',
-    relatedSlugs: ['cold-email-marketing', 'email-infrastructure', 'appointment-setting']
+    audience: 'For B2B companies wanting dedicated operational execution of their outbound email campaigns—including gradual scheduling, deliverability checks, reply handling, and reporting.',
+    availability: 'Available as a recurring monthly managed service, subject to confirmed operational capacity and written agreement.',
+    problemTitle: 'Give your outbound campaign decisions a dedicated, accountable operational owner.',
+    problems: [
+      'Campaigns stall because internal staff are too busy with existing client work to manage daily outbound operations.',
+      'Positive prospect replies sit in inboxes for days, causing warm opportunities to go cold.',
+      'Sending limits and deliverability metrics are not monitored, leading to undetected spam filter placement.',
+    ],
+    scopeIntro: 'We manage daily campaign operations: scheduled sending within safe limits, inbox deliverability monitoring, reply classification, positive lead routing, and weekly reporting.',
+    briefTitle: 'Turn outbound into a reliable, consistent operational discipline.',
+    briefText: 'Establish operational boundaries, daily sending volumes, reply classification rules, and sales team lead escalation paths.',
+    deliverableTitles: [
+      'Daily Sending Execution & Deliverability Monitoring',
+      'Reply Classification & Warm Lead Escalation',
+      'Weekly Operational Reports & Monthly Strategy Reviews',
+    ],
+    benefits: [
+      'Predictable, consistent outbound cadence without burdening internal team members.',
+      'Immediate routing of positive replies with full prospect history attached.',
+      'Continuous deliverability monitoring with proactive warmup adjustments.',
+      'Actionable reporting focused on qualified conversations rather than vanity vanity metrics.',
+    ],
+    exclusions: [
+      'Closing sales or negotiating commercial contracts (handled by your internal sales team)',
+      'Unilateral audience or copy changes without prior client authorization',
+      'Guaranteeing specific sales conversion rates or closed revenue totals',
+    ],
+    clientInput: 'Provide nominated sales reps for lead routing, timely feedback on lead quality, and participate in monthly strategic review calls.',
+    stepTitles: ['Campaign Activation & Ramp Plan', 'Daily Operations & Lead Routing', 'Weekly Review & Iteration'],
+    visualSteps: ['Batches Scheduled & Ramped', 'Replies Monitored & Classified', 'Qualified Leads Handed to Sales'],
+    useCases: [
+      { title: 'Outsourced outbound SDR function', text: 'Operate a complete top-of-funnel outbound motion without the overhead of hiring and managing internal SDRs.' },
+      { title: 'Ongoing pipeline generation', text: 'Maintain a steady flow of qualified sales conversations for account executives and founders.' },
+      { title: 'Territory and sector testing', text: 'Systematically test new geographic territories or vertical markets with dedicated weekly campaign cohorts.' },
+    ],
+    faqs: [
+      { question: 'Who handles positive prospect responses?', answer: 'We monitor outreach inboxes, filter out out-of-office messages and unhelpful automated replies, and immediately forward qualified, interested responses to your designated sales contact.' },
+      { question: 'What metrics are included in weekly reporting?', answer: 'Weekly reports include sending volume, bounce rate, open rate, positive response rate, total interested leads routed, and insights gained from prospect replies.' },
+      { question: 'How is the service paused or modified?', answer: 'Ongoing management terms are set out in writing with clear notice periods and flexibility to adjust monthly research volumes or target segments.' },
+    ],
+    ctaTitle: 'Put your outbound email campaigns on an accountable operational rhythm.',
+    ctaText: 'Discuss campaign capacity, sending volume, and reply routing workflows with our management team.',
+    relatedSlugs: ['cold-email-marketing', 'email-infrastructure', 'appointment-setting'],
   },
+
   'appointment-setting': {
-    audience: 'For teams considering a structured handoff after positive replies and needing to define relevance, qualification and calendar ownership first.',
-    problemTitle: 'Define a useful conversation before counting meetings.', problems: ['A calendar booking is treated as qualification by default.', 'Acceptance and exclusion criteria are not agreed before reply handling.', 'Sales teams receive meetings without enough account or conversation context.'],
-    scopeIntro: 'This service discussion concerns human review and handoff rules. It does not promise meeting volume, attendance, qualification or sales outcomes.',
-    briefTitle: 'Agree what deserves a calendar handoff.', briefText: 'Define relevant roles, conversation context, exclusions, sales-team availability and the information needed before scheduling.',
-    deliverableTitles: ['Acceptance criteria', 'Reply escalation', 'Contextual handoff'], benefits: ['A shared definition of a relevant conversation.', 'Qualification and exclusion rules recorded before handling replies.', 'A context-rich handoff to the responsible sales owner.'],
-    clientInput: 'You provide qualification boundaries, calendar availability, routing owners, required context and a process for accepting or rejecting potential conversations.',
-    stepTitles: ['Define relevance', 'Agree routing', 'Confirm capability'], visualSteps: ['Conversation criteria recorded', 'Human review path defined', 'Sales-owner handoff documented'],
-    useCases: [{title:'Founder handoff',text:'Route an eligible conversation to a founder with the account and reply context attached.'},{title:'Sales-team routing',text:'Assign conversations by territory, account ownership or agreed service line.'},{title:'Calendar coordination',text:'Coordinate a proposed time only after human review against agreed criteria.'}],
-    faqs: [{question:'Are meetings included with prospect research?',answer:'No. Research delivers data. Any future reply or booking support requires a separate confirmed scope.'},{question:'Are booked meetings guaranteed?',answer:'No. Meeting volume, attendance, qualification and sales outcomes are not guaranteed.'},{question:'Can this site reserve a calendar slot?',answer:'No. The consultation form requests a review only and does not book a meeting automatically.'}],
-    ctaTitle: 'Define the handoff before discussing appointment support.', ctaText: 'A consultation can clarify acceptance criteria and responsibilities. Current availability is confirmed through consultation.',
-    relatedSlugs: ['campaign-management', 'cold-email-marketing', 'b2b-prospect-research']
-  }
+    audience: 'For sales teams and founders who want interested prospect replies coordinated directly into scheduled calendar discovery calls against documented qualification rules.',
+    availability: 'Available as an optional managed addition to Ongoing Campaign Management, subject to explicit qualification criteria.',
+    problemTitle: 'Define what makes a conversation qualified before counting calendar bookings.',
+    problems: [
+      'Sales reps spend valuable time back-and-forth email scheduling rather than preparing for prospect meetings.',
+      'Outbound agencies book unqualified meetings with junior staff or companies that do not meet core ICP criteria.',
+      'No-show rates are high when meetings are booked without sufficient prospect context and clear meeting agendas.',
+    ],
+    scopeIntro: 'We coordinate calendar invitations for prospects who have shown positive interest AND satisfy your documented qualification parameters.',
+    briefTitle: 'Establish strict qualification gates and calendar coordination rules.',
+    briefText: 'Document company size limits, target role seniority, required business need signals, calendar availability, and disqualification criteria.',
+    deliverableTitles: [
+      'Documented Qualification & Exclusion Matrix',
+      'Prospect Scheduling Coordination & Calendar Booking',
+      'Pre-Meeting Briefing Notes with Full Communication Context',
+    ],
+    benefits: [
+      'Sales reps speak only with prospects who meet your agreed qualification standards.',
+      'Frictionless calendar scheduling handled professionally via calendar integration or email coordination.',
+      'Comprehensive meeting briefing notes delivered prior to the scheduled call.',
+      'Zero payment for unqualified or out-of-scope bookings.',
+    ],
+    exclusions: [
+      'Conducting sales discovery or demo presentations (conducted by client team)',
+      'Booking meetings with unqualified prospects to hit arbitrary quotas',
+      'Guaranteeing prospect meeting attendance or subsequent sales contract closure',
+    ],
+    clientInput: 'Provide sales team calendar availability, meeting link, documented qualification criteria, and post-meeting attendance confirmation.',
+    stepTitles: ['Define Qualification Criteria', 'Manage Scheduling Dialogue', 'Deliver Calendar Briefing'],
+    visualSteps: ['Prospect Interest Qualified', 'Meeting Scheduled on Calendar', 'Briefing & Context Delivered'],
+    useCases: [
+      { title: 'Founder calendar management', text: 'Free founders from scheduling logistics, routing only qualified high-value prospective clients to their calendar.' },
+      { title: 'Account Executive pipeline loading', text: 'Feed seasoned sales closers with scheduled discovery calls directly within their target territory.' },
+      { title: 'Partner / Practice Head scheduling', text: 'Coordinate exploratory advisory consultations with C-level corporate executives.' },
+    ],
+    faqs: [
+      { question: 'How do you define a qualified meeting?', answer: 'A qualified meeting is scheduled with a decision-maker who meets your agreed target firmographic criteria, has verified business contact information, and has explicitly agreed to a meeting to discuss your offer.' },
+      { question: 'What happens if a prospect does not attend the scheduled meeting?', answer: 'We attempt re-scheduling coordination. If the meeting does not take place, it does not count as a held meeting in campaign reporting.' },
+      { question: 'Is appointment coordination available without campaign management?', answer: 'No. Appointment coordination is an optional extension of our Ongoing Campaign Management service, as it requires active campaign and reply handling.' },
+    ],
+    ctaTitle: 'Convert positive interest into qualified calendar conversations.',
+    ctaText: 'Define your qualification criteria, sales team availability, and calendar workflow during a consultation.',
+    relatedSlugs: ['campaign-management', 'cold-email-marketing', 'b2b-prospect-research'],
+  },
 };

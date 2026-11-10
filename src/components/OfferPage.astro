@@ -1,0 +1,272 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import Button from './Button.astro';
+import FAQ from './FAQ.astro';
+import type { OfferDetail } from '../data/offers';
+
+interface Props { offer: OfferDetail; }
+const { offer } = Astro.props;
+---
+<div class="offer-page">
+  <div class="offer-grid" aria-hidden="true"></div>
+  <div class="container offer-container">
+    <Breadcrumb items={[{ label: 'Engagement Models', href: '/pricing' }, { label: offer.title }]} />
+    <section class="offer-hero" aria-labelledby="offer-title">
+      <div class="offer-hero-copy">
+        <p class="eyebrow">{offer.eyebrow}</p>
+        <h1 id="offer-title">{offer.headline}</h1>
+        <p class="offer-lead">{offer.description}</p>
+        <div class="actions">
+          <Button href={offer.primaryHref}>{offer.primaryCta}</Button>
+          <Button href={offer.secondaryHref} variant="secondary">{offer.secondaryCta}</Button>
+        </div>
+      </div>
+      <aside class="offer-fit" aria-label={`${offer.title} best-fit summary`}>
+        <span class="fit-label">BEST FIT</span>
+        <h2>Who this is for</h2>
+        <ul>
+          {offer.bestFor.map(item => <li>{item}</li>)}
+        </ul>
+      </aside>
+    </section>
+
+    <section class="offer-section" aria-labelledby="scope-title">
+      <div class="section-intro">
+        <p class="eyebrow">SCOPE OF WORK</p>
+        <h2 id="scope-title">What the engagement covers.</h2>
+        <p>All scope items are subject to the written agreement. Items marked optional are confirmed separately.</p>
+      </div>
+      <div class="scope-cols">
+        <div class="scope-included">
+          <h3>Included in the engagement</h3>
+          <ul>{offer.included.map(item => <li>{item}</li>)}</ul>
+        </div>
+        <div class="scope-optional">
+          <h3>Available as optional additions</h3>
+          <ul>{offer.optional.map(item => <li>{item}</li>)}</ul>
+        </div>
+      </div>
+      <div class="scope-full">
+        <h3>Full engagement scope</h3>
+        <ul class="scope-list">{offer.scope.map(item => <li>{item}</li>)}</ul>
+      </div>
+    </section>
+
+    <section class="offer-band" aria-labelledby="deliverables-title">
+      <div>
+        <p class="eyebrow">DELIVERABLES</p>
+        <h2 id="deliverables-title">What you receive at each stage.</h2>
+        <p>Deliverables are confirmed in the written scope and adjusted where the agreed brief changes. No deliverable implies a sales or commercial outcome.</p>
+      </div>
+      <div class="deliverable-list">
+        {offer.deliverables.map((item, index) => (
+          <article>
+            <span aria-hidden="true">{index + 1}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="offer-section process-block" aria-labelledby="process-title">
+      <div class="section-intro">
+        <p class="eyebrow">DELIVERY PROCESS</p>
+        <h2 id="process-title">A reviewable path from brief to results.</h2>
+        <p>Each stage requires explicit client review and approval before the next begins. Nothing proceeds without agreement.</p>
+      </div>
+      <div class="process-steps">
+        {offer.process.map((step, index) => (
+          <article>
+            <span>{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="offer-section inputs-section" aria-labelledby="inputs-title">
+      <div class="section-intro">
+        <p class="eyebrow">CLIENT RESPONSIBILITIES</p>
+        <h2 id="inputs-title">What you need to bring.</h2>
+        <p>A successful engagement depends on timely decisions, accurate inputs and an internal owner for sales conversations after handover or lead delivery.</p>
+      </div>
+      <div class="inputs-grid">
+        {offer.clientInputs.map((item, index) => (
+          <article>
+            <span aria-hidden="true">0{index + 1}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="offer-section ownership-section" aria-labelledby="ownership-title">
+      <div class="section-intro">
+        <p class="eyebrow">OWNERSHIP AND HANDOVER</p>
+        <h2 id="ownership-title">Who owns what and when.</h2>
+      </div>
+      <div class="ownership-list">
+        {offer.ownership.map(item => (
+          <p><span aria-hidden="true">✓</span>{item}</p>
+        ))}
+      </div>
+    </section>
+
+    <section class="commercial-panel" aria-labelledby="commercial-title">
+      <div>
+        <p class="eyebrow">{offer.commercialModel}</p>
+        <h2 id="commercial-title">Commercial engagement model.</h2>
+        <ul>
+          {offer.commercialDetail.map(item => <li>{item}</li>)}
+        </ul>
+        <p class="commercial-note">Pricing is scoped after discovery. No price is published because market complexity, research volume, infrastructure and campaign scope each affect the engagement cost.</p>
+      </div>
+      <div class="commercial-cta">
+        <p class="eyebrow">REQUEST A QUOTE</p>
+        <h3>Discuss scope before committing.</h3>
+        <p>A consultation reviews feasibility, responsibilities and commercial terms. It does not start work, reserve capacity or create an obligation.</p>
+        <Button href={offer.primaryHref}>{offer.primaryCta}</Button>
+      </div>
+    </section>
+
+    <section class="offer-section" aria-labelledby="industries-title">
+      <div class="section-intro">
+        <p class="eyebrow">RELEVANT INDUSTRIES</p>
+        <h2 id="industries-title">Where this engagement model fits.</h2>
+      </div>
+      <div class="industry-cards">
+        {offer.industries.map(item => (
+          <article>
+            <span aria-hidden="true">↗</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="offer-section limitations-section" aria-labelledby="limits-title">
+      <div class="section-intro">
+        <p class="eyebrow">LIMITATIONS AND EXPECTATIONS</p>
+        <h2 id="limits-title">What is not guaranteed or assumed.</h2>
+      </div>
+      <div class="limit-list">
+        {offer.limitations.map(item => (
+          <p><span aria-hidden="true">!</span>{item}</p>
+        ))}
+      </div>
+    </section>
+
+    <section class="offer-section faq-layout" aria-labelledby="faq-title">
+      <div>
+        <p class="eyebrow">COMMON QUESTIONS</p>
+        <h2 id="faq-title">What to know before you enquire.</h2>
+        <p>Scope and responsibilities should be clear before any engagement begins.</p>
+      </div>
+      <FAQ items={offer.faqs} />
+    </section>
+
+    <section class="offer-final">
+      <div>
+        <p class="eyebrow">READY TO EXPLORE THIS OPTION?</p>
+        <h2>Start with a conversation about feasibility.</h2>
+        <p>A discovery call confirms whether this engagement model fits your offer, market, internal resources and commercial objectives.</p>
+      </div>
+      <div class="actions">
+        <Button href={offer.primaryHref}>{offer.primaryCta}</Button>
+        <Button href="/contact" variant="secondary">Ask a Question</Button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .offer-page { position: relative; overflow: hidden; background: #fff; }
+  .offer-grid { position: absolute; inset: 0 0 auto; height: 720px; pointer-events: none; background-image: linear-gradient(#e8ebe7 1px,transparent 1px),linear-gradient(90deg,#e8ebe7 1px,transparent 1px); background-size: 48px 48px; opacity: .58; mask-image: linear-gradient(#000 55%,transparent); }
+  .offer-container { position: relative; }
+  .offer-hero { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(300px,.75fr); gap: 70px; align-items: start; padding: 66px 0 104px; }
+  .offer-hero-copy { max-width: 780px; }
+  .offer-hero h1 { font-size: clamp(44px,5vw,72px); }
+  .offer-lead { max-width: 670px; font-size: 17px; }
+  .offer-fit { padding: 28px; border: 1px solid #dfe2df; border-radius: 18px; background: #fff; box-shadow: 0 24px 54px -30px #1118; transform: rotate(1deg); }
+  .fit-label { color: #a72b09; font-size: 10px; font-weight: 750; letter-spacing: .1em; }
+  .offer-fit h2 { margin: 18px 0 14px; font-size: 22px; }
+  .offer-fit ul { padding-left: 18px; color: #444; font-size: 13px; line-height: 1.8; }
+  .offer-section { padding: 88px 0; }
+  .section-intro { max-width: 760px; margin-bottom: 44px; }
+  .section-intro h2 { font-size: clamp(34px,4vw,52px); }
+  .section-intro > p:last-child { max-width: 620px; font-size: 14px; }
+  .scope-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .scope-included, .scope-optional { padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .scope-included h3 { margin-bottom: 14px; font-size: 18px; color: #1a1a1a; }
+  .scope-optional h3 { margin-bottom: 14px; font-size: 18px; color: #555; }
+  .scope-included ul, .scope-optional ul { padding-left: 18px; color: #444; font-size: 13px; line-height: 1.9; }
+  .scope-full { padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .scope-full h3 { margin-bottom: 16px; font-size: 18px; }
+  .scope-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; padding-left: 18px; color: #444; font-size: 13px; line-height: 1.9; }
+  .offer-band { display: grid; grid-template-columns: .9fr 1.1fr; gap: 74px; padding: 64px; border: 1px solid #dfe2df; border-radius: 20px; background: #f8f9f8; }
+  .offer-band h2 { font-size: clamp(34px,4vw,52px); }
+  .offer-band > div > p:not(.eyebrow) { font-size: 14px; }
+  .deliverable-list { display: grid; gap: 12px; }
+  .deliverable-list article { display: grid; grid-template-columns: 38px 1fr; gap: 16px; padding: 20px; border: 1px solid #e2e2e2; border-radius: 12px; background: #fff; }
+  .deliverable-list article > span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #ff4d1c; font-size: 11px; font-weight: 750; }
+  .deliverable-list p { margin: 0; font-size: 13px; }
+  .process-block { border-top: 1px solid #e5e5e5; }
+  .process-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .process-steps article { padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; }
+  .process-steps article > span { color: #a72b09; font-size: 11px; font-weight: 750; }
+  .process-steps h3 { margin-top: 34px; font-size: 20px; }
+  .process-steps p { margin: 0; font-size: 13px; }
+  .inputs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .inputs-grid article { min-height: 160px; padding: 24px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .inputs-grid article > span { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 24px; border-radius: 9px; background: #ff4d1c; font-size: 11px; font-weight: 750; }
+  .inputs-grid p { margin: 0; color: #333; font-size: 14px; line-height: 1.65; }
+  .ownership-list { display: grid; gap: 0; }
+  .ownership-list p { display: flex; gap: 13px; padding: 16px 0; margin: 0; border-bottom: 1px solid #e5e5e5; color: #333; font-size: 14px; }
+  .ownership-list span { color: #a72b09; font-weight: 800; flex-shrink: 0; }
+  .commercial-panel { display: grid; grid-template-columns: 1.2fr .8fr; gap: 72px; padding: 64px; border: 1px solid #e2c8be; border-radius: 20px; background: #fff5f1; }
+  .commercial-panel h2 { font-size: clamp(30px,3.5vw,46px); }
+  .commercial-panel ul { padding-left: 18px; color: #444; font-size: 14px; line-height: 1.9; }
+  .commercial-note { margin-top: 20px; padding: 16px; border-left: 3px solid #ff4d1c; background: #fff; font-size: 13px; color: #555; }
+  .commercial-cta { padding: 36px; border: 1px solid #ffd0c0; border-radius: 16px; background: #fff; }
+  .commercial-cta h3 { margin: 16px 0 12px; font-size: 24px; }
+  .commercial-cta p { font-size: 13px; color: #555; margin-bottom: 24px; }
+  .industry-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .industry-cards article { padding: 28px; border: 1px solid #dfe2df; border-radius: 14px; background: #f8f9f8; }
+  .industry-cards article > span { color: #a72b09; font-size: 22px; }
+  .industry-cards h3 { margin-top: 24px; font-size: 19px; }
+  .industry-cards p { margin: 0; font-size: 13px; }
+  .limitations-section { border-top: 1px solid #e5e5e5; }
+  .limit-list { display: grid; gap: 0; }
+  .limit-list p { display: flex; gap: 13px; padding: 16px 0; margin: 0; border-bottom: 1px solid #e5e5e5; color: #555; font-size: 14px; }
+  .limit-list span { color: #a72b09; font-weight: 800; flex-shrink: 0; }
+  .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; border-top: 1px solid #e5e5e5; }
+  .faq-layout h2 { font-size: clamp(34px,4vw,50px); }
+  .faq-layout :global(.faq details) { padding: 25px 0; }
+  .offer-final { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; align-items: center; margin-bottom: 90px; padding: 54px; border: 1px solid #e0e2e0; border-radius: 20px; background: #f8f9f8; background-image: radial-gradient(circle at 88% 50%,#ff4d1c20,transparent 24%); }
+  .offer-final h2 { font-size: clamp(34px,4vw,50px); }
+  .offer-final .actions { justify-content: flex-end; }
+  @media (max-width:900px) {
+    .offer-hero { grid-template-columns: 1fr; gap: 36px; }
+    .offer-fit { max-width: 620px; transform: none; }
+    .offer-band, .commercial-panel, .faq-layout { grid-template-columns: 1fr; gap: 44px; }
+    .scope-cols { grid-template-columns: 1fr; }
+    .scope-list { grid-template-columns: 1fr; }
+    .process-steps, .inputs-grid, .industry-cards { grid-template-columns: repeat(2,1fr); }
+    .offer-final { grid-template-columns: 1fr; }
+    .offer-final .actions { justify-content: flex-start; }
+  }
+  @media (max-width:680px) {
+    .offer-hero { padding: 44px 0 64px; }
+    .offer-hero h1 { font-size: 40px; }
+    .offer-lead { font-size: 15px; }
+    .offer-fit { padding: 22px; }
+    .offer-section { padding: 60px 0; }
+    .process-steps, .inputs-grid, .industry-cards { grid-template-columns: 1fr; }
+    .offer-band, .commercial-panel { padding: 32px 20px; border-radius: 16px; }
+    .faq-layout { gap: 34px; }
+    .offer-final { margin-bottom: 60px; padding: 36px 20px; }
+    .offer-final .actions { align-items: stretch; flex-direction: column; }
+  }
+</style>

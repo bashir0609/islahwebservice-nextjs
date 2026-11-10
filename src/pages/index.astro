@@ -3,70 +3,221 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import Button from '../components/Button.astro';
 import OutreachDashboard from '../components/OutreachDashboard.astro';
 import { process } from '../data/homepage';
+
 const featureCards = [
-  {icon:'◎', title:'Prospect Research', text:'Build focused account and decision-maker lists around agreed markets, roles, fields and exclusions.'},
-  {icon:'◇', title:'Contact Enrichment', text:'Improve supplied records with researched business fields, consistent formatting and transparent gap notes.'},
-  {icon:'↗', title:'Managed Outreach', text:'Discuss campaign scope and availability across audience research, messaging, campaign review and handoff.'},
+  {
+    icon: '⚙',
+    title: 'One-Time Outbound Setup',
+    text: 'Your outbound email engine built and handed over. ICP definition, sending domains, mailbox authentication, copy sequences, and full operational documentation.',
+    href: '/one-time-setup',
+    cta: 'Explore Setup ↗',
+  },
+  {
+    icon: '↗',
+    title: 'Ongoing Campaign Management',
+    text: 'Continuous prospect research, approved campaign execution, deliverability monitoring, reply handling, and weekly reporting with iterative optimization.',
+    href: '/ongoing-management',
+    cta: 'Explore Management ↗',
+  },
+  {
+    icon: '◎',
+    title: 'B2B Prospect Research Only',
+    text: 'Researched target companies, verified decision-makers, and enriched business contacts built around your exact criteria for teams managing their own outreach.',
+    href: '/b2b-prospect-research',
+    cta: 'Explore Research ↗',
+  },
 ];
+
 const proofCards = [
-  {title:'A brief your team can review', text:'Research criteria and exclusions are agreed before list building begins.', visual:'brief'},
-  {title:'Clear data boundaries', text:'Observable facts are separated from assumptions about need, authority or intent.', visual:'criteria'},
-  {title:'A practical handoff', text:'Records, gaps and verification limits are prepared for your CRM or workflow.', visual:'handoff'},
+  { title: 'A brief your team can review', text: 'Research criteria, exclusions, and required fields are explicitly agreed before list building or sending begins.', visual: 'brief' },
+  { title: 'Clear data boundaries', text: 'Observable company and role facts are strictly separated from assumptions about need, budget, authority, or intent.', visual: 'criteria' },
+  { title: 'A practical handoff', text: 'Records, verified fields, and transparent gap notes are formatted directly for your CRM or outreach workflow.', visual: 'handoff' },
 ];
+
 const credibility = [
-  {title:'Criteria before volume', text:'A smaller, relevant audience is more useful than a large generic export. Every project starts with fit, fields and exclusions.'},
-  {title:'Clarity before outreach', text:'Managed campaign scope and availability are confirmed after capacity, legal and operational review. Nothing launches from this website.'},
-  {title:'Evidence before claims', text:'We do not publish invented testimonials, campaign results, meeting counts or revenue promises.'},
+  { title: 'Criteria before volume', text: 'A smaller, highly relevant audience delivers better outcomes than mass generic exports. Every project starts with fit, fields, and exclusions.' },
+  { title: 'Transparency before outreach', text: 'Campaign scope, sender ownership, and deliverability limits are documented in writing. No sending begins without client approval.' },
+  { title: 'Evidence before claims', text: 'We never publish fabricated testimonials, guaranteed reply counts, or speculative revenue projections.' },
 ];
 ---
-<SiteLayout title="B2B Prospect Research & Cold Email Outreach" description="Build a focused B2B outbound process with criteria-led prospect research, contact enrichment and managed cold email scoping.">
+<SiteLayout title="B2B Lead Generation & Outbound Email Services" description="Find your ideal customers, build a professional outbound email system, or let Islah manage your ongoing prospect research and outreach.">
   <div class="reference-home">
     <section class="reference-hero" aria-labelledby="hero-title">
       <div class="reference-grid" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="hero-badge"><span aria-hidden="true">✦</span>B2B Lead Generation &amp; Cold Email Outreach</p>
-        <h1 id="hero-title">Get More Clients With<br />Smarter B2B Outreach</h1>
-        <p class="hero-description">From targeted prospect research to fully managed cold email campaigns, we help you connect with the right decision-makers.</p>
-        <div class="actions hero-actions"><Button href="/free-consultation">Book a Consultation</Button><Button href="/request-sample" variant="secondary">Request a Prospect Sample</Button></div>
-        <p class="hero-availability">Prospect research is available independently. Managed outreach scope and current availability are discussed by consultation.</p>
+        <p class="hero-badge"><span aria-hidden="true">✦</span>B2B Lead Generation &amp; Outbound Email Outreach</p>
+        <h1 id="hero-title">B2B Lead Generation, Built and Managed<br />Around Your Business</h1>
+        <p class="hero-description">Find your ideal customers, build a professional outbound email system, or let Islah manage your ongoing prospect research and outreach.</p>
+        <div class="actions hero-actions">
+          <Button href="/one-time-setup">I Need a One-Time Setup</Button>
+          <Button href="/ongoing-management" variant="secondary">I Need Ongoing Management</Button>
+          <Button href="/request-sample" variant="secondary">I Only Need Prospect Data</Button>
+        </div>
+        <p class="hero-availability">Choose a one-time outbound system build, ongoing campaign management, or standalone prospect research. Scope and deliverables are agreed in writing before work begins.</p>
       </div>
       <OutreachDashboard />
     </section>
 
     <section class="reference-section intro-section" aria-labelledby="solutions-title">
-      <div class="reference-heading"><p class="eyebrow">TWO SERVICES. ONE FOCUSED OUTBOUND PROCESS.</p><h2 id="solutions-title">Build the audience—or discuss support for the campaign around it.</h2><p>Choose a standalone research deliverable or explore a managed engagement with clear responsibilities and review stages.</p></div>
-      <div class="reference-feature-grid">{featureCards.map(card => <article class="reference-feature-card"><span aria-hidden="true">{card.icon}</span><h3>{card.title}</h3><p>{card.text}</p></article>)}</div>
+      <div class="reference-heading">
+        <p class="eyebrow">THREE COMMERCIAL ENGAGEMENT MODELS</p>
+        <h2 id="solutions-title">Choose the right outbound path for your team.</h2>
+        <p>Whether you need an outbound system built and handed over, fully managed campaigns, or clean prospect data for your existing sales workflow.</p>
+      </div>
+      <div class="reference-feature-grid">
+        {featureCards.map(card => (
+          <article class="reference-feature-card">
+            <span aria-hidden="true">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+            <a href={card.href} class="feature-link">{card.cta}</a>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="reference-stat-panel" aria-label="How Islah works">
-      <div><strong>Criteria-led</strong><span>Audience definition</span></div><div><strong>Source-aware</strong><span>Research notes</span></div><div><strong>CRM-ready</strong><span>Structured handoff</span></div><div><strong>Scope-first</strong><span>Managed service planning</span></div>
+      <div><strong>Criteria-led</strong><span>Audience definition</span></div>
+      <div><strong>Source-aware</strong><span>Verified research</span></div>
+      <div><strong>CRM-ready</strong><span>Structured handoff</span></div>
+      <div><strong>Scope-first</strong><span>Documented operations</span></div>
     </section>
 
     <section class="reference-section split-feature" aria-labelledby="targets-title">
-      <div><p class="eyebrow">PRECISE PROSPECT RESEARCH</p><h2 id="targets-title">Find companies and roles that match a real sales brief.</h2><p>Define geography, company profile, role functions, required fields and exclusions before research begins. Receive structured records with unresolved information clearly marked.</p><ul class="check-list"><li>ICP and target-account criteria</li><li>Decision-maker role research</li><li>Business contact verification where available</li></ul><Button href="/b2b-prospect-research" variant="secondary">Explore Prospect Research</Button></div>
-      <div class="target-visual" aria-label="Illustrative target criteria card"><div class="visual-toolbar"><span>Create Research Brief</span><b>×</b></div><label>Target market<span>United Kingdom · SaaS</span></label><label>Company profile<span>Specialist B2B software</span></label><label>Relevant roles<span>Revenue · Operations</span></label><div class="criteria-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><small>Illustrative criteria only</small></div>
+      <div>
+        <p class="eyebrow">PRECISE PROSPECT RESEARCH</p>
+        <h2 id="targets-title">Find companies and roles that match a real sales brief.</h2>
+        <p>Define geography, company profile, role functions, required fields, and exclusions before research begins. Receive structured records with unresolved information clearly marked.</p>
+        <ul class="check-list">
+          <li>ICP and target-account firmographic criteria</li>
+          <li>Decision-maker functional mapping</li>
+          <li>Business contact verification where available</li>
+          <li>Structured CSV, Excel, or Google Sheets delivery</li>
+        </ul>
+        <div class="split-actions">
+          <Button href="/b2b-prospect-research" variant="secondary">Explore Prospect Research</Button>
+          <Button href="/request-sample" variant="secondary">Request a Sample</Button>
+        </div>
+      </div>
+      <div class="target-visual" aria-label="Illustrative target criteria card">
+        <div class="visual-toolbar"><span>Create Research Brief</span><b>×</b></div>
+        <label>Target market<span>United Kingdom · B2B SaaS</span></label>
+        <label>Company profile<span>50–250 employees · High growth</span></label>
+        <label>Relevant roles<span>VP Sales · CRO · Head of Ops</span></label>
+        <div class="criteria-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <small>Illustrative criteria only</small>
+      </div>
     </section>
 
     <section class="reference-section split-feature reverse" aria-labelledby="outreach-title">
-      <div class="activity-visual" aria-label="Illustrative campaign planning visual"><div><span>Audience review</span><strong>Ready for client review</strong></div><div class="mini-bars" aria-hidden="true"><i style="--w:72%"></i><i style="--w:54%"></i><i style="--w:84%"></i></div><ul><li>Sender ownership</li><li>Message review</li><li>Suppression checks</li></ul><small>Planning illustration · no live campaign</small></div>
-      <div><p class="eyebrow">MANAGED COLD EMAIL CONSULTATION</p><h2 id="outreach-title">Connect research, messaging and campaign ownership.</h2><p>A managed scope can bring audience preparation, infrastructure review, copy, campaign operations and reply handoff into one documented plan. Current availability is confirmed after consultation.</p><ul class="check-list"><li>Client-reviewed audience and copy</li><li>Defined reply and escalation owners</li><li>Reporting based on agreed activity</li></ul><Button href="/cold-email-marketing" variant="secondary">Discuss Managed Outreach</Button></div>
+      <div class="activity-visual" aria-label="Illustrative campaign planning visual">
+        <div><span>Audience &amp; Infrastructure</span><strong>Client-Approved Setup</strong></div>
+        <div class="mini-bars" aria-hidden="true"><i style="--w:72%"></i><i style="--w:54%"></i><i style="--w:84%"></i></div>
+        <ul>
+          <li>Client-owned domains &amp; inboxes</li>
+          <li>SPF, DKIM &amp; DMARC authentication</li>
+          <li>Approved message sequences</li>
+          <li>Suppression &amp; opt-out management</li>
+        </ul>
+        <small>Operational illustration · strictly client-controlled assets</small>
+      </div>
+      <div>
+        <p class="eyebrow">OUTBOUND SYSTEM SETUP &amp; MANAGEMENT</p>
+        <h2 id="outreach-title">Build your outbound engine or let Islah manage it.</h2>
+        <p>We configure client-controlled sending infrastructure, write and test targeted email sequences, set up gradual warmup protocols, and establish clean reply classification workflows.</p>
+        <ul class="check-list">
+          <li>One-Time Setup: built, tested, and handed over to your team</li>
+          <li>Ongoing Management: recurring research, execution, and reporting</li>
+          <li>Client-approved copy, audience, and sending boundaries</li>
+          <li>Transparent weekly updates and monthly strategic reviews</li>
+        </ul>
+        <div class="split-actions">
+          <Button href="/one-time-setup">One-Time Setup</Button>
+          <Button href="/ongoing-management" variant="secondary">Ongoing Management</Button>
+        </div>
+      </div>
     </section>
 
     <section class="reference-section workflow-section" aria-labelledby="workflow-title">
-      <div class="workflow-copy"><p class="eyebrow">A CLEAR WORKFLOW</p><h2 id="workflow-title">Move from brief to next step without hidden leaps.</h2><p>Research can finish as a complete delivery. Campaign stages begin only after responsibilities, scope and availability are confirmed.</p><Button href="/services" variant="secondary">Compare Services</Button></div>
-      <div class="workflow-list">{process.map((item,index) => <article><span>{index + 1}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div>
+      <div class="workflow-copy">
+        <p class="eyebrow">A CLEAR 6-STAGE WORKFLOW</p>
+        <h2 id="workflow-title">Move from brief to execution without hidden leaps.</h2>
+        <p>One-Time Setup finishes at handover with full documentation; Ongoing Management continues through recurring execution and optimization.</p>
+        <Button href="/services" variant="secondary">Compare All Services</Button>
+      </div>
+      <div class="workflow-list">
+        {process.map((item, index) => (
+          <article>
+            <span>0{index + 1}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="reference-section" aria-labelledby="benefits-title">
-      <div class="reference-heading"><p class="eyebrow">WHY ISLAH</p><h2 id="benefits-title">Clear inputs. Useful outputs. Honest boundaries.</h2><p>Good outbound begins with a relevant audience and a shared understanding of what the evidence can—and cannot—show.</p></div>
-      <div class="benefit-grid">{proofCards.map((card,index) => <article><div class:list={['benefit-visual',card.visual]} aria-hidden="true"><span>0{index+1}</span><i></i><i></i><i></i></div><h3>{card.title}</h3><p>{card.text}</p></article>)}</div>
+      <div class="reference-heading">
+        <p class="eyebrow">WHY ISLAH WEB SERVICE</p>
+        <h2 id="benefits-title">Clear inputs. Useful outputs. Honest boundaries.</h2>
+        <p>Effective outbound begins with a relevant audience, calibrated infrastructure, and a shared understanding of what data can and cannot prove.</p>
+      </div>
+      <div class="benefit-grid">
+        {proofCards.map((card, index) => (
+          <article>
+            <div class:list={['benefit-visual', card.visual]} aria-hidden="true">
+              <span>0{index + 1}</span><i></i><i></i><i></i>
+            </div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="reference-section credibility-section" aria-labelledby="credibility-title">
-      <div class="reference-heading"><p class="eyebrow">A MORE CREDIBLE WAY TO WORK</p><h2 id="credibility-title">Process and proof before promises.</h2><p>These are working principles—not fabricated customer quotes or performance statistics.</p></div>
-      <div class="credibility-grid">{credibility.map((item,index) => <article><div class="credibility-top"><span aria-hidden="true">{['◎','✓','◇'][index]}</span><strong>Islah working principle</strong></div><h3>{item.title}</h3><p>{item.text}</p><a class="text-link" href={index===0?'/request-sample':index===1?'/free-consultation':'/portfolio'}>{index===0?'Request a sample':index===1?'Discuss your scope':'Review evidence policy'} ↗</a></article>)}</div>
+      <div class="reference-heading">
+        <p class="eyebrow">WORKING PRINCIPLES</p>
+        <h2 id="credibility-title">Process and proof before promises.</h2>
+        <p>These are our foundational standards—not exaggerated marketing claims or speculative performance guarantees.</p>
+      </div>
+      <div class="credibility-grid">
+        {credibility.map((item, index) => (
+          <article>
+            <div class="credibility-top">
+              <span aria-hidden="true">{['◎', '✓', '◇'][index]}</span>
+              <strong>Islah standard</strong>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a class="text-link" href={index === 0 ? '/request-sample' : index === 1 ? '/one-time-setup' : '/portfolio'}>
+              {index === 0 ? 'Request a sample' : index === 1 ? 'Explore setup' : 'Review case studies'} ↗
+            </a>
+          </article>
+        ))}
+      </div>
     </section>
 
-    <section class="reference-final-cta"><div><p class="eyebrow">READY FOR A MORE FOCUSED START?</p><h2>Reach the right B2B customers with better research and a clearer process.</h2><p>Start with a prospect sample, or request a consultation to discuss managed campaign scope and availability.</p><div class="actions"><Button href="/free-consultation">Book a Consultation</Button><Button href="/request-sample" variant="secondary">Request a Prospect Sample</Button></div></div><div class="orbit-visual" aria-hidden="true"><i></i><i></i><i></i><span>↗</span></div></section>
+    <section class="reference-final-cta">
+      <div>
+        <p class="eyebrow">READY FOR A MORE FOCUSED OUTBOUND ENGINE?</p>
+        <h2>Reach the right B2B customers with better data and a clearer process.</h2>
+        <p>Choose One-Time Setup, Ongoing Campaign Management, or request a research sample to test your brief.</p>
+        <div class="actions">
+          <Button href="/free-consultation">Discuss Your Project</Button>
+          <Button href="/request-sample" variant="secondary">Request a Prospect Sample</Button>
+        </div>
+      </div>
+      <div class="orbit-visual" aria-hidden="true"><i></i><i></i><i></i><span>↗</span></div>
+    </section>
   </div>
 </SiteLayout>
+
+<style>
+  .feature-link { display: inline-block; margin-top: 18px; color: #a72b09; font-size: 13px; font-weight: 750; text-decoration: none; }
+  .feature-link:hover { text-decoration: underline; }
+  .split-actions { display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap; }
+  .reference-feature-card { display: flex; flex-direction: column; justify-content: space-between; }
+</style>

@@ -1,24 +1,94 @@
 ---
-interface Props { context?: 'contact' | 'research' | 'consultation'; }
+interface Props {
+  context?: 'contact' | 'research' | 'consultation' | 'setup' | 'management';
+}
+
 const { context = 'contact' } = Astro.props;
-const subjects = {
-  contact: 'Website enquiry',
-  research: 'Prospect research sample request',
-  consultation: 'Consultation request',
+
+const subjects: Record<string, string> = {
+  contact: 'Outbound Enquiry: [Your Company Name]',
+  research: 'Prospect Research Sample Request: [Your Company Name]',
+  consultation: 'Outreach Consultation Request: [Your Company Name]',
+  setup: 'One-Time Outbound Setup Enquiry: [Your Company Name]',
+  management: 'Ongoing Campaign Management Enquiry: [Your Company Name]',
 };
-const subject = encodeURIComponent(subjects[context]);
+
+const templates: Record<string, string> = {
+  setup: `1. Company Name & Website:
+2. Target Industry & Geography:
+3. Ideal Customer Profile (size, employee bands):
+4. Decision-Maker Titles / Functions:
+5. Products/Services Promoted:
+6. Current Domains / Mailboxes Available:
+7. Existing CRM or Outreach Tools (if any):
+8. Target Launch Timing:
+9. Additional Notes or Exclusions:`,
+  management: `1. Company Name & Website:
+2. Target Market & Geographies:
+3. Desired Monthly Prospect Volume:
+4. Decision-Maker Functions Needed:
+5. Internal Lead Owner (who handles replies):
+6. Existing Domains/Inboxes or Tools:
+7. Target Launch Window:
+8. Additional Scoping Context:`,
+  research: `1. Company Name & Website:
+2. Target Market / Geography:
+3. Industry / Company Criteria:
+4. Headcount / Employee Size Range:
+5. Target Decision-Maker Roles:
+6. Required Fields (e.g. Email, LinkedIn, Phone):
+7. Known Exclusions (competitors, existing clients):
+8. Preferred Delivery Format (CSV, Sheets, CRM):`,
+  consultation: `1. Company Name & Website:
+2. Preferred Engagement (One-Time Setup / Ongoing Management / Prospect Research):
+3. Target Industry & Geography:
+4. Current Outbound Process & Challenges:
+5. Estimated Monthly Prospect / Outreach Scope:
+6. Target Launch Timing:`,
+  contact: `1. Company Name & Website:
+2. Preferred Engagement Model (One-Time Setup, Ongoing Management, or Prospect Research):
+3. Brief Project Overview:
+4. Target Launch Timing:`,
+};
+
+const subject = encodeURIComponent(subjects[context] ?? subjects.contact);
+const bodyText = templates[context] ?? templates.contact;
+const mailtoHref = `mailto:hello@islahwebservice.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 ---
 <section class="contact-channel" aria-labelledby={`contact-channel-${context}`}>
-  <p class="eyebrow">Email contact available</p>
-  <h2 id={`contact-channel-${context}`}>Send your enquiry directly.</h2>
-  <p>The website form is not active. Email the verified Islah Web Service address and include only the project context needed for an initial review.</p>
-  <a class="button primary" href={`mailto:hello@islahwebservice.com?subject=${subject}`}>Email hello@islahwebservice.com <span aria-hidden="true">↗</span></a>
-  <p class="contact-safety">Do not email passwords, confidential databases, financial information or sensitive personal data. An email does not confirm a booking, quotation or service delivery.</p>
+  <p class="eyebrow">DIRECT EMAIL INTAKE</p>
+  <h2 id={`contact-channel-${context}`}>Submit your project brief.</h2>
+  <p>To ensure prompt scoping, send your brief directly to our verified team mailbox at <strong>hello@islahwebservice.com</strong>. You can click below to open your email client with a pre-formatted project template, or copy the fields below.</p>
+
+  <div class="channel-actions">
+    <a class="button primary" href={mailtoHref}>
+      Open Pre-Formatted Email ↗
+    </a>
+  </div>
+
+  <div class="brief-template">
+    <div class="template-header">
+      <span>PROJECT BRIEF TEMPLATE (CLICK OR COPY)</span>
+    </div>
+    <pre>{bodyText}</pre>
+  </div>
+
+  <p class="contact-safety">
+    <strong>Safe use notice:</strong> Never email passwords, API keys, confidential client databases, financial records, or sensitive personal data. An email enquiry initiates a feasibility review and does not constitute a confirmed contract or automatic calendar reservation.
+  </p>
 </section>
+
 <style>
-  .contact-channel { padding: 32px; border: 1px solid #e0e2e0; border-radius: 20px; background: #f8f9f8; box-shadow: 0 14px 32px #1110008; }
-  .contact-channel h2 { font-size: clamp(28px,3vw,40px); }
-  .contact-channel>p:not(.eyebrow) { max-width: 620px; font-size: 14px; }
-  .contact-channel .contact-safety { margin: 20px 0 0; color: #666; font-size: 11px; }
-  @media (max-width:680px) { .contact-channel { padding: 24px; }.contact-channel .button { width: 100%; } }
+  .contact-channel { padding: 36px; border: 1px solid #e0e2e0; border-radius: 20px; background: #f8f9f8; box-shadow: 0 14px 32px #1110008; }
+  .contact-channel h2 { font-size: clamp(26px,3vw,38px); margin: 8px 0 14px; }
+  .contact-channel > p:not(.eyebrow) { max-width: 680px; font-size: 14px; color: #444; line-height: 1.65; }
+  .channel-actions { margin: 24px 0; }
+  .brief-template { margin: 24px 0; border: 1px solid #dfe2df; border-radius: 12px; background: #fff; overflow: hidden; }
+  .template-header { padding: 10px 16px; background: #f0f2f0; border-bottom: 1px solid #dfe2df; font-size: 10px; font-weight: 750; color: #a72b09; letter-spacing: .08em; }
+  .brief-template pre { margin: 0; padding: 18px; font-family: monospace; font-size: 12px; line-height: 1.7; color: #333; white-space: pre-wrap; word-break: break-word; }
+  .contact-safety { margin: 20px 0 0; color: #666; font-size: 11px; line-height: 1.6; border-top: 1px solid #e2e2e2; padding-top: 16px; }
+  @media (max-width:680px) {
+    .contact-channel { padding: 24px; }
+    .contact-channel .button { width: 100%; text-align: center; }
+  }
 </style>
