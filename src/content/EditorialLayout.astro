@@ -1,0 +1,41 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+interface Props { title: string; description: string; canonicalUrl?: string; socialImage?: string; publishedAt?: string; }
+const {title, description, canonicalUrl, socialImage, publishedAt} = Astro.props;
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, 'https://www.islahwebservice.com').href;
+const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true';
+const robots = indexable ? 'index,follow' : 'noindex,nofollow';
+const schema = {'@context': 'https://schema.org', '@type': 'Article', headline: title, description, url: canonical, ...(publishedAt ? {datePublished: publishedAt} : {})};
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="Islah Web Service Blog" href="/blog/rss.xml" />
+    <meta name="robots" content={robots} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Islah Web Service" />
+    {socialImage && <meta property="og:image" content={new URL(socialImage, 'https://www.islahwebservice.com').href} />}
+    <meta name="theme-color" content="#F8F8F6" />
+    <meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={new URL(socialImage, 'https://www.islahwebservice.com').href} />}
+    <script type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} />
+  </head>
+  <body class="page-canvas-layout">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+import { primaryNav } from '../data/site';
+const servicePaths = new Set(['/b2b-prospect-research', '/contact-enrichment', '/cold-email-marketing', '/email-infrastructure', '/campaign-management', '/appointment-setting']);
+const current = (href: string) => {
+  const path = Astro.url.pathname;
+  if (path === href) return 'page';
+  if (href === '/services' && servicePaths.has(path)) return 'page';
+  if (href === '/industries' && path.startsWith('/industries/')) return 'page';
+  if (href === '/blog' && path.startsWith('/blog/')) return 'page';
+  return undefined;
+};
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="Islah Web Service home"><img class="brand-logo" src="/Islah-logo.png" width="300" height="100" alt="Islah Web Service" /></a>
+    <nav class="desktop-nav" aria-label="Primary">
+      {primaryNav.map(item => <a href={item.href} aria-current={current(item.href)}>{item.label}</a>)}
+    </nav>
+    <a class="header-cta" href="/free-consultation">Book a Call <span aria-hidden="true">↗</span></a>
+    <details class="mobile-nav">
+      <summary aria-label="Toggle navigation">Menu <span aria-hidden="true">☰</span></summary>
+      <nav aria-label="Primary mobile">
+        {primaryNav.map(item => <a href={item.href} aria-current={current(item.href)}>{item.label}</a>)}
+        <a href="/free-consultation" class="mobile-call">Book a Call ↗</a>
+      </nav>
+    </details>
+  </div>
+</header>

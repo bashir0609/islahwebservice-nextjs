@@ -1,0 +1,105 @@
+name: Rebuild PostgreSQL integration
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'supabase/migrations/**'
+      - 'src/server/worker.ts'
+      - 'src/server/worker-supabase.ts'
+      - 'tests/postgres-worker.integration.test.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/rebuild-postgres.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/migrations/**'
+      - 'src/server/worker.ts'
+      - 'src/server/worker-supabase.ts'
+      - 'tests/postgres-worker.integration.test.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/rebuild-postgres.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rebuild-postgres-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  postgres-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: local-ci-only
+          POSTGRES_DB: islah_rebuild_disposable_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d islah_rebuild_disposable_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      LOCAL_TEST_DATABASE_URL: postgresql://postgres:local-ci-only@127.0.0.1:5432/islah_rebuild_disposable_test
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.15.0'
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install locked database test dependency
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Verify PostgreSQL 15 readiness
+        run: |
+          node --input-type=module <<'NODE'
+          import pg from 'pg';
+          const deadline = Date.now() + 60_000;
+          while (true) {
+            const client = new pg.Client({ connectionString: process.env.LOCAL_TEST_DATABASE_URL, connectionTimeoutMillis: 3000 });
+            try {
+              await client.connect();
+              const { rows: [row] } = await client.query('show server_version_num');
+              if (!String(row.server_version_num).startsWith('15')) throw new Error(`Expected PostgreSQL 15, received ${row.server_version_num}`);
+              await client.end();
+              break;
+            } catch (error) {
+              await client.end().catch(() => {});
+              if (Date.now() >= deadline) throw error;
+              await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+          }
+          NODE
+
+      - name: Run disposable PostgreSQL integration tests
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run test:postgres 2>&1 | tee postgres-test.tap
+          if grep -q '# SKIP' postgres-test.tap; then
+            echo 'PostgreSQL integration tests were unexpectedly skipped.' >&2
+            exit 1
+          fi
+
+      - name: Upload failure output
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuild-postgres-failure-${{ github.run_id }}
+          path: postgres-test.tap
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,24 @@
+---
+interface Props { context?: 'contact' | 'research' | 'consultation'; }
+const { context = 'contact' } = Astro.props;
+const subjects = {
+  contact: 'Website enquiry',
+  research: 'Prospect research sample request',
+  consultation: 'Consultation request',
+};
+const subject = encodeURIComponent(subjects[context]);
+---
+<section class="contact-channel" aria-labelledby={`contact-channel-${context}`}>
+  <p class="eyebrow">Email contact available</p>
+  <h2 id={`contact-channel-${context}`}>Send your enquiry directly.</h2>
+  <p>The website form is not active. Email the verified Islah Web Service address and include only the project context needed for an initial review.</p>
+  <a class="button primary" href={`mailto:hello@islahwebservice.com?subject=${subject}`}>Email hello@islahwebservice.com <span aria-hidden="true">↗</span></a>
+  <p class="contact-safety">Do not email passwords, confidential databases, financial information or sensitive personal data. An email does not confirm a booking, quotation or service delivery.</p>
+</section>
+<style>
+  .contact-channel { padding: 32px; border: 1px solid #e0e2e0; border-radius: 20px; background: #f8f9f8; box-shadow: 0 14px 32px #1110008; }
+  .contact-channel h2 { font-size: clamp(28px,3vw,40px); }
+  .contact-channel>p:not(.eyebrow) { max-width: 620px; font-size: 14px; }
+  .contact-channel .contact-safety { margin: 20px 0 0; color: #666; font-size: 11px; }
+  @media (max-width:680px) { .contact-channel { padding: 24px; }.contact-channel .button { width: 100%; } }
+</style>

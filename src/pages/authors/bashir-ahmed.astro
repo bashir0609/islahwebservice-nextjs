@@ -1,0 +1,20 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import {listOfflinePublishedBlogs} from '../../content/offline.mjs';
+const posts = await listOfflinePublishedBlogs();
+const description = 'Meet Bashir Ahmed, founder of Islah Web Service, and read his guides to B2B prospect research, contact enrichment, email verification and target definition.';
+const personSchema = {'@context':'https://schema.org','@type':'Person','@id':'https://www.islahwebservice.com/authors/bashir-ahmed#person',name:'Bashir Ahmed',url:'https://www.islahwebservice.com/authors/bashir-ahmed',jobTitle:'Founder',worksFor:{'@type':'Organization',name:'Islah Web Service',url:'https://www.islahwebservice.com'},sameAs:['https://www.linkedin.com/in/bashir0609','https://www.upwork.com/freelancers/bashirahmed']};
+---
+<SiteLayout title="Bashir Ahmed — Founder & Author" description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema).replaceAll('<','\\u003c')} />
+  <div class="container author-page">
+    <Breadcrumb items={[{label:'Blog',href:'/blog'},{label:'Bashir Ahmed'}]} />
+    <header class="page-hero"><p class="eyebrow">FOUNDER &amp; AUTHOR</p><h1>Bashir Ahmed</h1><p>Founder, Islah Web Service</p><p>Bashir writes about B2B prospect research, contact enrichment, email verification and practical ways to prepare business data for sales teams.</p><nav aria-label="Author profiles" class="author-links"><a class="button secondary" href="https://www.linkedin.com/in/bashir0609" rel="external">LinkedIn profile ↗</a><a class="button secondary" href="https://www.upwork.com/freelancers/bashirahmed" rel="external">Upwork profile ↗</a></nav></header>
+    <section class="section compact" aria-labelledby="author-guides"><div class="section-heading"><div><p class="eyebrow">PUBLISHED GUIDES</p><h2 id="author-guides">Research guides by Bashir Ahmed.</h2></div><p>{posts.length} existing published articles are preserved in the Astro site.</p></div><div class="author-guides">{posts.map(post => <article><h3><a href={`/blog/${post.slug}`}>{post.title}</a></h3>{post.publishedAt && <p><time datetime={post.publishedAt}>{post.publishedAt}</time></p>}</article>)}</div></section>
+  </div>
+</SiteLayout>
+<style>
+  .author-page { background: #fff; }.author-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }.author-guides { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding-bottom:90px; }.author-guides article { padding:24px; border:1px solid var(--line); border-radius:14px; background:#f8f9f8; }.author-guides h3 { font-size:18px; }.author-guides h3 a { text-decoration:none; }.author-guides p { margin:0; font-size:11px; }
+  @media(max-width:680px){.author-guides{grid-template-columns:1fr;padding-bottom:60px}.author-links{align-items:stretch;flex-direction:column}}
+</style>

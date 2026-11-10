@@ -1,0 +1,33 @@
+---
+const navigation = ['Campaign Overview', 'Prospect Research', 'Contact Enrichment', 'Email Activity', 'Reply Management', 'Qualified Opportunities'];
+const metrics = [
+  { label: 'Prospect Research', value: '120', note: 'Illustrative accounts', chart: '10,33 26,31 42,24 58,27 74,17 90,12 106,6' },
+  { label: 'Contact Enrichment', value: '84', note: 'Illustrative records', chart: '10,32 26,28 42,30 58,19 74,20 90,9 106,5' },
+  { label: 'Reply Management', value: '12', note: 'Illustrative replies', chart: '10,34 26,34 42,26 58,29 74,18 90,19 106,8' },
+];
+const stages = [{ title: 'Audience research', detail: 'Example brief A', progress: 78, status: 'In review' }, { title: 'Data preparation', detail: 'Example brief B', progress: 54, status: 'Draft' }, { title: 'Messaging review', detail: 'Example brief C', progress: 32, status: 'Not launched' }];
+---
+<figure class="dashboard-figure" aria-labelledby="dashboard-caption" data-md-exclude="true">
+  <figcaption id="dashboard-caption" class="illustration-caption"><span class="status-dot" aria-hidden="true"></span>Illustrative workspace · fictional data, not Islah results · no live sending</figcaption>
+  <div class="dashboard-stage">
+    <div class="dashboard-shell">
+      <aside class="dashboard-sidebar" aria-label="Illustrative workspace sections">
+        <div class="dashboard-wordmark"><span class="mini-logo" aria-hidden="true">i↗</span> ISLAH <span class="demo-chip">DEMO</span></div>
+        <p class="dashboard-overline">WORKSPACE PREVIEW</p>
+        <ul>{navigation.map((item, i) => <li class:list={{ selected: i === 0 }}><span class="sidebar-icon" aria-hidden="true">{['◫', '◎', '◇', '↗', '☷', '☆'][i]}</span>{item}</li>)}</ul>
+        <div class="sidebar-note"><span aria-hidden="true">⌁</span><strong>A clear path forward.</strong><p>Research first.<br />Client review before outreach.</p></div>
+      </aside>
+      <div class="dashboard-main">
+        <div class="dashboard-toolbar"><span>Workspace <span aria-hidden="true">/</span> <strong>Campaign Overview</strong></span><span class="dashboard-avatar" aria-label="Demo workspace avatar">IW</span></div>
+        <div class="dashboard-heading"><div><p class="dashboard-overline">A MORE FOCUSED PROCESS</p><h2>Your outreach, in perspective.</h2><p>An example of how the pieces fit together.</p></div><span class="workspace-status"><span class="status-dot" aria-hidden="true"></span>Illustration only</span></div>
+        <div class="dashboard-metrics">{metrics.map(metric => <div class="metric-card"><h3>{metric.label}</h3><div class="metric-value"><strong>{metric.value}</strong><svg viewBox="0 0 116 42" aria-hidden="true"><polyline points={metric.chart} fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div><p>{metric.note}</p></div>)}</div>
+        <div class="dashboard-panels">
+          <section class="activity-panel"><div class="panel-title"><h3>Email Activity</h3><span>Demo sequence</span></div><p class="chart-description">An illustrative activity pattern, not measured email volume.</p><div class="activity-chart" aria-hidden="true"><div class="chart-lines"></div>{[24, 36, 30, 48, 40, 62, 52, 78, 66, 90, 76, 98].map((height, i) => <span style={`--bar-height:${height}%;--bar-delay:${i * 35}ms`} />)}</div><div class="chart-axis" aria-hidden="true"><span>Plan</span><span>Prepare</span><span>Review</span></div></section>
+          <section class="campaign-panel"><div class="panel-title"><h3>Campaign preparation</h3><span class="demo-chip">DEMO</span></div>{stages.map(stage => <div class="campaign-row"><div><strong>{stage.title}</strong><span>{stage.status}</span></div><div class="demo-progress" aria-hidden="true"><span style={`--progress:${stage.progress}%`} /></div><small>{stage.detail} · illustrative progress</small></div>)}</section>
+        </div>
+        <div class="dashboard-bottom"><span><span class="status-dot" aria-hidden="true"></span>Client review comes before launch</span><span>No campaigns connected <span aria-hidden="true">↗</span></span></div>
+      </div>
+    </div>
+    <div class="opportunity-card"><span class="opportunity-icon" aria-hidden="true">↗</span><div><span class="dashboard-overline">QUALIFIED OPPORTUNITIES</span><strong>04 <small>example conversations</small></strong><p>Fictional illustration. Not a promise of meetings.</p></div></div>
+  </div>
+</figure>

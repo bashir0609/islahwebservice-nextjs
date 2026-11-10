@@ -1,0 +1,6 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Button from '../components/Button.astro';
+export const prerender = true;
+---
+<SiteLayout title="Page not found" description="This page is not available. Find your way back to Islah prospect research, enrichment or contact." noindex><div class="container"><section class="page-hero"><p class="eyebrow">404 · Page not found</p><h1>A clearer direction<br />starts here.</h1><p>The page you requested is not available. Explore the services or return to the homepage.</p><div class="actions"><Button href="/">Back to home</Button><Button href="/services" variant="secondary">Explore services</Button></div></section></div></SiteLayout>

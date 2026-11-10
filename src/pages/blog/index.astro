@@ -1,0 +1,28 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import {listOfflinePublishedBlogs} from '../../content/offline.mjs';
+const posts = await listOfflinePublishedBlogs();
+---
+<SiteLayout title="B2B Prospecting & Research Blog" description="Practical guides to B2B prospect research, contact enrichment, email verification and data quality from Islah Web Service.">
+  <div class="container">
+    <Breadcrumb items={[{label: 'Blog'}]} />
+    <header class="page-hero">
+      <p class="eyebrow">THE ISLAH JOURNAL</p>
+      <h1>Practical guidance for better prospect research.</h1>
+      <p>Published articles preserved from the existing website. Draft articles remain excluded from routes, feeds and the sitemap.</p>
+    </header>
+    <section class="section compact" aria-labelledby="published-guides">
+      <div class="section-heading"><div><p class="eyebrow">PUBLISHED GUIDES</p><h2 id="published-guides">Research notes and field guides.</h2></div><p>{posts.length} published articles are available.</p></div>
+      <div class="grid three blog-grid">
+        {posts.map(post => <article class="card blog-card">
+          <p class="eyebrow">{post.tags.slice(0, 2).join(' · ') || 'Prospect research'}</p>
+          <h3><a href={`/blog/${post.slug}`}>{post.title}</a></h3>
+          <p>{post.excerpt}</p>
+          <p class="blog-meta">{post.publishedAt && <time datetime={post.publishedAt}>{post.publishedAt}</time>}{post.readTime && <span>{post.readTime} min read</span>}</p>
+          <a class="text-link" href={`/blog/${post.slug}`}>Read article <span aria-hidden="true">↗</span></a>
+        </article>)}
+      </div>
+    </section>
+  </div>
+</SiteLayout>

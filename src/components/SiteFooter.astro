@@ -1,0 +1,46 @@
+---
+import { services, industries } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="/" class="brand" aria-label="Islah Web Service home"><img class="brand-logo" src="/Islah-logo.png" width="300" height="100" alt="Islah Web Service" /></a>
+      <p>Focused prospect research and a considered path to managed outreach. Research is available independently; managed service scope and availability are discussed by consultation.</p>
+            <nav aria-label="Founder profiles"><a href="https://www.linkedin.com/in/bashir0609" rel="external">Bashir Ahmed on LinkedIn ↗</a><a href="https://www.upwork.com/freelancers/bashirahmed" rel="external">Founder’s Upwork profile ↗</a></nav>
+    </div>
+    <div>
+      <h2>Services</h2>
+      <nav aria-label="Services">
+        {services.map((service) => <a href={'/' + service.slug}>{service.title}</a>)}
+      </nav>
+    </div>
+    <div>
+      <h2>Industries</h2>
+      <nav aria-label="Industries">
+        {industries.map((industry) => <a href={'/industries/' + industry.slug}>{industry.title}</a>)}
+      </nav>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <nav aria-label="Company">
+        <a href="/about">About</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/portfolio">Case studies</a>
+        <a href="/contact">Contact</a>
+        <a href="/request-sample">Request a sample</a>
+        <a href="/free-consultation">Book a call</a>
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {new Date().getFullYear()} Islah Web Service. All rights reserved.</p>
+    <div>
+      <a href="/privacy-policy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="mailto:hello@islahwebservice.com">hello@islahwebservice.com</a>
+    </div>
+  </div>
+</footer>

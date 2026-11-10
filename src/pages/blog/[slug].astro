@@ -1,0 +1,10 @@
+---
+import Detail from '../../content/Detail.astro';
+import {listOfflinePublishedBlogs} from '../../content/offline.mjs';
+export const prerender = true;
+export async function getStaticPaths() {
+  return (await listOfflinePublishedBlogs()).map(record => ({params: {slug: record.slug}, props: {record}}));
+}
+const {record} = Astro.props;
+---
+<Detail record={record} collection="blog" />

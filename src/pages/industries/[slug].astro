@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import IndustryPage from '../../components/IndustryPage.astro';
+import { industries } from '../../data/site';
+import { industryDetails } from '../../data/industry-details';
+
+export const prerender = true;
+export function getStaticPaths() {
+  return industries.map(industry => ({ params: { slug: industry.slug }, props: { industry } }));
+}
+const { industry } = Astro.props;
+const detail = industryDetails[industry.slug];
+if (!detail) throw new Error(`Missing industry details for ${industry.slug}`);
+---
+<SiteLayout title={`${industry.title} Prospect Research`} description={industry.summary}>
+  <IndustryPage industry={industry} detail={detail} />
+</SiteLayout>
