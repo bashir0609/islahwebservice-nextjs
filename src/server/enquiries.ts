@@ -2,14 +2,17 @@ import { createHmac, randomBytes } from 'node:crypto';
 import { z } from 'zod';
 import { PersistenceUnavailable, type EnquiryPersistence } from './persistence';
 
-export const kinds = ['research', 'campaign', 'contact', 'consultation'] as const;
+export const kinds = ['research', 'campaign', 'contact', 'consultation', 'setup', 'management'] as const;
 export type EnquiryKind = (typeof kinds)[number];
 const text = (min: number, max: number) => z.string().trim().min(min).max(max)
   .refine((value) => !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(value));
 // CRM provenance is a bounded page path, never an arbitrary URL/referrer/query string.
-export const sourcePages = ['/', '/contact', '/request-sample', '/free-consultation',
+export const sourcePages = [
+  '/', '/contact', '/request-sample', '/free-consultation',
   '/b2b-prospect-research', '/contact-enrichment', '/services', '/cold-email-marketing',
-  '/email-infrastructure', '/campaign-management', '/appointment-setting'] as const;
+  '/email-infrastructure', '/campaign-management', '/appointment-setting',
+] as const;
+
 export const enquirySchema = z.object({
   source_page: z.enum(sourcePages).optional(),
   name: text(1, 120),
@@ -26,6 +29,7 @@ export const enquirySchema = z.object({
   consent: z.literal('on'),
   website_confirm: z.string().max(0).default(''),
 }).strict();
+
 export type EnquiryInput = z.infer<typeof enquirySchema>;
 export const MAX_BODY_BYTES = 32_768;
 const TTL = 10 * 60_000;
@@ -36,12 +40,14 @@ const WINDOW = 60_000;
 class HttpError extends Error {
   constructor(readonly status: number, readonly code: string) { super(code); }
 }
+
 function response(status: number, body: object, extra: Record<string, string> = {}) {
   return new Response(JSON.stringify(body), { status, headers: {
     'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store',
     'X-Content-Type-Options': 'nosniff', ...extra,
   } });
 }
+
 async function readInput(request: Request): Promise<unknown> {
   const encoding = request.headers.get('content-encoding');
   if (encoding && encoding !== 'identity') throw new HttpError(415, 'unsupported_encoding');
@@ -105,9 +111,20 @@ export interface HandlerOptions {
   /** Explicit server capability; runtime only supplies this after its separate approval gates. */
   persistence?: EnquiryPersistence;
   canonicalOrigin?: string;
+  /** Server-side email delivery capability (e.g. Resend) */
+  emailSender?: (data: {
+    kind: EnquiryKind;
+    enquiry: EnquiryInput;
+    idempotencyKey: string;
+  }) => Promise<{ ok: boolean; id?: string; error?: string }>;
 }
 
-/** Defaults to local mock. Persistent operation requires an explicitly supplied server capability. */
+/**
+ * Handles incoming enquiries across all supported kinds.
+ * In development/test with no emailSender: runs truthful local mock.
+ * In production with emailSender: delivers verified email to hello@islahwebservice.com via Resend.
+ * In production without emailSender or persistence: fails closed with 503.
+ */
 export function createEnquiryHandler(options: HandlerOptions = {}) {
   const now = options.now ?? Date.now;
   const secret = randomBytes(32);
@@ -115,30 +132,44 @@ export function createEnquiryHandler(options: HandlerOptions = {}) {
   const entries = new Map<string, { fingerprint: string; expires: number }>();
   let windowStart = now();
   let requests = 0;
+
   return async (request: Request, routeKind?: EnquiryKind): Promise<Response> => {
     try {
       if (request.method !== 'POST') return response(405, { error: 'method_not_allowed' }, { Allow: 'POST' });
-      // Unknown environments are closed too. Vercel previews are not local mocks.
+
+      const hasEmailDelivery = Boolean(options.emailSender);
       const persistent = options.mode === 'persistence' && options.persistence && options.canonicalOrigin;
-      if (!persistent && (!['development', 'test'].includes(options.environment ?? '') || options.vercelEnvironment ||
+
+      // Fail closed when no delivery capability and not local development/test
+      if (!persistent && !hasEmailDelivery && (!['development', 'test'].includes(options.environment ?? '') || options.vercelEnvironment ||
           (options.mode !== undefined && options.mode !== 'mock'))) {
         throw new HttpError(503, 'service_unavailable');
       }
+
       if (routeKind !== undefined && !kinds.includes(routeKind)) throw new HttpError(404, 'not_found');
+
       const origin = request.headers.get('origin');
-      if (!origin || origin !== new URL(request.url).origin ||
-          (persistent && origin !== options.canonicalOrigin) ||
-          ![null, 'same-origin'].includes(request.headers.get('sec-fetch-site'))) {
+      const reqUrl = new URL(request.url);
+      const allowedOrigins = ['https://www.islahwebservice.com', 'https://islahwebservice.com', reqUrl.origin];
+      if (persistent && options.canonicalOrigin) allowedOrigins.push(options.canonicalOrigin);
+
+      // Verify origin and sec-fetch-site
+      if (!origin || (!allowedOrigins.includes(origin) && origin !== reqUrl.origin) ||
+          ![null, 'same-origin', 'same-site'].includes(request.headers.get('sec-fetch-site'))) {
         throw new HttpError(403, 'origin_not_allowed');
       }
+
       const time = now();
       if (time - windowStart >= WINDOW) { windowStart = time; requests = 0; }
       // One global process-local budget: no spoofable forwarded IP and no unbounded IP map.
       if (!persistent && ++requests > MAX_REQUESTS) return response(429, { error: 'rate_limited' }, { 'Retry-After': '60' });
+
       const key = request.headers.get('idempotency-key');
       if (!key || !z.string().uuid().safeParse(key).success) throw new HttpError(400, 'invalid_idempotency_key');
+
       const raw = await readInput(request);
       if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new HttpError(422, 'invalid_fields');
+
       const { kind: bodyKind, ...fields } = raw as Record<string, unknown>;
       const selectedKind = z.enum(kinds).safeParse(Object.hasOwn(raw, 'kind') ? bodyKind : routeKind);
       if (!selectedKind.success || (routeKind !== undefined && selectedKind.data !== routeKind)) {
@@ -147,6 +178,7 @@ export function createEnquiryHandler(options: HandlerOptions = {}) {
       const kind = selectedKind.data;
       const parsed = enquirySchema.safeParse(fields);
       if (!parsed.success) throw new HttpError(422, 'invalid_fields');
+
       if (persistent) {
         if (!parsed.data.source_page) throw new HttpError(422, 'invalid_fields');
         const outcome = await options.persistence!.persist({ kind, enquiry: parsed.data, idempotencyKey: key });
@@ -158,14 +190,45 @@ export function createEnquiryHandler(options: HandlerOptions = {}) {
           message: 'Your enquiry has been stored and queued for review. No notification, outreach or consultation booking has been sent or created.',
         });
       }
+
+      // Check idempotency for email delivery and mock
       const fingerprint = digest(JSON.stringify([kind, parsed.data]));
       const keyHash = digest(key.toLowerCase());
       for (const [storedKey, entry] of entries) if (entry.expires <= time) entries.delete(storedKey);
       const existing = entries.get(keyHash);
       if (existing && existing.fingerprint !== fingerprint) throw new HttpError(409, 'idempotency_conflict');
+
+      if (hasEmailDelivery) {
+        if (existing) {
+          // Already successfully sent with identical payload: return cached success (no duplicate email)
+          return response(200, {
+            ok: true, mode: 'delivered', delivered: true, kind,
+            message: 'Thank you! Your enquiry has been received and routed to our team at hello@islahwebservice.com. We will respond within one business day.',
+          });
+        }
+
+        const delivery = await options.emailSender!({
+          kind,
+          enquiry: parsed.data,
+          idempotencyKey: key,
+        });
+
+        if (!delivery.ok) {
+          console.error('[Enquiry Server] Delivery error:', delivery.error);
+          throw new HttpError(500, 'delivery_failed');
+        }
+
+        entries.set(keyHash, { fingerprint, expires: time + TTL });
+
+        return response(200, {
+          ok: true, mode: 'delivered', delivered: true, kind,
+          message: 'Thank you! Your enquiry has been received and routed to our team at hello@islahwebservice.com. We will respond within one business day.',
+        });
+      }
+
+      // Local mock handling (development / test without delivery capability)
       if (!existing) {
         if (entries.size >= MAX_ENTRIES) throw new HttpError(503, 'mock_capacity_reached');
-        // No await between lookup and insertion: concurrent calls cannot overwrite a reservation.
         entries.set(keyHash, { fingerprint, expires: time + TTL });
       }
       return response(200, {

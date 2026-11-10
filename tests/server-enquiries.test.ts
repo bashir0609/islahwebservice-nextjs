@@ -149,3 +149,47 @@ test('integration adapters are explicit no-ops', async () => {
     assert.deepEqual(result, { mode: 'mock', performed: false });
   }
 });
+
+test('emailSender capability delivers in production and deduplicates identically', async () => {
+  let deliveryCalls = 0;
+  let receivedData: any = null;
+  const mockEmailSender = async (data: any) => {
+    deliveryCalls++;
+    receivedData = data;
+    return { ok: true, id: 'msg_123' };
+  };
+
+  const handler = createEnquiryHandler({
+    environment: 'production',
+    emailSender: mockEmailSender,
+  });
+
+  const key = randomUUID();
+  const req1 = request(input, {}, key);
+  const res1 = await handler(req1, 'setup');
+  assert.equal(res1.status, 200);
+  const body1 = await res1.json();
+  assert.equal(body1.mode, 'delivered');
+  assert.equal(body1.delivered, true);
+  assert.equal(body1.kind, 'setup');
+  assert.equal(deliveryCalls, 1);
+  assert.equal(receivedData.kind, 'setup');
+  assert.equal(receivedData.enquiry.email, input.email);
+
+  // Idempotent retry with same key must return cached 200 and NOT call delivery again
+  const req2 = request(input, {}, key);
+  const res2 = await handler(req2, 'setup');
+  assert.equal(res2.status, 200);
+  const body2 = await res2.json();
+  assert.equal(body2.mode, 'delivered');
+  assert.equal(deliveryCalls, 1); // No extra call!
+
+  // Delivery failure maps to safe 500
+  const failingHandler = createEnquiryHandler({
+    environment: 'production',
+    emailSender: async () => ({ ok: false, error: 'upstream_timeout' }),
+  });
+  const resFail = await failingHandler(request(), 'management');
+  assert.equal(resFail.status, 500);
+  assert.deepEqual(await resFail.json(), { error: 'delivery_failed' });
+});

@@ -1,5 +1,6 @@
 import { createEnquiryHandler, type EnquiryKind } from './enquiries';
 import { createSupabasePersistence, type SafePersistenceEvent } from './persistence';
+import { sendEnquiryNotification } from './resend-service';
 
 export interface PersistenceApprovals {
   persistenceReviewed: boolean;
@@ -11,8 +12,23 @@ export function createRuntimeHandler(
   approvals: PersistenceApprovals = { persistenceReviewed: false, migrationReviewed: false },
   dependencies: { fetch: typeof fetch; log?: (event: SafePersistenceEvent) => void } = { fetch: globalThis.fetch },
 ) {
-  const closed = () => createEnquiryHandler({ environment: env.NODE_ENV,
-    vercelEnvironment: env.VERCEL_ENV, mode: env.REBUILD_INTEGRATION_MODE });
+  const hasResend = typeof env.RESEND_API_KEY === 'string' && env.RESEND_API_KEY.startsWith('re_');
+  const emailSender = hasResend
+    ? (data: { kind: EnquiryKind; enquiry: any; idempotencyKey: string }) =>
+        sendEnquiryNotification(data, {
+          apiKey: env.RESEND_API_KEY!,
+          fromEmail: env.FROM_EMAIL,
+          toEmail: env.TO_EMAIL,
+          fetch: dependencies.fetch,
+        })
+    : undefined;
+
+  const closed = () => createEnquiryHandler({
+    environment: env.NODE_ENV,
+    vercelEnvironment: env.VERCEL_ENV,
+    mode: env.REBUILD_INTEGRATION_MODE,
+    emailSender,
+  });
   if (env.REBUILD_INTEGRATION_MODE !== 'persistence' || env.REBUILD_PERSISTENCE_ENABLED !== 'true' ||
       !approvals.persistenceReviewed || !approvals.migrationReviewed) return closed();
   try {
@@ -30,7 +46,7 @@ export function createRuntimeHandler(
         idempotencyHours: Number(env.REBUILD_RETENTION_IDEMPOTENCY_HOURS ?? 24),
       },
     }, dependencies);
-    return createEnquiryHandler({ mode: 'persistence', persistence, canonicalOrigin: origin.origin });
+    return createEnquiryHandler({ mode: 'persistence', persistence, canonicalOrigin: origin.origin, emailSender });
   } catch {
     // Configuration errors may contain secrets in validation input; never serialize them.
     return closed();

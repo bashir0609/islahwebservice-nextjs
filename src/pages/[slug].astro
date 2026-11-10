@@ -55,7 +55,6 @@ const descriptions: Record<string, string> = {
   terms: 'Website terms covering service boundaries, safe use and the requirement for a separately agreed engagement.',
 };
 const description = offer?.metaDescription ?? service?.summary ?? enquiry?.description ?? descriptions[slug!];
-const localFormEnabled = import.meta.env.DEV;
 const portfolioRecords = slug === 'portfolio' ? await listOfflinePublishedPortfolio() : [];
 ---
 <SiteLayout title={title} description={description}>
@@ -64,7 +63,16 @@ service && serviceDetail ? <ServicePage service={service} detail={serviceDetail}
 <div class="container">
   <Breadcrumb items={[{ label: 'Explore' }, { label: enquiry?.title ?? (slug ?? '').replaceAll('-', ' ') }]} />
   <section class="page-hero"><p class="eyebrow">{enquiry ? 'Start a conversation' : 'Islah Web Service'}</p><h1>{enquiry?.title ?? titles[slug!]}</h1><p>{enquiry?.description ?? (slug === 'services' ? 'Three ways to engage: One-Time Setup for teams building their own outbound system, Ongoing Management for recurring research and campaigns, or standalone Prospect Research for teams that handle outreach themselves.' : slug === 'industries' ? 'A useful account list reflects your business context, not just an industry label. Explore our five core markets below.' : slug === 'about' ? 'We help teams turn a clearly defined market into structured, criteria-matched business data. The value is in the fit, the documentation and the handoff.' : slug === 'pricing' ? 'Research is scoped per project. Geography, roles, required fields and verification depth all affect the work involved. Managed service scope and pricing are confirmed through consultation.' : '')}</p></section>
-  {enquiry && <div class="content-split"><aside><h2>A little context goes a long way.</h2><p>Useful details to include:</p><ul>{enquiry.tips.map(tip => <li>{tip}</li>)}</ul><p class="notice">Online form processing is not currently available. Please use the verified email contact shown here.</p><p class="small">Do not send databases, credentials, financial details or sensitive personal information. No calendar slot is reserved by this page.</p></aside>{localFormEnabled ? <EnquiryForm client:load kind={enquiry.kind} /> : <ContactChannel context={enquiry.kind === 'research' ? 'research' : enquiry.kind === 'consultation' ? 'consultation' : 'contact'} />}</div>}
+  {enquiry && <div class="content-split">
+    <aside>
+      <h2>A little context goes a long way.</h2>
+      <p>Useful details to include:</p>
+      <ul>{enquiry.tips.map(tip => <li>{tip}</li>)}</ul>
+      <p class="notice">Submit your enquiry using this secure form or email us at <a href="mailto:hello@islahwebservice.com">hello@islahwebservice.com</a>. We respond within one business day.</p>
+      <p class="small">Do not send databases, credentials, financial details or sensitive personal information. No calendar slot is reserved by this page.</p>
+    </aside>
+    <EnquiryForm client:load kind={enquiry.kind} sourcePage={'/' + slug} />
+  </div>}
   {slug === 'services' && <>
     <section class="section compact">
       <div class="offer-paths">

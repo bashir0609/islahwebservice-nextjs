@@ -2,6 +2,7 @@
 import Breadcrumb from './Breadcrumb.astro';
 import Button from './Button.astro';
 import FAQ from './FAQ.astro';
+import EnquiryForm from './EnquiryForm';
 import type { OfferDetail } from '../data/offers';
 
 interface Props { offer: OfferDetail; }
@@ -165,6 +166,15 @@ const { offer } = Astro.props;
         <p>Scope and responsibilities should be clear before any engagement begins.</p>
       </div>
       <FAQ items={offer.faqs} />
+    </section>
+
+    <section class="offer-section" id="enquiry" aria-labelledby="enquiry-form-title">
+      <div class="section-intro">
+        <p class="eyebrow">SUBMIT YOUR ENQUIRY</p>
+        <h2 id="enquiry-form-title">{offer.slug === 'one-time-setup' ? 'Request One-Time Setup' : 'Discuss Ongoing Management'}</h2>
+        <p>Tell us about your offer, target audience, and current outbound setup. We will review feasibility and respond within one business day.</p>
+      </div>
+      <EnquiryForm client:load kind={offer.slug === 'one-time-setup' ? 'setup' : 'management'} sourcePage={offer.slug === 'one-time-setup' ? '/services' : '/campaign-management'} />
     </section>
 
     <section class="offer-final">
