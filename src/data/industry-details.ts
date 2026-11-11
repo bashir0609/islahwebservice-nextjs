@@ -16,6 +16,7 @@ export interface IndustryDetail {
   roles: { title: string; context: string }[];
   observableSignals: { signal: string; interpretation: string }[];
   exampleProject: { title: string; scenario: string; criteria: string[]; deliverables: string[] };
+  caseStudyLink: { href: string; label: string };
   compliance: { framework: string; rules: string[] };
   setupOffering: IndustryOffering;
   managementOffering: IndustryOffering;
@@ -28,10 +29,11 @@ export interface IndustryDetail {
 }
 
 // Destinations and scope are defined in offers.ts and page-details.ts.
-const relatedServices = [
-  { title: 'One-Time Outbound Setup', href: '/one-time-setup', status: 'Build & Handover', text: 'Initial research, infrastructure, approved sequences and a documented handover. Your team runs campaigns afterward.' },
-  { title: 'Ongoing Campaign Management', href: '/ongoing-management', status: 'Recurring Operations', text: 'Agreed recurring research, approved sending, reply monitoring and reporting. Your team owns sales conversations.' },
-  { title: 'B2B Prospect Research', href: '/b2b-prospect-research', status: 'Research-only', text: 'Discover new accounts and relevant roles, with available business contacts and verification notes. No campaign sending included.' },
+const baseRelatedServices = [
+  { title: 'B2B Prospect Research', href: '/b2b-prospect-research', status: 'Data Foundation', text: 'Discover verified accounts and relevant decision-maker roles with multi-step email verification. No campaign sending included.' },
+  { title: 'Email Infrastructure Setup', href: '/email-infrastructure', status: 'Technical Setup', text: 'Client-owned sending domains, DNS authentication (SPF, DKIM, DMARC), and gradual warmup guidance.' },
+  { title: 'One-Time Outbound Setup', href: '/one-time-setup', status: 'Build & Handover', text: 'Initial research, infrastructure, approved sequences and a documented handover for your team to run.' },
+  { title: 'Ongoing Campaign Management', href: '/ongoing-management', status: 'Recurring Operations', text: 'Agreed recurring research, approved sending, deliverability monitoring and prompt reply triage.' },
 ];
 
 export const industryDetails: Record<string, IndustryDetail> = {
@@ -65,13 +67,18 @@ export const industryDetails: Record<string, IndustryDetail> = {
     ],
     exampleProject: {
       title: 'Illustrative SaaS account-research brief',
-      scenario: 'Hypothetical brief for an analytics vendor researching B2B software companies in the UK and DACH. This is not a client case study or delivery result.',
+      scenario: 'Hypothetical brief for an analytics vendor researching B2B software companies in the UK and DACH. This is an illustrative scope, not a client delivery result.',
       criteria: ['Illustrative size band: 50–250 employees', 'UK, Germany, Austria and Switzerland; agreed language coverage', 'Documented CRM context, with internal use distinguished from integrations', 'RevOps and revenue functions; exclude customers and competitors'],
       deliverables: ['Account records with category, geography and size evidence', 'Relevant roles and available business contacts with verification status', 'CRM-ready export with source dates, gaps and suppression notes; volume agreed after sample review'],
     },
+    caseStudyLink: { href: '/portfolio/saas-lead-generation-uk-analytics-platform', label: 'UK Analytics Platform Prospect Research Case Study' },
     compliance: {
-      framework: 'Review geography, sources and sender responsibilities.',
-      rules: ['Agree eligible markets and recipient categories before sending.', 'Business email verification is not permission to contact a recipient.', 'Apply customer exclusions and opt-out suppression before approved campaigns.'],
+      framework: 'Distinguish verified contact data from marketing consent under GDPR, PECR, and CAN-SPAM.',
+      rules: [
+        'Review recipient geography, corporate vs personal status, and sender identification before sending.',
+        'Business email verification is not permission to contact a recipient; legal basis must be established by your team.',
+        'Maintain customer suppression lists and honor opt-out requests immediately across all campaigns.',
+      ],
     },
     setupOffering: {
       title: 'One-Time Outbound Setup',
@@ -98,7 +105,7 @@ export const industryDetails: Record<string, IndustryDetail> = {
       { question: 'Can we map several roles per account?', answer: 'Yes, within the agreed scope. Commercial, operational and technical functions can be researched separately, without assuming authority from title alone.' },
       { question: 'What if our SaaS niche is small?', answer: 'Review a sample and source availability before agreeing volume. Missing fields remain flagged rather than filled by inference.' },
     ],
-    relatedServices: [...relatedServices, { title: 'Email Infrastructure', href: '/email-infrastructure', status: 'Setup Capability', text: 'Review authentication, mailbox ownership and sending-readiness checks for the system your SaaS sales team will operate.' }],
+    relatedServices: baseRelatedServices,
     ctaTitle: 'Turn your SaaS market definition into a research brief.',
     ctaText: 'Share the product use case, target markets, size bands, role functions and exclusions. Choose setup, managed campaigns or research-only delivery.',
   },
@@ -136,9 +143,14 @@ export const industryDetails: Record<string, IndustryDetail> = {
       criteria: ['Client-approved postcode coverage and supported office locations', 'Illustrative band: 25–150 employees', 'Legal, accounting and architecture firms', 'Exclude current clients, competitors and out-of-area sites'],
       deliverables: ['Territory-matched accounts with site and sector evidence', 'IT, operations or owner roles with available business contacts', 'Source-linked export with technology-context gaps and verification status'],
     },
+    caseStudyLink: { href: '/portfolio/msp-prospect-database-us-it-provider', label: 'US IT Provider Prospect Database Case Study' },
     compliance: {
-      framework: 'Keep technical context separate from security claims.',
-      rules: ['Do not infer vulnerabilities or incidents from public technology references.', 'Review recipient eligibility and geography before approving outreach.', 'Maintain customer exclusions and opt-out suppression for each campaign.'],
+      framework: 'Keep technical context separate from security claims and respect regional outreach regulations.',
+      rules: [
+        'Do not infer vulnerabilities, breaches or compliance failures from public technology references.',
+        'Review recipient eligibility and corporate email rules before approving outreach.',
+        'Maintain customer exclusions and opt-out suppression for each campaign.',
+      ],
     },
     setupOffering: {
       title: 'One-Time Outbound Setup',
@@ -165,7 +177,7 @@ export const industryDetails: Record<string, IndustryDetail> = {
       { question: 'Are the example employee bands mandatory?', answer: 'No. Your coverage, service model and preferred company size define the brief; the example bands are illustrative.' },
       { question: 'Can known competitor customers be excluded?', answer: 'Yes, using an agreed account list or supported evidence. An unknown incumbent is not treated as proof of no provider.' },
     ],
-    relatedServices: [...relatedServices, { title: 'Email Infrastructure', href: '/email-infrastructure', status: 'Setup Capability', text: 'Review dedicated outreach infrastructure, authentication and readiness checks before regional campaigns begin.' }],
+    relatedServices: baseRelatedServices,
     ctaTitle: 'Build an MSP brief around your service territory.',
     ctaText: 'Share supported locations, sectors, company sizes and service lines, plus the accounts your team must exclude.',
   },
@@ -203,9 +215,14 @@ export const industryDetails: Record<string, IndustryDetail> = {
       criteria: ['Manufacturing, robotics and aerospace-component employers', 'Illustrative band: 50–500 employees', 'Published design engineering, CNC or quality-management vacancies', 'Exclude candidates, current clients and known agency restrictions'],
       deliverables: ['Employer accounts with dated vacancy references', 'Relevant HR, talent and department roles with available business contacts', 'Desk-segmented export with verification status and unresolved fields'],
     },
+    caseStudyLink: { href: '/portfolio/recruitment-decision-maker-list', label: 'Recruitment Decision-Maker Research Case Study' },
     compliance: {
-      framework: 'Keep employer outreach separate from candidate data.',
-      rules: ['Do not include CVs, applicant histories or sensitive candidate information in this brief.', 'Review published no-agency notices and client-supplied supplier restrictions.', 'Approve recipient eligibility, sender identification and opt-out handling before sending.'],
+      framework: 'Keep employer outreach separate from candidate data and maintain supplier-screening rules.',
+      rules: [
+        'Do not include CVs, applicant histories or sensitive candidate information in this brief.',
+        'Review published no-agency notices and client-supplied supplier restrictions.',
+        'Approve recipient eligibility, sender identification and opt-out handling before sending.',
+      ],
     },
     setupOffering: {
       title: 'One-Time Outbound Setup',
@@ -232,7 +249,7 @@ export const industryDetails: Record<string, IndustryDetail> = {
       { question: 'Does a vacancy prove willingness to use an agency?', answer: 'No. It is an observable listing. Agency eligibility, budget and interest must be confirmed directly.' },
       { question: 'Can we separate multiple desks?', answer: 'Yes. Agree distinct role families, geographies, exclusions and messages for each desk before research or campaign execution.' },
     ],
-    relatedServices: [...relatedServices, { title: 'Existing Database Enrichment', href: '/contact-enrichment', status: 'Existing Records', text: 'Refresh business-role and company fields in an employer database you already hold; net-new employer discovery is scoped separately.' }],
+    relatedServices: baseRelatedServices,
     ctaTitle: 'Map employers in your recruitment market.',
     ctaText: 'Share desk specialism, target sectors, hiring locations, role families and account restrictions. Do not submit candidate records.',
   },
@@ -270,9 +287,14 @@ export const industryDetails: Record<string, IndustryDetail> = {
       criteria: ['UK manufacturing, logistics and warehousing companies', 'Illustrative band: 75–350 employees', 'Optional turnover filter only where supported by dated financial records', 'Operations and finance functions; apply supplied conflict exclusions'],
       deliverables: ['Company records with sector, scale and corporate-activity sources', 'Relevant executive functions and available verified business contacts', 'CRM-ready export with filing dates, unavailable fields and conflict-screening notes'],
     },
+    caseStudyLink: { href: '/portfolio/professional-services-contact-enrichment', label: 'Professional Services Contact Enrichment Case Study' },
     compliance: {
-      framework: 'Review practice restrictions and conflicts before outreach.',
-      rules: ['Your practice reviews applicable professional marketing requirements and target jurisdictions.', 'Use factual service descriptions; do not imply legal problems, distress or confidential mandates.', 'Apply supplied conflict exclusions and opt-out suppression before approved sending.'],
+      framework: 'Review practice restrictions, conflict obligations and marketing conduct.',
+      rules: [
+        'Your practice reviews applicable professional marketing requirements and target jurisdictions.',
+        'Use factual service descriptions; do not imply legal problems, distress or confidential mandates.',
+        'Apply supplied conflict exclusions and opt-out suppression before approved sending.',
+      ],
     },
     setupOffering: {
       title: 'One-Time Outbound Setup',
@@ -299,7 +321,7 @@ export const industryDetails: Record<string, IndustryDetail> = {
       { question: 'Can we filter by turnover?', answer: 'Where reliable dated records disclose it. Missing or outdated figures are flagged, not estimated to force a match.' },
       { question: 'Who handles advisory sales conversations?', answer: 'Your partners or advisors. Managed scope can classify and hand over interested replies; this is not proof of a qualified mandate or budget.' },
     ],
-    relatedServices: [...relatedServices, { title: 'Cold Email Marketing', href: '/cold-email-marketing', status: 'Messaging Capability', text: 'Review audience-specific sequences and client approval; ongoing sending requires an agreed management scope.' }],
+    relatedServices: baseRelatedServices,
     ctaTitle: 'Define the corporate clients your practice serves.',
     ctaText: 'Share the service offer, jurisdiction, sector and scale criteria, role functions and conflict exclusions before choosing an engagement model.',
   },
@@ -337,9 +359,14 @@ export const industryDetails: Record<string, IndustryDetail> = {
       criteria: ['London and South East commercial asset locations', 'Office, business-park and industrial assets', 'Illustrative threshold: more than five documented commercial assets', 'Asset and property management functions; exclude homeowner records'],
       deliverables: ['Commercial entities with supported owner or manager relationships', 'Relevant roles and available business contacts with verification notes', 'Portfolio sources, dates and unresolved relationships in a CRM-ready export'],
     },
+    caseStudyLink: { href: '/portfolio/property-management-prospect-list', label: 'Property Management Prospect List Case Study' },
     compliance: {
       framework: 'Keep property research business-focused and source-specific.',
-      rules: ['Exclude private homeowner and consumer landlord contact data.', 'Public ownership records do not themselves establish permission for marketing.', 'Review recipient eligibility, conflicts and opt-outs before approved outreach.'],
+      rules: [
+        'Exclude private homeowner and consumer landlord contact data; commercial business contacts only.',
+        'Public ownership records do not themselves establish permission for marketing.',
+        'Review recipient eligibility, conflicts and opt-outs before approved outreach.',
+      ],
     },
     setupOffering: {
       title: 'One-Time Outbound Setup',
@@ -366,7 +393,7 @@ export const industryDetails: Record<string, IndustryDetail> = {
       { question: 'How do you research the business behind an SPV?', answer: 'Cross-reference available filings, company websites and portfolio sources. Distinguish legal ownership from management and flag relationships that cannot be verified.' },
       { question: 'Can you identify assets available to buy or lease?', answer: 'Only where a suitable source explicitly states availability. Ownership, planning or portfolio membership alone does not establish willingness to transact.' },
     ],
-    relatedServices: [...relatedServices, { title: 'Existing Database Enrichment', href: '/contact-enrichment', status: 'Existing Records', text: 'Refresh company and business-role fields in a supplied property-company database; new entity discovery is a separate research scope.' }],
+    relatedServices: baseRelatedServices,
     ctaTitle: 'Define the commercial property businesses you want to reach.',
     ctaText: 'Share asset classes, property locations, portfolio thresholds, entity roles and exclusions to scope setup, managed outreach or research-only delivery.',
   },

@@ -14,19 +14,52 @@ export const primaryNav = [
   { label: 'About Us', href: '/about' },
 ];
 
-export const services = [
+export interface ServiceItem {
+  slug: string;
+  title: string;
+  category: string;
+  pending: boolean;
+  metaTitle?: string;
+  metaDescription?: string;
+  summary: string;
+  headline: string;
+  intro: string;
+  deliverables: string[];
+  steps: string[];
+  boundary: string;
+  question: string;
+  answer: string;
+}
+
+export interface IndustryItem {
+  slug: string;
+  title: string;
+  headline: string;
+  summary: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  signals: string[];
+  context: string;
+  brief: string;
+}
+
+export const services: ServiceItem[] = [
   {
     slug: 'b2b-prospect-research',
     title: 'B2B Prospect Research',
     category: 'Data Foundation & Standalone Service',
     pending: false,
+    metaTitle: 'B2B Prospect Research & Custom List Building',
+    metaDescription: 'Discover verified B2B accounts, decision-maker roles, and direct business contacts tailored to your sales criteria. CRM-ready delivery with full data source notes.',
     summary: 'Find companies and verified decision-makers against a brief tailored to your sales process.',
-    headline: 'Start with the right accounts. Not a bigger list.',
+    headline: 'Targeted B2B Prospect Research & Account Mapping',
     intro: 'A useful prospect database begins with clear boundaries. We research companies and relevant roles against your criteria, documenting gaps rather than disguising them as certainty.',
     deliverables: [
-      'Company records matched to agreed markets, firmographics, and criteria',
-      'Relevant decision-maker roles and available business contact details',
-      'Source notes, verification metadata, and CRM-ready formatting',
+      'Target accounts researched against strict industry, size, geography, and technographic parameters',
+      'Functional decision-maker roles identified, distinguishing operational buyers from executive sponsors',
+      'Direct business emails verified through multi-step SMTP checks where available, with invalid records flagged',
+      'Transparent documentation of data sources, check dates, and confidence indicators for every record',
+      'Cleanly formatted CSV or spreadsheet exports tailored to your CRM schema (HubSpot, Salesforce, Pipedrive)',
     ],
     steps: [
       'Define your target market, exclusions, and required fields.',
@@ -42,13 +75,17 @@ export const services = [
     title: 'Existing Database Enrichment',
     category: 'Data Quality & Standalone Service',
     pending: false,
+    metaTitle: 'B2B Contact Enrichment & Database Hygiene',
+    metaDescription: 'Enrich existing CRM records with missing firmographic fields, updated decision-maker contacts, and email verification. Transparent exception reporting.',
     summary: 'Make the records you already own more complete, consistent, and usable for outreach.',
-    headline: 'Keep your database. Improve what is inside it.',
+    headline: 'B2B Contact Enrichment & Existing Database Hygiene',
     intro: 'When you already have account or contact records, starting over is rarely the best choice. Enrichment focuses on missing, outdated, and inconsistent fields in your existing dataset.',
     deliverables: [
-      'Agreed missing company and business-contact fields researched and updated',
-      'Duplicates and inconsistent formats flagged or resolved to agreed rules',
-      'Updated records with unresolved fields clearly identified',
+      'Research and complete essential firmographic and demographic gaps in your existing records',
+      'De-duplicate records and standardise company names, industries, and job titles to consistent schemas',
+      'Audit historical contacts to confirm whether decision-makers remain at the company and in role',
+      'Re-verify existing business email addresses, identifying deliverable, risky, and invalid addresses',
+      'Clean dataset delivered alongside an exception log detailing every field added, updated, or unresolvable',
     ],
     steps: [
       'Agree on a safe transfer method and review your existing schema.',
@@ -64,13 +101,17 @@ export const services = [
     title: 'Email Infrastructure Setup',
     category: 'One-Time Setup & Technical Foundation',
     pending: false,
+    metaTitle: 'Cold Email Infrastructure Setup & DNS Authentication',
+    metaDescription: 'Configure client-owned outbound sending domains with SPF, DKIM, DMARC, MX records, and safe mailbox warmup guidelines for reliable inbox deliverability.',
     summary: 'Configure client-controlled outbound sending domains, DNS authentication, and mailbox warmup.',
-    headline: 'A considered setup comes before the first send.',
+    headline: 'Cold Email Infrastructure Setup & Domain Authentication',
     intro: 'Dedicated domains, authentication, and mailbox ownership deserve deliberate technical review. We configure client-controlled sending environments with strict compliance and deliverability controls.',
     deliverables: [
-      'Client-controlled domain and mailbox configuration checklist',
-      'Full DNS authentication setup: SPF, DKIM, DMARC, and MX records',
-      'Safe gradual warmup plan and deliverability monitoring guidelines',
+      'Secondary sending domains registered and configured to isolate outbound volume from primary corporate mail',
+      'Full implementation of SPF, DKIM, DMARC, and MX records verified against DNS propagation standards',
+      'Dedicated Google Workspace or Microsoft 365 outbound mailboxes created under your direct administrative ownership',
+      'Structured warmup schedules and sending-volume ramp parameters based on infrastructure maturity',
+      'Complete documentation of accounts, DNS records, deliverability baselines, and ongoing monitoring procedures',
     ],
     steps: [
       'Map the domains and sending infrastructure you control.',
@@ -86,13 +127,17 @@ export const services = [
     title: 'Cold Email Strategy & Copywriting',
     category: 'Campaign Strategy & Messaging',
     pending: false,
+    metaTitle: 'B2B Cold Email Strategy & Sequence Copywriting',
+    metaDescription: 'Develop research-backed, multi-touch cold email sequences, objection handling, and compliance workflows tailored to your target audience.',
     summary: 'Develop relevant, multi-touch email sequences tailored to your target audience and value proposition.',
-    headline: 'Make outreach relevant before making it repeatable.',
+    headline: 'B2B Cold Email Strategy & Sequence Copywriting',
     intro: 'Effective outbound connects a defined audience with a compelling, specific message. We write client-approved email sequences that respect recipient context and present a clear next step.',
     deliverables: [
-      'Audience segmentation and message angle framework',
-      'Multi-step email sequences, follow-ups, and objection responses',
-      'Suppression lists, opt-out formatting, and compliance safeguards',
+      'Target audience segments mapped to specific commercial pain points, value propositions, and proof assets',
+      'Tailored, conversational multi-step email sequences, including problem hooks, case evidence, and low-friction CTAs',
+      'Contextual follow-up messages addressing different prospect priorities, plus clean closure messages',
+      'Pre-drafted, client-approved responses for common objections, timing questions, and referral requests',
+      'Documented opt-out phrasing, unsubscribe handling workflows, and suppression list integration',
     ],
     steps: [
       'Discuss your offer, value drivers, and target audience context.',
@@ -108,13 +153,17 @@ export const services = [
     title: 'Ongoing Campaign Management',
     category: 'Recurring Operational Service',
     pending: false,
+    metaTitle: 'Ongoing Cold Email Campaign Management & Operations',
+    metaDescription: 'Operational execution for B2B cold email: scheduled sending within safe limits, inbox deliverability monitoring, reply triage, and sales routing.',
     summary: 'Manage daily outbound operations: gradual sending, reply classification, and performance reporting.',
-    headline: 'Give every campaign an accountable operating plan.',
+    headline: 'Ongoing Cold Email Campaign Management & Operations',
     intro: 'A successful campaign needs ongoing attention. We manage scheduled sending within safe limits, monitor deliverability, classify replies, and hand interested prospects to your sales team.',
     deliverables: [
-      'Gradual sending execution within agreed deliverability limits',
-      'Reply monitoring, auto-response filtering, and positive response routing',
-      'Weekly operational reporting and monthly performance reviews',
+      'Managed campaign distribution adhering to strict daily volume limits and sending window rules across inboxes',
+      'Continuous tracking of bounce rates, DNS authentication stability, and mailbox reputation indicators',
+      'Filtering out-of-office notices, bounces, and automated responses from human prospect communications',
+      'Interested replies and exploratory enquiries routed promptly to nominated sales owners with full account history',
+      'Transparent reporting on sends, bounces, response classifications, and monthly strategic targeting iterations',
     ],
     steps: [
       'Confirm approved audience batches, email copy, and sending limits.',
@@ -130,13 +179,17 @@ export const services = [
     title: 'Appointment Coordination',
     category: 'Optional Managed Capability',
     pending: false,
+    metaTitle: 'B2B Appointment Coordination & Sales Scheduling',
+    metaDescription: 'Coordinate calendar discovery calls with interested prospects who satisfy your agreed qualification criteria. Full pre-meeting briefings for your sales team.',
     summary: 'Coordinate calendar scheduling for qualified prospects meeting documented criteria.',
-    headline: 'Define a useful conversation before discussing bookings.',
+    headline: 'B2B Appointment Coordination & Sales Meeting Scheduling',
     intro: 'A calendar booking is only valuable when the prospect fits your sales requirements. We provide optional appointment coordination governed by strictly agreed qualification and exclusion rules.',
     deliverables: [
-      'Documented qualification criteria and exclusion rules',
-      'Prospect response coordination and calendar invitation management',
-      'Context-rich handover briefings for each scheduled conversation',
+      'Explicit criteria defining eligible prospect company size, decision-maker seniority, and stated interest',
+      'Professional, responsive calendar coordination and invitation management with interested, qualified prospects',
+      'Detailed briefing delivered prior to each call, including communication history, company context, and confirmed criteria',
+      'Active follow-up for meeting confirmations, calendar changes, and rescheduling coordination for missed calls',
+      'Objective reporting distinguishing scheduled, held, and disqualified conversations to inform campaign targeting',
     ],
     steps: [
       'Define qualification criteria, attendee requirements, and exclusions.',
@@ -149,10 +202,12 @@ export const services = [
   },
 ];
 
-export const industries = [
+export const industries: IndustryItem[] = [
   {
     slug: 'saas',
     title: 'SaaS & Technology',
+    metaTitle: 'SaaS & Technology B2B Lead Generation & Outreach',
+    metaDescription: 'Account research and outbound campaign strategy for B2B SaaS and technology companies. Target revenue, RevOps, and engineering decision-makers.',
     headline: 'Research the accounts your software is built for.',
     summary: 'Segment companies by business model, tech stack, maturity, and evaluation functions.',
     signals: ['Company category and target geography', 'Relevant operational or technical roles', 'Publicly observable technology information, where available'],
@@ -162,6 +217,8 @@ export const industries = [
   {
     slug: 'msp',
     title: 'Managed Service Providers',
+    metaTitle: 'MSP & IT Services B2B Lead Generation',
+    metaDescription: 'Territory-based account mapping and outbound email campaigns for Managed Service Providers. Target regional business owners and IT leaders.',
     headline: 'Build a clearer view of your serviceable market.',
     summary: 'Find organisations within your geographic and operational support boundaries.',
     signals: ['Service-area and location requirements', 'Company size and sector criteria', 'IT leadership or operational contact roles'],
@@ -171,6 +228,8 @@ export const industries = [
   {
     slug: 'recruitment',
     title: 'Recruitment & Staffing',
+    metaTitle: 'Recruitment & Staffing Client Acquisition Outreach',
+    metaDescription: 'Employer client research and outbound campaigns for recruitment agencies. Focus on hiring decision-makers, HR leaders, and department heads.',
     headline: 'Focus your client research on a defined hiring market.',
     summary: 'Organise employer client acquisition around sectors, hiring volumes, and HR leadership.',
     signals: ['Employer sector and location', 'Public hiring activity when included in the brief', 'Talent, HR and department leadership roles'],
@@ -180,6 +239,8 @@ export const industries = [
   {
     slug: 'professional-services',
     title: 'Professional Services',
+    metaTitle: 'Professional Services B2B Lead Generation & Outreach',
+    metaDescription: 'Account research and outbound messaging for consulting, legal, and financial advisory practices. Target C-suite and functional directors.',
     headline: 'Match your expertise to a more considered account list.',
     summary: 'Research organisations that fit your advisory, legal, accounting, or consulting brief.',
     signals: ['Business type and operating market', 'Relevant leadership and functional roles', 'Company characteristics tied to your service criteria'],
@@ -189,6 +250,8 @@ export const industries = [
   {
     slug: 'real-estate',
     title: 'Commercial Real Estate',
+    metaTitle: 'Commercial Real Estate B2B Prospect Research & Outreach',
+    metaDescription: 'Target commercial property operators, asset managers, developers, and investors by asset class, geography, and portfolio criteria.',
     headline: 'Structure property-sector research around business context.',
     summary: 'Target commercial property operators, asset managers, investors, and developers.',
     signals: ['Property-business category and geography', 'Public company and portfolio characteristics', 'Relevant acquisition, operations or management roles'],

@@ -10,6 +10,8 @@ interface Service {
   summary: string;
   category: string;
   pending: boolean;
+  metaTitle?: string;
+  metaDescription?: string;
   headline: string;
   intro: string;
   deliverables: string[];
@@ -191,9 +193,9 @@ const related = detail.relatedSlugs
 
     <section class="service-section" aria-labelledby="use-cases-title">
       <div class="section-intro">
-        <p class="eyebrow">INDUSTRY USE CASES</p>
+        <p class="eyebrow">INDUSTRY USE CASES &amp; VERIFIED CASE STUDIES</p>
         <h2 id="use-cases-title">Practical applications for B2B teams.</h2>
-        <p>For an industry-specific brief, review <a href={detail.industryLink.href}>{detail.industryLink.label}</a>. Use our <a href="/portfolio">research case studies</a> to assess examples of data work, not as a promise of campaign results.</p>
+        <p>For an industry-specific brief, review <a href={detail.industryLink.href}>{detail.industryLink.label}</a>. Read our verified <a href={detail.caseStudyLink.href}>{detail.caseStudyLink.label}</a> to evaluate published data deliverables (case studies document research and list building, not outreach campaigns).</p>
       </div>
       <div class="use-case-grid">
         {detail.useCases.map(item => (

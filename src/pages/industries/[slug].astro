@@ -11,7 +11,9 @@ export function getStaticPaths() {
 const { industry } = Astro.props;
 const detail = industryDetails[industry.slug];
 if (!detail) throw new Error(`Missing industry details for ${industry.slug}`);
+const title = industry.metaTitle ?? `${industry.title} Prospect Research`;
+const description = industry.metaDescription ?? industry.summary;
 ---
-<SiteLayout title={`${industry.title} Prospect Research`} description={industry.summary}>
+<SiteLayout title={title} description={description}>
   <IndustryPage industry={industry} detail={detail} />
 </SiteLayout>
