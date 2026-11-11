@@ -49,10 +49,10 @@ for (const [path, nodes] of pages) {
   }
   for (const image of tag('img')) assert.ok(Object.hasOwn(image.attribs, 'alt'), `${path}: missing alt`);
 }
-assert.equal(text(pages.get('/').find(n => n.name === 'h1')).replace(/\s+/g, ' ').trim(), 'Get More Clients With Smarter B2B Outreach');
+assert.equal(text(pages.get('/').find(n => n.name === 'h1')).replace(/\s+/g, ' ').trim(), 'B2B Lead Generation, Built and Managed Around Your Business');
 for (const path of ['/contact', '/request-sample', '/free-consultation']) {
   const nodes = pages.get(path);
-  assert.ok(!nodes.some(node => node.name === 'form'), `${path}: unavailable form must not render in builds`);
+  assert.ok(nodes.some(node => node.name === "form"), `${path}: functional form must render in builds`);
   assert.ok(nodes.some(node => node.name === 'a' && node.attribs.href?.startsWith('mailto:hello@islahwebservice.com')), `${path}: verified email contact missing`);
 }
 const dashboard = pages.get('/').find(n => n.name === 'figure' && n.attribs['data-md-exclude'] === 'true');

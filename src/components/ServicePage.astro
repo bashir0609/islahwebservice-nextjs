@@ -7,6 +7,7 @@ import type { ServiceDetail } from '../data/page-details';
 interface Service {
   slug: string;
   title: string;
+  summary: string;
   category: string;
   pending: boolean;
   headline: string;
@@ -29,8 +30,8 @@ const ctaConfig: Record<string, { href: string; label: string; secondaryHref: st
   'b2b-prospect-research': {
     href: '/request-sample',
     label: 'Request a Prospect Sample',
-    secondaryHref: '/one-time-setup',
-    secondaryLabel: 'Explore One-Time Setup',
+    secondaryHref: '/pricing',
+    secondaryLabel: 'Research & Enrichment Pricing',
   },
   'contact-enrichment': {
     href: '/free-consultation',
@@ -40,25 +41,25 @@ const ctaConfig: Record<string, { href: string; label: string; secondaryHref: st
   },
   'email-infrastructure': {
     href: '/one-time-setup',
-    label: 'Explore One-Time Setup',
+    label: 'Explore One-Time Outbound Setup',
     secondaryHref: '/free-consultation',
     secondaryLabel: 'Book a Consultation',
   },
   'cold-email-marketing': {
     href: '/ongoing-management',
-    label: 'Discuss Ongoing Management',
+    label: 'Explore Ongoing Campaign Management',
     secondaryHref: '/one-time-setup',
     secondaryLabel: 'Explore One-Time Setup',
   },
   'campaign-management': {
     href: '/ongoing-management',
-    label: 'Discuss Ongoing Management',
+    label: 'Explore Ongoing Campaign Management',
     secondaryHref: '/free-consultation',
     secondaryLabel: 'Book a Consultation',
   },
   'appointment-setting': {
     href: '/ongoing-management',
-    label: 'Discuss Ongoing Management',
+    label: 'Explore Ongoing Campaign Management',
     secondaryHref: '/free-consultation',
     secondaryLabel: 'Book a Consultation',
   },
@@ -96,7 +97,7 @@ const related = detail.relatedSlugs
         <p>{detail.briefText}</p>
         <div class="availability-badge">
           <strong>Service Model:</strong>
-          <span>{detail.availability}</span>
+          <span>{detail.availability} <a href={detail.engagementLink.href}>{detail.engagementLink.label} →</a></span>
         </div>
         <div class="brief-lines" aria-hidden="true"><i></i><i></i><i></i></div>
         <small>Criteria and scope are defined in writing prior to project kickoff.</small>
@@ -158,7 +159,7 @@ const related = detail.relatedSlugs
             <b>{index === detail.visualSteps.length - 1 ? 'Delivered' : 'Approved'}</b>
           </div>
         ))}
-        <small>Step-by-step review gates · client sign-off at each stage</small>
+        <small>Illustrative workflow · review and approval gates agreed in scope</small>
       </div>
       <div>
         <p class="eyebrow">PRACTICAL VALUE</p>
@@ -192,6 +193,7 @@ const related = detail.relatedSlugs
       <div class="section-intro">
         <p class="eyebrow">INDUSTRY USE CASES</p>
         <h2 id="use-cases-title">Practical applications for B2B teams.</h2>
+        <p>For an industry-specific brief, review <a href={detail.industryLink.href}>{detail.industryLink.label}</a>. Use our <a href="/portfolio">research case studies</a> to assess examples of data work, not as a promise of campaign results.</p>
       </div>
       <div class="use-case-grid">
         {detail.useCases.map(item => (
@@ -208,7 +210,7 @@ const related = detail.relatedSlugs
       <div>
         <p class="eyebrow">COMMON QUESTIONS</p>
         <h2 id="faq-title">What to know before you enquire.</h2>
-        <p>Scope, responsibilities, and deliverables are confirmed in writing prior to any engagement.</p>
+        <p>Compare <a href="/pricing">engagement models and pricing scope</a> before enquiring. Scope, responsibilities, third-party costs and deliverables are confirmed in writing before work begins.</p>
       </div>
       <FAQ items={detail.faqs} />
     </section>

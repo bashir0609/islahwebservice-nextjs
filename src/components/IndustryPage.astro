@@ -50,7 +50,7 @@ const { industry, detail } = Astro.props;
             <span>{signal}</span>
           </div>
         ))}
-        <small>Criteria are calibrated for each project; verified business data only.</small>
+        <small>Client-defined criteria; source and verification gaps are flagged.</small>
       </aside>
     </section>
 
@@ -79,12 +79,12 @@ const { industry, detail } = Astro.props;
         <h2 id="criteria-title">Turn industry context into observable research fields.</h2>
         <p>{detail.criteriaIntro}</p>
         <div class="exclusions-box">
-          <h4>EXPLICIT PROJECT EXCLUSIONS</h4>
+          <h4>EXCLUSIONS TO AGREE IN YOUR BRIEF</h4>
           <ul>
             {detail.exclusions.map(ex => <li>{ex}</li>)}
           </ul>
         </div>
-        <p class="boundary">Fit against these fields confirms qualification for outreach; it is not evidence of budget or purchase intent.</p>
+        <p class="boundary">Matching these fields establishes fit against agreed research criteria only—not need, budget, buying authority, permission to contact or purchase intent.</p>
       </div>
       <div class="criteria-list">
         {detail.criteria.map(item => (
@@ -99,16 +99,16 @@ const { industry, detail } = Astro.props;
       </div>
     </section>
 
-    <!-- Decision-Maker Roles & Buying Signals -->
+    <!-- Functional Roles & Observable Research Signals -->
     <section class="industry-section role-section" aria-labelledby="roles-title">
       <div class="role-copy">
         <p class="eyebrow">DECISION-MAKER MAPPING</p>
         <h2 id="roles-title">Research functional roles, not generic titles.</h2>
         <p>{detail.rolesIntro}</p>
         <div class="signals-box">
-          <h4>OBSERVABLE BUYING SIGNALS</h4>
+          <h4>OBSERVABLE RESEARCH SIGNALS — NOT INTENT</h4>
           <div class="signal-items">
-            {detail.buyingSignals.map(sig => (
+            {detail.observableSignals.map(sig => (
               <div class="signal-item">
                 <strong>{sig.signal}</strong>
                 <span>{sig.interpretation}</span>
@@ -131,19 +131,19 @@ const { industry, detail } = Astro.props;
     <!-- Example Project Showcase -->
     <section class="project-showcase" aria-labelledby="example-title">
       <div class="showcase-header">
-        <p class="eyebrow">EXAMPLE SCOPED PROJECT</p>
+        <p class="eyebrow">ILLUSTRATIVE BRIEF — NOT CLIENT RESULTS</p>
         <h2 id="example-title">{detail.exampleProject.title}</h2>
         <p class="showcase-scenario">{detail.exampleProject.scenario}</p>
       </div>
       <div class="showcase-grid">
         <div class="showcase-criteria">
-          <h4>Agreed Project Criteria</h4>
+          <h4>Illustrative Criteria</h4>
           <ul>
             {detail.exampleProject.criteria.map(item => <li>{item}</li>)}
           </ul>
         </div>
         <div class="showcase-deliverables">
-          <h4>Delivered Assets</h4>
+          <h4>Possible Deliverables — Scope to Agree</h4>
           <ul>
             {detail.exampleProject.deliverables.map(item => <li>{item}</li>)}
           </ul>
@@ -156,7 +156,7 @@ const { industry, detail } = Astro.props;
       <div class="section-intro">
         <p class="eyebrow">THREE WAYS TO ENGAGE</p>
         <h2 id="offerings-title">Tailored commercial models for {industry.title}.</h2>
-        <p>Choose the engagement structure that aligns with your internal sales capabilities.</p>
+        <p>Setup hands the system to your team; management operates the agreed campaigns; research-only supplies data for your own workflow. Scope, volume and third-party costs are agreed before work starts. None guarantees replies, meetings or revenue.</p>
       </div>
       <div class="offerings-grid">
         <article class="offering-card">
@@ -186,7 +186,7 @@ const { industry, detail } = Astro.props;
           <ul>
             {detail.researchOffering.includes.map(inc => <li>{inc}</li>)}
           </ul>
-          <Button href="/request-sample" variant="secondary">Request a Sample</Button>
+          <Button href="/b2b-prospect-research" variant="secondary">Explore Research-only</Button>
         </article>
       </div>
     </section>
@@ -196,7 +196,7 @@ const { industry, detail } = Astro.props;
       <div>
         <p class="eyebrow">COMPLIANCE &amp; DELIVERABILITY SAFEGUARDS</p>
         <h2 id="compliance-title">{detail.compliance.framework}</h2>
-        <p>Outreach must comply with relevant jurisdictional frameworks and mailbox provider standards. We enforce strict data hygiene and consent parameters on every campaign.</p>
+        <p>Requirements vary by jurisdiction, recipient type, source and channel. Your team reviews legal eligibility and approves the audience and copy before sending. Authentication and email verification do not establish permission or guarantee delivery.</p>
       </div>
       <div class="compliance-rules">
         {detail.compliance.rules.map(rule => (
@@ -208,11 +208,12 @@ const { industry, detail } = Astro.props;
       </div>
     </section>
 
-    <!-- Practical Use Cases -->
+    <!-- Illustrative Outreach Angles -->
     <section class="industry-section" aria-labelledby="use-cases-title">
       <div class="section-intro">
-        <p class="eyebrow">PRACTICAL USE CASES</p>
-        <h2 id="use-cases-title">Where focused {industry.title} research accelerates growth.</h2>
+        <p class="eyebrow">ILLUSTRATIVE OUTREACH ANGLES</p>
+        <h2 id="use-cases-title">Possible conversation starters for {industry.title}.</h2>
+        <p>These are hypothetical angles, not client campaigns or proven results. Use only supported source context and substantiated service capabilities; confirm relevance rather than assuming a need.</p>
       </div>
       <div class="use-case-grid">
         {detail.useCases.map(item => (
@@ -239,7 +240,7 @@ const { industry, detail } = Astro.props;
     <section class="industry-section related-section" aria-labelledby="related-title">
       <div class="section-intro">
         <p class="eyebrow">RELATED OUTBOUND SERVICES</p>
-        <h2 id="related-title">Continue with the engagement model that fits your team.</h2>
+        <h2 id="related-title">Review the relevant offer and service scope.</h2>
       </div>
       <div class="related-grid">
         {detail.relatedServices.map(item => (

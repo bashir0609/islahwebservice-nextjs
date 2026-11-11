@@ -3,17 +3,26 @@
     { "source": "/feed.xml", "destination": "/blog/rss.xml", "statusCode": 308 },
     { "source": "/feed", "destination": "/blog/rss.xml", "statusCode": 308 },
     { "source": "/technical-seo", "destination": "/b2b-prospect-research", "statusCode": 301 },
-    { "source": "/why-us", "destination": "/", "statusCode": 301 },
-    { "source": "/b2b-lead-generation", "destination": "/", "statusCode": 301 },
+    { "source": "/why-us", "destination": "/about", "statusCode": 301 },
+    { "source": "/b2b-lead-generation", "destination": "/b2b-prospect-research", "statusCode": 301 },
     { "source": "/decision-maker-research", "destination": "/b2b-prospect-research", "statusCode": 301 },
     { "source": "/prospect-list-building", "destination": "/b2b-prospect-research", "statusCode": 301 },
     { "source": "/services/verified-b2b-contact-lists", "destination": "/b2b-prospect-research", "statusCode": 301 },
     { "source": "/services/lead-generation-analysis", "destination": "/b2b-prospect-research", "statusCode": 301 },
-    { "source": "/services/business-process-automation", "destination": "/", "statusCode": 301 }
+    { "source": "/services/business-process-automation", "destination": "/services", "statusCode": 301 },
+    { "source": "/terms-of-service", "destination": "/terms", "statusCode": 301 },
+    { "source": "/projects", "destination": "/portfolio", "statusCode": 301 },
+    { "source": "/contact-us", "destination": "/contact", "statusCode": 301 },
+    { "source": "/lead-generation", "destination": "/b2b-prospect-research", "statusCode": 301 },
+    { "source": "/blog/how-to-build-clean-b2b-lead-list", "destination": "/blog/how-to-build-a-clean-b2b-lead-list-for-cold-email", "statusCode": 301 },
+    { "source": "/blog/b2b-lead-list-pricing-guide", "destination": "/pricing", "statusCode": 301 },
+    { "source": "/blog/what-is-b2b-lead-generation-guide-2026", "destination": "/blog/what-is-b2b-lead-generation-a-2026-guide-for-growth-teams", "statusCode": 301 },
+    { "source": "/blog/b2b-data-enrichment-guide", "destination": "/blog/what-is-b2b-data-enrichment-complete-guide-for-sales-teams", "statusCode": 301 },
+    { "source": "/blog/google-maps-lead-scraping", "destination": "/blog/how-to-extract-verified-leads-from-google-maps-ethically", "statusCode": 301 },
+    { "source": "/blog/google-maps-lead-generation-guide", "destination": "/blog/how-to-extract-verified-leads-from-google-maps-ethically", "statusCode": 301 }
   ],
   "headers": [
     { "source": "/(.*)", "headers": [
-
       { "key": "X-Content-Type-Options", "value": "nosniff" },
       { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
       { "key": "X-Frame-Options", "value": "DENY" },
