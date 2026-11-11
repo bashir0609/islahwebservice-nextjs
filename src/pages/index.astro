@@ -2,7 +2,9 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Button from '../components/Button.astro';
 import OutreachDashboard from '../components/OutreachDashboard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
 import { process } from '../data/homepage';
+import { homepageTestimonials, upworkProfileUrl } from '../data/testimonials';
 
 const featureCards = [
   {
@@ -177,6 +179,22 @@ const credibility = [
       </div>
     </section>
 
+    <section class="reference-section" aria-labelledby="testimonials-title">
+      <div class="reference-heading">
+        <p class="eyebrow">VERIFIED UPWORK CLIENT REVIEWS</p>
+        <h2 id="testimonials-title">Real feedback from founder Bashir Ahmed's Upwork work history.</h2>
+        <p>Authentic feedback from verified client contracts completed on Upwork across B2B prospect research, lead generation campaigns, and email deliverability. Client wording, 5-star ratings, and contract titles are preserved verbatim.</p>
+      </div>
+      <div class="testimonial-grid">
+        {homepageTestimonials.map(testimonial => (
+          <TestimonialCard testimonial={testimonial} />
+        ))}
+      </div>
+      <p class="testimonial-disclaimer">
+        Reviews are publicly verifiable on <a href={upworkProfileUrl} rel="external" target="_blank">Bashir Ahmed's Upwork Freelancer Profile ↗</a>. These reflect individual client engagements completed by founder Bashir Ahmed, not separate agency aggregate ratings.
+      </p>
+    </section>
+
     <section class="reference-section credibility-section" aria-labelledby="credibility-title">
       <div class="reference-heading">
         <p class="eyebrow">WORKING PRINCIPLES</p>
@@ -220,4 +238,11 @@ const credibility = [
   .feature-link:hover { text-decoration: underline; }
   .split-actions { display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap; }
   .reference-feature-card { display: flex; flex-direction: column; justify-content: space-between; }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .testimonial-disclaimer { font-size: 12px; color: #666; margin-top: 24px; text-align: center; }
+  .testimonial-disclaimer a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+  .testimonial-disclaimer a:hover { text-decoration: underline; }
+  @media (max-width: 900px) {
+    .testimonial-grid { grid-template-columns: 1fr; }
+  }
 </style>

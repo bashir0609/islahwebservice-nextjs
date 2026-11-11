@@ -1,0 +1,115 @@
+---
+import type { UpworkTestimonial } from '../data/testimonials';
+
+interface Props {
+  testimonial: UpworkTestimonial;
+}
+
+const { testimonial } = Astro.props;
+---
+<article class="card testimonial-card">
+  <div class="testimonial-header">
+    <span class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★ <strong>{testimonial.rating}</strong></span>
+    <span class="testimonial-tag">{testimonial.category}</span>
+  </div>
+  <blockquote class="testimonial-quote">
+    <p>“{testimonial.quote}”</p>
+  </blockquote>
+  <div class="testimonial-footer">
+    <p class="contract-title"><strong>Contract:</strong> {testimonial.contractTitle}</p>
+    <p class="testimonial-attribution">
+      <span>{testimonial.attribution}</span>
+      <time>Completed {testimonial.completionDate}</time>
+    </p>
+    <a href={testimonial.profileUrl} class="text-link" rel="external" target="_blank">
+      Verify on Upwork profile ↗
+    </a>
+  </div>
+</article>
+
+<style>
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px #11111108;
+  }
+  .testimonial-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .testimonial-stars {
+    color: #ff4d1c;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  .testimonial-stars strong {
+    color: #111;
+    font-size: 12px;
+    margin-left: 4px;
+    letter-spacing: normal;
+  }
+  .testimonial-tag {
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    background: #fff5f1;
+    border: 1px solid #ffd0c0;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .testimonial-quote {
+    margin: 0 0 20px;
+    padding: 0;
+    border: none;
+  }
+  .testimonial-quote p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #222;
+    font-style: italic;
+    margin: 0;
+  }
+  .testimonial-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .contract-title {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.45;
+    margin: 0 0 6px;
+  }
+  .testimonial-attribution {
+    font-size: 11px;
+    color: #777;
+    margin: 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .text-link {
+    display: inline-block;
+    color: var(--accent-text);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .text-link:hover {
+    text-decoration: underline;
+  }
+</style>
