@@ -17,7 +17,7 @@ const current = (href: string) => {
   if (path === href) return 'page';
   if (href === '/services' && servicePaths.has(path)) return 'page';
   if (href === '/industries' && path.startsWith('/industries/')) return 'page';
-  if (href === '/blog' && path.startsWith('/blog/')) return 'page';
+  if (href === '/portfolio' && path.startsWith('/portfolio/')) return 'page';
   return undefined;
 };
 ---

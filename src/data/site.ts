@@ -8,12 +8,9 @@ export const site = {
 export const primaryNav = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'One-Time Setup', href: '/one-time-setup' },
-  { label: 'Ongoing Management', href: '/ongoing-management' },
   { label: 'Industries', href: '/industries' },
   { label: 'Case Studies', href: '/portfolio' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Blog', href: '/blog' },
   { label: 'About Us', href: '/about' },
 ];
 
