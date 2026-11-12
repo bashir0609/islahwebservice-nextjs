@@ -6,7 +6,7 @@ const posts = await listOfflinePublishedBlogs();
 const description = 'Meet Bashir Ahmed, founder of Islah Web Service, and read his guides to B2B prospect research, contact enrichment, email verification and target definition.';
 const personSchema = {'@context':'https://schema.org','@type':'Person','@id':'https://www.islahwebservice.com/authors/bashir-ahmed#person',name:'Bashir Ahmed',url:'https://www.islahwebservice.com/authors/bashir-ahmed',jobTitle:'Founder',worksFor:{'@type':'Organization',name:'Islah Web Service',url:'https://www.islahwebservice.com'},sameAs:['https://www.linkedin.com/in/bashir0609','https://www.upwork.com/freelancers/bashirahmed']};
 ---
-<SiteLayout title="Bashir Ahmed — Founder & Author" description={description}>
+<SiteLayout title="Bashir Ahmed — Founder & B2B Prospect Research Specialist" description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(personSchema).replaceAll('<','\\u003c')} />
   <div class="container author-page">
     <Breadcrumb items={[{label:'Blog',href:'/blog'},{label:'Bashir Ahmed'}]} />

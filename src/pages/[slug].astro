@@ -33,24 +33,35 @@ const serviceDetail = service ? serviceDetails[service.slug] : undefined;
 const enquiry = enquiryPages.find(item => item.slug === slug);
 const offer = slug ? offers[slug] : undefined;
 
-const titles: Record<string, string> = {
-  services: 'The right support starts with the right brief.',
-  industries: 'Research with your market in mind.',
-  about: 'Useful research. Clear boundaries.',
-  pricing: 'Scope first. Price with context.',
-  portfolio: 'Published prospect research projects.',
-  blog: 'Notes on better prospect research.',
-  'privacy-policy': 'Website privacy notice',
-  terms: 'Website terms',
+const metaTitles: Record<string, string> = {
+  services: 'B2B Outbound Email Services — Setup, Management & Prospect Research',
+  industries: 'B2B Lead Generation & Prospect Research by Industry',
+  about: 'About Islah Web Service — B2B Prospect Research & Outbound Agency',
+  pricing: 'B2B Outbound Email Pricing & Engagement Models',
+  portfolio: 'B2B Prospect Research Case Studies & Project Examples',
+  blog: 'B2B Prospect Research & Outbound Lead Generation Blog',
+  'privacy-policy': 'Privacy Policy',
+  terms: 'Website Terms of Service',
 };
 
-const title = offer?.metaTitle ?? service?.metaTitle ?? service?.title ?? enquiry?.title ?? titles[slug!];
+const h1Headings: Record<string, string> = {
+  services: 'B2B Outbound Email Services & Engagement Models',
+  industries: 'B2B Lead Generation & Account Research by Industry',
+  about: 'About Islah Web Service: Practical B2B Prospect Research & Outbound Systems',
+  pricing: 'B2B Outbound Email & Prospect Research Pricing Models',
+  portfolio: 'B2B Prospect Research Case Studies & Project Evidence',
+  blog: 'B2B Prospect Research & Outbound Lead Generation Guides',
+  'privacy-policy': 'Privacy Notice',
+  terms: 'Website Terms of Service',
+};
+
+const title = offer?.metaTitle ?? service?.metaTitle ?? service?.title ?? enquiry?.metaTitle ?? metaTitles[slug!];
 const descriptions: Record<string, string> = {
-  services: 'Compare One-Time Setup, Ongoing Campaign Management and standalone Prospect Research. Six supporting service pages detail scope, deliverables and client responsibilities.',
-  industries: 'Explore B2B lead generation and outreach for SaaS, managed service providers, recruitment, professional services and commercial real estate.',
-  about: 'Learn how Islah Web Service scopes business research, manages outreach engagements and prepares a practical handoff for your sales team.',
-  pricing: 'Three commercial models: One-Time Setup, Ongoing Management and standalone Prospect Research. Pricing is scoped after discovery.',
-  portfolio: 'Review published examples of prospect research, contact enrichment, decision-maker research and CRM-ready data delivery.',
+  services: 'Compare B2B outbound email services: One-Time Outbound Setup, Ongoing Campaign Management, and custom B2B Prospect Research. Scope, deliverables, and client responsibilities.',
+  industries: 'Explore B2B lead generation and prospect research for SaaS, managed service providers (MSPs), recruitment agencies, professional services, and commercial real estate.',
+  about: 'Learn how Islah Web Service scopes criteria-matched prospect research, manages outbound email campaigns, and prepares practical CRM data handoffs for sales teams.',
+  pricing: 'Transparent commercial pricing models: One-Time Setup, Monthly Managed Campaigns, and standalone Prospect Research. Scoped to your target market and volume.',
+  portfolio: 'Review verified case studies demonstrating custom B2B prospect research, contact enrichment, decision-maker mapping, and CRM-ready data handoffs.',
   'privacy-policy': 'Website privacy information describing contact handling, enquiry processing and data safeguards for Islah Web Service.',
   terms: 'Website terms covering service boundaries, commercial engagement requirements, compliance responsibilities, and safe use.',
 };
@@ -62,7 +73,18 @@ const portfolioRecords = slug === 'portfolio' ? await listOfflinePublishedPortfo
 service && serviceDetail ? <ServicePage service={service} detail={serviceDetail} services={services} /> :
 <div class="container">
   <Breadcrumb items={[{ label: 'Explore' }, { label: enquiry?.title ?? (slug ?? '').replaceAll('-', ' ') }]} />
-  <section class="page-hero"><p class="eyebrow">{enquiry ? 'Start a conversation' : 'Islah Web Service'}</p><h1>{enquiry?.title ?? titles[slug!]}</h1><p>{enquiry?.description ?? (slug === 'services' ? 'Three ways to engage: One-Time Setup for teams building their own outbound system, Ongoing Management for recurring research and campaigns, or standalone Prospect Research for teams that handle outreach themselves.' : slug === 'industries' ? 'A useful account list reflects your business context, not just an industry label. Explore our five core markets below.' : slug === 'about' ? 'We help teams turn a clearly defined market into structured, criteria-matched business data. The value is in the fit, the documentation and the handoff.' : slug === 'pricing' ? 'Research is scoped per project. Geography, roles, required fields and verification depth all affect the work involved. Managed service scope and pricing are confirmed through consultation.' : '')}</p></section>
+  <section class="page-hero">
+    <p class="eyebrow">{enquiry ? 'Start a conversation' : 'Islah Web Service'}</p>
+    <h1>{enquiry?.title ?? h1Headings[slug!]}</h1>
+    <p>{enquiry?.description ?? (
+      slug === 'services' ? 'Compare our three engagement models: One-Time Outbound Setup for teams building their own system, Ongoing Campaign Management for recurring research and outreach, or standalone B2B Prospect Research for internal sales teams.' :
+      slug === 'industries' ? 'A useful prospect account list reflects your specific industry business context, decision-maker roles, and serviceable territory. Explore our five core B2B industry verticals below.' :
+      slug === 'about' ? 'Islah Web Service helps B2B revenue teams turn clearly defined target markets into structured, criteria-matched prospect data and client-owned outbound email systems.' :
+      slug === 'pricing' ? 'Transparent B2B outbound email and prospect research pricing models. Every project is scoped after discovery based on target market complexity, data verification depth, and campaign capacity.' :
+      slug === 'portfolio' ? 'Review published examples of custom B2B prospect research, contact enrichment, decision-maker mapping, and CRM-ready data delivery across B2B technology and services.' :
+      ''
+    )}</p>
+  </section>
   {enquiry && <div class="content-split">
     <aside>
       <h2>A little context goes a long way.</h2>

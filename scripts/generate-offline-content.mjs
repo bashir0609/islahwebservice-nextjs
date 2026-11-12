@@ -28,7 +28,7 @@ const blogs = documents
       title: document.title,
       description: document.excerpt,
       canonicalUrl: `https://www.islahwebservice.com/blog/${document.slug.current}`,
-      noIndex: true,
+      noIndex: false,
       socialImage: document.image,
     },
   }))
@@ -47,7 +47,7 @@ const portfolio = portfolioDocuments.map(document => {
     results: (document.claims ?? []).map(claim => claim.statement),
     seo: {title: live.title, description: live.description,
       canonicalUrl: `https://www.islahwebservice.com/portfolio/${slug}`,
-      noIndex: true, socialImage: {source: live.socialImage}},
+      noIndex: false, socialImage: {source: live.socialImage}},
   };
 }).sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '') || a.slug.localeCompare(b.slug));
 

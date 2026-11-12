@@ -140,7 +140,7 @@ export const offers: Record<string, OfferDetail> = {
     primaryHref: '#enquiry',
     secondaryCta: 'Compare Engagement Models',
     secondaryHref: '/pricing',
-    metaTitle: 'One-Time Outbound Email Setup',
+    metaTitle: 'One-Time B2B Outbound Email System Setup & Handover',
     metaDescription: 'Get your B2B outbound email system built and handed over: ICP definition, prospect research, sending infrastructure, email sequences and campaign configuration.',
   },
 
@@ -252,7 +252,7 @@ export const offers: Record<string, OfferDetail> = {
     primaryHref: '#enquiry',
     secondaryCta: 'Compare Engagement Models',
     secondaryHref: '/pricing',
-    metaTitle: 'Ongoing B2B Campaign Management',
+    metaTitle: 'Managed B2B Outbound Email Outreach Service',
     metaDescription: 'Managed B2B email outreach from prospect research to qualified conversations. Recurring research, campaign execution, reply monitoring and performance reporting.',
   },
 };
