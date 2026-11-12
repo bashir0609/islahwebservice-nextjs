@@ -1,78 +1,72 @@
-export interface UpworkTestimonial {
+export interface Testimonial {
   id: string;
   contractTitle: string;
   rating: string;
   completionDate: string;
   quote: string;
   category: string;
-  profileUrl: string;
   attribution: string;
 }
 
-export const upworkProfileUrl = 'https://www.upwork.com/freelancers/bashirahmed';
+// Backward-compatibility alias
+export type UpworkTestimonial = Testimonial;
 
-export const homepageTestimonials: UpworkTestimonial[] = [
+export const homepageTestimonials: Testimonial[] = [
   {
-    id: 'upwork-109',
+    id: 'testimonial-109',
     contractTitle: 'Sales Development Representative (Build List and Email Campaign)',
     rating: '5.0',
     completionDate: 'Feb 12, 2023',
     quote: 'Bashir worked on a lead generation project for me for several months. I plan to hire him again in the future if I need additional leads.',
     category: 'Lead Generation & Campaigns',
-    profileUrl: upworkProfileUrl,
-    attribution: "Client review from founder Bashir Ahmed's Upwork work history",
+    attribution: 'Client Feedback',
   },
   {
-    id: 'upwork-105',
+    id: 'testimonial-105',
     contractTitle: 'Lead Generation/Email Generation',
     rating: '5.0',
     completionDate: 'Feb 21, 2023',
     quote: 'Very quick and efficient. I will be using Bashir again for all future lead-generation work.',
     category: 'B2B Lead Generation',
-    profileUrl: upworkProfileUrl,
-    attribution: "Client review from founder Bashir Ahmed's Upwork work history",
+    attribution: 'Client Feedback',
   },
   {
-    id: 'upwork-1',
+    id: 'testimonial-1',
     contractTitle: 'Prospect lists',
     rating: '5.0',
     completionDate: 'Nov 21, 2025',
     quote: 'Bashir is an excellent worker and I will hire him again.',
     category: 'Prospect Research',
-    profileUrl: upworkProfileUrl,
-    attribution: "Client review from founder Bashir Ahmed's Upwork work history",
+    attribution: 'Client Feedback',
   },
 ];
 
-export const aboutTestimonials: UpworkTestimonial[] = [
+export const aboutTestimonials: Testimonial[] = [
   {
-    id: 'upwork-62',
+    id: 'testimonial-62',
     contractTitle: 'Lead List Cleaning',
     rating: '5.0',
     completionDate: 'Aug 8, 2023',
     quote: 'Bashir has done excellent work for us. Would hire him again!',
     category: 'Data Quality & Cleaning',
-    profileUrl: upworkProfileUrl,
-    attribution: "Client review from founder Bashir Ahmed's Upwork work history",
+    attribution: 'Client Feedback',
   },
   {
-    id: 'upwork-127',
+    id: 'testimonial-127',
     contractTitle: 'Instant job: Create links to images on dropbox and paste them on a spreadsheet',
     rating: '5.0',
     completionDate: 'Oct 21, 2022',
     quote: 'We worked together for a long while. Bashir is reliable, trustworthy, and fast. I highly recommend working with him.',
     category: 'Reliability & Trust',
-    profileUrl: upworkProfileUrl,
-    attribution: "Client review from founder Bashir Ahmed's Upwork work history",
+    attribution: 'Client Feedback',
   },
   {
-    id: 'upwork-20',
+    id: 'testimonial-20',
     contractTitle: 'Formatting data for research',
     rating: '5.0',
     completionDate: 'Nov 11, 2024',
     quote: 'Very fast and efficient, will use again.',
     category: 'Research Data Formatting',
-    profileUrl: upworkProfileUrl,
-    attribution: "Client review from founder Bashir Ahmed's Upwork work history",
+    attribution: 'Client Feedback',
   },
 ];

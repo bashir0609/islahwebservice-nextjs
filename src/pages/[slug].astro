@@ -12,7 +12,7 @@ import TestimonialCard from '../components/TestimonialCard.astro';
 import { services, industries, enquiryPages, homeFaqs } from '../data/site';
 import { serviceDetails } from '../data/page-details';
 import { offers } from '../data/offers';
-import { aboutTestimonials, upworkProfileUrl } from '../data/testimonials';
+import { aboutTestimonials } from '../data/testimonials';
 import { listOfflinePublishedPortfolio } from '../content/offline.mjs';
 
 export const prerender = true;
@@ -164,19 +164,16 @@ service && serviceDetail ? <ServicePage service={service} detail={serviceDetail}
     <section class="section compact" aria-labelledby="about-testimonials-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">VERIFIED FOUNDER CLIENT FEEDBACK</p>
-          <h2 id="about-testimonials-title">Reliability and data quality, verified by clients.</h2>
+          <p class="eyebrow">CLIENT FEEDBACK</p>
+          <h2 id="about-testimonials-title">Trusted by Clients for Quality and Reliability</h2>
         </div>
-        <p>Authentic feedback from founder Bashir Ahmed's public Upwork work history, covering data cleaning, research formatting, and long-term client engagements.</p>
+        <p>Our clients value clear communication, reliable delivery, and careful attention to project requirements.</p>
       </div>
       <div class="grid three">
         {aboutTestimonials.map(testimonial => (
           <TestimonialCard testimonial={testimonial} />
         ))}
       </div>
-      <p class="small" style="margin-top: 20px; text-align: center;">
-        View verified client feedback and contract history directly on <a href={upworkProfileUrl} rel="external" target="_blank">Bashir Ahmed's public Upwork profile ↗</a>.
-      </p>
     </section>
     <CTA />
   </>}

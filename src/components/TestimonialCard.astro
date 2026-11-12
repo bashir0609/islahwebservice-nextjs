@@ -1,8 +1,8 @@
 ---
-import type { UpworkTestimonial } from '../data/testimonials';
+import type { Testimonial } from '../data/testimonials';
 
 interface Props {
-  testimonial: UpworkTestimonial;
+  testimonial: Testimonial;
 }
 
 const { testimonial } = Astro.props;
@@ -16,14 +16,11 @@ const { testimonial } = Astro.props;
     <p>“{testimonial.quote}”</p>
   </blockquote>
   <div class="testimonial-footer">
-    <p class="contract-title"><strong>Contract:</strong> {testimonial.contractTitle}</p>
+    <p class="contract-title"><strong>Project:</strong> {testimonial.contractTitle}</p>
     <p class="testimonial-attribution">
       <span>{testimonial.attribution}</span>
       <time>Completed {testimonial.completionDate}</time>
     </p>
-    <a href={testimonial.profileUrl} class="text-link" rel="external" target="_blank">
-      Verify on Upwork profile ↗
-    </a>
   </div>
 </article>
 
@@ -97,19 +94,9 @@ const { testimonial } = Astro.props;
   .testimonial-attribution {
     font-size: 11px;
     color: #777;
-    margin: 0 0 10px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 2px;
-  }
-  .text-link {
-    display: inline-block;
-    color: var(--accent-text);
-    font-size: 12px;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .text-link:hover {
-    text-decoration: underline;
   }
 </style>
