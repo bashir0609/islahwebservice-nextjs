@@ -140,7 +140,7 @@ export const offers: Record<string, OfferDetail> = {
     primaryHref: '#enquiry',
     secondaryCta: 'Compare Engagement Models',
     secondaryHref: '/pricing',
-    metaTitle: 'One-Time B2B Outbound Email System Setup & Handover',
+    metaTitle: 'One-Time B2B Outbound Email Setup | Islah Web Service',
     metaDescription: 'Get your B2B outbound email system built and handed over: ICP definition, prospect research, sending infrastructure, email sequences and campaign configuration.',
   },
 
@@ -252,7 +252,7 @@ export const offers: Record<string, OfferDetail> = {
     primaryHref: '#enquiry',
     secondaryCta: 'Compare Engagement Models',
     secondaryHref: '/pricing',
-    metaTitle: 'Managed B2B Outbound Email Outreach Service',
-    metaDescription: 'Managed B2B email outreach from prospect research to qualified conversations. Recurring research, campaign execution, reply monitoring and performance reporting.',
+    metaTitle: 'Managed B2B Outbound Email Outreach | Islah Web Service',
+    metaDescription: 'Managed B2B email outreach: recurring prospect research, campaign execution, deliverability monitoring, reply triage, and monthly performance reporting.',
   },
 };

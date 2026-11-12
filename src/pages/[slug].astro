@@ -34,14 +34,14 @@ const enquiry = enquiryPages.find(item => item.slug === slug);
 const offer = slug ? offers[slug] : undefined;
 
 const metaTitles: Record<string, string> = {
-  services: 'B2B Outbound Email Services — Setup, Management & Prospect Research',
-  industries: 'B2B Lead Generation & Prospect Research by Industry',
-  about: 'About Islah Web Service — B2B Prospect Research & Outbound Agency',
-  pricing: 'B2B Outbound Email Pricing & Engagement Models',
-  portfolio: 'B2B Prospect Research Case Studies & Project Examples',
-  blog: 'B2B Prospect Research & Outbound Lead Generation Blog',
-  'privacy-policy': 'Privacy Policy',
-  terms: 'Website Terms of Service',
+  services: 'B2B Outbound Email Services | Islah Web Service',
+  industries: 'B2B Lead Generation by Industry | Islah Web Service',
+  about: 'About Islah Web Service | B2B Outbound & Research Agency',
+  pricing: 'B2B Outbound Email & Research Pricing | Islah Web Service',
+  portfolio: 'B2B Prospect Research Case Studies | Islah Web Service',
+  blog: 'B2B Prospect Research & Outbound Blog | Islah Web Service',
+  'privacy-policy': 'Privacy Policy | Islah Web Service',
+  terms: 'Terms of Service | Islah Web Service',
 };
 
 const h1Headings: Record<string, string> = {
@@ -57,13 +57,13 @@ const h1Headings: Record<string, string> = {
 
 const title = offer?.metaTitle ?? service?.metaTitle ?? service?.title ?? enquiry?.metaTitle ?? metaTitles[slug!];
 const descriptions: Record<string, string> = {
-  services: 'Compare B2B outbound email services: One-Time Outbound Setup, Ongoing Campaign Management, and custom B2B Prospect Research. Scope, deliverables, and client responsibilities.',
-  industries: 'Explore B2B lead generation and prospect research for SaaS, managed service providers (MSPs), recruitment agencies, professional services, and commercial real estate.',
-  about: 'Learn how Islah Web Service scopes criteria-matched prospect research, manages outbound email campaigns, and prepares practical CRM data handoffs for sales teams.',
+  services: 'Compare B2B outbound email services from Islah Web Service: One-Time Setup, Ongoing Campaign Management, and custom B2B Prospect Research for revenue teams.',
+  industries: 'Explore industry-specific B2B lead generation and prospect research for SaaS, Managed Service Providers (MSPs), recruitment agencies, and professional services.',
+  about: 'Learn how Islah Web Service scopes criteria-matched prospect research, manages outbound campaigns, and prepares clean CRM data handoffs for sales teams.',
   pricing: 'Transparent commercial pricing models: One-Time Setup, Monthly Managed Campaigns, and standalone Prospect Research. Scoped to your target market and volume.',
   portfolio: 'Review verified case studies demonstrating custom B2B prospect research, contact enrichment, decision-maker mapping, and CRM-ready data handoffs.',
-  'privacy-policy': 'Website privacy information describing contact handling, enquiry processing and data safeguards for Islah Web Service.',
-  terms: 'Website terms covering service boundaries, commercial engagement requirements, compliance responsibilities, and safe use.',
+  'privacy-policy': 'Website privacy notice describing contact handling, enquiry processing, and data safeguards for Islah Web Service.',
+  terms: 'Website terms covering service boundaries, commercial engagement requirements, compliance responsibilities, and safe data use.',
 };
 const description = offer?.metaDescription ?? service?.metaDescription ?? service?.summary ?? enquiry?.description ?? descriptions[slug!];
 const portfolioRecords = slug === 'portfolio' ? await listOfflinePublishedPortfolio() : [];

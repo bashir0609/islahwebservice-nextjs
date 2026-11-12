@@ -1,37 +1,41 @@
 import {writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {exportContent} from './content-export.mjs';
+import liveBlogMetadata from '../src/content/live-blog-metadata.mjs';
 import livePortfolioMetadata from '../src/content/live-portfolio-metadata.mjs';
 
 const {documents} = await exportContent();
 const blogs = documents
   .filter(document => document._type === 'blogPost' && document.migration.sourceStatus === 'published')
-  .map(document => ({
-    slug: document.slug.current,
-    collection: 'blog',
-    title: document.title,
-    markdown: document.markdown,
-    excerpt: document.excerpt,
-    author: document.author,
-    tags: document.tags ?? [],
-    readTime: document.readTime,
-    publishedAt: document.migration.sourcePublishedAt ?? document.migration.sourceDate,
-    updatedAt: document.migration.sourceUpdatedAt,
-    sourceDates: {
-      date: document.migration.sourceDate,
-      createdAt: document.migration.sourceCreatedAt,
-      updatedAt: document.migration.sourceUpdatedAt,
-      publishedAt: document.migration.sourcePublishedAt,
-    },
-    image: document.image,
-    seo: {
+  .map(document => {
+    const live = liveBlogMetadata[document.slug.current];
+    return {
+      slug: document.slug.current,
+      collection: 'blog',
       title: document.title,
-      description: document.excerpt,
-      canonicalUrl: `https://www.islahwebservice.com/blog/${document.slug.current}`,
-      noIndex: false,
-      socialImage: document.image,
-    },
-  }))
+      markdown: document.markdown,
+      excerpt: document.excerpt,
+      author: document.author,
+      tags: document.tags ?? [],
+      readTime: document.readTime,
+      publishedAt: document.migration.sourcePublishedAt ?? document.migration.sourceDate,
+      updatedAt: document.migration.sourceUpdatedAt,
+      sourceDates: {
+        date: document.migration.sourceDate,
+        createdAt: document.migration.sourceCreatedAt,
+        updatedAt: document.migration.sourceUpdatedAt,
+        publishedAt: document.migration.sourcePublishedAt,
+      },
+      image: document.image,
+      seo: {
+        title: live?.title ?? document.title,
+        description: live?.description ?? document.excerpt,
+        canonicalUrl: `https://www.islahwebservice.com/blog/${document.slug.current}`,
+        noIndex: false,
+        socialImage: document.image,
+      },
+    };
+  })
   .sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '') || a.slug.localeCompare(b.slug));
 
 const portfolioDocuments = documents.filter(document => document._type === 'caseStudy');

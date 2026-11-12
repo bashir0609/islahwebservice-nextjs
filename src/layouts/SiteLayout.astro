@@ -5,7 +5,7 @@ import '../styles/global.css';
 interface Props { title: string; description: string; noindex?: boolean; }
 const { title, description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, 'https://www.islahwebservice.com').href;
-const fullTitle = `${title} — Islah Web Service`;
+const fullTitle = title.includes('Islah Web Service') ? title : `${title} | Islah Web Service`;
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true';
 const robots = indexable && !noindex ? 'index,follow' : 'noindex,nofollow';
 const schema = { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url: canonical };
